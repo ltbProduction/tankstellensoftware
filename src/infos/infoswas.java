@@ -1,14 +1,10 @@
-package Test;
+package infos;
 
-public class Test2 {
+public class infoswas {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-System.out.println("Hallo groﬂe Welt");
-	
-	
-	
-	
+System.out.println("ASD");
 	}
 
 }
