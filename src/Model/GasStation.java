@@ -1,4 +1,4 @@
-package Classes;
+package Model;
 
 import java.util.ArrayList;
 
@@ -33,10 +33,16 @@ public void readData() {
 
 
 
-public void createproducts() {
+public void creategood(int price, int inventory, ClassofGoods cod) {
 	//Die Objekte sollen angelegt werden
 	//goods.add(new Goods(price, duration, cog))
 }
+
+public void createfuel() {
+	//Die Objekte sollen angelegt werden
+	//fuel.add(new Fuel(price, duration, fuel));
+}
+
 
 public void checkdeliveries() {
 	

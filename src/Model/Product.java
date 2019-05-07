@@ -1,8 +1,9 @@
-package Classes;
+package Model;
 
 public abstract class Product {
 
 	protected String name;
+	private String type;
 	protected int price;
 	protected int duration;
 //	protected int amount;
@@ -17,6 +18,8 @@ public abstract class Product {
 	public abstract void createorder(int amount);
 	public abstract void displayorder();
 	public abstract void createdelivery(int amount);
+	
+	
 
 
 
