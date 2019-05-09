@@ -1,4 +1,4 @@
-package Model;
+package utilities;
 
 public class FileTransfer {
 
