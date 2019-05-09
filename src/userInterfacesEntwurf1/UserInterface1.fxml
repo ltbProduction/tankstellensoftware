@@ -9,6 +9,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -19,17 +21,17 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="14.0" layoutY="37.0" text="Zapfsäule">
+                  <Label layoutX="14.0" layoutY="14.0" text="Zapfsäule">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Button layoutX="15.0" layoutY="73.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="1" />
-                  <Button layoutX="50.0" layoutY="73.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="2" />
-                  <Button layoutX="156.0" layoutY="73.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="5" />
-                  <Button layoutX="86.0" layoutY="73.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="3" />
-                  <Button layoutX="121.0" layoutY="73.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="4" />
-                  <Button layoutX="14.0" layoutY="128.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Waren hinzufügen" />
+                  <Button layoutX="15.0" layoutY="54.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="1" />
+                  <Button layoutX="50.0" layoutY="54.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="2" />
+                  <Button layoutX="156.0" layoutY="54.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="5" />
+                  <Button layoutX="86.0" layoutY="54.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="3" />
+                  <Button layoutX="121.0" layoutY="54.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="4" />
+                  <Button layoutX="15.0" layoutY="110.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Waren hinzufügen" />
                   <TableView layoutX="14.0" layoutY="230.0" prefHeight="127.0" prefWidth="294.0">
                     <columns>
                       <TableColumn prefWidth="26.0" text="Nr." />
@@ -56,9 +58,26 @@
                         <Font size="38.0" />
                      </font>
                   </Button>
-                  <Button layoutX="396.0" layoutY="117.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Lieferung einbuchen" />
-                  <Button layoutX="396.0" layoutY="74.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Waren bestellen" />
-                  <Button layoutX="396.0" layoutY="31.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Kraftstoff bestellen" />
+                  <Button layoutX="409.0" layoutY="159.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Lieferung einbuchen" />
+                  <Button layoutX="409.0" layoutY="116.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Waren bestellen" />
+                  <Button layoutX="409.0" layoutY="73.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Kraftstoff bestellen" />
+                  <ImageView fitHeight="119.0" fitWidth="53.0" layoutX="334.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/traffic%20light/traffic_lights_red.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="119.0" fitWidth="53.0" layoutX="267.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/traffic%20light/traffic_light_green.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="266.0" layoutY="14.0" text="Füllstand">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="274.0" layoutY="46.0" text="Diesel" />
+                  <Label layoutX="341.0" layoutY="46.0" text="Super" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -66,15 +85,15 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="51.0" layoutY="14.0" text="Warenbestand">
+                  <Label layoutX="14.0" layoutY="14.0" text="Warenbestand">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="System Bold" size="16.0" />
                      </font>
                      <effect>
                         <Blend />
                      </effect>
                   </Label>
-                  <TableView layoutX="52.0" layoutY="39.0" prefHeight="200.0" prefWidth="515.0">
+                  <TableView layoutX="16.0" layoutY="51.0" prefHeight="200.0" prefWidth="515.0">
                     <columns>
                       <TableColumn prefWidth="111.0" text="Warennummer" />
                       <TableColumn prefWidth="99.0" text="Bezeichnung" />
