@@ -25,7 +25,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="14.0" layoutY="37.0" text="Zapfsäule">
+                  <Label layoutX="15.0" layoutY="25.0" text="Zapfsäule">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -35,8 +35,8 @@
                   <Button layoutX="156.0" layoutY="73.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="5" />
                   <Button layoutX="86.0" layoutY="73.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="3" />
                   <Button layoutX="121.0" layoutY="73.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="35.0" text="4" />
-                  <Button layoutX="14.0" layoutY="128.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Waren hinzufügen" />
-                  <TableView layoutX="14.0" layoutY="230.0" prefHeight="127.0" prefWidth="294.0">
+                  <Button layoutX="15.0" layoutY="128.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Waren hinzufügen" />
+                  <TableView layoutX="15.0" layoutY="230.0" prefHeight="127.0" prefWidth="294.0">
                     <columns>
                       <TableColumn prefWidth="26.0" text="Nr." />
                       <TableColumn prefWidth="142.0" text="Bezeichnung" />
@@ -56,7 +56,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="127.0" layoutX="320.0" layoutY="230.0" stroke="BLACK" strokeType="INSIDE" width="127.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="127.0" layoutX="320.0" layoutY="230.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="127.0" />
                   <Button layoutX="457.0" layoutY="230.0" mnemonicParsing="false" prefHeight="127.0" prefWidth="129.0" text="BAR">
                      <font>
                         <Font size="38.0" />
@@ -65,16 +65,8 @@
                   <Button layoutX="396.0" layoutY="117.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Lieferung einbuchen" />
                   <Button layoutX="396.0" layoutY="74.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Waren bestellen" />
                   <Button layoutX="396.0" layoutY="31.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Kraftstoff bestellen" />
-                  <Label layoutX="249.0" layoutY="37.0" text="Super">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="320.0" layoutY="37.0" text="Diesel">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
+                  <Label layoutX="249.0" layoutY="37.0" text="Super" />
+                  <Label layoutX="320.0" layoutY="37.0" text="Diesel" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -82,36 +74,33 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="39.0" layoutY="20.0" text="Warenbestand">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <effect>
-                        <Blend />
-                     </effect>
-                  </Label>
-                  <Label layoutX="28.0" layoutY="282.0" text="Bestellen">
+                  <Label layoutX="15.0" layoutY="291.0" text="Bestellen">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="138.0" layoutY="260.0" text="Warennummer" />
-                  <Label layoutX="318.0" layoutY="260.0" text="Menge" />
-                  <Button layoutX="443.0" layoutY="281.0" mnemonicParsing="false" text="OK" />
-                  <Button layoutX="337.0" layoutY="330.0" mnemonicParsing="false" text="Lieferung einbuchen" />
-                  <Button layoutX="476.0" layoutY="330.0" mnemonicParsing="false" text="Preise ändern" />
-                  <TextField layoutX="103.0" layoutY="281.0" />
-                  <TextField layoutX="273.0" layoutY="281.0" />
-                  <TreeTableView layoutX="32.0" layoutY="50.0" prefHeight="200.0" prefWidth="536.0">
+                  <Label layoutX="92.0" layoutY="270.0" text="Warennr." />
+                  <Label layoutX="163.0" layoutY="270.0" text="Menge" />
+                  <Button layoutX="163.0" layoutY="330.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" text="OK" />
+                  <Button layoutX="437.0" layoutY="269.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="149.0" text="Lieferung einbuchen" />
+                  <Button layoutX="437.0" layoutY="316.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="149.0" text="Preise ändern" />
+                  <TextField layoutX="92.0" layoutY="291.0" prefHeight="25.0" prefWidth="59.0" />
+                  <TextField layoutX="163.0" layoutY="291.0" prefHeight="25.0" prefWidth="59.0" />
+                  <TreeTableView layoutX="15.0" layoutY="65.0" prefHeight="186.0" prefWidth="570.0">
                     <columns>
-                      <TreeTableColumn prefWidth="94.0" text="Warennummer" />
-                      <TreeTableColumn prefWidth="134.0" text="Bezeichnung" />
-                        <TreeTableColumn prefWidth="87.0" text="Lagereinheit" />
-                        <TreeTableColumn prefWidth="53.0" text="Menge" />
-                        <TreeTableColumn prefWidth="97.0" text="Verkaufspreis" />
-                        <TreeTableColumn prefWidth="70.0" text="Währung" />
+                      <TreeTableColumn prefWidth="54.0" text="Nr." />
+                      <TreeTableColumn prefWidth="199.0" text="Bezeichnung" />
+                        <TreeTableColumn prefWidth="97.0" text="Lagereinheit" />
+                        <TreeTableColumn prefWidth="58.0" text="Menge" />
+                        <TreeTableColumn prefWidth="89.0" text="Verkaufspreis" />
+                        <TreeTableColumn prefWidth="72.0" text="Währung" />
                     </columns>
                   </TreeTableView>
+                        <Label layoutX="15.0" layoutY="25.0" text="Warenbestand">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -119,72 +108,55 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="48.0" layoutY="37.0" text="Kraftstofftanks">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <effect>
-                        <Blend />
-                     </effect>
-                  </Label>
-                  <TableView layoutX="43.0" layoutY="67.0" prefHeight="100.0" prefWidth="416.0">
+                  <TableView layoutX="15.0" layoutY="65.0" prefHeight="85.0" prefWidth="571.0">
                     <columns>
-                      <TableColumn prefWidth="87.0" text="Tanknummer" />
-                      <TableColumn prefWidth="86.0" text="Kraftstoffart" />
-                        <TableColumn prefWidth="107.0" text="Kapazität in Liter" />
-                        <TableColumn prefWidth="133.0" text="aktueller Füllstand" />
+                      <TableColumn prefWidth="54.0" text="Nr." />
+                      <TableColumn prefWidth="128.0" text="Kraftstoffart" />
+                        <TableColumn prefWidth="129.0" text="Kapazität in Liter" />
+                        <TableColumn minWidth="0.0" prefWidth="99.0" text="Füllstand" />
+                              <TableColumn prefWidth="160.0" text="Verkaufspreis in EUR" />
                     </columns>
                   </TableView>
-                  <Label layoutX="48.0" layoutY="243.0" text="Bestellen">
+                  <Label layoutX="15.0" layoutY="292.0" text="Bestellen">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="147.0" layoutY="217.0" text="Kraftstoffart" />
-                  <Label layoutX="356.0" layoutY="217.0" text="Menge" />
-                  <ComboBox layoutX="120.0" layoutY="243.0" prefWidth="150.0" />
-                  <TextField layoutX="300.0" layoutY="243.0" />
-                  <Button layoutX="473.0" layoutY="243.0" mnemonicParsing="false" text="OK" />
-                  <Button layoutX="270.0" layoutY="303.0" mnemonicParsing="false" text="Lieferung einbuchen" />
-                  <Button layoutX="418.0" layoutY="303.0" mnemonicParsing="false" text="Preise ändern" />
-               </children></AnchorPane>
+                  <Label layoutX="92.0" layoutY="270.0" text="Kraftstoffart" />
+                  <Label layoutX="217.0" layoutY="271.0" text="Menge" />
+                  <ComboBox layoutX="92.0" layoutY="292.0" prefHeight="25.0" prefWidth="116.0" />
+                  <TextField layoutX="217.0" layoutY="293.0" prefHeight="25.0" prefWidth="59.0" />
+                  <Button layoutX="217.0" layoutY="327.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" text="OK" />
+                        <Label layoutX="15.0" layoutY="25.0" text="Kraftstofftanks">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="437.0" layoutY="269.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="149.0" text="Lieferung einbuchen" />
+                        <Button layoutX="437.0" layoutY="316.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="149.0" text="Preise ändern" />
+               </children>
+                  </AnchorPane>
          </content>
       </Tab>
       <Tab text="Historie">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="32.0" layoutY="49.0" text="Einkäufe">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <effect>
-                        <Blend />
-                     </effect>
-                  </Label>
-                  <Label layoutX="309.0" layoutY="42.0" text="Verkäufe">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <effect>
-                        <Blend />
-                     </effect>
-                  </Label>
-                  <TreeTableView layoutX="32.0" layoutY="78.0" prefHeight="112.0" prefWidth="261.0">
+                  <TreeTableView layoutX="15.0" layoutY="65.0" prefHeight="112.0" prefWidth="261.0">
                     <columns>
                       <TreeTableColumn prefWidth="116.0" text="Vorgangsnummer" />
                       <TreeTableColumn prefWidth="54.0" text="Datum" />
                         <TreeTableColumn prefWidth="90.0" text="Betrag in EUR" />
                     </columns>
                   </TreeTableView>
-                  <TreeTableView layoutX="309.0" layoutY="79.0" prefHeight="111.0" prefWidth="261.0">
+                  <TreeTableView layoutX="309.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
                     <columns>
                       <TreeTableColumn prefWidth="107.0" text="Belegnummer" />
                       <TreeTableColumn prefWidth="60.0" text="Datum" />
                         <TreeTableColumn prefWidth="93.0" text="Betrag in EUR" />
                     </columns>
                   </TreeTableView>
-                  <Label layoutX="12.0" layoutY="270.0" text="Bilanz anzeigen für">
+                  <Label layoutX="15.0" layoutY="270.0" text="Bilanz anzeigen für">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -194,20 +166,30 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="191.0" layoutY="251.0" text="Startdatum">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="364.0" layoutY="251.0" text="Enddatum">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
+                  <Label layoutX="156.0" layoutY="248.0" text="Startdatum" />
+                  <Label layoutX="358.0" layoutY="247.0" text="Enddatum" />
                   <TextField layoutX="156.0" layoutY="270.0" />
-                  <TextField layoutX="326.0" layoutY="270.0" />
-                  <Button layoutX="501.0" layoutY="270.0" mnemonicParsing="false" text="OK" />
-                  <Label layoutX="156.0" layoutY="325.0" text="Bilanzergebnis Ausgabegeld" />
+                  <TextField layoutX="358.0" layoutY="269.0" />
+                  <Button layoutX="521.0" layoutY="270.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="OK" />
+                  <Label layoutX="156.0" layoutY="321.0" text="Bilanzergebnis Ausgabefeld">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <Label layoutX="15.0" layoutY="25.0" text="Einkäufe">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="309.0" layoutY="25.0" text="Verkäufe">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="318.0" layoutY="270.0" text="bis">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
                </children></AnchorPane>
          </content>
       </Tab>
@@ -215,14 +197,19 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TreeTableView layoutX="90.0" layoutY="37.0" prefHeight="200.0" prefWidth="325.0">
+                  <TreeTableView layoutX="15.0" layoutY="65.0" prefHeight="200.0" prefWidth="571.0">
                     <columns>
-                      <TreeTableColumn prefWidth="123.0" text="Mitarbeiternummer" />
-                      <TreeTableColumn prefWidth="84.0" text="Name" />
-                        <TreeTableColumn prefWidth="117.0" text="Einstellungsdatum" />
+                      <TreeTableColumn prefWidth="73.0" text="Nummer" />
+                      <TreeTableColumn prefWidth="321.0" text="Name" />
+                        <TreeTableColumn prefWidth="176.0" text="Einstellungsdatum" />
                     </columns>
                   </TreeTableView>
-                  <Button layoutX="304.0" layoutY="289.0" mnemonicParsing="false" text="Neuer Mitarbeiter" />
+                  <Button layoutX="425.0" layoutY="282.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="161.0" text="Neuer Mitarbeiter" />
+                        <Label layoutX="15.0" layoutY="25.0" text="Mitarbeiter">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
                </children></AnchorPane>
          </content>
       </Tab>
