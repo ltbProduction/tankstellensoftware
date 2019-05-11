@@ -2,8 +2,9 @@ package models;
 
 public abstract class Product {
 
+	protected String number;
 	protected String name;
-	private String type;
+	protected String type;
 	protected int price;
 	protected int amount;
 	
