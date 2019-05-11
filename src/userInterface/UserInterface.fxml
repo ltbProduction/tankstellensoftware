@@ -12,6 +12,8 @@
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -67,6 +69,17 @@
                   <Button layoutX="396.0" layoutY="31.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="177.0" text="Kraftstoff bestellen" />
                   <Label layoutX="249.0" layoutY="37.0" text="Super" />
                   <Label layoutX="320.0" layoutY="37.0" text="Diesel" />
+                        <ImageView fitHeight="121.0" fitWidth="46.0" layoutX="249.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/traffic%20light/traffic_light_green.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="121.0" fitWidth="46.0" layoutX="320.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/traffic%20light/traffic_light_green.png" />
+                           </image>
+                        </ImageView>
+
                </children></AnchorPane>
       </content>
     </Tab>
