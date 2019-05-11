@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class StartProgram extends Application {
 
 	public static void main(String[] args) {
-		Application.launch(args);
+		launch(args);
 	}
 
 	public void init() {
