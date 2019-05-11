@@ -2,6 +2,8 @@ package models;
 
 import java.util.ArrayList;
 
+import javax.swing.text.StyledEditorKit.ForegroundAction;
+
 import sun.util.calendar.LocalGregorianCalendar.Date;
 
 public class GasStation {
@@ -23,6 +25,12 @@ public class GasStation {
 	}
 	
 	//Auslesen der Daten, Products anlegen, Employees auslesen, FileTransfer anlegen/starten
+	public void addGood(Good good) {
+		goods.add(good);
+	}
+	
+	
+	
 	public void startGasStation() {
 		
 	}
@@ -47,7 +55,12 @@ public class GasStation {
 	public void calculateBalance(Date startBalanceDate, Date endBalaceDate) {
 		
 	}
-	
+	//Test für Linus
+	public void displayproducts() {
+		for (Good g: goods){
+			g.displayproduct();
+		}
+	}
 }
 	
 	
