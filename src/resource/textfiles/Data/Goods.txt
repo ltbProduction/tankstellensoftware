@@ -1,0 +1,6 @@
+Warennummer;Name;Lagereinheit;Menge;Verkaufspreis
+421;Wodka Jelzin;Flasche;100;2.99
+871;Filip Maurice;Packung;100;2.77
+358;Jupiter Schokoriegel;Stück;100;0.19
+992;Sitting Bull;Dose;100;0.29
+101;TK-Pizza Deluxe;Stück;100;0.89
