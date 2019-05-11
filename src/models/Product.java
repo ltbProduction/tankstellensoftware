@@ -5,15 +5,14 @@ public abstract class Product {
 	protected String name;
 	private String type;
 	protected int price;
-	protected int duration;
-//	protected int amount;
+	protected int amount;
 	
 	
 	// Methoden
 	
-	public Product(int price, int duration) {
+	public Product(int price, int amount) {
 		this.price = price;
-		this.duration = duration;
+		this.amount = amount;
 	}
 	public abstract void createorder(int amount);
 	public abstract void displayorder();
