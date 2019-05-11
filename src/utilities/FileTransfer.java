@@ -13,12 +13,31 @@ import models.Good;
 
 public class FileTransfer {
 	
+	//Das ist eine ausführende Klasse die später wieder rausgenommen wird. Sie ist nur da weil es noch kein Model gibt
+	public static void main(String[] args) {
+
+	FileTransfer f1 = new FileTransfer();
+	
+    GasStation g1 = new GasStation("KKK");
+    f1.readData(g1);
+    g1.displayproducts();
+	}	
 	
 	
-	public void Datenauslesen() {
+	
+	
+	
+	//Hier beginnt die wirkliche Klasse FileTransfer
+	
+	
+	//Daten auslesen
+	public void readData(GasStation gasstation) {
+		readGoods(gasstation);
+		readFuels(gasstation)
 		
-		
-		
+	}
+	//Waren werden ausgelesen und Objekte Goods erzeugt
+	public void readGoods(GasStation gasstation) {
 	     String fileName = "resource/textfiles/Data/Goods.txt";
 	     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
 	 
@@ -30,11 +49,38 @@ public class FileTransfer {
 		try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
 			String line;
 			br.readLine();
-			int i = 0;
+	
 			while ((line = br.readLine()) != null) {
-			i++;
+		
 			String[] output = line.split(";");
-			Good g+i = new Good(price, duration, cog)
+			gasstation.addGood(new Good(Integer.parseInt(output[0]), output[1], output[2], Integer.parseInt(output[3]), Double.parseDouble(output[4])));
+				
+				
+	}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	//Waren wurden ausgelesen und Objekt erzeugt 
+	
+	//Tanks werden ausgelesen und Objekte erzeugt.
+	public void readFuels(GasStation gasstation) {
+	     String fileName = "resource/textfiles/Data/Fuels.txt";
+	     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
+	 
+	     File file = new File(classLoader.getResource(fileName).getFile());
+	         
+		
+		
+
+		try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
+			String line;
+			br.readLine();
+	
+			while ((line = br.readLine()) != null) {
+		
+			String[] output = line.split(";");
+			gasstation.addGood(new Good(Integer.parseInt(output[0]), output[1], output[2], Integer.parseInt(output[3]), Double.parseDouble(output[4])));
 				
 				
 	}
@@ -44,12 +90,7 @@ public class FileTransfer {
 	}
 	
 	
-	public static void main(String[] args) {
 
-	FileTransfer f1 = new FileTransfer();
-	f1.Datenauslesen();
-    GasStation g1 = new GasStation("KKK");
-	}
 	}
 	
 
