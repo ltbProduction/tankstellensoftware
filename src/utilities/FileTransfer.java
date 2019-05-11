@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.*;
 
+import models.Fuel;
 import models.GasStation;
 import models.Good;
 
@@ -33,7 +34,7 @@ public class FileTransfer {
 	//Daten auslesen
 	public void readData(GasStation gasstation) {
 		readGoods(gasstation);
-		readFuels(gasstation)
+		readFuels(gasstation);
 		
 	}
 	//Waren werden ausgelesen und Objekte Goods erzeugt
@@ -80,7 +81,7 @@ public class FileTransfer {
 			while ((line = br.readLine()) != null) {
 		
 			String[] output = line.split(";");
-			gasstation.addGood(new Good(Integer.parseInt(output[0]), output[1], output[2], Integer.parseInt(output[3]), Double.parseDouble(output[4])));
+			gasstation.addFuel(new Fuel(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
 				
 				
 	}
