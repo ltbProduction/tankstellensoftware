@@ -4,10 +4,10 @@ public class Fuel extends Product{
 
 	
 //Attribute
-	private double amount
+	private double amount;
 	
 //Konstruktor
-	public Fuel(int number, String name, String unit, int amount, double price) {
+	public Fuel(int number, String name, String unit, double amount, double price) {
 		super(number, name, unit, price);
 		this.amount = amount;
 	}

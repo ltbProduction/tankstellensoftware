@@ -29,6 +29,10 @@ public class GasStation {
 		goods.add(good);
 	}
 	
+	public void addFuel(Fuel fuel) {
+		fuels.add(fuel);
+	}
+	
 	
 	
 	public void startGasStation() {
