@@ -79,6 +79,7 @@
                               <Image url="@../resource/traffic%20light/traffic_light_green.png" />
                            </image>
                         </ImageView>
+
                </children></AnchorPane>
       </content>
     </Tab>

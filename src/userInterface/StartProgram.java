@@ -17,7 +17,7 @@ public class StartProgram extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("UserInterface2.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UserInterface.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Tankstellensoftware");
         primaryStage.setScene(scene);
