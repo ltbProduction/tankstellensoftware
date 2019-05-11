@@ -1,11 +1,11 @@
 package models;
 
-public class Goods extends Product {
+public class Good extends Product {
 	//Atribute
 	private ClassofGoods cog;
 
 	//Konstruktor
-	public Goods(int price, int duration, ClassofGoods cog) {
+	public Good(int price, int duration, ClassofGoods cog) {
 		super(price, duration);
 		this.cog = cog;
 	}
