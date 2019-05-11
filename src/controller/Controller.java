@@ -4,8 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 
+<<<<<<< HEAD
 public class Controller implements EventHandler<ActionEvent> {
+=======
+	public static void main(String[] args) {
+>>>>>>> branch 'lukasbranch' of https://github.com/ltbProduction/tankstellensoftware.git
 
+<<<<<<< HEAD
 	private View view;
 
 	public Controller(View view) {
@@ -24,6 +29,10 @@ public class Controller implements EventHandler<ActionEvent> {
 			String text = view.getTextField().getText();
 			view.getLabel2().setText(text);
 		}
+=======
+		
+		
+>>>>>>> branch 'lukasbranch' of https://github.com/ltbProduction/tankstellensoftware.git
 	}
 
 }
