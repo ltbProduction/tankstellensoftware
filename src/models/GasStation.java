@@ -10,9 +10,9 @@ public class GasStation {
 
 	private String gasStationName;
 	private ArrayList<Employee> employees = new ArrayList<>();
-	private ArrayList<Product> storage = new ArrayList<>();
-	private ArrayList<Product> shoppingCart = new ArrayList<>();
-	private ArrayList<Fuel> fuels = new ArrayList<>();
+	private ArrayList<Product> storage = new ArrayList<>(); //Was heißt das?
+	private ArrayList<Product> shoppingCart = new ArrayList<>(); 
+	private ArrayList<Fuel> fuels = new ArrayList<>(); 
 	private ArrayList<Good> goods = new ArrayList<>();
 	private ArrayList<Sales> sales = new ArrayList<>();
 	private ArrayList<Purchases> purchases = new ArrayList<>();
@@ -24,13 +24,47 @@ public class GasStation {
 		this.gasStationName = gasStationName;
 	}
 	
-	//Auslesen der Daten, Products anlegen, Employees auslesen, FileTransfer anlegen/starten
+	//Das hinzufügen der Daten
 	public void addGood(Good good) {
 		goods.add(good);
 	}
 	
 	public void addFuel(Fuel fuel) {
 		fuels.add(fuel);
+	}
+	public void addstorage(Product product) {
+		storage.add(product);
+		
+	}
+	
+	public void addemployee(Employee employee) {
+		employees.add(employee);
+		
+	}
+	public void addshoppingcart(Product product) {
+		shoppingCart.add(product);
+		
+	}
+	public void addsale(Sales sale) {
+		sales.add(sale);
+		
+	}	
+	public void addpurchases(Purchases purchase) {
+		purchases.add(purchase);
+		
+	}
+	
+	//Methode welche alle ArrayLists auf null setzt
+	
+	public void clearArrayList() {
+		goods.clear();
+		fuels.clear();
+		storage.clear();
+		employees.clear();
+		shoppingCart.clear();
+		sales.clear();
+		purchases.clear();
+				
 	}
 	
 	
@@ -60,9 +94,9 @@ public class GasStation {
 		
 	}
 	//Test für Linus
-	public void displayproducts() {
-		for (Good g: goods){
-			g.displayproduct();
+	public void display() {
+		for (Employee e: employees){
+			e.displayEmployee();
 		}
 	}
 }

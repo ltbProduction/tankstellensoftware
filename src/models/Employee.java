@@ -1,6 +1,7 @@
 package models;
 
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import java.util.Date;
+  
 
 public class Employee {
 
@@ -9,13 +10,21 @@ public class Employee {
 	private int employeeNumber;
 	private Date dateOfEmployment;
 	
-	public Employee(boolean isActive, String employeeName, int employeeNumber, Date dateOfEmployment) {
-		this.isActive = isActive;
+	
+	//Ich habe den boolean entfernt. Weil es nicht dahin gehört
+	public Employee(String employeeName, int employeeNumber, Date dateOfEmployment) {
 		this.employeeName = employeeName;
 		this.employeeNumber = employeeNumber;
 		this.dateOfEmployment = dateOfEmployment;
 	}
+	
+	
 
+	public void displayEmployee() {
+		System.out.println(dateOfEmployment);
+	}
+	
+	
 	public boolean isActive() {
 		return isActive;
 	}
