@@ -14,8 +14,8 @@ public class GasStation {
 	private ArrayList<Product> shoppingCart = new ArrayList<>(); 
 	private ArrayList<Fuel> fuels = new ArrayList<>(); 
 	private ArrayList<Good> goods = new ArrayList<>();
-	private ArrayList<Sales> sales = new ArrayList<>();
-	private ArrayList<Purchases> purchases = new ArrayList<>();
+	private ArrayList<Sale> sales = new ArrayList<>();
+	private ArrayList<Purchase> purchases = new ArrayList<>();
 	private Date startBalanceDate;
 	private Date endBalanceDate;
 	
@@ -45,11 +45,11 @@ public class GasStation {
 		shoppingCart.add(product);
 		
 	}
-	public void addsale(Sales sale) {
+	public void addsale(Sale sale) {
 		sales.add(sale);
 		
 	}	
-	public void addpurchases(Purchases purchase) {
+	public void addpurchases(Purchase purchase) {
 		purchases.add(purchase);
 		
 	}

@@ -10,6 +10,7 @@ import models.Employee;
 import models.Fuel;
 import models.GasStation;
 import models.Good;
+import models.Sale;
 
 
 
@@ -109,6 +110,31 @@ public class FileTransfer {
 	
 	private void readPurchasesHistory(GasStation gasstation) {
 	
+		SimpleDateFormat s1 = new SimpleDateFormat("dd/MM/yyyy");
+		
+		 String fileName = "resource/textfiles/Data/Historypurchases.txt";
+	     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
+	 
+	     File file = new File(classLoader.getResource(fileName).getFile());
+	    
+	     
+		
+		
+
+		try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
+			String line;
+			br.readLine();
+	
+			while ((line = br.readLine()) != null) {
+		
+			String[] output = line.split(";");
+			gasstation.addsale(new Sale(Integer.parseInt(output[0]), s1.parse(output[1]), Double.parseDouble(output[2])));
+				
+				
+	}
+		} catch (IOException | NumberFormatException | ParseException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
