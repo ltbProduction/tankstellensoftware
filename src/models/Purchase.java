@@ -2,13 +2,13 @@ package models;
 
 import sun.util.calendar.LocalGregorianCalendar.Date;
 
-public class Purchases {
+public class Purchase {
 
 	private int purchaseNumber;
 	private Date purchaseDate;
 	private double purchasePrice;
 	
-	public Purchases (int purchaseNumber, Date purchaseDate, double purchasePrice) {
+	public Purchase (int purchaseNumber, Date purchaseDate, double purchasePrice) {
 		this.purchaseNumber = purchaseNumber;
 		this.purchaseDate = purchaseDate;
 		this.purchasePrice = purchasePrice;

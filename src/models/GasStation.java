@@ -8,6 +8,7 @@ import sun.util.calendar.LocalGregorianCalendar.Date;
 
 public class GasStation {
 
+
 	private String gasStationName; //Name der Tankstelle
 	private ArrayList<Employee> employees = new ArrayList<>(); //Liste mit allen Mitarbeitern
 	private ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkten (Waren 
@@ -24,13 +25,47 @@ public class GasStation {
 		this.gasStationName = gasStationName;
 	}
 	
-	//Auslesen der Daten, Products anlegen, Employees auslesen, FileTransfer anlegen/starten
+	//Das hinzufügen der Daten
 	public void addGood(Good good) {
 		goods.add(good);
 	}
 	
 	public void addFuel(Fuel fuel) {
 		fuels.add(fuel);
+	}
+	public void addstorage(Product product) {
+		storage.add(product);
+		
+	}
+	
+	public void addemployee(Employee employee) {
+		employees.add(employee);
+		
+	}
+	public void addshoppingcart(Product product) {
+		shoppingCart.add(product);
+		
+	}
+	public void addsale(Sale sale) {
+		sales.add(sale);
+		
+	}	
+	public void addpurchases(Purchase purchase) {
+		purchases.add(purchase);
+		
+	}
+	
+	//Methode welche alle ArrayLists auf null setzt
+	
+	public void clearArrayList() {
+		goods.clear();
+		fuels.clear();
+		storage.clear();
+		employees.clear();
+		shoppingCart.clear();
+		sales.clear();
+		purchases.clear();
+				
 	}
 	
 	
@@ -60,9 +95,9 @@ public class GasStation {
 		
 	}
 	//Test für Linus
-	public void displayproducts() {
-		for (Good g: goods){
-			g.displayproduct();
+	public void display() {
+		for (Employee e: employees){
+			e.displayEmployee();
 		}
 	}
 }
