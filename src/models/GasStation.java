@@ -11,14 +11,14 @@ public class GasStation {
 
 	private String gasStationName; //Name der Tankstelle
 	private ArrayList<Employee> employees = new ArrayList<>(); //Liste mit allen Mitarbeitern
-	private ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkten (Waren 
-	private ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
+	private ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkten (Waren und Kraftstoff upgecastet)
+	private ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb (Waren und Kraftstoff upgecastet)
 	private ArrayList<Fuel> fuels = new ArrayList<>(); //Liste allen Kraftstofftanks
 	private ArrayList<Good> goods = new ArrayList<>(); //Liste mit allen Waren
-	private ArrayList<Sales> sales = new ArrayList<>();
-	private ArrayList<Purchases> purchases = new ArrayList<>();
-	private Date startBalanceDate;
-	private Date endBalanceDate;
+	private ArrayList<Sale> sales = new ArrayList<>(); //Liste mit allen Verkäufen
+	private ArrayList<Purchase> purchases = new ArrayList<>(); //Liste mit allen Einkäufen
+	private Date startBalanceDate; //Startdatum der Bilanz
+	private Date endBalanceDate; //Enddatum der Bilanz
 	
 	
 	public GasStation(String gasStationName) {
