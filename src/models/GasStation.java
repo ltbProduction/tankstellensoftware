@@ -8,11 +8,11 @@ import sun.util.calendar.LocalGregorianCalendar.Date;
 
 public class GasStation {
 
-	private String gasStationName;
-	private ArrayList<Employee> employees = new ArrayList<>();
-	private ArrayList<Product> storage = new ArrayList<>();
-	private ArrayList<Product> shoppingCart = new ArrayList<>();
-	private ArrayList<Fuel> fuels = new ArrayList<>();
+	private String gasStationName; //Name der Tankstelle
+	private ArrayList<Employee> employees = new ArrayList<>(); //Liste mit allen Mitarbeitern
+	private ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
+	private ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
+	private ArrayList<Fuel> fuels = new ArrayList<>(); //Liste 
 	private ArrayList<Good> goods = new ArrayList<>();
 	private ArrayList<Sales> sales = new ArrayList<>();
 	private ArrayList<Purchases> purchases = new ArrayList<>();
