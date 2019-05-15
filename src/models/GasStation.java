@@ -14,7 +14,6 @@ public class GasStation {
 	private ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
 	private ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
 	private ArrayList<Fuel> fuels = new ArrayList<>(); //Liste 
-
 	private ArrayList<Good> goods = new ArrayList<>();
 	private ArrayList<Sale> sales = new ArrayList<>();
 	private ArrayList<Purchase> purchases = new ArrayList<>();
