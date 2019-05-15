@@ -19,6 +19,7 @@ public class GasStation {
 	private ArrayList<Purchase> purchases = new ArrayList<>(); //Liste mit allen Einkäufen
 	private Date startBalanceDate; //Startdatum der Bilanz
 	private Date endBalanceDate; //Enddatum der Bilanz
+
 	
 	
 	public GasStation(String gasStationName) {
@@ -96,10 +97,95 @@ public class GasStation {
 	}
 	//Test für Linus
 	public void display() {
-		for (Employee e: employees){
-			e.displayEmployee();
+		for (Purchase g: purchases){
+			g.display();
 		}
 	}
+
+	public String getGasStationName() {
+		return gasStationName;
+	}
+
+	public void setGasStationName(String gasStationName) {
+		this.gasStationName = gasStationName;
+	}
+
+	public ArrayList<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(ArrayList<Employee> employees) {
+		this.employees = employees;
+	}
+
+	public ArrayList<Product> getStorage() {
+		return storage;
+	}
+
+	public void setStorage(ArrayList<Product> storage) {
+		this.storage = storage;
+	}
+
+	public ArrayList<Product> getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public void setShoppingCart(ArrayList<Product> shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+
+	public ArrayList<Fuel> getFuels() {
+		return fuels;
+	}
+
+	public void setFuels(ArrayList<Fuel> fuels) {
+		this.fuels = fuels;
+	}
+
+	public ArrayList<Good> getGoods() {
+		return goods;
+	}
+
+	public void setGoods(ArrayList<Good> goods) {
+		this.goods = goods;
+	}
+
+	public ArrayList<Sale> getSales() {
+		return sales;
+	}
+
+	public void setSales(ArrayList<Sale> sales) {
+		this.sales = sales;
+	}
+
+	public ArrayList<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(ArrayList<Purchase> purchases) {
+		this.purchases = purchases;
+	}
+
+	public Date getStartBalanceDate() {
+		return startBalanceDate;
+	}
+
+	public void setStartBalanceDate(Date startBalanceDate) {
+		this.startBalanceDate = startBalanceDate;
+	}
+
+	public Date getEndBalanceDate() {
+		return endBalanceDate;
+	}
+
+	public void setEndBalanceDate(Date endBalanceDate) {
+		this.endBalanceDate = endBalanceDate;
+	}
+	
+
+	
+	
+	
 }
 	
 	
