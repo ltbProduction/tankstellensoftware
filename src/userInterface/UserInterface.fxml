@@ -9,8 +9,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -98,21 +96,21 @@
                   <Button fx:id="b_changegoodsprice" layoutX="437.0" layoutY="319.0" mnemonicParsing="false" onAction="#onChangeGoodsPriceClick" prefHeight="37.0" prefWidth="149.0" text="Preise ändern" />
                   <TextField fx:id="tf_ordergoodnumber" layoutX="77.0" layoutY="291.0" prefHeight="25.0" prefWidth="59.0" />
                   <TextField fx:id="tf_ordergoodamount" layoutX="152.0" layoutY="291.0" prefHeight="25.0" prefWidth="59.0" />
-                  <TreeTableView fx:id="ttv_goodsstorage" layoutX="15.0" layoutY="65.0" prefHeight="186.0" prefWidth="570.0">
-                    <columns>
-                      <TreeTableColumn fx:id="tc_goodsstorage_nr" prefWidth="54.0" text="Nr." />
-                      <TreeTableColumn fx:id="tc_goodsstorage_name" prefWidth="199.0" text="Bezeichnung" />
-                        <TreeTableColumn fx:id="tc_goodsstorage_storageunit" prefWidth="97.0" text="Lagereinheit" />
-                        <TreeTableColumn fx:id="tc_goodsstorage_amount" prefWidth="58.0" text="Menge" />
-                        <TreeTableColumn fx:id="tc_goodsstorage_saleprice" prefWidth="89.0" text="Verkaufspreis" />
-                        <TreeTableColumn fx:id="tc_goodsstorage_currency" prefWidth="72.0" text="Währung" />
-                    </columns>
-                  </TreeTableView>
                         <Label layoutX="15.0" layoutY="25.0" text="Warenbestand">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
+                        <TableView layoutX="15.0" layoutY="65.0" prefHeight="185.0" prefWidth="570.0">
+                          <columns>
+                            <TableColumn fx:id="tc_goodsstorage_nr" prefWidth="55.0" text="Nr." />
+                            <TableColumn fx:id="tc_goodsstorage_name" prefWidth="199.0" text="Bezeichnung" />
+                              <TableColumn fx:id="tc_goodsstorage_storageunit" minWidth="0.0" prefWidth="96.0" text="Lagereinheit" />
+                              <TableColumn fx:id="tc_goodsstorage_amount" prefWidth="58.0" text="Menge" />
+                              <TableColumn fx:id="tc_goodsstorage_saleprice" prefWidth="86.0" text="Verkaufspreis" />
+                              <TableColumn fx:id="tc_goodsstorage_currency" prefWidth="75.0" text="Währung" />
+                          </columns>
+                        </TableView>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -154,20 +152,6 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TreeTableView fx:id="ttv_purchases" layoutX="15.0" layoutY="65.0" prefHeight="112.0" prefWidth="261.0">
-                    <columns>
-                      <TreeTableColumn fx:id="ttc_purchases_number" prefWidth="116.0" text="Vorgangsnummer" />
-                      <TreeTableColumn fx:id="ttc_purchases_date" prefWidth="54.0" text="Datum" />
-                        <TreeTableColumn fx:id="ttc_purchases_price" prefWidth="90.0" text="Betrag in EUR" />
-                    </columns>
-                  </TreeTableView>
-                  <TreeTableView fx:id="ttv_sales" layoutX="309.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
-                    <columns>
-                      <TreeTableColumn fx:id="ttc_sales_number" prefWidth="107.0" text="Belegnummer" />
-                      <TreeTableColumn fx:id="ttc_sales_date" prefWidth="60.0" text="Datum" />
-                        <TreeTableColumn fx:id="ttc_sales_price" prefWidth="93.0" text="Betrag in EUR" />
-                    </columns>
-                  </TreeTableView>
                   <Label layoutX="43.0" layoutY="274.0" text="Bilanz anzeigen für" />
                   <Label layoutX="63.0" layoutY="321.0" text="Bilanzergebnis:" />
                   <Label layoutX="156.0" layoutY="248.0" text="Startdatum" />
@@ -187,6 +171,20 @@
                            </font>
                         </Label>
                         <Label layoutX="323.0" layoutY="274.0" text="bis" />
+                        <TableView layoutX="15.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
+                          <columns>
+                            <TableColumn fx:id="ttc_purchases_number" prefWidth="52.0" text="Nr." />
+                            <TableColumn fx:id="ttc_purchases_date" prefWidth="128.0" text="Datum" />
+                              <TableColumn fx:id="ttc_purchases_price" text="Betrag" />
+                          </columns>
+                        </TableView>
+                        <TableView layoutX="309.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
+                           <columns>
+                              <TableColumn fx:id="ttc_sales_number" prefWidth="52.0" text="Nr." />
+                              <TableColumn fx:id="ttc_sales_date" prefWidth="128.0" text="Datum" />
+                              <TableColumn fx:id="ttc_sales_price" text="Betrag" />
+                           </columns>
+                        </TableView>
                </children></AnchorPane>
          </content>
       </Tab>
@@ -194,19 +192,19 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TreeTableView fx:id="ttv_employees" layoutX="15.0" layoutY="65.0" prefHeight="200.0" prefWidth="571.0">
-                    <columns>
-                      <TreeTableColumn fx:id="ttc_employees_number" prefWidth="73.0" text="Nummer" />
-                      <TreeTableColumn fx:id="ttc_employees_name" prefWidth="321.0" text="Name" />
-                        <TreeTableColumn fx:id="ttc_employees_dateofemployment" prefWidth="176.0" text="Einstellungsdatum" />
-                    </columns>
-                  </TreeTableView>
                   <Button fx:id="b_newemployee" layoutX="425.0" layoutY="282.0" mnemonicParsing="false" onAction="#onNewEmployeeClick" prefHeight="37.0" prefWidth="161.0" text="Neuer Mitarbeiter" />
                         <Label layoutX="15.0" layoutY="25.0" text="Mitarbeiter">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
+                        <TableView layoutX="15.0" layoutY="65.0" prefHeight="200.0" prefWidth="571.0">
+                          <columns>
+                            <TableColumn fx:id="ttc_employees_number" prefWidth="75.0" text="Nummer" />
+                            <TableColumn fx:id="ttc_employees_name" prefWidth="319.0" text="Name" />
+                              <TableColumn fx:id="ttc_employees_dateofemployment" minWidth="0.0" prefWidth="176.0" text="Einstellungsdatum" />
+                          </columns>
+                        </TableView>
                </children></AnchorPane>
          </content>
       </Tab>

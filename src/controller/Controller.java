@@ -1,4 +1,5 @@
 package controller;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,8 +9,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
 import javafx.scene.image.ImageView;
 
 public class Controller {
@@ -87,25 +86,22 @@ public class Controller {
     private TextField tf_ordergoodamount;
 
     @FXML
-    private TreeTableView<?> ttv_goodsstorage;
+    private TableColumn<?, ?> tc_goodsstorage_nr;
 
     @FXML
-    private TreeTableColumn<?, ?> tc_goodsstorage_nr;
+    private TableColumn<?, ?> tc_goodsstorage_name;
 
     @FXML
-    private TreeTableColumn<?, ?> tc_goodsstorage_name;
+    private TableColumn<?, ?> tc_goodsstorage_storageunit;
 
     @FXML
-    private TreeTableColumn<?, ?> tc_goodsstorage_storageunit;
+    private TableColumn<?, ?> tc_goodsstorage_amount;
 
     @FXML
-    private TreeTableColumn<?, ?> tc_goodsstorage_amount;
+    private TableColumn<?, ?> tc_goodsstorage_saleprice;
 
     @FXML
-    private TreeTableColumn<?, ?> tc_goodsstorage_saleprice;
-
-    @FXML
-    private TreeTableColumn<?, ?> tc_goodsstorage_currency;
+    private TableColumn<?, ?> tc_goodsstorage_currency;
 
     @FXML
     private Tab t_fuel;
@@ -144,30 +140,6 @@ public class Controller {
     private Tab t_history;
 
     @FXML
-    private TreeTableView<?> ttv_purchases;
-
-    @FXML
-    private TreeTableColumn<?, ?> ttc_purchases_number;
-
-    @FXML
-    private TreeTableColumn<?, ?> ttc_purchases_date;
-
-    @FXML
-    private TreeTableColumn<?, ?> ttc_purchases_price;
-
-    @FXML
-    private TreeTableView<?> ttv_sales;
-
-    @FXML
-    private TreeTableColumn<?, ?> ttc_sales_number;
-
-    @FXML
-    private TreeTableColumn<?, ?> ttc_sales_date;
-
-    @FXML
-    private TreeTableColumn<?, ?> ttc_sales_price;
-
-    @FXML
     private TextField tf_balancestartdate;
 
     @FXML
@@ -180,22 +152,37 @@ public class Controller {
     private Label l_balanceresult;
 
     @FXML
+    private TableColumn<?, ?> ttc_purchases_number;
+
+    @FXML
+    private TableColumn<?, ?> ttc_purchases_date;
+
+    @FXML
+    private TableColumn<?, ?> ttc_purchases_price;
+
+    @FXML
+    private TableColumn<?, ?> ttc_sales_number;
+
+    @FXML
+    private TableColumn<?, ?> ttc_sales_date;
+
+    @FXML
+    private TableColumn<?, ?> ttc_sales_price;
+
+    @FXML
     private Tab t_employees;
 
     @FXML
-    private TreeTableView<?> ttv_employees;
-
-    @FXML
-    private TreeTableColumn<?, ?> ttc_employees_number;
-
-    @FXML
-    private TreeTableColumn<?, ?> ttc_employees_name;
-
-    @FXML
-    private TreeTableColumn<?, ?> ttc_employees_dateofemployment;
-
-    @FXML
     private Button b_newemployee;
+
+    @FXML
+    private TableColumn<?, ?> ttc_employees_number;
+
+    @FXML
+    private TableColumn<?, ?> ttc_employees_name;
+
+    @FXML
+    private TableColumn<?, ?> ttc_employees_dateofemployment;
 
     @FXML
     private TableView<?> tv_goodsstorage2;
@@ -234,103 +221,86 @@ public class Controller {
     private Button b_login;
 
     @FXML
-    // Klick auf "Waren hinzufügen"
     void OnAddGoodsClick(ActionEvent event) {
 
     }
 
     @FXML
- // Klick auf "Login"
     void OnLogInClick(ActionEvent event) {
 
     }
 
     @FXML
- // Klick auf "Hinzufügen" im Warenkorb-Fenster
     void onAddToShoppingCartClick(ActionEvent event) {
 
     }
 
     @FXML
- // Klick auf "BAR" bei Zahlung durch Kunden
     void onBarClick(ActionEvent event) {
 
     }
 
     @FXML
- // Klick auf "Preise ändern" unter "Kraftstoff"
     void onChangeFuelPriceClick(ActionEvent event) {
 
     }
 
     @FXML
-    // Klick auf "Preise ändern" unter "Waren"
     void onChangeGoodsPriceClick(ActionEvent event) {
 
     }
 
     @FXML
-    // Klick auf "Lieferung einbuchen"
     void onCheckInDeliveryClick(ActionEvent event) {
 
     }
 
     @FXML
-    // Klick auf "Zapfsäule 1"
     void onGasPump1Click(ActionEvent event) {
 
     }
 
     @FXML
- // Klick auf "Zapfsäule 2"
     void onGasPump2Click(ActionEvent event) {
 
     }
 
     @FXML
- // Klick auf "Zapfsäule 3"
     void onGasPump3Click(ActionEvent event) {
 
     }
 
     @FXML
- // Klick auf "Zapfsäule 4"
     void onGasPump4Click(ActionEvent event) {
 
     }
 
     @FXML
- // Klick auf "Zapfsäule 5"
     void onGasPump5Click(ActionEvent event) {
 
     }
 
     @FXML
- // Klick auf "Neuer Mitarbeiter" unter "Mitarbeiter"
     void onNewEmployeeClick(ActionEvent event) {
 
     }
 
     @FXML
- // Klick auf Ok-Button zur Bestellung von Kraftstoff
     void onOrderFuelClick(ActionEvent event) {
 
     }
 
     @FXML
-    // Klick auf Ok-Button zur Bestellung von Waren
     void onOrderGoodsClick(ActionEvent event) {
 
     }
 
     @FXML
-    // Klick auf Ok-Button zur Berechnung der Bilanz
     void onShowBalanceClick(ActionEvent event) {
 
     }
 
     @FXML
-    // Klick auf "Zur Kasse" im Warenkorb-Fenster
     void onToCheckoutClick(ActionEvent event) {
 
     }
