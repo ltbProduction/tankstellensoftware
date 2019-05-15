@@ -2,17 +2,22 @@ package models;
 
 public abstract class Product {
 
+	protected int number;
 	protected String name;
-	private String type;
-	protected int price;
-	protected int amount;
+//	private Producttyp producttyp;
+	protected String unit;
+	protected double price;
+//	protected int amount; Das geht nicht weil bei Fuel sind es double werte
 	
 	
 	// Methoden
 	
-	public Product(int price, int amount) {
+	public Product(int number, String name, String unit, double price) {
+		this.number = number;
+		this.name = name;
+		this.unit = unit;
 		this.price = price;
-		this.amount = amount;
+		
 	}
 	public abstract void createorder(int amount);
 	public abstract void displayorder();

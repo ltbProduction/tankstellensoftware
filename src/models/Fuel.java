@@ -2,14 +2,14 @@ package models;
 
 public class Fuel extends Product{
 
+	
 //Attribute
-	Fueltanks fuel;
-
+	private double amount;
 	
 //Konstruktor
-	public Fuel( int price, int duration, Fueltanks fuel) {
-		super(price, duration);
-		this.fuel = fuel;
+	public Fuel(int number, String name, String unit, double amount, double price) {
+		super(number, name, unit, price);
+		this.amount = amount;
 	}
 	
 	
@@ -35,8 +35,7 @@ public class Fuel extends Product{
 	}
 	
 	
-	public String getname() {
-		return fuel.getName();
+
 	}
 
-}
+

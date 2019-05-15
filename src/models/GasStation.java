@@ -2,18 +2,22 @@ package models;
 
 import java.util.ArrayList;
 
+import javax.swing.text.StyledEditorKit.ForegroundAction;
+
 import sun.util.calendar.LocalGregorianCalendar.Date;
 
 public class GasStation {
 
-	private String gasStationName;
-	private ArrayList<Employee> employees = new ArrayList<>();
-	private ArrayList<Product> storage = new ArrayList<>();
-	private ArrayList<Product> shoppingCart = new ArrayList<>();
-	private ArrayList<Fuel> fuels = new ArrayList<>();
+
+	private String gasStationName; //Name der Tankstelle
+	private ArrayList<Employee> employees = new ArrayList<>(); //Liste mit allen Mitarbeitern
+	private ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
+	private ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
+	private ArrayList<Fuel> fuels = new ArrayList<>(); //Liste 
+
 	private ArrayList<Good> goods = new ArrayList<>();
-	private ArrayList<Sales> sales = new ArrayList<>();
-	private ArrayList<Purchases> purchases = new ArrayList<>();
+	private ArrayList<Sale> sales = new ArrayList<>();
+	private ArrayList<Purchase> purchases = new ArrayList<>();
 	private Date startBalanceDate;
 	private Date endBalanceDate;
 	
@@ -22,7 +26,51 @@ public class GasStation {
 		this.gasStationName = gasStationName;
 	}
 	
-	//Auslesen der Daten, Products anlegen, Employees auslesen, FileTransfer anlegen/starten
+	//Das hinzufügen der Daten
+	public void addGood(Good good) {
+		goods.add(good);
+	}
+	
+	public void addFuel(Fuel fuel) {
+		fuels.add(fuel);
+	}
+	public void addstorage(Product product) {
+		storage.add(product);
+		
+	}
+	
+	public void addemployee(Employee employee) {
+		employees.add(employee);
+		
+	}
+	public void addshoppingcart(Product product) {
+		shoppingCart.add(product);
+		
+	}
+	public void addsale(Sale sale) {
+		sales.add(sale);
+		
+	}	
+	public void addpurchases(Purchase purchase) {
+		purchases.add(purchase);
+		
+	}
+	
+	//Methode welche alle ArrayLists auf null setzt
+	
+	public void clearArrayList() {
+		goods.clear();
+		fuels.clear();
+		storage.clear();
+		employees.clear();
+		shoppingCart.clear();
+		sales.clear();
+		purchases.clear();
+				
+	}
+	
+	
+	
 	public void startGasStation() {
 		
 	}
@@ -47,7 +95,12 @@ public class GasStation {
 	public void calculateBalance(Date startBalanceDate, Date endBalaceDate) {
 		
 	}
-	
+	//Test für Linus
+	public void display() {
+		for (Employee e: employees){
+			e.displayEmployee();
+		}
+	}
 }
 	
 	
