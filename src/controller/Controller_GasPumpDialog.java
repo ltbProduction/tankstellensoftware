@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,7 +23,7 @@ public class Controller_GasPumpDialog implements Initializable {
     private TextField tf_amountoffuel;
 
     @FXML
-    private Button b_hinzufuegen;
+    private Button b_addfuel;
     
     public void initialize(URL location, ResourceBundle resources) {
     	cb_fueltype.getItems().removeAll(cb_fueltype.getItems());
@@ -30,8 +31,20 @@ public class Controller_GasPumpDialog implements Initializable {
     	cb_fueltype.getSelectionModel().select("Super");
     }
     
-    
- 
+    @FXML
+    void addFuelToShoppingCart(ActionEvent event) {
+
+    }
+
+    @FXML
+    void chooseFuelType(ActionEvent event) {
+
+    }
+
+    @FXML
+    void setAmountOfFuel(ActionEvent event) {
+
+    }
     
 
 }

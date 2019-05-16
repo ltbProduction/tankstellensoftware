@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 //import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 //import javafx.scene.control.ButtonType;
@@ -285,7 +287,7 @@ public class Controller {
     }
 
     @FXML
-    void onGasPump1Click(ActionEvent event) throws IOException {
+    void onGasPumpClick(ActionEvent event) throws IOException {
     	
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/GasPumpDialog.fxml"));
     	Parent root1 = (Parent) fxmlLoader.load();
@@ -296,36 +298,27 @@ public class Controller {
         
     }
 
-    	
-    
 
     @FXML
-    void onGasPump2Click(ActionEvent event) {
+    void onNewEmployeeClick(ActionEvent event) throws IOException {
 
-    }
-
-    @FXML
-    void onGasPump3Click(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onGasPump4Click(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onGasPump5Click(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onNewEmployeeClick(ActionEvent event) {
-
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/NewEmployeeDialog.fxml"));
+    	Parent root1 = (Parent) fxmlLoader.load();
+    	Stage stage = new Stage();
+    	stage.setScene(new Scene(root1));
+    	stage.setTitle("Neuer Mitarbeiter");
+    	stage.show();	
+        	
     }
 
     @FXML
     void onOrderFuelClick(ActionEvent event) {
+    	
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Bestellung");
+    	alert.setHeaderText("Bestellung war erfolgreich!");
+    	alert.setContentText(null);
+    	alert.showAndWait();
 
     }
 

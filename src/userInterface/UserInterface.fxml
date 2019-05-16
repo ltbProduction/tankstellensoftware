@@ -31,11 +31,11 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="b_gaspump1" layoutX="15.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPump1Click" prefHeight="38.0" prefWidth="35.0" text="1" />
-                  <Button fx:id="b_gaspump2" layoutX="50.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPump2Click" prefHeight="38.0" prefWidth="35.0" text="2" />
-                  <Button fx:id="b_gaspump5" layoutX="156.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPump5Click" prefHeight="38.0" prefWidth="35.0" text="5" />
-                  <Button fx:id="b_gaspump3" layoutX="86.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPump3Click" prefHeight="38.0" prefWidth="35.0" text="3" />
-                  <Button fx:id="b_gaspump4" layoutX="121.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPump4Click" prefHeight="38.0" prefWidth="35.0" text="4" />
+                  <Button fx:id="b_gaspump1" layoutX="15.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="1" />
+                  <Button fx:id="b_gaspump2" layoutX="50.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="2" />
+                  <Button fx:id="b_gaspump5" layoutX="156.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="5" />
+                  <Button fx:id="b_gaspump3" layoutX="86.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="3" />
+                  <Button fx:id="b_gaspump4" layoutX="121.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="4" />
                   <Button fx:id="b_addgoods" layoutX="15.0" layoutY="128.0" mnemonicParsing="false" onAction="#OnAddGoodsClick" prefHeight="37.0" prefWidth="177.0" text="Waren hinzufügen" />
                   <TableView fx:id="tv_shoppingcart" layoutX="15.0" layoutY="230.0" prefHeight="127.0" prefWidth="294.0">
                     <columns>
