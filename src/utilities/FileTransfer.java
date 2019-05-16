@@ -56,6 +56,11 @@ public class FileTransfer {
 	public void scandeliveries(GasStation gasstation, FileScanner fs1 ) throws ParseException {
 		fs1.readDeliversGoods(gasstation);
 		fs1.readDeliversFuels(gasstation);
+		
+		
+		
+		
+		
 	}
 	
 	
