@@ -1,20 +1,15 @@
 package controller;
 
-<<<<<<< HEAD
-=======
+
 import java.io.IOException;
 
-//import javafx.collections.FXCollections;
-//import javafx.collections.ObservableList;
->>>>>>> lukasbranch
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-//import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-//import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -22,10 +17,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-<<<<<<< HEAD
-=======
-//import javafx.scene.control.Alert.AlertType;
->>>>>>> lukasbranch
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -109,7 +100,7 @@ public class Controller {
 
     @FXML
     private TableColumn<?, ?> tc_goodsstorage_nr;
-<<<<<<< HEAD
+
 
     @FXML
     private TableColumn<?, ?> tc_goodsstorage_name;
@@ -124,22 +115,7 @@ public class Controller {
     private TableColumn<?, ?> tc_goodsstorage_saleprice;
 
     @FXML
-=======
 
-    @FXML
-    private TableColumn<?, ?> tc_goodsstorage_name;
-
-    @FXML
-    private TableColumn<?, ?> tc_goodsstorage_storageunit;
-
-    @FXML
-    private TableColumn<?, ?> tc_goodsstorage_amount;
-
-    @FXML
-    private TableColumn<?, ?> tc_goodsstorage_saleprice;
-
-    @FXML
->>>>>>> lukasbranch
     private TableColumn<?, ?> tc_goodsstorage_currency;
 
     @FXML
@@ -213,17 +189,6 @@ public class Controller {
 
     @FXML
     private Button b_newemployee;
-<<<<<<< HEAD
-
-    @FXML
-    private TableColumn<?, ?> ttc_employees_number;
-
-    @FXML
-    private TableColumn<?, ?> ttc_employees_name;
-
-    @FXML
-    private TableColumn<?, ?> ttc_employees_dateofemployment;
-=======
 
     @FXML
     private TableColumn<?, ?> ttc_employees_number;
@@ -236,7 +201,6 @@ public class Controller {
 
     @FXML
     private AnchorPane AP_addGoods;
->>>>>>> lukasbranch
 
     @FXML
     private TableView<?> tv_goodsstorage2;
@@ -320,10 +284,7 @@ public class Controller {
     }
 
     @FXML
-<<<<<<< HEAD
-    void onGasPump1Click(ActionEvent event) {
 
-=======
     void onGasPump1Click(ActionEvent event) throws IOException {
     	
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/GasPumpDialog.fxml"));
@@ -332,8 +293,7 @@ public class Controller {
     	stage.setScene(new Scene(root1));
     	stage.setTitle("Zapfsäule");
     	stage.show();	
-        
->>>>>>> lukasbranch
+
     }
 
     	
