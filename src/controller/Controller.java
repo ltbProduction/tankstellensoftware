@@ -265,12 +265,26 @@ public class Controller {
     }
 
     @FXML
-    void onChangeFuelPriceClick(ActionEvent event) {
+    void onChangeFuelPriceClick(ActionEvent event) throws IOException {
 
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/ChangePriceDialog.fxml"));
+    	Parent root1 = (Parent) fxmlLoader.load();
+    	Stage stage = new Stage();
+    	stage.setScene(new Scene(root1));
+    	stage.setTitle("Treibstoffpreis ändern");
+    	stage.show();	
+    	
     }
 
     @FXML
-    void onChangeGoodsPriceClick(ActionEvent event) {
+    void onChangeGoodsPriceClick(ActionEvent event) throws IOException {
+    	
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/ChangePriceOfGoodsDialog.fxml"));
+    	Parent root1 = (Parent) fxmlLoader.load();
+    	Stage stage = new Stage();
+    	stage.setScene(new Scene(root1));
+    	stage.setTitle("Warenpreis ändern");
+    	stage.show();	
 
     }
 
