@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -152,11 +153,17 @@ public class Controller {
     @FXML
     private Tab t_history;
 
+//    @FXML
+//    private TextField tf_balancestartdate;
+//
+//    @FXML
+//    private TextField tf_balanceenddate;
+    
     @FXML
-    private TextField tf_balancestartdate;
-
+    private DatePicker tf_balancestartdate;
+    
     @FXML
-    private TextField tf_balanceenddate;
+    private DatePicker tf_balanceenddate;
 
     @FXML
     private Button b_showbalance;
@@ -247,12 +254,17 @@ public class Controller {
     @FXML
     void OnAddGoodsClick(ActionEvent event) {
     	
+    	TabPane_main.setVisible(false);
+    	AP_addGoods.setVisible(true);
     	
     	
     }
 
     @FXML
     void OnLogInClick(ActionEvent event) {
+    	
+    	AP_LogIn.setVisible(false);
+    	TabPane_main.setVisible(true);
 
     }
 
@@ -262,7 +274,14 @@ public class Controller {
     }
 
     @FXML
-    void onBarClick(ActionEvent event) {
+    void onBarClick(ActionEvent event) throws IOException {
+    	
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/PayProcessDialog.fxml"));
+    	Parent root1 = (Parent) fxmlLoader.load();
+    	Stage stage = new Stage();
+    	stage.setScene(new Scene(root1));
+    	stage.setTitle("Bezahlvorgang");
+    	stage.show();
 
     }
 
@@ -274,7 +293,7 @@ public class Controller {
     	Parent root1 = (Parent) fxmlLoader.load();
     	Stage stage = new Stage();
     	stage.setScene(new Scene(root1));
-    	stage.setTitle("Treibstoffpreis ï¿½ndern");
+    	stage.setTitle("Treibstoffpreis ändern");
     	stage.show();
 
     }
@@ -288,14 +307,20 @@ public class Controller {
     	Parent root1 = (Parent) fxmlLoader.load();
     	Stage stage = new Stage();
     	stage.setScene(new Scene(root1));
-    	stage.setTitle("Warenpreis ï¿½ndern");
-    	stage.show();	
+    	stage.setTitle("Warenpreis ändern");
+    	stage.show();
     }
 
     
 
     @FXML
     void onCheckInDeliveryClick(ActionEvent event) {
+    	
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Bestellung");
+    	alert.setHeaderText("Die Lieferung wurde eingebucht!");
+    	alert.setContentText(null);
+    	alert.showAndWait();
 
     }
 
@@ -356,6 +381,19 @@ public class Controller {
 
     @FXML
     void onToCheckoutClick(ActionEvent event) {
+    	
+    	AP_addGoods.setVisible(false);
+    	TabPane_main.setVisible(true);
+
+    }
+    
+    @FXML
+    void onOrderGoodsClickStartScreen(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void onOrderFuelClickStartScreen(ActionEvent event) {
 
     }
 

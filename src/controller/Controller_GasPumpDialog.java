@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 
 public class Controller_GasPumpDialog implements Initializable {
 	
-	ObservableList<String> fueltype = FXCollections.observableArrayList("Super", "Diesel");
+	//ObservableList<String> fueltype = FXCollections.observableArrayList("Super", "Diesel");
 
     @FXML
     private ComboBox<String> cb_fueltype;

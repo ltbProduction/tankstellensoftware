@@ -6,12 +6,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="227.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_ChangePriceOfFuelDialog">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="227.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_ChangePriceOfGoodsDialog">
    <children>
       <Label layoutX="44.0" layoutY="75.0" text="Bezeichnung" />
       <Label layoutX="193.0" layoutY="75.0" text="Neuer Preis" />
       <Button fx:id="b_confirmprice" layoutX="174.0" layoutY="151.0" mnemonicParsing="false" onAction="#confirmPrice" prefHeight="25.0" prefWidth="96.0" text="Bestätigen" />
-      <ComboBox fx:id="cb_nameofproduct" layoutX="13.0" layoutY="102.0" onAction="#nameOfProduct" prefHeight="25.0" prefWidth="130.0" />
+      <ComboBox fx:id="cb_nameofproduct" layoutX="13.0" layoutY="102.0" prefHeight="25.0" prefWidth="130.0" />
       <TextField fx:id="tf_newprice" layoutX="175.0" layoutY="102.0" onAction="#newPrice" prefHeight="25.0" prefWidth="96.0" />
    </children>
 </Pane>
