@@ -1,17 +1,33 @@
 package controller;
 
+import java.io.IOException;
+
+//import javafx.collections.FXCollections;
+//import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+//import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+//import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+//import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class Controller {
+
+    @FXML
+    private TabPane TabPane_main;
 
     @FXML
     private Tab t_start;
@@ -185,6 +201,9 @@ public class Controller {
     private TableColumn<?, ?> ttc_employees_dateofemployment;
 
     @FXML
+    private AnchorPane AP_addGoods;
+
+    @FXML
     private TableView<?> tv_goodsstorage2;
 
     @FXML
@@ -215,14 +234,24 @@ public class Controller {
     private Button b_tocheckout;
 
     @FXML
+    private AnchorPane AP_LogIn;
+
+    @FXML
     private TextField tf_employeenumber;
 
     @FXML
     private Button b_login;
+           
+ 
+	
+	
+	
 
     @FXML
     void OnAddGoodsClick(ActionEvent event) {
-
+    	
+    	
+    	
     }
 
     @FXML
@@ -256,9 +285,19 @@ public class Controller {
     }
 
     @FXML
-    void onGasPump1Click(ActionEvent event) {
-
+    void onGasPump1Click(ActionEvent event) throws IOException {
+    	
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/GasPumpDialog.fxml"));
+    	Parent root1 = (Parent) fxmlLoader.load();
+    	Stage stage = new Stage();
+    	stage.setScene(new Scene(root1));
+    	stage.setTitle("Zapfsäule");
+    	stage.show();	
+        
     }
+
+    	
+    
 
     @FXML
     void onGasPump2Click(ActionEvent event) {
