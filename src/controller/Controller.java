@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -271,7 +272,7 @@ public class Controller {
     	Parent root1 = (Parent) fxmlLoader.load();
     	Stage stage = new Stage();
     	stage.setScene(new Scene(root1));
-    	stage.setTitle("Treibstoffpreis �ndern");
+    	stage.setTitle("Treibstoffpreis ändern");
     	stage.show();	
     	
     }
@@ -283,7 +284,7 @@ public class Controller {
     	Parent root1 = (Parent) fxmlLoader.load();
     	Stage stage = new Stage();
     	stage.setScene(new Scene(root1));
-    	stage.setTitle("Warenpreis �ndern");
+    	stage.setTitle("Warenpreis ändern");
     	stage.show();	
 
     }
@@ -301,7 +302,7 @@ public class Controller {
     	Parent root1 = (Parent) fxmlLoader.load();
     	Stage stage = new Stage();
     	stage.setScene(new Scene(root1));
-    	stage.setTitle("Zapfs�ule");
+    	stage.setTitle("Zapfsï¿½ule");
     	stage.show();	
 
     }
