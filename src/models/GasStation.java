@@ -26,35 +26,7 @@ public class GasStation {
 		this.gasStationName = gasStationName;
 	}
 	
-	//Das hinzufügen der Daten
-	public void addGood(Good good) {
-		goods.add(good);
-	}
-	
-	public void addFuel(Fuel fuel) {
-		fuels.add(fuel);
-	}
-	public void addstorage(Product product) {
-		storage.add(product);
-		
-	}
-	
-	public void addemployee(Employee employee) {
-		employees.add(employee);
-		
-	}
-	public void addshoppingcart(Product product) {
-		shoppingCart.add(product);
-		
-	}
-	public void addsale(Sale sale) {
-		sales.add(sale);
-		
-	}	
-	public void addpurchases(Purchase purchase) {
-		purchases.add(purchase);
-		
-	}
+
 	
 	//Methode welche alle ArrayLists auf null setzt
 	

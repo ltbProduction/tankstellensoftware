@@ -37,7 +37,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				gasstation.addemployee(new Employee(output[1], Integer.parseInt(output[0]), s1.parse(output[2])));
+				gasstation.getEmployees().add(new Employee(output[1], Integer.parseInt(output[0]), s1.parse(output[2])));
 					
 					
 		}
@@ -72,7 +72,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				gasstation.addpurchases(new Purchase(Integer.parseInt(output[0]), s1.parse(output[1]), Double.parseDouble(output[2])));
+				gasstation.getPurchases().add(new Purchase(Integer.parseInt(output[0]), s1.parse(output[1]), Double.parseDouble(output[2])));
 					
 					
 		}
@@ -106,7 +106,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				gasstation.addsale(new Sale(Integer.parseInt(output[0]), s1.parse(output[1]), Double.parseDouble(output[2])));
+				gasstation.getSales().add(new Sale(Integer.parseInt(output[0]), s1.parse(output[1]), Double.parseDouble(output[2])));
 					
 					
 		}
@@ -138,7 +138,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				gasstation.addGood(new Good(Integer.parseInt(output[0]), output[1], output[2], Integer.parseInt(output[3]), Double.parseDouble(output[4])));
+				gasstation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Integer.parseInt(output[3]), Double.parseDouble(output[4])));
 					
 					
 		}
@@ -165,7 +165,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				gasstation.addFuel(new Fuel(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
+				gasstation.getFuels().add(new Fuel(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
 					
 					
 		}
@@ -219,17 +219,21 @@ public class FileScanner {
 								g.setAmount(newamount);
 								sum += amount*price;
 							}
+							else {
+								continue;
+							}
 						}
 						
 					}
 				
-				gasstation.addpurchases(new Purchase(newnumber, dateofdelivery, sum));
+				gasstation.getPurchases().add(new Purchase(newnumber, dateofdelivery, sum));
 				} catch (IOException | ParseException e) {
 					e.printStackTrace();
 					
 				
 				}
-	    	 //Die Datei kann noch geschlossen werden
+	    	 //Methode welche die Textdatei dann verschiebt in den deliveries history ordner
+	    	 
 	    	 
 			}	 
 	     //Es exitiert nicht dann lassen wir es halt
@@ -294,7 +298,7 @@ public class FileScanner {
 				
 				sum = pricesuper*amountsuper+pricediesel*amountdiesel; //Summe errechnen
 				
-				gasstation.addpurchases(new Purchase(newnumber, dateofdelivery, sum)); //Neuer Einkauf anlegen
+				gasstation.getPurchases().add(new Purchase(newnumber, dateofdelivery, sum)); //Neuer Einkauf anlegen
 
 				
 				} catch (IOException | ParseException e) {
