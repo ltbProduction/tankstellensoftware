@@ -1,18 +1,22 @@
 package controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class Controller_ChangePriceOfGoodsDialog {
+public class Controller_ChangePriceOfGoodsDialog implements Initializable{
 
     @FXML
     private Button b_confirmprice;
 
     @FXML
-    private ComboBox<?> cb_nameofproduct;
+    private ComboBox<String> cb_nameofproduct;
 
     @FXML
     private TextField tf_newprice;
@@ -30,6 +34,12 @@ public class Controller_ChangePriceOfGoodsDialog {
     @FXML
     void newPrice(ActionEvent event) {
 
+    }
+    
+    public void initialize(URL location, ResourceBundle resources) {
+    	cb_nameofproduct.getItems().removeAll(cb_nameofproduct.getItems());
+    	cb_nameofproduct.getItems().addAll("Wodka Jelzin", "Filip Maurice", "Jupiter Schokoriegel", "Sitting Bull", "TK-Pizza Deluxe");
+    	cb_nameofproduct.getSelectionModel().select("Wodka Jelzin");
     }
 
 }
