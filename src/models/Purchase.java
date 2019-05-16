@@ -1,16 +1,16 @@
 package models;
 
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import java.util.Date;
 
-public class Purchases {
+public class Purchase {
 
 	private int purchaseNumber;
 	private Date purchaseDate;
 	private double purchasePrice;
 	
-	public Purchases (int purchaseNumber, Date purchaseDate, double purchasePrice) {
+	public Purchase (int purchaseNumber, Date date, double purchasePrice) {
 		this.purchaseNumber = purchaseNumber;
-		this.purchaseDate = purchaseDate;
+		this.purchaseDate = date;
 		this.purchasePrice = purchasePrice;
 	}
 
@@ -36,6 +36,13 @@ public class Purchases {
 
 	public void setPurchasePrice(double purchasePrice) {
 		this.purchasePrice = purchasePrice;
+	}
+	//Test Linus 
+	public void display(){
+		System.out.println(purchaseNumber);
+		System.out.println(purchaseDate);
+		System.out.println(purchasePrice);
+		System.out.println();
 	}
 	
 }

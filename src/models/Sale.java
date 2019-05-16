@@ -1,14 +1,14 @@
 package models;
 
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import java.util.Date;
 
-public class Sales {
+public class Sale {
 	
 	private int saleNumber;
 	private Date saleDate;
 	private double salePrice;
 	
-	public Sales (int saleNumber, Date saleDate, double salePrice) {
+	public Sale (int saleNumber, Date saleDate, double salePrice) {
 		this.saleNumber = saleNumber;
 		this.saleDate = saleDate;
 		this.salePrice = salePrice;

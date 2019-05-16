@@ -1,20 +1,28 @@
 package models;
 
 public class Good extends Product {
+	int amount;
 	//Atribute
-	private ClassofGoods cog;
+	
 
 	//Konstruktor
-	public Good(int price, int duration, ClassofGoods cog) {
-		super(price, duration);
-		this.cog = cog;
+	public Good(int number, String name, String unit, int amount, double price) {
+		super(number, name, unit, price);
+		this.amount = amount;
 	}
 
 	
 	
 	
-	
-	
+	//Zum testen ob die Objekte erzeugt wurden
+	public void displayproduct() {
+		System.out.println(number);
+		System.out.println(name);
+		System.out.println(unit);
+		System.out.println(amount);
+		System.out.println(price);
+		System.out.println();
+	}
 	
 	
 	public void createorder(int amount) {
@@ -22,26 +30,46 @@ public class Good extends Product {
 		
 	}
 
-	public void displayorder() {
-		
-	}
+
 
 	public void createdelivery(int amount) {
 		
 	}
 
-	
-	public String getName() {
-		return cog.getName();
+
+
+
+
+	@Override
+	public void displayorder() {
+		// TODO Auto-generated method stub
 		
 	}
-	
-	public String getType() {
-		return cog.getType();
-	}
-	
+
+
+
+
+	@Override
 	public int getNumber() {
-		return cog.getNumber();
+		return number;
+		
 	}
+
+
+
+
+	public int getAmount() {
+		return amount;
+	}
+
+
+
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	
+	
 	
 }
