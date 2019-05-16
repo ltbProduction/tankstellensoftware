@@ -273,7 +273,8 @@ public class Controller {
 
     @FXML
     void onChangeFuelPriceClick(ActionEvent event) {
-
+    	
+    	
     }
 
     @FXML
@@ -314,6 +315,8 @@ public class Controller {
     @FXML
     void onOrderFuelClick(ActionEvent event) {
     	
+    	
+    	//if Bestellung erfolgreich
     	Alert alert = new Alert(AlertType.INFORMATION);
     	alert.setTitle("Bestellung");
     	alert.setHeaderText("Bestellung war erfolgreich!");
@@ -325,6 +328,13 @@ public class Controller {
     @FXML
     void onOrderGoodsClick(ActionEvent event) {
 
+    	//if Bestellung erfolgreich
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Bestellung");
+    	alert.setHeaderText("Bestellung war erfolgreich!");
+    	alert.setContentText(null);
+    	alert.showAndWait();
+    	
     }
 
     @FXML
