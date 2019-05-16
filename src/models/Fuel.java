@@ -33,6 +33,35 @@ public class Fuel extends Product{
 	
 		
 	}
+
+
+
+
+	
+
+	public double getAmount() {
+		return amount;
+	}
+
+
+
+
+
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+
+
+
+
+
+	@Override
+	public int getNumber() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 
