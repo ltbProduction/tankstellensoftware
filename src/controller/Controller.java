@@ -1,9 +1,7 @@
+
 package controller;
 
-
 import java.io.IOException;
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -100,7 +98,6 @@ public class Controller {
 
     @FXML
     private TableColumn<?, ?> tc_goodsstorage_nr;
-
 
     @FXML
     private TableColumn<?, ?> tc_goodsstorage_name;
@@ -269,12 +266,26 @@ public class Controller {
     }
 
     @FXML
-    void onChangeFuelPriceClick(ActionEvent event) {
+    void onChangeFuelPriceClick(ActionEvent event) throws IOException {
 
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/ChangePriceDialog.fxml"));
+    	Parent root1 = (Parent) fxmlLoader.load();
+    	Stage stage = new Stage();
+    	stage.setScene(new Scene(root1));
+    	stage.setTitle("Treibstoffpreis ändern");
+    	stage.show();	
+    	
     }
 
     @FXML
-    void onChangeGoodsPriceClick(ActionEvent event) {
+    void onChangeGoodsPriceClick(ActionEvent event) throws IOException {
+    	
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/ChangePriceOfGoodsDialog.fxml"));
+    	Parent root1 = (Parent) fxmlLoader.load();
+    	Stage stage = new Stage();
+    	stage.setScene(new Scene(root1));
+    	stage.setTitle("Warenpreis ändern");
+    	stage.show();	
 
     }
 
@@ -291,7 +302,7 @@ public class Controller {
     	Parent root1 = (Parent) fxmlLoader.load();
     	Stage stage = new Stage();
     	stage.setScene(new Scene(root1));
-    	stage.setTitle("Zapfs�ule");
+    	stage.setTitle("Zapfsï¿½ule");
     	stage.show();	
 
     }
