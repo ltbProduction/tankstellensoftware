@@ -16,6 +16,7 @@ public class StartProgram extends Application {
 	}
 
 	public void init() {
+		
 	}
 
 	@Override
@@ -26,11 +27,11 @@ public class StartProgram extends Application {
 		primaryStage.setTitle("Tankstellensoftware");
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		
 	
 	}
 
 	public void stop() {
+		
 	}
 
 //	@Override
