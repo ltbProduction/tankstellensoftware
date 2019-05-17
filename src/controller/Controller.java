@@ -389,12 +389,13 @@ public class Controller {
     
     @FXML
     void onOrderGoodsClickStartScreen(ActionEvent event) {
+    	TabPane_main.getSelectionModel().select(t_goods);
 
     }
     
     @FXML
     void onOrderFuelClickStartScreen(ActionEvent event) {
-
+    	TabPane_main.getSelectionModel().select(t_fuel);
     }
 
 }
