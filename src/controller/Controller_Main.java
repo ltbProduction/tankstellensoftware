@@ -1,10 +1,15 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -18,13 +23,16 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import models.Employee;
+import models.GasStation;
 
-public class Controller {
+public class Controller_Main implements Initializable {
 
-    @FXML
+	@FXML
     private TabPane TabPane_main;
 
     @FXML
@@ -153,17 +161,8 @@ public class Controller {
     @FXML
     private Tab t_history;
 
-//    @FXML
-//    private TextField tf_balancestartdate;
-//
-//    @FXML
-//    private TextField tf_balanceenddate;
-    
     @FXML
-    private DatePicker dp_balancestartdate;
-    
-    @FXML
-    private DatePicker dp_balanceenddate;
+    private AnchorPane dp_balanceenddate;
 
     @FXML
     private Button b_showbalance;
@@ -190,19 +189,25 @@ public class Controller {
     private TableColumn<?, ?> ttc_sales_price;
 
     @FXML
+    private DatePicker dp_balancestartdate;
+
+    @FXML
     private Tab t_employees;
 
     @FXML
     private Button b_newemployee;
+    
+    @FXML
+    private TableView<Employee> tv_employees;
 
     @FXML
-    private TableColumn<?, ?> ttc_employees_number;
+    private TableColumn<Employee, Integer> ttc_employees_number;
 
     @FXML
-    private TableColumn<?, ?> ttc_employees_name;
+    private TableColumn<Employee, String> ttc_employees_name;
 
     @FXML
-    private TableColumn<?, ?> ttc_employees_dateofemployment;
+    private TableColumn<Employee, LocalDate> ttc_employees_dateofemployment;
 
     @FXML
     private AnchorPane AP_addGoods;
@@ -246,12 +251,38 @@ public class Controller {
     @FXML
     private Button b_login;
            
- 
+    public void initialize(URL url, ResourceBundle rb) { 	
+        
+    	  // Spalten einstellen
+    	  ttc_employees_number.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("Nummer"));
+    	  ttc_employees_name.setCellValueFactory(new PropertyValueFactory<Employee, String>("Name"));
+    	  ttc_employees_dateofemployment.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("Einstellungsdatum"));
+    	  
+    	  // Dummy Daten laden
+    	  tv_employees.setItems(GasStation.getEmployees());
+    	  
+    	  
+        
+    }
 	
 	
 	
 
-    @FXML
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@FXML
     void OnAddGoodsClick(ActionEvent event) {
     	
     	TabPane_main.setVisible(false);

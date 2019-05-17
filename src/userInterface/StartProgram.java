@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 //import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import models.GasStation;
 
 public class StartProgram extends Application {
 
@@ -26,6 +27,7 @@ public class StartProgram extends Application {
 		primaryStage.setTitle("Tankstellensoftware");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		GasStation gasstation = new GasStation("Tankstelle Klösterle");
 			
 	}
 

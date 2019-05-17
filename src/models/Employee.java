@@ -1,18 +1,19 @@
 package models;
 
-import java.util.Date;
-  
+import java.time.LocalDate;
+
+ 
 
 public class Employee {
 
 
 	private String employeeName;
-	private int employeeNumber = 000;
-	private Date dateOfEmployment;
+	private int employeeNumber = 0;
+	private LocalDate dateOfEmployment;
 	
 	
-	//Ich habe den boolean entfernt. Weil es nicht dahin gehört
-	public Employee(String employeeName, Date dateOfEmployment) {
+	
+	public Employee(String employeeName, LocalDate dateOfEmployment) {
 		this.employeeName = employeeName;
 		this.employeeNumber +=1;
 		this.dateOfEmployment = dateOfEmployment;
@@ -20,8 +21,11 @@ public class Employee {
 	
 	
 
-	public void displayEmployee() {
-		System.out.println(dateOfEmployment);
+	public void displayEmployees() {
+		
+	
+		
+		//System.out.println("Mitarbeiternummer: " + employeeNumber + ", Mitarbeitername: " + employeeName + ", Einstellungsdatum: " + dateOfEmployment);
 	}
 	
 	
@@ -41,11 +45,11 @@ public class Employee {
 		this.employeeNumber = employeeNumber;
 	}
 
-	public Date getDateOfEmployment() {
+	public LocalDate getDateOfEmployment() {
 		return dateOfEmployment;
 	}
 
-	public void setDateOfEmployment(Date dateOfEmployment) {
+	public void setDateOfEmployment(LocalDate dateOfEmployment) {
 		this.dateOfEmployment = dateOfEmployment;
 	}
 	
