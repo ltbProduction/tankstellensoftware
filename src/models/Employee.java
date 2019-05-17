@@ -5,16 +5,16 @@ import java.util.Date;
 
 public class Employee {
 
-	private boolean isActive;
+
 	private String employeeName;
-	private int employeeNumber;
+	private int employeeNumber = 000;
 	private Date dateOfEmployment;
 	
 	
 	//Ich habe den boolean entfernt. Weil es nicht dahin gehört
-	public Employee(String employeeName, int employeeNumber, Date dateOfEmployment) {
+	public Employee(String employeeName, Date dateOfEmployment) {
 		this.employeeName = employeeName;
-		this.employeeNumber = employeeNumber;
+		this.employeeNumber +=1;
 		this.dateOfEmployment = dateOfEmployment;
 	}
 	
@@ -25,14 +25,6 @@ public class Employee {
 	}
 	
 	
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
 	public String getEmployeeName() {
 		return employeeName;
 	}

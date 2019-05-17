@@ -12,11 +12,11 @@
    <children>
       <Label layoutX="31.0" layoutY="80.0" text="Kraftstoffart" />
       <Label layoutX="56.0" layoutY="124.0" text="Menge" />
-      <ComboBox fx:id="cb_fueltype" layoutX="107.0" layoutY="76.0" onAction="#chooseFuelType" prefHeight="25.0" prefWidth="143.0" />
+      <ComboBox fx:id="cb_fueltype" layoutX="107.0" layoutY="76.0" prefHeight="25.0" prefWidth="143.0" />
       
       
-      <TextField fx:id="tf_amountoffuel" layoutX="108.0" layoutY="120.0" onAction="#setAmountOfFuel" prefHeight="25.0" prefWidth="60.0" />
-      <Button fx:id="b_addfuel" layoutX="108.0" layoutY="168.0" mnemonicParsing="false" onAction="#addFuelToShoppingCart" prefHeight="25.0" prefWidth="143.0" text="Hinzufügen" />
+      <TextField fx:id="tf_amountoffuel" layoutX="108.0" layoutY="120.0" prefHeight="25.0" prefWidth="60.0" />
+      <Button fx:id="b_addfuel" layoutX="108.0" layoutY="168.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Hinzufügen" />
       <Label layoutX="182.0" layoutY="124.0" text="Liter" />
       <Label layoutX="10.0" layoutY="10.0" prefHeight="39.0" prefWidth="261.0" text="Zapfsäule">
          <font>

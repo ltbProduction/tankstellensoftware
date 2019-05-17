@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="227.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_PayProcessDialog">
+   <children>
+      <Label layoutX="60.0" layoutY="43.0" text="Preis" />
+      <Label layoutX="60.0" layoutY="72.0" text="Gegeben" />
+      <Label fx:id="l_price" layoutX="157.0" layoutY="43.0" text="11,99" />
+      <Label layoutX="202.0" layoutY="43.0" text="€" />
+      <TextField fx:id="tf_moneyreceived" layoutX="139.0" layoutY="68.0" prefHeight="25.0" prefWidth="107.0" />
+      <Button fx:id="b_confirmmoneyreceived" layoutX="139.0" layoutY="101.0" mnemonicParsing="false" onAction="#onConfirmMoneyReceived" prefHeight="25.0" prefWidth="107.0" text="Bestätigen" />
+      <Label layoutX="59.0" layoutY="147.0" text="Rückgeld" />
+      <Label fx:id="l_money_return" layoutX="160.0" layoutY="147.0" text="8,01" />
+      <Label layoutX="200.0" layoutY="147.0" text="€" />
+      <Button fx:id="b_continue" layoutX="138.0" layoutY="177.0" mnemonicParsing="false" onAction="#onContinue" prefHeight="25.0" prefWidth="107.0" text="Weiter" />
+   </children>
+</Pane>

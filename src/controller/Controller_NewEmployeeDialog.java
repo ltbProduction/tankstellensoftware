@@ -20,6 +20,8 @@ public class Controller_NewEmployeeDialog {
     @FXML
     void addNewEmployee(ActionEvent event) {
 
+    	tf_nameofnewemployee
+    	
     	
     	
     }
