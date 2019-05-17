@@ -14,12 +14,12 @@ public class GasStation {
 	private static ArrayList<Employee> employees = new ArrayList<>(); //Liste mit allen Mitarbeitern
 	private static ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
 	private static ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
-	private static ArrayList<Fuel> fuels = new ArrayList<>(); //Liste 
-	private static ArrayList<Good> goods = new ArrayList<>();
-	private static ArrayList<Sale> sales = new ArrayList<>();
-	private static ArrayList<Purchase> purchases = new ArrayList<>();
-	private static Date startBalanceDate;
-	private static Date endBalanceDate;
+	private static ArrayList<Fuel> fuels = new ArrayList<>(); //Liste mit den Tanks
+	private static ArrayList<Good> goods = new ArrayList<>(); // Liste mit allen Waren
+	private static ArrayList<Sale> sales = new ArrayList<>(); //Liste mit allen Verkäufen
+	private static ArrayList<Purchase> purchases = new ArrayList<>(); //Liste mit allen Einkäufen
+	private static Date startBalanceDate; //Startdatum 
+	private static Date endBalanceDate; //Enddatrum
 
 	
 	
