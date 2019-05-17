@@ -1,5 +1,7 @@
 package controller;
 
+import java.time.LocalDate;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,11 +18,14 @@ public class Controller_NewEmployeeDialog {
 
     @FXML
     private DatePicker dp_dateofemployment;
+    
+    String nameOfEmployee;
+    LocalDate dateOfEmployment;
 
     @FXML
     void addNewEmployee(ActionEvent event) {
 
-    	tf_nameofnewemployee
+    	
     	
     	
     	
