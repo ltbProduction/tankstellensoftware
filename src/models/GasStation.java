@@ -10,15 +10,16 @@ public class GasStation {
 
 
 	private String gasStationName; //Name der Tankstelle
-	private ArrayList<Employee> employees = new ArrayList<>(); //Liste mit allen Mitarbeitern
-	private ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkten (Waren und Kraftstoff upgecastet)
-	private ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb (Waren und Kraftstoff upgecastet)
-	private ArrayList<Fuel> fuels = new ArrayList<>(); //Liste allen Kraftstofftanks
-	private ArrayList<Good> goods = new ArrayList<>(); //Liste mit allen Waren
-	private ArrayList<Sale> sales = new ArrayList<>(); //Liste mit allen Verkäufen
-	private ArrayList<Purchase> purchases = new ArrayList<>(); //Liste mit allen Einkäufen
-	private Date startBalanceDate; //Startdatum der Bilanz
-	private Date endBalanceDate; //Enddatum der Bilanz
+
+	private static ArrayList<Employee> employees = new ArrayList<>(); //Liste mit allen Mitarbeitern
+	private static ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
+	private static ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
+	private static ArrayList<Fuel> fuels = new ArrayList<>(); //Liste 
+	private static ArrayList<Good> goods = new ArrayList<>();
+	private static ArrayList<Sale> sales = new ArrayList<>();
+	private static ArrayList<Purchase> purchases = new ArrayList<>();
+	private static Date startBalanceDate;
+	private static Date endBalanceDate;
 
 	
 	
@@ -30,7 +31,7 @@ public class GasStation {
 	
 	//Methode welche alle ArrayLists auf null setzt
 	
-	public void clearArrayList() {
+	public static void clearArrayList() {
 		goods.clear();
 		fuels.clear();
 		storage.clear();
@@ -43,32 +44,32 @@ public class GasStation {
 	
 	
 	
-	public void startGasStation() {
+	public static void startGasStation() {
 		
 	}
 	
-	public void scanDeliveries() {
+	public static void scanDeliveries() {
 		
 	}
 	
-	public void createSaleReceipt() {
+	public static void createSaleReceipt() {
 		
 	}
 	
 	//writeCurrentData speichert die änderbaren Daten
-	public void writeCurrentData() {
+	public static void writeCurrentData() {
 		
 	}
 	
-	public void createHistory() {
+	public static void createHistory() {
 		
 	}
 	
-	public void calculateBalance(Date startBalanceDate, Date endBalaceDate) {
+	public static void calculateBalance(Date startBalanceDate, Date endBalaceDate) {
 		
 	}
 	//Test für Linus
-	public void display() {
+	public static void display() {
 		for (Purchase g: purchases){
 			g.display();
 		}
@@ -82,76 +83,76 @@ public class GasStation {
 		this.gasStationName = gasStationName;
 	}
 
-	public ArrayList<Employee> getEmployees() {
+	public static ArrayList<Employee> getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(ArrayList<Employee> employees) {
-		this.employees = employees;
+	public static void setEmployees(ArrayList<Employee> employees) {
+		GasStation.employees = employees;
 	}
 
-	public ArrayList<Product> getStorage() {
+	public static ArrayList<Product> getStorage() {
 		return storage;
 	}
 
-	public void setStorage(ArrayList<Product> storage) {
-		this.storage = storage;
+	public static void setStorage(ArrayList<Product> storage) {
+		GasStation.storage = storage;
 	}
 
-	public ArrayList<Product> getShoppingCart() {
+	public static ArrayList<Product> getShoppingCart() {
 		return shoppingCart;
 	}
 
-	public void setShoppingCart(ArrayList<Product> shoppingCart) {
-		this.shoppingCart = shoppingCart;
+	public static void setShoppingCart(ArrayList<Product> shoppingCart) {
+		GasStation.shoppingCart = shoppingCart;
 	}
 
-	public ArrayList<Fuel> getFuels() {
+	public static ArrayList<Fuel> getFuels() {
 		return fuels;
 	}
 
-	public void setFuels(ArrayList<Fuel> fuels) {
-		this.fuels = fuels;
+	public static void setFuels(ArrayList<Fuel> fuels) {
+		GasStation.fuels = fuels;
 	}
 
-	public ArrayList<Good> getGoods() {
+	public static ArrayList<Good> getGoods() {
 		return goods;
 	}
 
-	public void setGoods(ArrayList<Good> goods) {
-		this.goods = goods;
+	public static void setGoods(ArrayList<Good> goods) {
+	   GasStation.goods = goods;
 	}
 
-	public ArrayList<Sale> getSales() {
+	public static ArrayList<Sale> getSales() {
 		return sales;
 	}
 
-	public void setSales(ArrayList<Sale> sales) {
-		this.sales = sales;
+	public static void setSales(ArrayList<Sale> sales) {
+		GasStation.sales = sales;
 	}
 
-	public ArrayList<Purchase> getPurchases() {
+	public static ArrayList<Purchase> getPurchases() {
 		return purchases;
 	}
 
-	public void setPurchases(ArrayList<Purchase> purchases) {
-		this.purchases = purchases;
+	public static void setPurchases(ArrayList<Purchase> purchases) {
+		GasStation.purchases = purchases;
 	}
 
-	public Date getStartBalanceDate() {
+	public static Date getStartBalanceDate() {
 		return startBalanceDate;
 	}
 
-	public void setStartBalanceDate(Date startBalanceDate) {
-		this.startBalanceDate = startBalanceDate;
+	public static void setStartBalanceDate(Date startBalanceDate) {
+		GasStation.startBalanceDate = startBalanceDate;
 	}
 
-	public Date getEndBalanceDate() {
+	public static Date getEndBalanceDate() {
 		return endBalanceDate;
 	}
 
-	public void setEndBalanceDate(Date endBalanceDate) {
-		this.endBalanceDate = endBalanceDate;
+	public static void setEndBalanceDate(Date endBalanceDate) {
+		GasStation.endBalanceDate = endBalanceDate;
 	}
 	
 
