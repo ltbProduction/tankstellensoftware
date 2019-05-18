@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import models.Employee;
 import models.Fuel;
 import models.GasStation;
@@ -26,6 +27,7 @@ public class FileScanner {
 	private static String fileNameFuels = datafile+ "Fuels.txt";
     private static String fileNameDeliverGoods = "resource/textfiles/deliver/WarenLieferung.txt";
     private static String fileNameDeliverFuels = "resource/textfiles/deliver/KraftstoffLieferung.txt";
+
     
 	//Mitarbeiter auslesen
 		public static void readEmployee() {
@@ -358,4 +360,5 @@ public class FileScanner {
 //	 
 //		
 }
+
 
