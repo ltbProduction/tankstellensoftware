@@ -8,22 +8,20 @@ public class Employee {
 
 
 	private String employeeName;
-	private int employeeNumber = 0;
+	int employeeNumber;
 	private LocalDate dateOfEmployment;
 	
 	
 	
-	public Employee(String employeeName, LocalDate dateOfEmployment) {
+	public Employee(int employeeNumber, String employeeName, LocalDate dateOfEmployment) {
 		this.employeeName = employeeName;
-		this.employeeNumber +=1;
+		this.employeeNumber = employeeNumber;
 		this.dateOfEmployment = dateOfEmployment;
 	}
 	
 	
 
 	public void displayEmployees() {
-		
-	
 		
 		//System.out.println("Mitarbeiternummer: " + employeeNumber + ", Mitarbeitername: " + employeeName + ", Einstellungsdatum: " + dateOfEmployment);
 	}
@@ -33,7 +31,7 @@ public class Employee {
 		return employeeName;
 	}
 
-	public void setEmployeeName(String employeeName) {
+	public final void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
 	}
 
@@ -41,7 +39,7 @@ public class Employee {
 		return employeeNumber;
 	}
 
-	public void setEmployeeNumber(int employeeNumber) {
+	public final void setEmployeeNumber(int employeeNumber) {
 		this.employeeNumber = employeeNumber;
 	}
 
@@ -49,7 +47,7 @@ public class Employee {
 		return dateOfEmployment;
 	}
 
-	public void setDateOfEmployment(LocalDate dateOfEmployment) {
+	public final void setDateOfEmployment(LocalDate dateOfEmployment) {
 		this.dateOfEmployment = dateOfEmployment;
 	}
 	

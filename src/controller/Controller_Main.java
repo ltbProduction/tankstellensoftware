@@ -254,9 +254,9 @@ public class Controller_Main implements Initializable {
     public void initialize(URL url, ResourceBundle rb) { 	
         
     	  // Spalten einstellen
-    	  ttc_employees_number.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("Nummer"));
-    	  ttc_employees_name.setCellValueFactory(new PropertyValueFactory<Employee, String>("Name"));
-    	  ttc_employees_dateofemployment.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("Einstellungsdatum"));
+    	  ttc_employees_number.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("employeeNumber"));
+    	  ttc_employees_name.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeName"));
+    	  ttc_employees_dateofemployment.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("dateOfEmployment"));
     	  
     	  // Dummy Daten laden
     	  tv_employees.setItems(GasStation.getEmployees());

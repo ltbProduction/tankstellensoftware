@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import controller.Controller_Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,14 +26,19 @@ public class Controller_NewEmployeeDialog {
     
     String nameOfEmployee;
     LocalDate dateOfEmployment;
+    int employeeNumber = 0;
 
     @FXML
     void addNewEmployee(ActionEvent event) throws IOException {
 
     	nameOfEmployee = tf_nameofnewemployee.getText();
     	dateOfEmployment = dp_dateofemployment.getValue();
+    	employeeNumber += 1;
     	
-    	Employee employee = new Employee(nameOfEmployee, dateOfEmployment);
+//    	DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d.MM.uuuu");
+//    	String dateOfEmployment = dp_dateofemployment.getValue().format(formatters);
+    	
+    	Employee employee = new Employee(employeeNumber, nameOfEmployee, dateOfEmployment);
     	GasStation.addEmployee(employee);
     	
     	
