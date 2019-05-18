@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import models.GasStation;
 
 public class Controller_NewEmployeeDialog {
@@ -28,14 +29,13 @@ public class Controller_NewEmployeeDialog {
     void addNewEmployee(ActionEvent event) throws IOException {
     	
     	GasStation.addEmployee(tf_nameofnewemployee.getText(), dp_dateofemployment.getValue());
-
     	
-    	
-    	
-//    	DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d.MM.uuuu");
-//    	String dateOfEmployment = dp_dateofemployment.getValue().format(formatters);
-    	    	 	   	
+    	//schlieﬂt das Fenster
+    	Stage stage = (Stage)
+    	    	b_addemployee.getScene().getWindow();
+    	    	stage.close();    	    	 	   	
     	    	
     }
 
 }
+
