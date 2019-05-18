@@ -1,9 +1,11 @@
 package models;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
-
-import javax.swing.text.StyledEditorKit.ForegroundAction;
-
+import models.Employee;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 
 public class GasStation {
@@ -11,7 +13,8 @@ public class GasStation {
 
 	private String gasStationName; //Name der Tankstelle
 
-	private static ArrayList<Employee> employees = new ArrayList<>(); //Liste mit allen Mitarbeitern
+
+	private static ObservableList<Employee> employees = FXCollections.observableArrayList(); //Liste mit allen Mitarbeitern
 	private static ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
 	private static ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
 	private static ArrayList<Fuel> fuels = new ArrayList<>(); //Liste mit den Tanks
@@ -28,6 +31,11 @@ public class GasStation {
 	}
 	
 
+	public static void addEmployee(Employee employee) {
+		employees.add(employee);
+	}
+	
+	
 	
 	//Methode welche alle ArrayLists auf null setzt
 	
@@ -83,11 +91,16 @@ public class GasStation {
 		this.gasStationName = gasStationName;
 	}
 
-	public static ArrayList<Employee> getEmployees() {
-		return employees;
-	}
 
-	public static void setEmployees(ArrayList<Employee> employees) {
+	//Methode die ObservableList von Mitarbeitern zurückgibt
+	public static ObservableList<Employee> getEmployees() {
+			
+			return employees;
+					  
+	}
+	
+	public static void setEmployees(ObservableList<Employee> employees) {
+
 		GasStation.employees = employees;
 	}
 
