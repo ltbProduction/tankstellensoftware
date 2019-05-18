@@ -1,18 +1,19 @@
 package models;
 
-import java.util.Date;
-  
+import java.time.LocalDate;
+
+ 
 
 public class Employee {
 
-	private boolean isActive;
+
 	private String employeeName;
-	private int employeeNumber;
-	private Date dateOfEmployment;
+	int employeeNumber;
+	private LocalDate dateOfEmployment;
 	
 	
-	//Ich habe den boolean entfernt. Weil es nicht dahin gehört
-	public Employee(String employeeName, int employeeNumber, Date dateOfEmployment) {
+	
+	public Employee(int employeeNumber, String employeeName, LocalDate dateOfEmployment) {
 		this.employeeName = employeeName;
 		this.employeeNumber = employeeNumber;
 		this.dateOfEmployment = dateOfEmployment;
@@ -20,24 +21,17 @@ public class Employee {
 	
 	
 
-	public void displayEmployee() {
-		System.out.println(dateOfEmployment);
+	public void displayEmployees() {
+		
+		//System.out.println("Mitarbeiternummer: " + employeeNumber + ", Mitarbeitername: " + employeeName + ", Einstellungsdatum: " + dateOfEmployment);
 	}
 	
 	
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
 	public String getEmployeeName() {
 		return employeeName;
 	}
 
-	public void setEmployeeName(String employeeName) {
+	public final void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
 	}
 
@@ -45,15 +39,15 @@ public class Employee {
 		return employeeNumber;
 	}
 
-	public void setEmployeeNumber(int employeeNumber) {
+	public final void setEmployeeNumber(int employeeNumber) {
 		this.employeeNumber = employeeNumber;
 	}
 
-	public Date getDateOfEmployment() {
+	public LocalDate getDateOfEmployment() {
 		return dateOfEmployment;
 	}
 
-	public void setDateOfEmployment(Date dateOfEmployment) {
+	public final void setDateOfEmployment(LocalDate dateOfEmployment) {
 		this.dateOfEmployment = dateOfEmployment;
 	}
 	
