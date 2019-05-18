@@ -1,14 +1,14 @@
 package models;
 
-import java.util.Date;
+import java.time.*;
 
 public class Purchase {
 
 	private int purchaseNumber;
-	private Date purchaseDate;
+	private LocalDate purchaseDate;
 	private double purchasePrice;
 	
-	public Purchase (int purchaseNumber, Date date, double purchasePrice) {
+	public Purchase (int purchaseNumber, LocalDate date, double purchasePrice) {
 		this.purchaseNumber = purchaseNumber;
 		this.purchaseDate = date;
 		this.purchasePrice = purchasePrice;
@@ -22,11 +22,11 @@ public class Purchase {
 		this.purchaseNumber = purchaseNumber;
 	}
 
-	public Date getPurchaseDate() {
+	public LocalDate getPurchaseDate() {
 		return purchaseDate;
 	}
 
-	public void setPurchaseDate(Date purchaseDate) {
+	public void setPurchaseDate(LocalDate purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 

@@ -1,14 +1,15 @@
 package models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Sale {
 	
 	private int saleNumber;
-	private Date saleDate;
+	private LocalDate saleDate;
 	private double salePrice;
 	
-	public Sale (int saleNumber, Date saleDate, double salePrice) {
+	public Sale (int saleNumber, LocalDate saleDate, double salePrice) {
 		this.saleNumber = saleNumber;
 		this.saleDate = saleDate;
 		this.salePrice = salePrice;
@@ -22,11 +23,11 @@ public class Sale {
 		this.saleNumber = saleNumber;
 	}
 
-	public Date getSaleDate() {
+	public LocalDate getSaleDate() {
 		return saleDate;
 	}
 
-	public void setSaleDate(Date saleDate) {
+	public void setSaleDate(LocalDate saleDate) {
 		this.saleDate = saleDate;
 	}
 

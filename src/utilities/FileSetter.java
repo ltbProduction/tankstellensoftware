@@ -8,7 +8,9 @@ import java.io.IOException;
 public class FileSetter {
      private static String pathdata = "C:/Daten/workspace/Tanke/";
      private static String receiptsdata = "C:/Daten/workspace/Tanke/";
-     
+     private static String firstlineproduct = "Nummer;Name;Lagereinheit;Menge;Verkaufspreis";
+     private static String firstlinehistory = "Nummer;Datum;Preis";
+     private static String firstlineemployee = "Nummer;Name;Datum";
      
      public static void test() {
 

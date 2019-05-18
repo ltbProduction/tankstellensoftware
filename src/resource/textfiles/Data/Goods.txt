@@ -1,4 +1,4 @@
-Warennummer;Name;Lagereinheit;Menge;Verkaufspreis
+nummer;Name;Lagereinheit;Menge;Verkaufspreis
 421;Wodka Jelzin;Flasche;100;2.99
 871;Filip Maurice;Packung;100;2.77
 358;Jupiter Schokoriegel;Stück;100;0.19
