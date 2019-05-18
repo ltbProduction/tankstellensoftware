@@ -41,8 +41,10 @@ public class FileTransfer {
 		
 		
 		
-		
-		
+	}
+	
+	public static void writetextfiles() {
+		FileSetter.writeemployee();
 	}
 	
 	

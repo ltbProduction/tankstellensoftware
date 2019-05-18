@@ -1,6 +1,9 @@
 package models;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import javafx.util.converter.LocalDateStringConverter;
 
  
 
@@ -49,6 +52,11 @@ public class Employee {
 
 	public final void setDateOfEmployment(LocalDate dateOfEmployment) {
 		this.dateOfEmployment = dateOfEmployment;
+	}
+	public String displaytextfile() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+		String text = String.valueOf(employeeNumber)+";"+employeeName +";" + dateOfEmployment.format(formatter);
+		return text;
 	}
 	
 	

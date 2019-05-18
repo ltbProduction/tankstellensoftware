@@ -12,6 +12,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import models.Employee;
 import models.GasStation;
+import utilities.FileTransfer;
 
 public class Controller_NewEmployeeDialog {
 
@@ -40,6 +41,7 @@ public class Controller_NewEmployeeDialog {
     	
     	Employee employee = new Employee(employeeNumber, nameOfEmployee, dateOfEmployment);
     	GasStation.addEmployee(employee);
+    	FileTransfer.writetextfiles();
     	 	   	
     	    	
     }
