@@ -13,7 +13,6 @@ public class GasStation {
 
 	private String gasStationName; //Name der Tankstelle
 
-
 	private static ObservableList<Employee> employees = FXCollections.observableArrayList(); //Liste mit allen Mitarbeitern
 	private static ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
 	private static ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
@@ -91,7 +90,6 @@ public class GasStation {
 		this.gasStationName = gasStationName;
 	}
 
-
 	//Methode die ObservableList von Mitarbeitern zurückgibt
 	public static ObservableList<Employee> getEmployees() {
 			
@@ -100,7 +98,6 @@ public class GasStation {
 	}
 	
 	public static void setEmployees(ObservableList<Employee> employees) {
-
 		GasStation.employees = employees;
 	}
 
