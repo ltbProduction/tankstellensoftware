@@ -26,7 +26,7 @@ public class Controller_NewEmployeeDialog {
     
     String nameOfEmployee;
     LocalDate dateOfEmployment;
-    int employeeNumber = 0;
+    int employeeNumber = GasStation.getEmployees().size();
 
     @FXML
     void addNewEmployee(ActionEvent event) throws IOException {
@@ -40,11 +40,7 @@ public class Controller_NewEmployeeDialog {
     	
     	Employee employee = new Employee(employeeNumber, nameOfEmployee, dateOfEmployment);
     	GasStation.addEmployee(employee);
-    	
-    	
-        
-    	
-    	   	
+    	 	   	
     	    	
     }
 

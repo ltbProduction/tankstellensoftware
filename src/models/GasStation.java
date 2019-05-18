@@ -12,7 +12,6 @@ public class GasStation {
 
 
 	private String gasStationName; //Name der Tankstelle
-
 	private static ObservableList<Employee> employees = FXCollections.observableArrayList(); //Liste mit allen Mitarbeitern
 	private static ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
 	private static ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
