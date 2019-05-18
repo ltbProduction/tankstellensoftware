@@ -2,14 +2,13 @@ package controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
-import controller.Controller_Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import models.Employee;
 import models.GasStation;
 
@@ -40,7 +39,16 @@ public class Controller_NewEmployeeDialog {
     	
     	Employee employee = new Employee(employeeNumber, nameOfEmployee, dateOfEmployment);
     	GasStation.addEmployee(employee);
-    	 	   	
+    	
+    	
+    	//schließt das Fenster
+    	Stage stage = (Stage)
+    	b_addemployee.getScene().getWindow();
+    	stage.close();
+    			
+    	
+    	
+
     	    	
     }
 
