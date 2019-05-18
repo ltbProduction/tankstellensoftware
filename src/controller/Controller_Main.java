@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -251,7 +250,8 @@ public class Controller_Main implements Initializable {
     @FXML
     private Button b_login;
            
-    public void initialize(URL url, ResourceBundle rb) { 	
+    @Override
+	public void initialize(URL url, ResourceBundle rb) { 	
         
     	  // Spalten einstellen
     	  ttc_employees_number.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("employeeNumber"));

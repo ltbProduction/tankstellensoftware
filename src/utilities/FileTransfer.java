@@ -1,17 +1,7 @@
 package utilities;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import models.Employee;
-import models.Fuel;
 import models.GasStation;
-import models.Good;
-import models.Purchase;
-import models.Sale;
 
 
 
@@ -37,7 +27,7 @@ public class FileTransfer {
 	public static void readData() {
 		GasStation.clearArrayList();
 		FileScanner.readGoods();
-		FileScanner.readFuels();
+		FileScanner.readFuelTanks();
 		FileScanner.readSalesHistory();
 		FileScanner.readPurchasesHistory();
 		FileScanner.readEmployee();

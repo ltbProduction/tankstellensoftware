@@ -2,15 +2,11 @@ package controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import controller.Controller_Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import models.Employee;
 import models.GasStation;
 
 public class Controller_NewEmployeeDialog {
@@ -26,21 +22,19 @@ public class Controller_NewEmployeeDialog {
     
     String nameOfEmployee;
     LocalDate dateOfEmployment;
-    int employeeNumber = GasStation.getEmployees().size();
+    
 
     @FXML
     void addNewEmployee(ActionEvent event) throws IOException {
+    	
+    	GasStation.addEmployee(tf_nameofnewemployee.getText(), dp_dateofemployment.getValue());
 
-    	nameOfEmployee = tf_nameofnewemployee.getText();
-    	dateOfEmployment = dp_dateofemployment.getValue();
-    	employeeNumber += 1;
+    	
+    	
     	
 //    	DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d.MM.uuuu");
 //    	String dateOfEmployment = dp_dateofemployment.getValue().format(formatters);
-    	
-    	Employee employee = new Employee(employeeNumber, nameOfEmployee, dateOfEmployment);
-    	GasStation.addEmployee(employee);
-    	 	   	
+    	    	 	   	
     	    	
     }
 

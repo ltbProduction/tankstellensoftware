@@ -36,7 +36,8 @@ public class Controller_ChangePriceOfGoodsDialog implements Initializable{
 
     }
     
-    public void initialize(URL location, ResourceBundle resources) {
+    @Override
+	public void initialize(URL location, ResourceBundle resources) {
     	cb_nameofproduct.getItems().removeAll(cb_nameofproduct.getItems());
     	cb_nameofproduct.getItems().addAll("Wodka Jelzin", "Filip Maurice", "Jupiter Schokoriegel", "Sitting Bull", "TK-Pizza Deluxe");
     	cb_nameofproduct.getSelectionModel().select("Wodka Jelzin");

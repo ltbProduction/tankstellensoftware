@@ -8,7 +8,6 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import models.Employee;
-import models.Fuel;
 import models.GasStation;
 import models.Good;
 import models.Purchase;
@@ -151,8 +150,9 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				GasStation.getFuels().add(new Fuel(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
-					
+				//GasStation.getFuels().add(new Fuel(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
+				//GasStation.addFuelTank(new FuelTank(...));
+				// Neuer Konstruktur von FuelTank!	
 					
 		}
 			} catch (IOException e) {
@@ -270,8 +270,8 @@ public class FileScanner {
 				pricesuper = Double.parseDouble(output[1]);//super Preis intialisiert
 				
 				//Preise für die Objekte anpassen
-				GasStation.getFuels().get(0).setAmount((amountdiesel+GasStation.getFuels().get(0).getAmount())); //Die Menge des Dieseltanks auffüllen
-				GasStation.getFuels().get(1).setAmount((amountsuper+GasStation.getFuels().get(1).getAmount())); //Die Menge des Supertanks auffüllen
+				GasStation.getFuelTanks().get(0).setAmount((amountdiesel+GasStation.getFuelTanks().get(0).getAmount())); //Die Menge des Dieseltanks auffüllen
+				GasStation.getFuelTanks().get(1).setAmount((amountsuper+GasStation.getFuelTanks().get(1).getAmount())); //Die Menge des Supertanks auffüllen
 
 				
 				
