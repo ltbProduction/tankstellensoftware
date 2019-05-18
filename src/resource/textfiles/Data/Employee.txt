@@ -1,4 +1,4 @@
-Mitarbeiternummer;Mitarbeitername;Einstellungsdatum
-001;Lukas Blunck;12/05/2019
-002;Robin Birkhofer;11/05/2019
-003;Linus Brugger;13/05/2019
+Nummer;Name;Datum
+001;Lukas Blunck;12.05.2019
+002;Robin Birkhofer;11.05.2019
+003;Linus Brugger;13.05.2019
