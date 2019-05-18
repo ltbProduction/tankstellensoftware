@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class Controller_GasPumpDialog implements Initializable {
 	
@@ -33,6 +34,12 @@ public class Controller_GasPumpDialog implements Initializable {
     
     @FXML
     void addFuelToShoppingCart(ActionEvent event) {
+    	
+    	
+    	//schlieﬂt das Fenster
+    	Stage stage = (Stage)
+    	    	b_addfuel.getScene().getWindow();
+    	    	stage.close();
 
     }
 

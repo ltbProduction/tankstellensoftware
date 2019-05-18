@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class Controller_ChangePriceOfFuelDialog implements Initializable {
 	
@@ -28,6 +29,12 @@ public class Controller_ChangePriceOfFuelDialog implements Initializable {
 
 	    @FXML
 	    void confirmPrice(ActionEvent event) {
+	    	
+	    	
+	    	//schlieﬂt das Fenster
+	    	Stage stage = (Stage)
+	    	    	b_confirmprice.getScene().getWindow();
+	    	    	stage.close();
 
 	    }
 
