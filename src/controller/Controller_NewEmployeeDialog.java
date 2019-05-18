@@ -25,7 +25,7 @@ public class Controller_NewEmployeeDialog {
     
     String nameOfEmployee;
     LocalDate dateOfEmployment;
-    int employeeNumber = 0;
+    int employeeNumber = GasStation.getEmployees().size();
 
     @FXML
     void addNewEmployee(ActionEvent event) throws IOException {
@@ -41,16 +41,14 @@ public class Controller_NewEmployeeDialog {
     	GasStation.addEmployee(employee);
     	
     	
-    	//schlieﬂt das Fenster
+    	//schlie√üt das Fenster
     	Stage stage = (Stage)
     	b_addemployee.getScene().getWindow();
     	stage.close();
     			
     	
     	
-        
-    	
-    	   	
+
     	    	
     }
 
