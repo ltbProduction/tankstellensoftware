@@ -19,23 +19,13 @@ import models.Sale;
 public class FileTransfer {
 	
 	//Das ist eine ausführende Klasse die später wieder rausgenommen wird. Sie ist nur da weil es noch kein Model gibt
-	public static void main(String[] args) throws ParseException  {
-
-	FileTransfer f1 = new FileTransfer();
-	
-    GasStation g1 = new GasStation("KKK");
-    f1.start(g1);
-    g1.display(); //Methode zum test
-
-    
-	}	
 	
 	
 	
-	public void start(GasStation gasstation) throws ParseException  {
-	FileScanner fs1 = new FileScanner();
-	readData(gasstation, fs1);
-	scandeliveries(gasstation, fs1);
+	
+	public static void start() throws ParseException, IOException  {
+	readData();
+	scandeliveries();
 	}
 	
 	
@@ -44,18 +34,18 @@ public class FileTransfer {
 	
 	
 	//Daten auslesen
-	public void readData(GasStation gasstation, FileScanner fs1 ) {
-		gasstation.clearArrayList();
-		fs1.readGoods(gasstation);
-		fs1.readFuels(gasstation);
-		fs1.readSalesHistory(gasstation);
-		fs1.readPurchasesHistory(gasstation);
-		fs1.readEmployee(gasstation);
+	public static void readData() {
+		GasStation.clearArrayList();
+		FileScanner.readGoods();
+		FileScanner.readFuels();
+		FileScanner.readSalesHistory();
+		FileScanner.readPurchasesHistory();
+		FileScanner.readEmployee();
 	}
 	
-	public void scandeliveries(GasStation gasstation, FileScanner fs1 ) throws ParseException {
-		fs1.readDeliversGoods(gasstation);
-		fs1.readDeliversFuels(gasstation);
+	public static void scandeliveries() throws ParseException, IOException {
+		FileScanner.readDeliversGoods();
+		FileScanner.readDeliversFuels();
 		
 		
 		
@@ -68,5 +58,3 @@ public class FileTransfer {
 
 	}
 	
-
-
