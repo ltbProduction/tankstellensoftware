@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import models.Employee;
+import models.GasStation;
+
 public class FileSetter {
      private static String pathdata = "C:/Daten/workspace/Tanke/";
      private static String receiptsdata = "C:/Daten/workspace/Tanke/";
@@ -22,7 +25,27 @@ public class FileSetter {
  			e.printStackTrace();
  		
      }
+ 		
+ 		
+ 		
      }
+     public static void writeemployee() {
+    	 File file = new File(pathdata+ "Employee.txt");
+
+  		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) {
+  			bw.write(firstlineemployee);
+  			bw.newLine();
+  			for (Employee e : GasStation.getEmployees()) {
+				bw.write(e.displaytextfile());
+				bw.newLine();
+			}
+  		} catch (IOException e) {
+  			e.printStackTrace();
+     }
+     }
+     
+     
 }
+     
 
 
