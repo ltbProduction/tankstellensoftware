@@ -5,8 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 
 import models.Employee;
 import models.Fuel;
@@ -16,15 +17,25 @@ import models.Purchase;
 import models.Sale;
 
 public class FileScanner {
+//Der Classloader
+	private static ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
+	private static String datafile = "resource/textfiles/Data/";
+	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+	private static String fileNameEmployee = datafile + "Employee.txt";
+	private static String fileNamePurchasesHistory = datafile + "Historypurchases.txt";
+	private static String fileNameSalesHistory = datafile + "Historysales.txt";
+	private static String fileNameGoods = datafile + "Goods.txt";
+	private static String fileNameFuels = datafile+ "Fuels.txt";
+    private static String fileNameDeliverGoods = "resource/textfiles/deliver/WarenLieferung.txt";
+    private static String fileNameDeliverFuels = "resource/textfiles/deliver/KraftstoffLieferung.txt";
 
+    
 	//Mitarbeiter auslesen
-		public void readEmployee(GasStation gasstation) {
-			SimpleDateFormat s1 = new SimpleDateFormat("dd/MM/yyyy");
+		public static void readEmployee() {
 			
-			 String fileName = "resource/textfiles/Data/Employee.txt";
-		     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
+			
 		 
-		     File file = new File(classLoader.getResource(fileName).getFile());
+		     File file = new File(classLoader.getResource(fileNameEmployee).getFile());
 		     //Arraylist leeren
 		     
 			
@@ -37,29 +48,20 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				gasstation.getEmployees().add(new Employee(output[1], Integer.parseInt(output[0]), s1.parse(output[2])));
+				GasStation.getEmployees().add(new Employee(Integer.parseInt(output[0]),output[1], LocalDate.parse(output[2], formatter)));
 					
 					
 		}
-			} catch (IOException | NumberFormatException | ParseException e) {
+			} catch (IOException | NumberFormatException e) {
 				e.printStackTrace();
 			}
 		}
-			
 		
-
-
-
-
+		public static void readPurchasesHistory() {
 		
-		public void readPurchasesHistory(GasStation gasstation) {
 		
-			SimpleDateFormat s1 = new SimpleDateFormat("dd/MM/yyyy");
-			
-			 String fileName = "resource/textfiles/Data/Historypurchases.txt";
-		     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
-		 
-		     File file = new File(classLoader.getResource(fileName).getFile());
+	 
+		     File file = new File(classLoader.getResource(fileNamePurchasesHistory).getFile());
 		    
 		     
 			
@@ -72,28 +74,22 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				gasstation.getPurchases().add(new Purchase(Integer.parseInt(output[0]), s1.parse(output[1]), Double.parseDouble(output[2])));
+				GasStation.getPurchases().add(new Purchase(Integer.parseInt(output[0]), LocalDate.parse(output[1], formatter), Double.parseDouble(output[2])));
 					
 					
 		}
-			} catch (IOException | NumberFormatException | ParseException e) {
+			} catch (IOException | NumberFormatException  e) {
 				e.printStackTrace();
 			}
 			
 		}
-
-
 
 
 		//Alle Kassenzettel werden ausgelesen und als Objekte erzeugt
-		public void readSalesHistory(GasStation gasstation) {
+		public static void readSalesHistory() {
 			
-			SimpleDateFormat s1 = new SimpleDateFormat("dd/MM/yyyy");
-			
-			 String fileName = "resource/textfiles/Data/Historysales.txt";
-		     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
-		 
-		     File file = new File(classLoader.getResource(fileName).getFile());
+				 
+		     File file = new File(classLoader.getResource(fileNameSalesHistory).getFile());
 		    
 		     
 			
@@ -106,26 +102,21 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				gasstation.getSales().add(new Sale(Integer.parseInt(output[0]), s1.parse(output[1]), Double.parseDouble(output[2])));
+				GasStation.getSales().add(new Sale(Integer.parseInt(output[0]),  LocalDate.parse(output[1], formatter), Double.parseDouble(output[2])));
 					
 					
 		}
-			} catch (IOException | NumberFormatException | ParseException e) {
+			} catch (IOException | NumberFormatException  e) {
 				e.printStackTrace();
 			}
 			
 		}
 
 
-
-
-
 		//Waren werden ausgelesen und Objekte Goods erzeugt
-		public void readGoods(GasStation gasstation) {
-		     String fileName = "resource/textfiles/Data/Goods.txt";
-		     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
+		public static void readGoods() {
 		 
-		     File file = new File(classLoader.getResource(fileName).getFile());
+		     File file = new File(classLoader.getResource(fileNameGoods).getFile());
 		     //Arraylist leeren
 		     
 			
@@ -138,7 +129,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				gasstation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Integer.parseInt(output[3]), Double.parseDouble(output[4])));
+				GasStation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Integer.parseInt(output[3]), Double.parseDouble(output[4])));
 					
 					
 		}
@@ -149,11 +140,9 @@ public class FileScanner {
 		//Waren wurden ausgelesen und Objekt erzeugt 
 		
 		//Tanks werden ausgelesen und Objekte erzeugt.
-		public void readFuels(GasStation gasstation) {
-		     String fileName = "resource/textfiles/Data/Fuels.txt";
-		     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
+		public static void readFuels() {
 		 
-		     File file = new File(classLoader.getResource(fileName).getFile());
+		     File file = new File(classLoader.getResource(fileNameFuels).getFile());
 		     
 			
 			
@@ -165,7 +154,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				gasstation.getFuels().add(new Fuel(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
+				GasStation.getFuels().add(new Fuel(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
 					
 					
 		}
@@ -177,21 +166,19 @@ public class FileScanner {
 		
 //Das auslesen der neuen Lieferungen
 		
-	public void readDeliversGoods(GasStation gasstation) throws ParseException {
-	     String fileName = "resource/textfiles/delivers/WarenLieferung.txt";
-	     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
-	 
-	     File file = new File(classLoader.getResource(fileName).getFile());
-	     SimpleDateFormat s1 = new SimpleDateFormat("dd.MM.yyyy"); //Format des Lieferungsdatum
+		public static void readDeliversGoods() throws ParseException, IOException   {
+	     
+	     File file = new File(classLoader.getResource(fileNameDeliverGoods).getFile());
+	
 	     //Schauen ob die File existiert
 	     if (file.exists()) {
 	    	 
 	    	 
 	    	 
 	    	 //Datei auslesen
-	    	 Date dateofdelivery;// Das Lieferdatum
+	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
-	    	 int newnumber = newdeliveriesnumber(gasstation);
+	    	 int newnumber = newdeliveriesnumber();
 	    	 
 	   
 	    	 
@@ -199,7 +186,7 @@ public class FileScanner {
 				String line;
 				line = br.readLine(); //Die Zeile mit dem Lieferdatum
 				String[] output = line.split("=");
-				dateofdelivery = s1.parse(output[1]);//Lieferdatum wurde festgelegt
+				dateofdelivery = LocalDate.parse(output[1], formatter);//Lieferdatum wurde festgelegt
 				
 				br.readLine(); //Das auslesen der unwichtigen Zeile
 				int numberofgood; //Die Nummer der Waren
@@ -211,7 +198,7 @@ public class FileScanner {
 						numberofgood = Integer.parseInt(output[0]);
 					
 						// Alle Waren nach dem passenden Gut kontrollieren
-						for (Good g : gasstation.getGoods()) {
+						for (Good g : GasStation.getGoods()) {
 							if (g.getNumber()==numberofgood) {//ist es die gleiche Warennummer
 								amount = Integer.parseInt(output[3]); //Die Menge wird gelsen
 								price = Double.parseDouble(output[4]); //Der Einkaufspreis wird gelesen
@@ -226,8 +213,8 @@ public class FileScanner {
 						
 					}
 				
-				gasstation.getPurchases().add(new Purchase(newnumber, dateofdelivery, sum));
-				} catch (IOException | ParseException e) {
+				GasStation.getPurchases().add(new Purchase(newnumber, dateofdelivery, sum));
+				} catch (IOException  e) {
 					e.printStackTrace();
 					
 				
@@ -239,24 +226,19 @@ public class FileScanner {
 	     //Es exitiert nicht dann lassen wir es halt
 	    	
 	     } // Methode beendet
-	     
-	     
-	     
-	
-	
-	public void readDeliversFuels(GasStation gasstation) {
+	   
 		
-	     String fileName = "resource/textfiles/delivers/KraftstoffLieferung.txt";
+		public static void readDeliversFuels() throws IOException {
+		
 	     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
 	 
-	     File file = new File(classLoader.getResource(fileName).getFile());
-	     SimpleDateFormat s1 = new SimpleDateFormat("dd.MM.yyyy"); //Format des Lieferungsdatum
+	     File file = new File(classLoader.getResource(fileNameDeliverFuels).getFile());
 	     //Schauen ob die File existiert
 	     if (file.exists()) {
 	    
-	    	 Date dateofdelivery;// Das Lieferdatum
+	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
-	    	 int newnumber = newdeliveriesnumber(gasstation); //Die Lieferungsnummer
+	    	 int newnumber = newdeliveriesnumber(); //Die Lieferungsnummer
 	    	 
 	   
 	    	 
@@ -272,7 +254,7 @@ public class FileScanner {
 	    		String line;
 				line = br.readLine(); //Die Zeile mit dem Lieferdatum
 				String[] output = line.split("=");
-				dateofdelivery = s1.parse(output[1]);//Lieferdatum wurde festgelegt
+				dateofdelivery = LocalDate.parse(output[1], formatter);//Lieferdatum wurde festgelegt
 				
 				line = br.readLine(); //Die Diesel Zeile
 				output = line.split("=");
@@ -291,22 +273,23 @@ public class FileScanner {
 				pricesuper = Double.parseDouble(output[1]);//super Preis intialisiert
 				
 				//Preise für die Objekte anpassen
-				gasstation.getFuels().get(0).setAmount((amountdiesel+gasstation.getFuels().get(0).getAmount())); //Die Menge des Dieseltanks auffüllen
-				gasstation.getFuels().get(1).setAmount((amountsuper+gasstation.getFuels().get(1).getAmount())); //Die Menge des Supertanks auffüllen
+				GasStation.getFuels().get(0).setAmount((amountdiesel+GasStation.getFuels().get(0).getAmount())); //Die Menge des Dieseltanks auffüllen
+				GasStation.getFuels().get(1).setAmount((amountsuper+GasStation.getFuels().get(1).getAmount())); //Die Menge des Supertanks auffüllen
 
 				
 				
 				sum = pricesuper*amountsuper+pricediesel*amountdiesel; //Summe errechnen
 				
-				gasstation.getPurchases().add(new Purchase(newnumber, dateofdelivery, sum)); //Neuer Einkauf anlegen
+				GasStation.getPurchases().add(new Purchase(newnumber, dateofdelivery, sum)); //Neuer Einkauf anlegen
 
 				
-				} catch (IOException | ParseException e) {
+				} catch (IOException  e) {
 					e.printStackTrace();
 					
 				
 				}
-	    	 //Die Datei kann noch gelöscht werden
+	    	 System.out.println("Test");
+//	    	 safefilesinhistory(fileName, newnumber);
 	    	 
 			}	 
 	     //Es exitiert nicht dann lassen wir es halt
@@ -314,22 +297,69 @@ public class FileScanner {
 	     } // Methode beendet
 	
 	
-	
-	private int newdeliveriesnumber(GasStation gasstation) {
-		//Number des letzten einkauf auslesen
-		int number;
-		int size;
-		Purchase purchase;
-		size = gasstation.getPurchases().size()-1; //Die Zahl wo man das letze findet
-		if (size == -1) { //Wenn es noch keinen Beleg gibt
-			return 1;
-		} else { //Sonst der letzte Beleg + 1
-			purchase = gasstation.getPurchases().get(size);
-			number = purchase.getPurchaseNumber() +1;
-			return number;
+		//Die Methode welche den letzten Einkauf angibt
+		private static int newdeliveriesnumber() {
+			//Number des letzten einkauf auslesen
+			int number;
+			int size;
+			Purchase purchase;
+			size = GasStation.getPurchases().size()-1; //Die Zahl wo man das letze findet
+			if (size == -1) { //Wenn es noch keinen Beleg gibt
+				return 1;
+			} else { //Sonst der letzte Beleg + 1
+				purchase = GasStation.getPurchases().get(size);
+				number = purchase.getPurchaseNumber() +1;
+				return number;
+			 }
 		}
-
-	}
 	
-
+		
+		
+//		
+//		//Methoden welche die Datei in den anderen Ordner verschiebt
+//		
+//		private static void safefilesinhistory(String oldfile, int number) throws IOException {
+//		
+//		String staticfile = "resource/textfiles/historydeliveries/lastdeliver.txt";
+//		String newfile = "resource/textfiles/historydeliveries/Lieferung" + String.valueOf(number) + ".txt";
+//		System.out.println(newfile);	 
+//		File file1 = new File(classLoader.getResource(oldfile).getFile()); //Die alte Datei in dem delivr Ordner
+//		File file2 = new File(classLoader.getResource(staticfile).getFile()); //Die neue Datei
+//		String path = file2.getAbsolutePath()+String.valueOf(number);
+//		File file3 = new File(path);
+//		
+//		
+//		file3.createNewFile(); //Neue Datei erzeugen
+//		
+//		copyFile(file1, file2);
+//		
+//		
+//		
+//			
+//		}
+//		
+//		
+//		//Die Methode welche schlussendlich die Datei kopiert.
+//		public static void copyFile(File in, File out) throws IOException {
+//	        FileChannel inChannel = null;
+//	        FileChannel outChannel = null;
+//	        try {
+//	            inChannel = new FileInputStream(in).getChannel();
+//	            outChannel = new FileOutputStream(out).getChannel();
+//	            inChannel.transferTo(0, inChannel.size(), outChannel);
+//	        } catch (IOException e) {
+//	            throw e;
+//	        } finally {
+//	            try {
+//	                if (inChannel != null)
+//	                    inChannel.close();
+//	                if (outChannel != null)
+//	                    outChannel.close();
+//	            } catch (IOException e) {}
+//	        }
+//	    }
+//	 
+//		
 }
+
+
