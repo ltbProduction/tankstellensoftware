@@ -1,7 +1,9 @@
 package utilities;
+
 import java.io.IOException;
 import java.text.ParseException;
 import models.GasStation;
+
 
 
 
@@ -34,13 +36,15 @@ public class FileTransfer {
 	}
 	
 	public static void scandeliveries() throws ParseException, IOException {
-		FileScanner.readDeliversGoods();
-		FileScanner.readDeliversFuels();
+		FileScanner.readDeliveryGoods();
+		FileScanner.readDeliveryFuelTanks();
 		
 		
 		
-		
-		
+	}
+	
+	public static void writetextfiles() {
+		FileSetter.writeemployee();
 	}
 	
 	

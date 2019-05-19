@@ -27,6 +27,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.Employee;
+import models.FuelTank;
+import models.FuelType;
 import models.GasStation;
 
 public class Controller_Main implements Initializable {
@@ -128,22 +130,25 @@ public class Controller_Main implements Initializable {
     private Tab t_fuel;
 
     @FXML
-    private TableView<?> ttv_fueltanks;
+    private TableView<FuelTank> tv_fueltanks;
 
     @FXML
-    private TableColumn<?, ?> tc_fueltanks_fuelnumber;
+    private TableColumn<FuelTank, Integer> tc_fueltanks_tanknumber;
 
     @FXML
-    private TableColumn<?, ?> tc_fueltanks_fueltype;
+    private TableColumn<FuelTank, FuelType> tc_fueltanks_fueltype;
 
     @FXML
-    private TableColumn<?, ?> tc_fueltanks_capacity;
+    private TableColumn<FuelTank, Double> tc_fueltanks_capacity;
 
     @FXML
-    private TableColumn<?, ?> tc_fueltanks_fuellevel;
+    private TableColumn<FuelTank, Double> tc_fueltanks_fuellevel;
 
     @FXML
-    private TableColumn<?, ?> tc_fueltanks_saleprice;
+    private TableColumn<FuelTank, Double> tc_fueltanks_purchaseprice;
+    
+    @FXML
+    private TableColumn<FuelTank, Double> tc_fueltanks_saleprice;
 
     @FXML
     private ComboBox<?> cb_orderfueltype;
@@ -200,13 +205,13 @@ public class Controller_Main implements Initializable {
     private TableView<Employee> tv_employees;
 
     @FXML
-    private TableColumn<Employee, Integer> ttc_employees_number;
+    private TableColumn<Employee, Integer> tc_employees_number;
 
     @FXML
-    private TableColumn<Employee, String> ttc_employees_name;
+    private TableColumn<Employee, String> tc_employees_name;
 
     @FXML
-    private TableColumn<Employee, LocalDate> ttc_employees_dateofemployment;
+    private TableColumn<Employee, LocalDate> tc_employees_dateofemployment;
 
     @FXML
     private AnchorPane AP_addGoods;
@@ -254,12 +259,34 @@ public class Controller_Main implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) { 	
         
     	  // Spalten einstellen
-    	  ttc_employees_number.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("employeeNumber"));
-    	  ttc_employees_name.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeName"));
-    	  ttc_employees_dateofemployment.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("dateOfEmployment"));
-    	  
-    	  // Dummy Daten laden
+    	  tc_employees_number.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("employeeNumber"));
+    	  tc_employees_name.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeName"));
+    	  tc_employees_dateofemployment.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("dateOfEmployment"));
     	  tv_employees.setItems(GasStation.getEmployees());
+    	  
+    	  tc_fueltanks_tanknumber.setCellValueFactory(new PropertyValueFactory<FuelTank, Integer>("tankNumber"));
+    	  tc_fueltanks_fueltype.setCellValueFactory(new PropertyValueFactory<FuelTank, FuelType>("fuelType"));
+    	  tc_fueltanks_capacity.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("capacity"));
+    	  tc_fueltanks_fuellevel.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("fuelLevel"));
+    	  tc_fueltanks_purchaseprice.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("purchasePrice"));
+    	  tc_fueltanks_saleprice.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("salePrice"));
+    	  tv_fueltanks.setItems(GasStation.getFuelTanks());
+    	  
+
+//    	    @FXML
+//    	    private TableColumn<FuelTank, FuelType> tc_fueltanks_fueltype;
+//
+//    	    @FXML
+//    	    private TableColumn<FuelTank, Double> tc_fueltanks_capacity;
+//
+//    	    @FXML
+//    	    private TableColumn<FuelTank, Double> tc_fueltanks_fuellevel;
+//
+//    	    @FXML
+//    	    private TableColumn<FuelTank, Double> tc_fueltanks_saleprice;
+//    	  
+    	  // Dummy Daten laden
+    	 
     	  
     	  
         

@@ -35,6 +35,8 @@ public class Controller_GasPumpDialog implements Initializable {
     void addFuelToShoppingCart(ActionEvent event) {
     	
     	
+    	
+    	
     	//schlieﬂt das Fenster
     	Stage stage = (Stage)
     	    	b_addfuel.getScene().getWindow();

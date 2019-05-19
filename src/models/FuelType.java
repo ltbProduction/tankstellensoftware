@@ -2,14 +2,13 @@ package models;
 
 public enum FuelType {
 
-	DIESEL("Diesel", 0.00), SUPER("Super", 0.00);
+	DIESEL("Diesel"), SUPER("Super");
 	
 	private String fuelType;
-	private double purchasePrice;
 	
-	FuelType(String fuelType, double purchasePrice) {
+	
+	FuelType(String fuelType) {
 		this.fuelType = fuelType;
-		this.purchasePrice = purchasePrice;
 	}
 
 	public String getFuelType() {
@@ -19,20 +18,6 @@ public enum FuelType {
 	public void setFuelType(String fuelType) {
 		this.fuelType = fuelType;
 	}
-
-	public double getPurchasePrice() {
-		return purchasePrice;
-	}
-
-	public void setPurchasePrice(double purchasePrice) {
-		this.purchasePrice = purchasePrice;
-	}
-
 	
 	
-	
-	
-	
-	
-
 }
