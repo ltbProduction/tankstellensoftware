@@ -17,6 +17,7 @@ public class StartProgram extends Application {
 		launch(args);
 	}
 
+	@Override
 	public void init() {
 	}
 
@@ -29,10 +30,11 @@ public class StartProgram extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		GasStation gasstation = new GasStation("Tankstelle Klösterle");
-		FileTransfer.start();
+		//FileTransfer.start();
 			
 	}
 
+	@Override
 	public void stop() {
 	}
 

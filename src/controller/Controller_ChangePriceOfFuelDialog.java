@@ -3,8 +3,6 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,7 +46,8 @@ public class Controller_ChangePriceOfFuelDialog implements Initializable {
 
 	    }
 	    
-	    public void initialize(URL location, ResourceBundle resources) {
+	    @Override
+		public void initialize(URL location, ResourceBundle resources) {
 	    	cb_nameoffueltype.getItems().removeAll(cb_nameoffueltype.getItems());
 	    	cb_nameoffueltype.getItems().addAll("Super", "Diesel");
 	    	cb_nameoffueltype.getSelectionModel().select("Super");

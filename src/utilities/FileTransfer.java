@@ -29,7 +29,7 @@ public class FileTransfer {
 	public static void readData() {
 		GasStation.clearArrayList();
 		FileScanner.readGoods();
-		FileScanner.readFuels();
+		FileScanner.readFuelTanks();
 		FileScanner.readSalesHistory();
 		FileScanner.readPurchasesHistory();
 		FileScanner.readEmployee();

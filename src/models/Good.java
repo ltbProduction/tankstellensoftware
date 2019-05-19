@@ -25,6 +25,7 @@ public class Good extends Product {
 	}
 	
 	
+	@Override
 	public void createorder(int amount) {
 		
 		
@@ -32,6 +33,7 @@ public class Good extends Product {
 
 
 
+	@Override
 	public void createdelivery(int amount) {
 		
 	}
