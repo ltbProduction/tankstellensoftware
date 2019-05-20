@@ -28,7 +28,7 @@ public class FileScanner {
 	private static String fileNameFuelTanks = datafile + "FuelTanks.txt";
     private static String fileNameDeliveryGoods = "src/resource/textfiles/deliveries/WarenLieferung.txt";
     private static String fileNameDeliveryFuels = "src/resource/textfiles/deliveries/KraftstoffLieferung.txt";
-    private static String filenamedeliverhistory = "src/resource/textfiles/historydeliveries/Lieferschein_";
+    private static String filenamedeliverhistory = "src/resource/textfiles/historydeliveries/Einkaufsbeleg";
 
     
 	//Mitarbeiter auslesen
@@ -178,7 +178,7 @@ public class FileScanner {
 	    	 //Datei auslesen
 	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
-	    	 int newnumber = HelpMethods.newdeliveriesnumber();
+	    	 int newnumber = Hilfmethoden.newdeliveriesnumber();
 	    	 
 	   
 	    	 
@@ -252,7 +252,7 @@ public class FileScanner {
 	    
 	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
-	    	 int newnumber = HelpMethods.newdeliveriesnumber(); //Die Lieferungsnummer
+	    	 int newnumber = Hilfmethoden.newdeliveriesnumber(); //Die Lieferungsnummer
 	    	 
 	   
 	    	 

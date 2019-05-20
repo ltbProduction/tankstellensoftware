@@ -2,7 +2,6 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,8 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import models.FuelTank;
-import models.GasStation;
 
 public class Controller_GasPumpDialog implements Initializable {
 	
@@ -33,32 +30,20 @@ public class Controller_GasPumpDialog implements Initializable {
     	cb_fueltype.getSelectionModel().select("Super");
     }
     
-// @FXML
-//    void addFuelToShoppingCart(ActionEvent event) {
-//    	
-//    	int productNumber;
-//    	
-//    	for (FuelTank t : GasStation.getFuelTanks()) {
-//    		
-//    		
-//    		
-//    		
-//    		if (cb_fueltype.getValue().equals(t.getFuelType())) {
-//    			productNumber = t.getTankNumber();
-//    		} else continue;
-//    		
-//    	}
-//    	
-//    	GasStation.addFuelToShoppingCart(productNumber, Double.parseDouble(tf_amountoffuel.getText()));
-//    	
-//    	
-//    	
-//    	//schlieﬂt das Fenster
-//    	Stage stage = (Stage)
-//    	    	b_addfuel.getScene().getWindow();
-//    	    	stage.close();
-//
-//    }
+    @FXML
+    void addFuelToShoppingCart(ActionEvent event) {
+    	
+    	
+    	
+
+    	
+    	//schlieﬂt das Fenster
+
+    	Stage stage = (Stage)
+    	    	b_addfuel.getScene().getWindow();
+    	    	stage.close();
+
+    }
 
     @FXML
     void chooseFuelType(ActionEvent event) {
