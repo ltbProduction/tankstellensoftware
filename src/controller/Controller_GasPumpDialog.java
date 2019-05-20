@@ -35,9 +35,14 @@ public class Controller_GasPumpDialog implements Initializable {
     	
     	
     	
+<<<<<<< HEAD
 
     	//schlieï¿½t das Fenster
 
+=======
+    	
+    	//schließt das Fenster
+>>>>>>> parent of 619d44d... Clear Array List Bug behoben
     	Stage stage = (Stage)
     	    	b_addfuel.getScene().getWindow();
     	    	stage.close();
