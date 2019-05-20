@@ -9,37 +9,37 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import models.Employee;
-import models.Fuel;
+import models.FuelTank;
+import models.FuelType;
 import models.GasStation;
 import models.Good;
 import models.Purchase;
 import models.Sale;
 
 public class FileScanner {
-//Der Classloader
-	private static ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
-	private static String datafile = "resource/textfiles/Data/";
+
+	
+	private static String datafile = "src/resource/textfiles/Data/";
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 	private static String fileNameEmployee = datafile + "Employee.txt";
 	private static String fileNamePurchasesHistory = datafile + "Historypurchases.txt";
 	private static String fileNameSalesHistory = datafile + "Historysales.txt";
 	private static String fileNameGoods = datafile + "Goods.txt";
-	private static String fileNameFuels = datafile+ "Fuels.txt";
-    private static String fileNameDeliverGoods = "resource/textfiles/deliver/WarenLieferung.txt";
-    private static String fileNameDeliverFuels = "resource/textfiles/deliver/KraftstoffLieferung.txt";
+	private static String fileNameFuelTanks = datafile + "FuelTanks.txt";
+    private static String fileNameDeliveryGoods = "src/resource/textfiles/deliveries/WarenLieferung.txt";
+    private static String fileNameDeliveryFuels = "src/resource/textfiles/deliveries/KraftstoffLieferung.txt";
+    private static String filenamedeliverhistory = "src/resource/textfiles/historydeliveries/Einkaufsbeleg";
 
     
 	//Mitarbeiter auslesen
-		public static void readEmployee() {
+ 		public static void readEmployee() {
 			
 			
 		 
-		     File file = new File(classLoader.getResource(fileNameEmployee).getFile());
+		     File file = new File(fileNameEmployee);
+
 		     //Arraylist leeren
 		     
-			
-			
-
 			try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
 				String line;
 				br.readLine();
@@ -48,8 +48,7 @@ public class FileScanner {
 			
 				String[] output = line.split(";");
 				GasStation.getEmployees().add(new Employee(Integer.parseInt(output[0]),output[1], LocalDate.parse(output[2], formatter)));
-					
-					
+							
 		}
 			} catch (IOException | NumberFormatException e) {
 				e.printStackTrace();
@@ -60,7 +59,7 @@ public class FileScanner {
 		
 		
 	 
-		     File file = new File(classLoader.getResource(fileNamePurchasesHistory).getFile());
+		     File file = new File(fileNamePurchasesHistory);
 		    
 		     
 			
@@ -88,7 +87,9 @@ public class FileScanner {
 		public static void readSalesHistory() {
 			
 				 
-		     File file = new File(classLoader.getResource(fileNameSalesHistory).getFile());
+
+		     File file = new File(fileNameSalesHistory);
+
 		    
 		     
 			
@@ -115,7 +116,7 @@ public class FileScanner {
 		//Waren werden ausgelesen und Objekte Goods erzeugt
 		public static void readGoods() {
 		 
-		     File file = new File(classLoader.getResource(fileNameGoods).getFile());
+		     File file = new File(fileNameGoods);
 		     //Arraylist leeren
 		     
 			
@@ -128,7 +129,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				GasStation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Integer.parseInt(output[3]), Double.parseDouble(output[4])));
+				GasStation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
 					
 					
 		}
@@ -139,13 +140,12 @@ public class FileScanner {
 		//Waren wurden ausgelesen und Objekt erzeugt 
 		
 		//Tanks werden ausgelesen und Objekte erzeugt.
-		public static void readFuels() {
-		 
-		     File file = new File(classLoader.getResource(fileNameFuels).getFile());
-		     
-			
-			
+		public static void readFuelTanks() {
 
+		     File file = new File(fileNameFuelTanks);
+
+
+		     
 			try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
 				String line;
 				br.readLine();
@@ -153,11 +153,10 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				GasStation.getFuels().add(new Fuel(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
-					
-					
+				GasStation.getFuelTanks().add(new FuelTank(Integer.parseInt(output[0]), FuelType.valueOf(output[1]), Double.parseDouble(output[2]), Double.parseDouble(output[3]), Double.parseDouble(output[4]), Double.parseDouble(output[5])));
+									
 		}
-			} catch (IOException e) {
+			} catch (IOException | NumberFormatException  e) {
 				e.printStackTrace();
 			}
 		}
@@ -165,9 +164,11 @@ public class FileScanner {
 		
 //Das auslesen der neuen Lieferungen
 		
-		public static void readDeliversGoods() throws ParseException, IOException   {
+		public static void readDeliveryGoods() throws ParseException, IOException   {
 	     
-	     File file = new File(classLoader.getResource(fileNameDeliverGoods).getFile());
+
+	     File file = new File(fileNameDeliveryGoods);
+
 	
 	     //Schauen ob die File existiert
 	     if (file.exists()) {
@@ -177,7 +178,7 @@ public class FileScanner {
 	    	 //Datei auslesen
 	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
-	    	 int newnumber = newdeliveriesnumber();
+	    	 int newnumber = Hilfmethoden.newdeliveriesnumber();
 	    	 
 	   
 	    	 
@@ -189,7 +190,7 @@ public class FileScanner {
 				
 				br.readLine(); //Das auslesen der unwichtigen Zeile
 				int numberofgood; //Die Nummer der Waren
-				int newamount; //Die neue Menge
+				double newamount; //Die neue Menge
 				int amount; //Die Menge der Lieferung
 				double price;
 					while ((line = br.readLine()) != null) {	//Schleife startet			
@@ -219,7 +220,20 @@ public class FileScanner {
 				
 				}
 	    	 //Methode welche die Textdatei dann verschiebt in den deliveries history ordner
-	    	 
+	    	
+	          
+	         // renaming the file and moving it to a new location 
+	         if(file.renameTo 
+	            (new File(filenamedeliverhistory + String.valueOf(newnumber)+".txt" ))) 
+	         { 
+	             // if file copied successfully then delete the original file 
+	             file.delete(); 
+	             System.out.println("File moved successfully"); 
+	         } 
+	         else
+	         { 
+	             System.out.println("Failed to move the file"); 
+	         } 
 	    	 
 			}	 
 	     //Es exitiert nicht dann lassen wir es halt
@@ -227,17 +241,18 @@ public class FileScanner {
 	     } // Methode beendet
 	   
 		
-		public static void readDeliversFuels() throws IOException {
+		public static void readDeliveryFuelTanks() throws IOException {
 		
-	     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
 	 
-	     File file = new File(classLoader.getResource(fileNameDeliverFuels).getFile());
+
+	     File file = new File(fileNameDeliveryFuels);
+
 	     //Schauen ob die File existiert
 	     if (file.exists()) {
 	    
 	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
-	    	 int newnumber = newdeliveriesnumber(); //Die Lieferungsnummer
+	    	 int newnumber = Hilfmethoden.newdeliveriesnumber(); //Die Lieferungsnummer
 	    	 
 	   
 	    	 
@@ -271,11 +286,13 @@ public class FileScanner {
 				output = line.split("=");
 				pricesuper = Double.parseDouble(output[1]);//super Preis intialisiert
 				
-				//Preise für die Objekte anpassen
-				GasStation.getFuels().get(0).setAmount((amountdiesel+GasStation.getFuels().get(0).getAmount())); //Die Menge des Dieseltanks auffüllen
-				GasStation.getFuels().get(1).setAmount((amountsuper+GasStation.getFuels().get(1).getAmount())); //Die Menge des Supertanks auffüllen
-
+				//Menge für die Objekte anpassen
+				GasStation.getFuelTanks().get(0).setFuelLevel((amountdiesel+GasStation.getFuelTanks().get(0).getFuelLevel())); //Die Menge des Dieseltanks auffüllen
+				GasStation.getFuelTanks().get(1).setFuelLevel((amountsuper+GasStation.getFuelTanks().get(1).getFuelLevel())); //Die Menge des Supertanks auffüllen
 				
+				GasStation.getFuelTanks().get(0).setPurchasePrice(pricediesel);
+				GasStation.getFuelTanks().get(1).setPurchasePrice(pricesuper);
+
 				
 				sum = pricesuper*amountsuper+pricediesel*amountdiesel; //Summe errechnen
 				
@@ -287,8 +304,17 @@ public class FileScanner {
 					
 				
 				}
-	    	 System.out.println("Test");
-//	    	 safefilesinhistory(fileName, newnumber);
+	         if(file.renameTo 
+	 	            (new File(filenamedeliverhistory + String.valueOf(newnumber)+".txt" ))) 
+	 	         { 
+	 	             // if file copied successfully then delete the original file 
+	 	             file.delete(); 
+	 	             System.out.println("File moved successfully"); 
+	 	         } 
+	 	         else
+	 	         { 
+	 	             System.out.println("Failed to move the file"); 
+	 	         } 
 	    	 
 			}	 
 	     //Es exitiert nicht dann lassen wir es halt
@@ -297,20 +323,7 @@ public class FileScanner {
 	
 	
 		//Die Methode welche den letzten Einkauf angibt
-		private static int newdeliveriesnumber() {
-			//Number des letzten einkauf auslesen
-			int number;
-			int size;
-			Purchase purchase;
-			size = GasStation.getPurchases().size()-1; //Die Zahl wo man das letze findet
-			if (size == -1) { //Wenn es noch keinen Beleg gibt
-				return 1;
-			} else { //Sonst der letzte Beleg + 1
-				purchase = GasStation.getPurchases().get(size);
-				number = purchase.getPurchaseNumber() +1;
-				return number;
-			 }
-		}
+
 	
 		
 		

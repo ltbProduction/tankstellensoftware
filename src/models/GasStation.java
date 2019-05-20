@@ -1,26 +1,27 @@
 package models;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
-import models.Employee;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sun.util.calendar.LocalGregorianCalendar.Date;
+import utilities.FileSetter;
+import utilities.Hilfmethoden;
 
 public class GasStation {
 
 
-	private String gasStationName; //Name der Tankstelle
+	private static String gasStationName; //Name der Tankstelle
 	private static ObservableList<Employee> employees = FXCollections.observableArrayList(); //Liste mit allen Mitarbeitern
 	private static ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
 	private static ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
-	private static ArrayList<Fuel> fuels = new ArrayList<>(); //Liste mit den Tanks
+	private static ObservableList<FuelTank> fuelTanks = FXCollections.observableArrayList(); //Liste mit allen Kraftstofftanks
 	private static ArrayList<Good> goods = new ArrayList<>(); // Liste mit allen Waren
 	private static ArrayList<Sale> sales = new ArrayList<>(); //Liste mit allen Verkäufen
 	private static ArrayList<Purchase> purchases = new ArrayList<>(); //Liste mit allen Einkäufen
-	private static Date startBalanceDate; //Startdatum 
-	private static Date endBalanceDate; //Enddatrum
+	private static Date startBalanceDate; //Startdatum
+	private static Date endBalanceDate; //Enddatum
 
 	
 	
@@ -29,17 +30,23 @@ public class GasStation {
 	}
 	
 
-	public static void addEmployee(Employee employee) {
+	public static void addEmployee(String employeeName, LocalDate dateOfEmployment) {
+		int indexlastmember = (getEmployees().size())-1;
+		int employeeNumber = employees.get(indexlastmember).getEmployeeNumber() +1;
+		Employee employee = new Employee(employeeNumber, employeeName, dateOfEmployment);
 		employees.add(employee);
 	}
 	
+	public static void addFuelTank(FuelTank fuelTank) {
+		fuelTanks.add(fuelTank);
+	}
 	
 	
 	//Methode welche alle ArrayLists auf null setzt
 	
 	public static void clearArrayList() {
 		goods.clear();
-		fuels.clear();
+		fuelTanks.clear();
 		storage.clear();
 		employees.clear();
 		shoppingCart.clear();
@@ -79,14 +86,27 @@ public class GasStation {
 		for (Purchase g: purchases){
 			g.display();
 		}
+	
+	}
+	
+	public static void finishedreceipt() { //Zum abschließen einer Reception
+		double sum;
+		sum = 0;
+		for (Product p : GasStation.getShoppingCart()) {
+		sum += p.amount*p.price;
+		}
+		//Methode welche den Beleg ausdruckt
+		FileSetter.createreceipt(sum);
+		shoppingCart.clear();
+		sales.add(new Sale(Hilfmethoden.newsalesnumber(), LocalDate.now(), sum));
 	}
 
-	public String getGasStationName() {
+	public static String getGasStationName() {
 		return gasStationName;
 	}
 
-	public void setGasStationName(String gasStationName) {
-		this.gasStationName = gasStationName;
+	public static void setGasStationName(String gasStationName) {
+		GasStation.gasStationName = gasStationName;
 	}
 
 	//Methode die ObservableList von Mitarbeitern zurückgibt
@@ -116,12 +136,12 @@ public class GasStation {
 		GasStation.shoppingCart = shoppingCart;
 	}
 
-	public static ArrayList<Fuel> getFuels() {
-		return fuels;
+	public static ObservableList<FuelTank> getFuelTanks() {
+		return fuelTanks;
 	}
 
-	public static void setFuels(ArrayList<Fuel> fuels) {
-		GasStation.fuels = fuels;
+	public static void setFuelTanks(ObservableList<FuelTank> fuelTanks) {
+		GasStation.fuelTanks = fuelTanks;
 	}
 
 	public static ArrayList<Good> getGoods() {
@@ -164,7 +184,20 @@ public class GasStation {
 		GasStation.endBalanceDate = endBalanceDate;
 	}
 	
-
+	public static Employee activeEmployee() {
+		Employee activeemployee;
+		activeemployee = null;
+		
+		for(Employee e : employees){
+			if(e.isActive()) {
+				activeemployee = e;
+			}
+			else {
+				continue;
+			}
+		}
+		return activeemployee;
+	}
 	
 	
 	

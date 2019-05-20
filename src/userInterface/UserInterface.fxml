@@ -119,13 +119,14 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="ttv_fueltanks" layoutX="15.0" layoutY="65.0" prefHeight="85.0" prefWidth="571.0">
+                  <TableView fx:id="tv_fueltanks" layoutX="15.0" layoutY="65.0" prefHeight="180.0" prefWidth="571.0">
                     <columns>
-                      <TableColumn fx:id="tc_fueltanks_fuelnumber" prefWidth="54.0" text="Nr." />
-                      <TableColumn fx:id="tc_fueltanks_fueltype" prefWidth="128.0" text="Kraftstoffart" />
-                        <TableColumn fx:id="tc_fueltanks_capacity" prefWidth="129.0" text="Kapazität in Liter" />
-                        <TableColumn fx:id="tc_fueltanks_fuellevel" minWidth="0.0" prefWidth="99.0" text="Füllstand" />
-                              <TableColumn fx:id="tc_fueltanks_saleprice" prefWidth="160.0" text="Verkaufspreis in EUR" />
+                      <TableColumn fx:id="tc_fueltanks_tanknumber" prefWidth="28.0" text="Nr." />
+                      <TableColumn fx:id="tc_fueltanks_fueltype" prefWidth="97.0" text="Kraftstoffart" />
+                        <TableColumn fx:id="tc_fueltanks_capacity" prefWidth="119.0" text="Kapazität in Liter" />
+                        <TableColumn fx:id="tc_fueltanks_fuellevel" minWidth="0.0" prefWidth="86.0" text="Füllstand" />
+                              <TableColumn fx:id="tc_fueltanks_purchaseprice" prefWidth="120.0" text="Preis pro Liter (EK)" />
+                              <TableColumn fx:id="tc_fueltanks_saleprice" prefWidth="120.0" text="Preis pro Liter (VK)" />
                     </columns>
                   </TableView>
                   <Label layoutX="76.0" layoutY="272.0" text="Kraftstoffart" />
@@ -201,9 +202,9 @@
                         </Label>
                         <TableView fx:id="tv_employees" layoutX="15.0" layoutY="65.0" prefHeight="200.0" prefWidth="571.0">
                           <columns>
-                            <TableColumn fx:id="ttc_employees_number" prefWidth="75.0" text="Nummer" />
-                            <TableColumn fx:id="ttc_employees_name" prefWidth="319.0" text="Name" />
-                              <TableColumn fx:id="ttc_employees_dateofemployment" minWidth="0.0" prefWidth="176.0" text="Einstellungsdatum" />
+                            <TableColumn fx:id="tc_employees_number" prefWidth="75.0" text="Nummer" />
+                            <TableColumn fx:id="tc_employees_name" prefWidth="319.0" text="Name" />
+                              <TableColumn fx:id="tc_employees_dateofemployment" minWidth="0.0" prefWidth="176.0" text="Einstellungsdatum" />
                           </columns>
                         </TableView>
                </children></AnchorPane>

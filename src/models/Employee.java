@@ -2,8 +2,8 @@ package models;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import javafx.util.converter.LocalDateStringConverter;
+
 
  
 
@@ -11,8 +11,9 @@ public class Employee {
 
 
 	private String employeeName;
-	int employeeNumber;
+	private int employeeNumber;
 	private LocalDate dateOfEmployment;
+	private boolean isActive=false;
 	
 	
 	
@@ -53,6 +54,18 @@ public class Employee {
 	public final void setDateOfEmployment(LocalDate dateOfEmployment) {
 		this.dateOfEmployment = dateOfEmployment;
 	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	
+	
 	public String displaytextfile() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 		String text = String.valueOf(employeeNumber)+";"+employeeName +";" + dateOfEmployment.format(formatter);

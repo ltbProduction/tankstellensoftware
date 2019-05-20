@@ -1,14 +1,16 @@
 package models;
 
+import java.time.format.DateTimeFormatter;
+
 public class Good extends Product {
-	int amount;
+
 	//Atribute
 	
 
 	//Konstruktor
-	public Good(int number, String name, String unit, int amount, double price) {
-		super(number, name, unit, price);
-		this.amount = amount;
+	public Good(int number, String name, String unit, double amount, double price) {
+		super(number, name, unit, price, amount);
+	
 	}
 
 	
@@ -25,6 +27,7 @@ public class Good extends Product {
 	}
 	
 	
+	@Override
 	public void createorder(int amount) {
 		
 		
@@ -32,6 +35,7 @@ public class Good extends Product {
 
 
 
+	@Override
 	public void createdelivery(int amount) {
 		
 	}
@@ -57,16 +61,14 @@ public class Good extends Product {
 
 
 
-
-	public int getAmount() {
-		return amount;
-	}
-
-
-
-
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+	
+	//Die korrekte Ausgabe für die Textdatei wird erzeugt
+	public String displaytextfile() {
+		String text = String.valueOf(number)+";"+name+";" +unit+";"+String.valueOf(amount)+";"+String.valueOf(price);
+		return text;
 	}
 
 	
