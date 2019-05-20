@@ -27,24 +27,32 @@ public class FileTransfer {
 	
 	//Daten auslesen
 	public static void readData() {
-		GasStation.clearArrayList();
+		
+		
 		FileScanner.readGoods();
-		FileScanner.readFuelTanks();
+//		FileScanner.readFuelTanks();
 		FileScanner.readSalesHistory();
 		FileScanner.readPurchasesHistory();
 		FileScanner.readEmployee();
 	}
 	
 	public static void scandeliveries() throws ParseException, IOException {
+		
 		FileScanner.readDeliversGoods();
-		FileScanner.readDeliversFuels();
+		//FileScanner.readDeliversFuels();
+		
 		
 		
 		
 	}
 	
 	public static void writetextfiles() {
+		System.out.println("Test");
 		FileSetter.writeemployee();
+		//FileSetter.writefuels();
+		FileSetter.writeGoods();
+		FileSetter.writeHistorypurchases();
+		FileSetter.writeSalepurchases();
 	}
 	
 	

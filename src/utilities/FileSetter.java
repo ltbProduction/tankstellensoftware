@@ -15,8 +15,8 @@ import models.Purchase;
 import models.Sale;
 
 public class FileSetter {
-     private static String pathdata = "C:/Daten/workspace/Tanke/";
-     private static String receiptsdata = "C:/Daten/workspace/Tanke/";
+     private static String pathdata = "src/resource/textfiles/Data/";
+     private static String receiptsdata = "src/resource/textfiles/receipt/";
      private static String firstlineproduct = "Nummer;Name;Lagereinheit;Menge;Verkaufspreis";
      private static String firstlinehistory = "Nummer;Datum;Preis";
      private static String firstlineemployee = "Nummer;Name;Datum";

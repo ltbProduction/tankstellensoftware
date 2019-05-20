@@ -8,7 +8,7 @@ public class Good extends Product {
 	
 
 	//Konstruktor
-	public Good(int number, String name, String unit, int amount, double price) {
+	public Good(int number, String name, String unit, double amount, double price) {
 		super(number, name, unit, price, amount);
 	
 	}
@@ -67,7 +67,7 @@ public class Good extends Product {
 	
 	//Die korrekte Ausgabe für die Textdatei wird erzeugt
 	public String displaytextfile() {
-		String text = String.valueOf(number)+";"+name+";" +unit+String.valueOf(amount)+String.valueOf(price);
+		String text = String.valueOf(number)+";"+name+";" +unit+";"+String.valueOf(amount)+";"+String.valueOf(price);
 		return text;
 	}
 

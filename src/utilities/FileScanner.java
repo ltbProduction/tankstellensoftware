@@ -15,25 +15,26 @@ import models.Purchase;
 import models.Sale;
 
 public class FileScanner {
-//Der Classloader
-	private static ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
-	private static String datafile = "resource/textfiles/Data/";
+
+	
+	private static String datafile = "src/resource/textfiles/Data/";
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 	private static String fileNameEmployee = datafile + "Employee.txt";
 	private static String fileNamePurchasesHistory = datafile + "Historypurchases.txt";
 	private static String fileNameSalesHistory = datafile + "Historysales.txt";
 	private static String fileNameGoods = datafile + "Goods.txt";
 	private static String fileNameFuels = datafile+ "Fuels.txt";
-    private static String fileNameDeliverGoods = "resource/textfiles/deliver/WarenLieferung.txt";
-    private static String fileNameDeliverFuels = "resource/textfiles/deliver/KraftstoffLieferung.txt";
+    private static String fileNameDeliverGoods = "src/resource/textfiles/deliver/WarenLieferung.txt";
+    private static String fileNameDeliverFuels = "src/resource/textfiles/deliver/KraftstoffLieferung.txt";
+    private static String filenamedeliverhistory = "src/resource/textfiles/historydeliveries/Einkaufsbeleg";
 
     
 	//Mitarbeiter auslesen
-		public static void readEmployee() {
+ 		public static void readEmployee() {
 			
 			
 		 
-		     File file = new File(classLoader.getResource(fileNameEmployee).getFile());
+		     File file = new File(fileNameEmployee);
 		     //Arraylist leeren
 		     
 			
@@ -59,7 +60,7 @@ public class FileScanner {
 		
 		
 	 
-		     File file = new File(classLoader.getResource(fileNamePurchasesHistory).getFile());
+		     File file = new File(fileNamePurchasesHistory);
 		    
 		     
 			
@@ -87,7 +88,7 @@ public class FileScanner {
 		public static void readSalesHistory() {
 			
 				 
-		     File file = new File(classLoader.getResource(fileNameSalesHistory).getFile());
+		     File file = new File(fileNameSalesHistory);
 		    
 		     
 			
@@ -114,7 +115,7 @@ public class FileScanner {
 		//Waren werden ausgelesen und Objekte Goods erzeugt
 		public static void readGoods() {
 		 
-		     File file = new File(classLoader.getResource(fileNameGoods).getFile());
+		     File file = new File(fileNameGoods);
 		     //Arraylist leeren
 		     
 			
@@ -127,7 +128,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				GasStation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Integer.parseInt(output[3]), Double.parseDouble(output[4])));
+				GasStation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
 					
 					
 		}
@@ -140,7 +141,7 @@ public class FileScanner {
 		//Tanks werden ausgelesen und Objekte erzeugt.
 		public static void readFuels() {
 		 
-		     File file = new File(classLoader.getResource(fileNameFuels).getFile());
+		     File file = new File(fileNameFuels);
 		     
 			
 			
@@ -167,7 +168,7 @@ public class FileScanner {
 		
 		public static void readDeliversGoods() throws ParseException, IOException   {
 	     
-	     File file = new File(classLoader.getResource(fileNameDeliverGoods).getFile());
+	     File file = new File(fileNameDeliverGoods);
 	
 	     //Schauen ob die File existiert
 	     if (file.exists()) {
@@ -219,7 +220,20 @@ public class FileScanner {
 				
 				}
 	    	 //Methode welche die Textdatei dann verschiebt in den deliveries history ordner
-	    	 
+	    	
+	          
+	         // renaming the file and moving it to a new location 
+	         if(file.renameTo 
+	            (new File(filenamedeliverhistory + String.valueOf(newnumber)+".txt" ))) 
+	         { 
+	             // if file copied successfully then delete the original file 
+	             file.delete(); 
+	             System.out.println("File moved successfully"); 
+	         } 
+	         else
+	         { 
+	             System.out.println("Failed to move the file"); 
+	         } 
 	    	 
 			}	 
 	     //Es exitiert nicht dann lassen wir es halt
@@ -229,9 +243,8 @@ public class FileScanner {
 		
 		public static void readDeliversFuels() throws IOException {
 		
-	     ClassLoader classLoader = new FileTransfer().getClass().getClassLoader();
 	 
-	     File file = new File(classLoader.getResource(fileNameDeliverFuels).getFile());
+	     File file = new File(fileNameDeliverFuels);
 	     //Schauen ob die File existiert
 	     if (file.exists()) {
 	    

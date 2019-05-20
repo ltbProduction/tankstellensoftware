@@ -31,7 +31,8 @@ public class GasStation {
 	
 
 	public static void addEmployee(String employeeName, LocalDate dateOfEmployment) {
-		int employeeNumber = (getEmployees().size())+1;
+		int indexlastmember = (getEmployees().size())-1;
+		int employeeNumber = employees.get(indexlastmember).getEmployeeNumber() +1;
 		Employee employee = new Employee(employeeNumber, employeeName, dateOfEmployment);
 		employees.add(employee);
 	}
