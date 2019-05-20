@@ -273,7 +273,7 @@ public class Controller_Main implements Initializable {
     	  tc_fueltanks_saleprice.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("salePrice"));
     	  tv_fueltanks.setItems(GasStation.getFuelTanks());
     	  
-    	  
+		
     	  
     	  
 
