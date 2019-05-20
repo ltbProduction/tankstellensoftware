@@ -31,7 +31,7 @@ public class StartProgram extends Application {
 		primaryStage.setTitle("Tankstellensoftware");
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		GasStation gasstation = new GasStation("Tankstelle Klösterle");
+		//GasStation gasstation = new GasStation("Tankstelle Klösterle");
 		FileTransfer.start();
 			
 	}
