@@ -10,7 +10,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
 public class Controller_GasPumpDialog implements Initializable {
 	
 	//ObservableList<String> fueltype = FXCollections.observableArrayList("Super", "Diesel");
@@ -36,8 +35,9 @@ public class Controller_GasPumpDialog implements Initializable {
     	
     	
     	
-    	
+
     	//schlie�t das Fenster
+
     	Stage stage = (Stage)
     	    	b_addfuel.getScene().getWindow();
     	    	stage.close();
