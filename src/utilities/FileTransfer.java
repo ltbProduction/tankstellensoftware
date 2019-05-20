@@ -30,7 +30,7 @@ public class FileTransfer {
 		
 		
 		FileScanner.readGoods();
-//		FileScanner.readFuelTanks();
+		FileScanner.readFuelTanks();
 		FileScanner.readSalesHistory();
 		FileScanner.readPurchasesHistory();
 		FileScanner.readEmployee();
@@ -50,7 +50,7 @@ public class FileTransfer {
 
 		System.out.println("Test");
 		FileSetter.writeemployee();
-		//FileSetter.writefuels();
+		FileSetter.writefuels();
 		FileSetter.writeGoods();
 		FileSetter.writeHistorypurchases();
 		FileSetter.writeSalepurchases();

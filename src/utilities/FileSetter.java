@@ -8,37 +8,21 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import models.Employee;
+import models.FuelTank;
 import models.GasStation;
 import models.Good;
 import models.Product;
 import models.Purchase;
 import models.Sale;
 
-import models.Employee;
-import models.GasStation;
-
 public class FileSetter {
      private static String pathdata = "src/resource/textfiles/Data/";
      private static String receiptsdata = "src/resource/textfiles/receipt/";
-     private static String firstlineproduct = "Nummer;Name;Lagereinheit;Menge;Verkaufspreis";
+     private static String firstlinegoods = "Nummer;Name;Lagereinheit;Menge;Verkaufspreis";
      private static String firstlinehistory = "Nummer;Datum;Preis";
      private static String firstlineemployee = "Nummer;Name;Datum";
-     
-     public static void test() {
-
- 		File file = new File("C:/Daten/workspace/wAd/text.txt");
-
- 		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) {
- 			bw.write("Hallo Welt!");
- 		} catch (IOException e) {
- 			e.printStackTrace();
- 		
-     }
- 		
- 		
- 		
-     }
-
+     private static String firstlinefuels = "Nummer;Kraftstoffart;Füllstand;Kapazität;Einkaufspreis;Verkaufspreis";
+   
      
      //Die Text datei der Mitarbeiter wird geschrieben
      public static void writeemployee() {
@@ -49,28 +33,26 @@ public class FileSetter {
   			bw.newLine(); 
   			for (Employee e : GasStation.getEmployees()) {
 				bw.write(e.displaytextfile()); //Ausgabe der Produkte
-
 				bw.newLine();
 			}
   		} catch (IOException e) {
   			e.printStackTrace();
      }
-
      }
      
      
      //Die Text datei der Kraftstoffe wird geschrieben
      public static void writefuels() {
-    	 File file = new File(pathdata+ "FuelsTanks.txt"); //Die neue File wird erzeugt
+    	 File file = new File(pathdata+ "FuelTanks.txt"); //Die neue File wird erzeugt
 
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
-  			bw.write(firstlineproduc); //Die erste Zeile wird geschrieben Ã„NDERUNGEN!!!!
+  			bw.write(firstlinefuels); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
   			//Muss noch ge#ndert werden
-//  			for (Employee e : GasStation.getEmployees()) {
-//				bw.write(e.displaytextfile()); //Ausgabe der Produkte
-//				bw.newLine();
-//			}
+  			for (FuelTank f : GasStation.getFuelTanks()) {
+				bw.write(f.displaytextfile()); //Ausgabe der Produkte
+				bw.newLine();
+			}
   		} catch (IOException e) {
   			e.printStackTrace();
      }
@@ -81,7 +63,7 @@ public class FileSetter {
     	 File file = new File(pathdata+ "Goods.txt"); //Die neue File wird erzeugt
 
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
-  			bw.write(firstlineproduct); //Die erste Zeile wird geschrieben
+  			bw.write(firstlinegoods); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
   			for (Good g : GasStation.getGoods()) {
 				bw.write(g.displaytextfile()); //Ausgabe der Produkte
@@ -160,7 +142,6 @@ public class FileSetter {
      
      
      
-
      
      
 }

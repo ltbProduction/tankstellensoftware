@@ -72,6 +72,10 @@ public class FuelTank {
 		this.salePrice = salePrice;
 	}
 	
+	public String displaytextfile() {
+		String text = String.valueOf(tankNumber)+";"+ getFuelType() +";"+String.valueOf(fuelLevel)+";"+ String.valueOf(capacity) + ";" + String.valueOf(purchasePrice)+ ";"+String.valueOf(salePrice);
+	return text;
+	}
 	
 	
 	

@@ -144,7 +144,6 @@ public class FileScanner {
 
 		     File file = new File(fileNameFuelTanks);
 
-		    File file = new File(classLoader.getResource(fileNameFuelTanks).getFile());
 
 		     
 			try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
@@ -287,11 +286,13 @@ public class FileScanner {
 				output = line.split("=");
 				pricesuper = Double.parseDouble(output[1]);//super Preis intialisiert
 				
-				//Preise für die Objekte anpassen
+				//Menge für die Objekte anpassen
 				GasStation.getFuelTanks().get(0).setFuelLevel((amountdiesel+GasStation.getFuelTanks().get(0).getFuelLevel())); //Die Menge des Dieseltanks auffüllen
 				GasStation.getFuelTanks().get(1).setFuelLevel((amountsuper+GasStation.getFuelTanks().get(1).getFuelLevel())); //Die Menge des Supertanks auffüllen
-
 				
+				GasStation.getFuelTanks().get(0).setPurchasePrice(pricediesel);
+				GasStation.getFuelTanks().get(1).setPurchasePrice(pricesuper);
+
 				
 				sum = pricesuper*amountsuper+pricediesel*amountdiesel; //Summe errechnen
 				
@@ -303,8 +304,17 @@ public class FileScanner {
 					
 				
 				}
-	    	 System.out.println("Test");
-//	    	 safefilesinhistory(fileName, newnumber);
+	         if(file.renameTo 
+	 	            (new File(filenamedeliverhistory + String.valueOf(newnumber)+".txt" ))) 
+	 	         { 
+	 	             // if file copied successfully then delete the original file 
+	 	             file.delete(); 
+	 	             System.out.println("File moved successfully"); 
+	 	         } 
+	 	         else
+	 	         { 
+	 	             System.out.println("Failed to move the file"); 
+	 	         } 
 	    	 
 			}	 
 	     //Es exitiert nicht dann lassen wir es halt
