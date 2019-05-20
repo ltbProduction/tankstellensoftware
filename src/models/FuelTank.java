@@ -7,18 +7,22 @@ public class FuelTank {
 	
 	private int tankNumber;
 	private FuelType fuelType;
-	private double amount;
+	private double fuelLevel;
 	private double capacity;
 	private double purchasePrice;
 	private double salePrice;
 	
 //Konstruktor
-	public FuelTank(int tankNumber, FuelType fuelType, double amount, double capacity, double salePrice) {
+	public FuelTank(int tankNumber, FuelType fuelType, double fuelLevel, double capacity, double purchasePrice, double salePrice) {
+		this.tankNumber = tankNumber;
 		this.fuelType = fuelType;
-		this.amount = amount;
+		this.fuelLevel = fuelLevel;
 		this.capacity = capacity;
+		this.purchasePrice = purchasePrice;
 		this.salePrice = salePrice;
 	}
+
+	
 
 	public int getTankNumber() {
 		return tankNumber;
@@ -36,12 +40,12 @@ public class FuelTank {
 		this.fuelType = fuelType;
 	}
 
-	public double getAmount() {
-		return amount;
+	public double getFuelLevel() {
+		return fuelLevel;
 	}
 
-	public void setAmount(double amount) {
-		this.amount = amount;
+	public void setFuelLevel(double fuelLevel) {
+		this.fuelLevel = fuelLevel;
 	}
 
 	public double getCapacity() {
@@ -59,7 +63,7 @@ public class FuelTank {
 	public void setPurchasePrice(double purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
-
+	
 	public double getSalePrice() {
 		return salePrice;
 	}
@@ -67,8 +71,6 @@ public class FuelTank {
 	public void setSalePrice(double salePrice) {
 		this.salePrice = salePrice;
 	}
-	
-	
 	
 	
 	

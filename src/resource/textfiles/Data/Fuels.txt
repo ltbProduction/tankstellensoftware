@@ -1,3 +1,0 @@
-Nummer;Name;Lagereinheit;Menge;Verkaufspreis
-1;Diesel;Liter;1000;1.30
-2;Benzin;Liter;1000;1.50

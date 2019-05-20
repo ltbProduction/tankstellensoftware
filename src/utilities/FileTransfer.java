@@ -37,22 +37,24 @@ public class FileTransfer {
 	}
 	
 	public static void scandeliveries() throws ParseException, IOException {
-		
-		FileScanner.readDeliversGoods();
-		//FileScanner.readDeliversFuels();
-		
+
+		FileScanner.readDeliveryGoods();
+		FileScanner.readDeliveryFuelTanks();
+
 		
 		
 		
 	}
 	
 	public static void writetextfiles() {
+
 		System.out.println("Test");
 		FileSetter.writeemployee();
 		//FileSetter.writefuels();
 		FileSetter.writeGoods();
 		FileSetter.writeHistorypurchases();
 		FileSetter.writeSalepurchases();
+
 	}
 	
 	

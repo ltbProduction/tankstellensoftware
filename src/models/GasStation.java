@@ -16,12 +16,12 @@ public class GasStation {
 	private static ObservableList<Employee> employees = FXCollections.observableArrayList(); //Liste mit allen Mitarbeitern
 	private static ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
 	private static ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
-	private static ArrayList<FuelTank> fuelTanks = new ArrayList<>(); //Liste mit allen Kraftstofftanks
+	private static ObservableList<FuelTank> fuelTanks = FXCollections.observableArrayList(); //Liste mit allen Kraftstofftanks
 	private static ArrayList<Good> goods = new ArrayList<>(); // Liste mit allen Waren
 	private static ArrayList<Sale> sales = new ArrayList<>(); //Liste mit allen Verkäufen
 	private static ArrayList<Purchase> purchases = new ArrayList<>(); //Liste mit allen Einkäufen
-	private static Date startBalanceDate; //Startdatum 
-	private static Date endBalanceDate; //Enddatrum
+	private static Date startBalanceDate; //Startdatum
+	private static Date endBalanceDate; //Enddatum
 
 	
 	
@@ -136,11 +136,11 @@ public class GasStation {
 		GasStation.shoppingCart = shoppingCart;
 	}
 
-	public static ArrayList<FuelTank> getFuelTanks() {
+	public static ObservableList<FuelTank> getFuelTanks() {
 		return fuelTanks;
 	}
 
-	public static void setFuels(ArrayList<FuelTank> fuelTanks) {
+	public static void setFuelTanks(ObservableList<FuelTank> fuelTanks) {
 		GasStation.fuelTanks = fuelTanks;
 	}
 

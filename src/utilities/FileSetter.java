@@ -14,6 +14,9 @@ import models.Product;
 import models.Purchase;
 import models.Sale;
 
+import models.Employee;
+import models.GasStation;
+
 public class FileSetter {
      private static String pathdata = "src/resource/textfiles/Data/";
      private static String receiptsdata = "src/resource/textfiles/receipt/";
@@ -35,6 +38,7 @@ public class FileSetter {
  		
  		
      }
+
      
      //Die Text datei der Mitarbeiter wird geschrieben
      public static void writeemployee() {
@@ -45,20 +49,22 @@ public class FileSetter {
   			bw.newLine(); 
   			for (Employee e : GasStation.getEmployees()) {
 				bw.write(e.displaytextfile()); //Ausgabe der Produkte
+
 				bw.newLine();
 			}
   		} catch (IOException e) {
   			e.printStackTrace();
      }
+
      }
      
      
      //Die Text datei der Kraftstoffe wird geschrieben
      public static void writefuels() {
-    	 File file = new File(pathdata+ "Fuels.txt"); //Die neue File wird erzeugt
+    	 File file = new File(pathdata+ "FuelsTanks.txt"); //Die neue File wird erzeugt
 
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
-  			bw.write(firstlineproduct); //Die erste Zeile wird geschrieben
+  			bw.write(firstlineproduc); //Die erste Zeile wird geschrieben ÄNDERUNGEN!!!!
   			bw.newLine(); 
   			//Muss noch ge#ndert werden
 //  			for (Employee e : GasStation.getEmployees()) {
@@ -154,6 +160,7 @@ public class FileSetter {
      
      
      
+
      
      
 }
