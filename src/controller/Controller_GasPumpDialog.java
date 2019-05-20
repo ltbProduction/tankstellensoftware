@@ -2,7 +2,6 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,8 +35,10 @@ public class Controller_GasPumpDialog implements Initializable {
     	
     	
     	
+
     	
     	//schlieﬂt das Fenster
+
     	Stage stage = (Stage)
     	    	b_addfuel.getScene().getWindow();
     	    	stage.close();
