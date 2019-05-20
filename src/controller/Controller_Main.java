@@ -23,7 +23,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -31,6 +30,10 @@ import models.Employee;
 import models.FuelTank;
 import models.FuelType;
 import models.GasStation;
+import models.Good;
+import models.Product;
+import models.Purchase;
+import models.Sale;
 
 public class Controller_Main implements Initializable {
 
@@ -59,19 +62,19 @@ public class Controller_Main implements Initializable {
     private Button b_addgoods;
 
     @FXML
-    private TableView<?> tv_shoppingcart;
+    private TableView<Product> tv_shoppingcart;
 
     @FXML
-    private TableColumn<?, ?> tc_shoppingcart_nr;
+    private TableColumn<Product, Integer> tc_shoppingcart_nr;
 
     @FXML
-    private TableColumn<?, ?> tc_shoppingcart_name;
+    private TableColumn<Product, String> tc_shoppingcart_name;
 
     @FXML
-    private TableColumn<?, ?> tc_shoppingcart_amount;
+    private TableColumn<Product, Double> tc_shoppingcart_amount;
 
     @FXML
-    private TableColumn<?, ?> tc_shoppingcart_price;
+    private TableColumn<Product, Double> tc_shoppingcart_price;
 
     @FXML
     private Label l_totalprice;
@@ -110,22 +113,22 @@ public class Controller_Main implements Initializable {
     private TextField tf_ordergoodamount;
 
     @FXML
-    private TableColumn<?, ?> tc_goodsstorage_nr;
+    private TableColumn<Good, Integer> tc_goodsstorage_nr;
 
     @FXML
-    private TableColumn<?, ?> tc_goodsstorage_name;
+    private TableColumn<Good, String> tc_goodsstorage_name;
 
     @FXML
-    private TableColumn<?, ?> tc_goodsstorage_storageunit;
+    private TableColumn<Good, String> tc_goodsstorage_storageunit;
 
     @FXML
-    private TableColumn<?, ?> tc_goodsstorage_amount;
+    private TableColumn<Good, Double> tc_goodsstorage_amount;
 
     @FXML
-    private TableColumn<?, ?> tc_goodsstorage_saleprice;
+    private TableColumn<Good, Double> tc_goodsstorage_saleprice;
 
     @FXML
-    private TableColumn<?, ?> tc_goodsstorage_currency;
+    private TableColumn<Good, String> tc_goodsstorage_currency;
 
     @FXML
     private Tab t_fuel;
@@ -152,7 +155,7 @@ public class Controller_Main implements Initializable {
     private TableColumn<FuelTank, Double> tc_fueltanks_saleprice;
 
     @FXML
-    private ComboBox<?> cb_orderfueltype;
+    private ComboBox<String> cb_orderfueltype;
 
     @FXML
     private TextField tf_orderfuelamount;
@@ -176,22 +179,22 @@ public class Controller_Main implements Initializable {
     private Label l_balanceresult;
 
     @FXML
-    private TableColumn<?, ?> ttc_purchases_number;
+    private TableColumn<Purchase, Integer> tc_purchases_number;
 
     @FXML
-    private TableColumn<?, ?> ttc_purchases_date;
+    private TableColumn<Purchase, LocalDate> tc_purchases_date;
 
     @FXML
-    private TableColumn<?, ?> ttc_purchases_price;
+    private TableColumn<Purchase, Double> tc_purchases_price;
 
     @FXML
-    private TableColumn<?, ?> ttc_sales_number;
+    private TableColumn<Sale, Integer> tc_sales_number;
 
     @FXML
-    private TableColumn<?, ?> ttc_sales_date;
+    private TableColumn<Sale, LocalDate> tc_sales_date;
 
     @FXML
-    private TableColumn<?, ?> ttc_sales_price;
+    private TableColumn<Sale, Double> tc_sales_price;
 
     @FXML
     private DatePicker dp_balancestartdate;
@@ -218,22 +221,22 @@ public class Controller_Main implements Initializable {
     private AnchorPane AP_addGoods;
 
     @FXML
-    private TableView<?> tv_goodsstorage2;
+    private TableView<Good> tv_goodsstorage2;
 
     @FXML
-    private TableColumn<?, ?> tc_goodsstorage2_nr;
+    private TableColumn<Good, Integer> tc_goodsstorage2_nr;
 
     @FXML
-    private TableColumn<?, ?> tc_goodsstorage2_name;
+    private TableColumn<Good, String> tc_goodsstorage2_name;
 
     @FXML
-    private TableView<?> tv_goodsshoppingcart;
+    private TableView<Good> tv_goodsshoppingcart;
 
     @FXML
-    private TableColumn<?, ?> tc_goodsshoppingcart_name;
+    private TableColumn<Good, String> tc_goodsshoppingcart_name;
 
     @FXML
-    private TableColumn<?, ?> tc_goodsshoppingcart_price;
+    private TableColumn<Good, Double> tc_goodsshoppingcart_price;
 
     @FXML
     private TextField tf_goodsnumber;
