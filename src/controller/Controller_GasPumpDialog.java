@@ -36,7 +36,8 @@ public class Controller_GasPumpDialog implements Initializable {
     	
     	
 
-    	//schlieï¿½t das Fenster
+    	
+    	//schließt das Fenster
 
     	Stage stage = (Stage)
     	    	b_addfuel.getScene().getWindow();
