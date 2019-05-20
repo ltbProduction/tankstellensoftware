@@ -20,6 +20,7 @@ public abstract class Product {
 		this.price = price;
 		this.amount = amount;
 	}
+	
 	public abstract void createorder(int amount);
 	public abstract void displayorder();
 	public abstract void createdelivery(int amount);
