@@ -1,6 +1,7 @@
 package models;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class Purchase {
 
@@ -44,5 +45,13 @@ public class Purchase {
 		System.out.println(purchasePrice);
 		System.out.println();
 	}
+	
+	//Die korrekte Ausgabe für die Textdatei wird erzeugt
+		public String displaytextfile() {
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+		String text = String.valueOf(purchaseNumber)+";"+purchaseDate.format(formatter)+";"+String.valueOf(purchasePrice);
+		return text;
+		}
 	
 }

@@ -11,8 +11,9 @@ public class Employee {
 
 
 	private String employeeName;
-	int employeeNumber;
+	private int employeeNumber;
 	private LocalDate dateOfEmployment;
+	private boolean isActive=false;
 	
 	
 	
@@ -58,6 +59,19 @@ public class Employee {
 		String text = String.valueOf(employeeNumber)+";"+employeeName +";" + dateOfEmployment.format(formatter);
 		return text;
 	}
+
+
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	
 	
 	
 	

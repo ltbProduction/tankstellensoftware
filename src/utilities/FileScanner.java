@@ -177,7 +177,7 @@ public class FileScanner {
 	    	 //Datei auslesen
 	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
-	    	 int newnumber = newdeliveriesnumber();
+	    	 int newnumber = Hilfmethoden.newdeliveriesnumber();
 	    	 
 	   
 	    	 
@@ -189,7 +189,7 @@ public class FileScanner {
 				
 				br.readLine(); //Das auslesen der unwichtigen Zeile
 				int numberofgood; //Die Nummer der Waren
-				int newamount; //Die neue Menge
+				double newamount; //Die neue Menge
 				int amount; //Die Menge der Lieferung
 				double price;
 					while ((line = br.readLine()) != null) {	//Schleife startet			
@@ -237,7 +237,7 @@ public class FileScanner {
 	    
 	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
-	    	 int newnumber = newdeliveriesnumber(); //Die Lieferungsnummer
+	    	 int newnumber = Hilfmethoden.newdeliveriesnumber(); //Die Lieferungsnummer
 	    	 
 	   
 	    	 
@@ -297,20 +297,7 @@ public class FileScanner {
 	
 	
 		//Die Methode welche den letzten Einkauf angibt
-		private static int newdeliveriesnumber() {
-			//Number des letzten einkauf auslesen
-			int number;
-			int size;
-			Purchase purchase;
-			size = GasStation.getPurchases().size()-1; //Die Zahl wo man das letze findet
-			if (size == -1) { //Wenn es noch keinen Beleg gibt
-				return 1;
-			} else { //Sonst der letzte Beleg + 1
-				purchase = GasStation.getPurchases().get(size);
-				number = purchase.getPurchaseNumber() +1;
-				return number;
-			 }
-		}
+
 	
 		
 		

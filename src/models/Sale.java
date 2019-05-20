@@ -1,6 +1,7 @@
 package models;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Sale {
 	
@@ -38,6 +39,11 @@ public class Sale {
 		this.salePrice = salePrice;
 	}
 	
+	public String displaytextfile() {
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+	String text = String.valueOf(saleNumber)+";"+saleDate.format(formatter)+";"+String.valueOf(salePrice);
+	return text;
+	}
 	
 
 }
