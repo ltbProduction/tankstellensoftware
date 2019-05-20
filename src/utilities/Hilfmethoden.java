@@ -4,7 +4,7 @@ import models.GasStation;
 import models.Purchase;
 import models.Sale;
 
-public class HelpMethods {
+public class Hilfmethoden {
 
 	public static int newdeliveriesnumber() {
 		//Number des letzten einkauf auslesen
