@@ -33,11 +33,13 @@ public class StartProgram extends Application {
 		primaryStage.show();
 		//GasStation gasstation = new GasStation("Tankstelle Klösterle");
 		FileTransfer.start();
+
 			
 	}
 
 	@Override
 	public void stop() {
+		FileTransfer.writetextfiles();
 	}
 
 //	@Override
