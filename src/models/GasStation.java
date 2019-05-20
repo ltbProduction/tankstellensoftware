@@ -7,98 +7,121 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 import utilities.FileSetter;
-import utilities.Hilfmethoden;
+import utilities.HelpMethods;
 
 public class GasStation {
 
-
-	private static String gasStationName; //Name der Tankstelle
-	private static ObservableList<Employee> employees = FXCollections.observableArrayList(); //Liste mit allen Mitarbeitern
-	private static ArrayList<Product> storage = new ArrayList<>(); //Liste mit allen Produkte
-	private static ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
-	private static ObservableList<FuelTank> fuelTanks = FXCollections.observableArrayList(); //Liste mit allen Kraftstofftanks
+	private static String gasStationName; // Name der Tankstelle
+	private static ObservableList<Employee> employees = FXCollections.observableArrayList(); // Liste mit allen
+																								// Mitarbeitern
+	private static ArrayList<Product> storage = new ArrayList<>(); // Liste mit allen Produkte
+	private static ObservableList<Product> shoppingCart = FXCollections.observableArrayList(); // Liste mit Produkten im
+																								// Warenkorb
+	private static ObservableList<FuelTank> fuelTanks = FXCollections.observableArrayList(); // Liste mit allen
+																								// Kraftstofftanks
 	private static ArrayList<Good> goods = new ArrayList<>(); // Liste mit allen Waren
-	private static ArrayList<Sale> sales = new ArrayList<>(); //Liste mit allen Verkäufen
-	private static ArrayList<Purchase> purchases = new ArrayList<>(); //Liste mit allen Einkäufen
-	private static Date startBalanceDate; //Startdatum
-	private static Date endBalanceDate; //Enddatum
+	private static ArrayList<Sale> sales = new ArrayList<>(); // Liste mit allen Verkäufen
+	private static ArrayList<Purchase> purchases = new ArrayList<>(); // Liste mit allen Einkäufen
+	private static Date startBalanceDate; // Startdatum
+	private static Date endBalanceDate; // Enddatum
 
-	
-	
 	public GasStation(String gasStationName) {
-		this.gasStationName = gasStationName;
+		GasStation.gasStationName = gasStationName;
 	}
-	
 
 	public static void addEmployee(String employeeName, LocalDate dateOfEmployment) {
-		int indexlastmember = (getEmployees().size())-1;
-		int employeeNumber = employees.get(indexlastmember).getEmployeeNumber() +1;
+		int indexlastmember = (getEmployees().size()) - 1;
+		int employeeNumber = employees.get(indexlastmember).getEmployeeNumber() + 1;
 		Employee employee = new Employee(employeeNumber, employeeName, dateOfEmployment);
 		employees.add(employee);
 	}
-	
+
 	public static void addFuelTank(FuelTank fuelTank) {
 		fuelTanks.add(fuelTank);
 	}
-	
-	
-	//Methode welche alle ArrayLists auf null setzt
-	
-	public static void clearArrayList() {
-		goods.clear();
-		fuelTanks.clear();
-		storage.clear();
-		employees.clear();
-		shoppingCart.clear();
-		sales.clear();
-		purchases.clear();
-				
+
+	public static void addGoodToShoppingCart(int productNumber, double productAmount) {
+
+		for (Good g : goods) {
+			if (g.getNumber() == productNumber) {
+				if (productAmount > g.getAmount()) {
+					System.out.println("Zu wenig im Bestand");
+				} else {
+					g.setAmount(g.getAmount() - productAmount);
+
+					shoppingCart.add(new Product(g.getNumber(), g.getName(), g.getUnit(), g.getPrice(), productAmount));
+
+				}
+
+			}
+		}
+
 	}
-	
-	
-	
+
+	public static void addFuelToShoppingCart(int productNumber, double productAmount) {
+
+		for (FuelTank f : fuelTanks) {
+			if (f.getTankNumber() == productNumber) {
+				if (productAmount > f.getFuelLevel()) {
+					System.out.println("Zu wenig im Bestand");
+				} else {
+					f.setFuelLevel(f.getFuelLevel() - productAmount);
+
+					shoppingCart.add(new Product(f.getTankNumber(), f.getFuelType(), "Liter", f.getSalePrice(), productAmount));
+
+				}
+
+			}
+		}
+
+	}
+
+	// Methode welche alle ArrayLists auf null setzt
+
+
 	public static void startGasStation() {
-		
+
 	}
-	
+
 	public static void scanDeliveries() {
-		
+
 	}
-	
+
 	public static void createSaleReceipt() {
-		
+
 	}
-	
-	//writeCurrentData speichert die änderbaren Daten
+
+	// writeCurrentData speichert die änderbaren Daten
 	public static void writeCurrentData() {
-		
+
 	}
-	
+
 	public static void createHistory() {
-		
+
 	}
-	
+
 	public static void calculateBalance(Date startBalanceDate, Date endBalaceDate) {
-		
+
 	}
-	//Test für Linus
+
+	// Test für Linus
 	public static void display() {
-		for (Purchase g: purchases){
+		for (Purchase g : purchases) {
 			g.display();
 		}
-	
+
 	}
-	
-	public static void finishedreceipt() { //Zum abschließen einer Reception
+
+	public static void finishedreceipt() { // Zum abschließen einer Reception
 		double sum;
 		sum = 0;
 		for (Product p : GasStation.getShoppingCart()) {
-		sum += p.amount*p.price;
+			sum += p.amount * p.price;
 		}
-		//Methode welche den Beleg ausdruckt
+		// Methode welche den Beleg ausdruckt
 		FileSetter.createreceipt(sum);
 		shoppingCart.clear();
-		sales.add(new Sale(Hilfmethoden.newsalesnumber(), LocalDate.now(), sum));
+		sales.add(new Sale(HelpMethods.newsalesnumber(), LocalDate.now(), sum));
 	}
 
 	public static String getGasStationName() {
@@ -109,13 +132,13 @@ public class GasStation {
 		GasStation.gasStationName = gasStationName;
 	}
 
-	//Methode die ObservableList von Mitarbeitern zurückgibt
+	// Methode die ObservableList von Mitarbeitern zurückgibt
 	public static ObservableList<Employee> getEmployees() {
-			
-			return employees;
-					  
+
+		return employees;
+
 	}
-	
+
 	public static void setEmployees(ObservableList<Employee> employees) {
 		GasStation.employees = employees;
 	}
@@ -128,11 +151,11 @@ public class GasStation {
 		GasStation.storage = storage;
 	}
 
-	public static ArrayList<Product> getShoppingCart() {
+	public static ObservableList<Product> getShoppingCart() {
 		return shoppingCart;
 	}
 
-	public static void setShoppingCart(ArrayList<Product> shoppingCart) {
+	public static void setShoppingCart(ObservableList<Product> shoppingCart) {
 		GasStation.shoppingCart = shoppingCart;
 	}
 
@@ -149,7 +172,7 @@ public class GasStation {
 	}
 
 	public static void setGoods(ArrayList<Good> goods) {
-	   GasStation.goods = goods;
+		GasStation.goods = goods;
 	}
 
 	public static ArrayList<Sale> getSales() {
@@ -183,30 +206,24 @@ public class GasStation {
 	public static void setEndBalanceDate(Date endBalanceDate) {
 		GasStation.endBalanceDate = endBalanceDate;
 	}
-	
+
 	public static Employee activeEmployee() {
 		Employee activeemployee;
 		activeemployee = null;
-		
-		for(Employee e : employees){
-			if(e.isActive()) {
+
+		for (Employee e : employees) {
+			if (e.isActive()) {
 				activeemployee = e;
-			}
-			else {
+			} else {
 				continue;
 			}
 		}
 		return activeemployee;
 	}
-	
-	
-	
+
 }
-	
-	
-	
-	
-	//alt:
+
+// alt:
 //private String name;
 //private int numberofcustomers;
 //private ArrayList<Goods> goods = new ArrayList<>();

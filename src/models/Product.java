@@ -1,13 +1,13 @@
 package models;
 
-public abstract class Product {
+public class Product {
 
 	protected int number;
 	protected String name;
 //	private Producttyp producttyp;
 	protected String unit;
 	protected double price;
-	
+	private double sum;
 	protected double amount; 
 	
 	
@@ -19,16 +19,27 @@ public abstract class Product {
 		this.unit = unit;
 		this.price = price;
 		this.amount = amount;
+		this.sum = amount*price;
 	}
 	
-	public abstract void createorder(int amount);
-	public abstract void displayorder();
-	public abstract void createdelivery(int amount);
 	
 	
-	
-	public abstract int getNumber();
-	
+	public double getSum() {
+		return sum;
+	}
+
+
+
+	public void setSum(double sum) {
+		this.sum = sum;
+	}
+
+
+
+	public int getNumber() {
+		return number;
+	}
+
 	public void setNumber(int number) {
 		this.number = number;
 	}

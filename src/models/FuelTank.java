@@ -32,8 +32,8 @@ public class FuelTank {
 		this.tankNumber = tankNumber;
 	}
 
-	public FuelType getFuelType() {
-		return fuelType;
+	public String getFuelType() {
+		return fuelType.getFuelType();
 	}
 
 	public void setFuelType(FuelType fuelType) {

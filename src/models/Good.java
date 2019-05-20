@@ -1,7 +1,5 @@
 package models;
 
-import java.time.format.DateTimeFormatter;
-
 public class Good extends Product {
 
 	//Atribute
@@ -26,29 +24,29 @@ public class Good extends Product {
 		System.out.println();
 	}
 	
-	
-	@Override
-	public void createorder(int amount) {
-		
-		
-	}
-
-
-
-	@Override
-	public void createdelivery(int amount) {
-		
-	}
-
-
-
-
-
-	@Override
-	public void displayorder() {
-		// TODO Auto-generated method stub
-		
-	}
+//	
+//	@Override
+//	public void createorder(int amount) {
+//		
+//		
+//	}
+//
+//
+//
+//	@Override
+//	public void createdelivery(int amount) {
+//		
+//	}
+//
+//
+//
+//
+//
+//	@Override
+//	public void displayorder() {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 
 

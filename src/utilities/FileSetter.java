@@ -35,6 +35,7 @@ public class FileSetter {
 				bw.write(e.displaytextfile()); //Ausgabe der Produkte
 				bw.newLine();
 			}
+  			GasStation.getEmployees().clear();
   		} catch (IOException e) {
   			e.printStackTrace();
      }
@@ -53,6 +54,7 @@ public class FileSetter {
 				bw.write(f.displaytextfile()); //Ausgabe der Produkte
 				bw.newLine();
 			}
+  			GasStation.getFuelTanks().clear();
   		} catch (IOException e) {
   			e.printStackTrace();
      }
@@ -69,6 +71,7 @@ public class FileSetter {
 				bw.write(g.displaytextfile()); //Ausgabe der Produkte
 				bw.newLine();
 			}
+  			GasStation.getGoods().clear();
   		} catch (IOException e) {
   			e.printStackTrace();
      }
@@ -85,6 +88,7 @@ public class FileSetter {
 				bw.write(p.displaytextfile()); //Ausgabe der Produkte
 				bw.newLine();
 			}
+  			GasStation.getPurchases().clear();
   		} catch (IOException e) {
   			e.printStackTrace();
      }
@@ -102,6 +106,7 @@ public class FileSetter {
 				bw.write(s.displaytextfile()); //Ausgabe der Produkte
 				bw.newLine();
 			}
+  			GasStation.getSales().clear();
   		} catch (IOException e) {
   			e.printStackTrace();
      }

@@ -2,7 +2,6 @@ package utilities;
 
 import java.io.IOException;
 import java.text.ParseException;
-import models.GasStation;
 
 
 
@@ -48,7 +47,7 @@ public class FileTransfer {
 	
 	public static void writetextfiles() {
 
-		System.out.println("Test");
+		//System.out.println("Test");
 		FileSetter.writeemployee();
 		FileSetter.writefuels();
 		FileSetter.writeGoods();
