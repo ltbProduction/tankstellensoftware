@@ -44,16 +44,16 @@ public class GasStation {
 	
 	//Methode welche alle ArrayLists auf null setzt
 	
-	public static void clearArrayList() {
-		goods.clear();
-		fuelTanks.clear();
-		storage.clear();
-		employees.clear();
-		shoppingCart.clear();
-		sales.clear();
-		purchases.clear();
-				
-	}
+//	public static void clearArrayList() {
+//		goods.clear();
+//		fuelTanks.clear();
+//		storage.clear();
+//		employees.clear();
+//		shoppingCart.clear();
+//		sales.clear();
+//		purchases.clear();
+//				
+//	}
 	
 	
 	

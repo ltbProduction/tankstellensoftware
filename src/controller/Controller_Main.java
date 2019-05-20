@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -271,6 +272,9 @@ public class Controller_Main implements Initializable {
     	  tc_fueltanks_purchaseprice.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("purchasePrice"));
     	  tc_fueltanks_saleprice.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("salePrice"));
     	  tv_fueltanks.setItems(GasStation.getFuelTanks());
+    	  
+    	  
+    	  
     	  
 
 //    	    @FXML
