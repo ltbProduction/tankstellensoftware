@@ -18,8 +18,8 @@ public class GasStation {
 	private static ArrayList<Product> shoppingCart = new ArrayList<>(); //Liste mit Produkten im Warenkorb
 	private static ObservableList<FuelTank> fuelTanks = FXCollections.observableArrayList(); //Liste mit allen Kraftstofftanks
 	private static ArrayList<Good> goods = new ArrayList<>(); // Liste mit allen Waren
-	private static ArrayList<Sale> sales = new ArrayList<>(); //Liste mit allen Verkäufen
-	private static ArrayList<Purchase> purchases = new ArrayList<>(); //Liste mit allen Einkäufen
+	private static ArrayList<Sale> sales = new ArrayList<>(); //Liste mit allen Verkï¿½ufen
+	private static ArrayList<Purchase> purchases = new ArrayList<>(); //Liste mit allen Einkï¿½ufen
 	private static Date startBalanceDate; //Startdatum
 	private static Date endBalanceDate; //Enddatum
 
@@ -41,7 +41,6 @@ public class GasStation {
 		fuelTanks.add(fuelTank);
 	}
 	
-	
 
 	
 	
@@ -57,7 +56,7 @@ public class GasStation {
 		
 	}
 	
-	//writeCurrentData speichert die änderbaren Daten
+	//writeCurrentData speichert die ï¿½nderbaren Daten
 	public static void writeCurrentData() {
 		
 	}
@@ -69,7 +68,7 @@ public class GasStation {
 	public static void calculateBalance(Date startBalanceDate, Date endBalaceDate) {
 		
 	}
-	//Test für Linus
+	//Test fï¿½r Linus
 	public static void display() {
 		for (Purchase g: purchases){
 			g.display();
@@ -77,7 +76,7 @@ public class GasStation {
 	
 	}
 	
-	public static void finishedreceipt() { //Zum abschließen einer Reception
+	public static void finishedreceipt() { //Zum abschlieï¿½en einer Reception
 		double sum;
 		sum = 0;
 		for (Product p : GasStation.getShoppingCart()) {
@@ -97,7 +96,7 @@ public class GasStation {
 		GasStation.gasStationName = gasStationName;
 	}
 
-	//Methode die ObservableList von Mitarbeitern zurückgibt
+	//Methode die ObservableList von Mitarbeitern zurï¿½ckgibt
 	public static ObservableList<Employee> getEmployees() {
 			
 			return employees;
