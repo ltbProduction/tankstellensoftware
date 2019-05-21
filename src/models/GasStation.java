@@ -186,6 +186,17 @@ public class GasStation {
 		return activeemployee;
 	}
 	
+	public static boolean setEmployee(int number) {
+		for (Employee e : employees) {
+			if (e.getEmployeeNumber() == number) {
+				e.setActive(true);
+				return true;
+			}else continue;
+			
+		}
+		return false;
+	}
+	
 	
 	
 }

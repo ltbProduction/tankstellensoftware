@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -273,7 +274,7 @@ public class Controller_Main implements Initializable {
     	  tv_fueltanks.setItems(GasStation.getFuelTanks());
     	  
 		
-    	  
+    	
     	  
 
 //    	    @FXML
@@ -326,7 +327,42 @@ public class Controller_Main implements Initializable {
     	
     	AP_LogIn.setVisible(false);
     	TabPane_main.setVisible(true);
-
+    	
+    	//Ampel für den Füllstand Diesel
+     	  Image image = null;
+      	  double value = GasStation.getFuelTanks().get(0).getFuelLevel()/GasStation.getFuelTanks().get(0).getCapacity();
+     	  
+     	  //Diesel
+  			 if(value > 0.5) {
+  				image = new Image(getClass().getResourceAsStream(			
+  					"/resource/traffic light/traffic_light_green.PNG"));		
+  			imageview_diesel.setImage(image);
+  			} else if(value > 0.25) {
+  				image = new Image(getClass().getResourceAsStream(			
+  	  					"/resource/traffic light/traffic_light_yellow.PNG"));		
+  	  		imageview_diesel.setImage(image);
+  			} else if(value >= 0.0) {
+  				image = new Image(getClass().getResourceAsStream(			
+  	  					"/resource/traffic light/traffic_light_red.PNG"));		
+  	  		imageview_diesel.setImage(image);
+  			}
+  			
+  			 value = GasStation.getFuelTanks().get(1).getFuelLevel()/GasStation.getFuelTanks().get(1).getCapacity();
+  			 
+  			 //Benzin
+  			if(value > 0.5) {
+  				image = new Image(getClass().getResourceAsStream(			
+  					"/resource/traffic light/traffic_light_green.PNG"));		
+  			imageview_diesel.setImage(image);
+  			} else if(value > 0.25) {
+  				image = new Image(getClass().getResourceAsStream(			
+  	  					"/resource/traffic light/traffic_light_yellow.PNG"));		
+  	  		imageview_diesel.setImage(image);
+  			} else if(value >= 0.0) {
+  				image = new Image(getClass().getResourceAsStream(			
+  	  					"/resource/traffic light/traffic_light_red.PNG"));		
+  	  		imageview_diesel.setImage(image);
+  			}
     }
 
     @FXML
