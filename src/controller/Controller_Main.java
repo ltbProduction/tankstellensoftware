@@ -255,6 +255,9 @@ public class Controller_Main implements Initializable {
 
     @FXML
     private Button b_login;
+    
+    @FXML
+    private Label l_wrongemployeenumber;
            
     @Override
 	public void initialize(URL url, ResourceBundle rb) { 	
@@ -272,10 +275,7 @@ public class Controller_Main implements Initializable {
     	  tc_fueltanks_purchaseprice.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("purchasePrice"));
     	  tc_fueltanks_saleprice.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("salePrice"));
     	  tv_fueltanks.setItems(GasStation.getFuelTanks());
-    	  
-		
-    	
-    	  
+  	  
 
 //    	    @FXML
 //    	    private TableColumn<FuelTank, FuelType> tc_fueltanks_fueltype;
@@ -325,44 +325,24 @@ public class Controller_Main implements Initializable {
     @FXML
     void OnLogInClick(ActionEvent event) {
     	
-    	AP_LogIn.setVisible(false);
-    	TabPane_main.setVisible(true);
+    	int employeeNumber = Integer.valueOf(tf_employeenumber.getText());
     	
-    	//Ampel für den Füllstand Diesel
-     	  Image image = null;
-      	  double value = GasStation.getFuelTanks().get(0).getFuelLevel()/GasStation.getFuelTanks().get(0).getCapacity();
-     	  
-     	  //Diesel
-  			 if(value > 0.5) {
-  				image = new Image(getClass().getResourceAsStream(			
-  					"/resource/traffic light/traffic_light_green.PNG"));		
-  			imageview_diesel.setImage(image);
-  			} else if(value > 0.25) {
-  				image = new Image(getClass().getResourceAsStream(			
-  	  					"/resource/traffic light/traffic_light_yellow.PNG"));		
-  	  		imageview_diesel.setImage(image);
-  			} else if(value >= 0.0) {
-  				image = new Image(getClass().getResourceAsStream(			
-  	  					"/resource/traffic light/traffic_light_red.PNG"));		
-  	  		imageview_diesel.setImage(image);
-  			}
-  			
-  			 value = GasStation.getFuelTanks().get(1).getFuelLevel()/GasStation.getFuelTanks().get(1).getCapacity();
-  			 
-  			 //Super
-  			if(value > 0.5) {
-  				image = new Image(getClass().getResourceAsStream(			
-  					"/resource/traffic light/traffic_light_green.PNG"));		
-  			imageview_super.setImage(image);
-  			} else if(value > 0.25) {
-  				image = new Image(getClass().getResourceAsStream(			
-  	  					"/resource/traffic light/traffic_light_yellow.PNG"));		
-  	  		imageview_super.setImage(image);
-  			} else if(value >= 0.0) {
-  				image = new Image(getClass().getResourceAsStream(			
-  	  					"/resource/traffic light/traffic_light_red.PNG"));		
-  	  		imageview_super.setImage(image);
-  			}
+	if(GasStation.existingEmployee(employeeNumber) == true) {
+		AP_LogIn.setVisible(false);
+    	TabPane_main.setVisible(true);
+    	System.out.println("Erfolgreicher Login");
+    	
+    	//Mitarbeiter auf aktiv setzen
+    	GasStation.setCurrentEmployee(employeeNumber);
+    	
+	}else {
+		l_wrongemployeenumber.setText("ungültige Mitarbeiternummer");
+		System.out.println("Ungültige Mitarbeiternummer");
+	}
+	
+	//Aktualisiert Ampeldarstellung des Kraftstofflevels
+	imageview_diesel.setImage(GasStation.getTrafficLight(0));
+	imageview_super.setImage(GasStation.getTrafficLight(1));
     }
 
     @FXML

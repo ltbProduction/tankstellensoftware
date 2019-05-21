@@ -2,6 +2,4 @@ Nummer;Name;Datum
 1001;Lukas Blunck;12.05.2019
 1002;Robin Birkhofer;11.05.2019
 1003;Linus Brugger;13.05.2019
-1004;Daniel;20.05.2019
-1005;Test Mitarbeiter;21.05.2019
-1006;Peter Metzger;30.05.2019
+1004;Daniel Appenmaier;31.05.2019
