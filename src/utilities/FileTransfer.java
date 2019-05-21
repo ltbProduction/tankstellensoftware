@@ -63,7 +63,7 @@ public class FileTransfer {
 		}
 
 		FileSetter.writeHistorypurchases();
-		FileSetter.writeSalepurchases();
+		FileSetter.writeHistorysales();
 
 	}
 	

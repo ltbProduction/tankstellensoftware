@@ -33,7 +33,11 @@ public class FileSetter {
   			bw.newLine(); 
   			for (Employee e : GasStation.getEmployees()) {
 				bw.write(e.displaytextfile()); //Ausgabe der Produkte
-				bw.newLine();
+				if (GasStation.getEmployees().indexOf(e) < GasStation.getEmployees().size()-1) {
+					bw.newLine();
+				} else continue;
+				
+				
 			}
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -51,7 +55,10 @@ public class FileSetter {
   			//Muss noch ge#ndert werden
   			for (FuelTank f : GasStation.getFuelTanks()) {
 				bw.write(f.displaytextfile()); //Ausgabe der Produkte
-				bw.newLine();
+				if (GasStation.getFuelTanks().indexOf(f) < GasStation.getFuelTanks().size()-1) {
+					bw.newLine();
+				} else continue;
+				
 			}
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -67,7 +74,10 @@ public class FileSetter {
   			bw.newLine(); 
   			for (Good g : GasStation.getGoods()) {
 				bw.write(g.displaytextfile()); //Ausgabe der Produkte
-				bw.newLine();
+				if (GasStation.getGoods().indexOf(g) < GasStation.getGoods().size()-1) {
+					bw.newLine();
+				} else continue;
+				
 			}
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -83,7 +93,9 @@ public class FileSetter {
   			bw.newLine(); 
   			for (Purchase p : GasStation.getPurchases()) {
 				bw.write(p.displaytextfile()); //Ausgabe der Produkte
-				bw.newLine();
+				if (GasStation.getPurchases().indexOf(p) < GasStation.getPurchases().size()-1) {
+					bw.newLine();
+				} else continue;
 			}
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -92,7 +104,7 @@ public class FileSetter {
      
      
      //Die Text datei der Waren wird geschrieben
-     public static void writeSalepurchases() {
+     public static void writeHistorysales() {
     	 File file = new File(pathdata+ "Historysales.txt"); //Die neue File wird erzeugt
 
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
@@ -100,7 +112,9 @@ public class FileSetter {
   			bw.newLine(); 
   			for (Sale s : GasStation.getSales()) {
 				bw.write(s.displaytextfile()); //Ausgabe der Produkte
-				bw.newLine();
+				if (GasStation.getSales().indexOf(s) < GasStation.getSales().size()-1) {
+					bw.newLine();
+				} else continue;
 			}
   		} catch (IOException e) {
   			e.printStackTrace();
