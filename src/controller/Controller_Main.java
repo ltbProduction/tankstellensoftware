@@ -349,19 +349,19 @@ public class Controller_Main implements Initializable {
   			
   			 value = GasStation.getFuelTanks().get(1).getFuelLevel()/GasStation.getFuelTanks().get(1).getCapacity();
   			 
-  			 //Benzin
+  			 //Super
   			if(value > 0.5) {
   				image = new Image(getClass().getResourceAsStream(			
   					"/resource/traffic light/traffic_light_green.PNG"));		
-  			imageview_diesel.setImage(image);
+  			imageview_super.setImage(image);
   			} else if(value > 0.25) {
   				image = new Image(getClass().getResourceAsStream(			
   	  					"/resource/traffic light/traffic_light_yellow.PNG"));		
-  	  		imageview_diesel.setImage(image);
+  	  		imageview_super.setImage(image);
   			} else if(value >= 0.0) {
   				image = new Image(getClass().getResourceAsStream(			
   	  					"/resource/traffic light/traffic_light_red.PNG"));		
-  	  		imageview_diesel.setImage(image);
+  	  		imageview_super.setImage(image);
   			}
     }
 
