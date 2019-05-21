@@ -178,7 +178,7 @@ public class FileScanner {
 	    	 //Datei auslesen
 	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
-	    	 int newnumber = Hilfmethoden.newdeliveriesnumber();
+	    	 int newnumber = helpmethod.newdeliveriesnumber();
 	    	 
 	   
 	    	 
@@ -252,7 +252,7 @@ public class FileScanner {
 	    
 	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
-	    	 int newnumber = Hilfmethoden.newdeliveriesnumber(); //Die Lieferungsnummer
+	    	 int newnumber = helpmethod.newdeliveriesnumber(); //Die Lieferungsnummer
 	    	 
 	   
 	    	 

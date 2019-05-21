@@ -6,5 +6,4 @@ Nummer;Name;Datum
 1005;Test Mitarbeiter;21.05.2019
 1006;Peter Metzger;30.05.2019
 1007;Daniel;31.05.2019
-1008;afsfa;31.05.2019
-1009;fgsasd;18.05.2019
+

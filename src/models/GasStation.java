@@ -7,7 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 import utilities.FileSetter;
-import utilities.Hilfmethoden;
+import utilities.helpmethod;
 
 public class GasStation {
 
@@ -85,7 +85,7 @@ public class GasStation {
 		//Methode welche den Beleg ausdruckt
 		FileSetter.createreceipt(sum);
 		shoppingCart.clear();
-		sales.add(new Sale(Hilfmethoden.newsalesnumber(), LocalDate.now(), sum));
+		sales.add(new Sale(helpmethod.newsalesnumber(), LocalDate.now(), sum));
 	}
 
 	public static String getGasStationName() {

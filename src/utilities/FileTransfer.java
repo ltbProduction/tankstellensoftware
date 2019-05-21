@@ -47,10 +47,19 @@ public class FileTransfer {
 	
 	public static void writetextfiles() {
 
-		System.out.println("Test");
+
+		if(GasStation.getEmployees().size()>1) {
 		FileSetter.writeemployee();
+		}
+		
+		if(GasStation.getFuelTanks().size()>1) {
 		FileSetter.writefuels();
+		}
+		
+		if(GasStation.getGoods().size()>1) {
 		FileSetter.writeGoods();
+		}
+
 		FileSetter.writeHistorypurchases();
 		FileSetter.writeSalepurchases();
 
