@@ -1,7 +1,5 @@
 package models;
 
-import java.time.format.DateTimeFormatter;
-
 public class Good extends Product {
 
 	//Atribute

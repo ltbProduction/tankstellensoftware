@@ -25,8 +25,8 @@ public class GasStation {
 
 	
 	
-	public GasStation(String gasStationName) {
-		this.gasStationName = gasStationName;
+	public GasStation() {
+		
 	}
 	
 
