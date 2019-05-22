@@ -21,7 +21,7 @@ public class FileSetter {
      private static String firstlinegoods = "Nummer;Name;Lagereinheit;Menge;Einkaufspreis;Verkaufspreis";
      private static String firstlinehistory = "Nummer;Datum;Preis";
      private static String firstlineemployee = "Nummer;Name;Datum";
-     private static String firstlinefuels = "Nummer;Kraftstoffart;F�llstand;Kapazit�t;Einkaufspreis;Verkaufspreis";
+     private static String firstlinefuels = "Nummer;Kraftstoffart;Füllstand;Kapazität;Einkaufspreis;Verkaufspreis";
    
      
      //Die Text datei der Mitarbeiter wird geschrieben
@@ -31,11 +31,11 @@ public class FileSetter {
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
   			bw.write(firstlineemployee); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
-  			for (Employee e : GasStation.getEmployees()) {
-				bw.write(e.displaytextfile()); //Ausgabe der Produkte
-				if (GasStation.getEmployees().indexOf(e) < GasStation.getEmployees().size()-1) {
-					bw.newLine();
-				} else continue;
+  			for (Employee e : GasStation.getEmployees()) {							//für jeden Mitarbeiter von Employyes
+				bw.write(e.displaytextfile()); 								//Schreiben des Mitarbeiters			
+				if (GasStation.getEmployees().indexOf(e) < GasStation.getEmployees().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
+					bw.newLine();									// Springe in die nächste Zeile
+				} else continue;									// Sonst führe fort
 				
 				
 			}
@@ -53,11 +53,13 @@ public class FileSetter {
   			bw.write(firstlinefuels); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
   			//Muss noch ge#ndert werden
-  			for (Fuel f : GasStation.getFuels()) {
-				bw.write(f.displaytextfile()); //Ausgabe der Produkte
-				if (GasStation.getFuels().indexOf(f) < GasStation.getFuels().size()-1) {
-					bw.newLine();
-				} else continue;
+
+  			for (Fuel f : GasStation.getFuels()) {							//für jeden Kraftstofftank von Kraftstofftanks
+				bw.write(f.displaytextfile()); 								//Schreiben des Tanks
+				if (GasStation.getFuels().indexOf(f) < GasStation.getFuels().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
+					bw.newLine();									// Springe in die nächste Zeile
+				} else continue;									// Sonst führe fort
+
 				
 			}
   		} catch (IOException e) {
@@ -72,11 +74,11 @@ public class FileSetter {
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
   			bw.write(firstlinegoods); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
-  			for (Good g : GasStation.getGoods()) {
-				bw.write(g.displaytextfile()); //Ausgabe der Produkte
-				if (GasStation.getGoods().indexOf(g) < GasStation.getGoods().size()-1) {
-					bw.newLine();
-				} else continue;
+  			for (Good g : GasStation.getGoods()) {							//für jede Ware von Waren
+				bw.write(g.displaytextfile()); 							//Schreibe die Waren
+				if (GasStation.getGoods().indexOf(g) < GasStation.getGoods().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
+					bw.newLine();								// Springe in die nächste Zeile
+				} else continue;								// Sonst führe fort
 				
 			}
   		} catch (IOException e) {
@@ -91,11 +93,11 @@ public class FileSetter {
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
   			bw.write(firstlinehistory); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
-  			for (Purchase p : GasStation.getPurchases()) {
-				bw.write(p.displaytextfile()); //Ausgabe der Produkte
-				if (GasStation.getPurchases().indexOf(p) < GasStation.getPurchases().size()-1) {
-					bw.newLine();
-				} else continue;
+  			for (Purchase p : GasStation.getPurchases()) {							//für jeden Einkauf von Einkäufe
+				bw.write(p.displaytextfile()); 								//Schreibe den Einkauf
+				if (GasStation.getPurchases().indexOf(p) < GasStation.getPurchases().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
+					bw.newLine();									// Springe in die nächste Zeile
+				} else continue;									// Sonst führe fort
 			}
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -110,11 +112,11 @@ public class FileSetter {
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
   			bw.write(firstlinehistory); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
-  			for (Sale s : GasStation.getSales()) {
-				bw.write(s.displaytextfile()); //Ausgabe der Produkte
-				if (GasStation.getSales().indexOf(s) < GasStation.getSales().size()-1) {
-					bw.newLine();
-				} else continue;
+  			for (Sale s : GasStation.getSales()) {								//für jeden Verkauf von Verkäufe
+				bw.write(s.displaytextfile()); 								//Schreibe den Verkauf
+				if (GasStation.getSales().indexOf(s) < GasStation.getSales().size()-1) {		//Wenn es nicht das letzte Element der Liste ist
+					bw.newLine();									// Springe in die nächste Zeile
+				} else continue;									// Sonst führe fort
 			}
   		} catch (IOException e) {
   			e.printStackTrace();
