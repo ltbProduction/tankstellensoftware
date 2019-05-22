@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 import utilities.FileSetter;
 import utilities.helpmethod;
@@ -22,9 +23,9 @@ public class GasStation {
 	private static ObservableList<Fuel> fuels = FXCollections.observableArrayList(); // Liste mit allen
 																								// Kraftstofftanks
 	private static ObservableList<Good> goods = FXCollections.observableArrayList(); // Liste mit allen Waren
-	private static ObservableList<Sale> sales = FXCollections.observableArrayList(); // Liste mit allen Verk�ufen
+	private static ObservableList<Sale> sales = FXCollections.observableArrayList(); // Liste mit allen Verkï¿½ufen
 	private static ObservableList<Purchase> purchases = FXCollections.observableArrayList(); // Liste mit allen
-																								// Eink�ufen
+																								// Einkï¿½ufen
 	private static Date startBalanceDate; // Startdatum
 	private static Date endBalanceDate; // Enddatum
 
@@ -56,7 +57,7 @@ public class GasStation {
 		// Neues Tank-Produkt erstellen
 		Fuel f = new Fuel(fuels.get(i).getNumber(), name, amount, amount, fuels.get(i).getPurchasePrice(), fuels.get(i).getSalePrice());
 
-		// Dem Warenkorb hinzuf�gen
+		// Dem Warenkorb hinzufügen
 		shoppingCart.add(f);
 		
 		
@@ -67,19 +68,19 @@ public class GasStation {
 		
 		
 		
-		for (Product p : shoppingCart) {							// Pr�fe f�r jedes Produkt in shoppingCart
+		for (Product p : shoppingCart) {							// Prüfe für jedes Produkt in shoppingCart
 			if (p instanceof Fuel) {								// ob das Produkt ein Kraftstoffprodukt ist
-				for (Fuel f : fuels) {								// Wenn ja, �berpr�fe f�r jeden Kraftstofftank
+				for (Fuel f : fuels) {								// Wenn ja, überprüfe für jeden Kraftstofftank
 					if (f.getName().equals(p.getName())) {			// ob dessen Name gleich dem Name des Produkts ist (z.B. Diesel = Diesel)
-						f.setAmount(f.getAmount()-p.getAmount());	// Wenn ja, setze den F�llstand auf die Differenz aus altem F�llstand und gekaufter Menge
+						f.setAmount(f.getAmount()-p.getAmount());	// Wenn ja, setze den Füllstand auf die Differenz aus altem Füllstand und gekaufter Menge
 					}
 				}
 			}
 		}
 		
-		for (Product p : shoppingCart) {								// Pr�fe f�r jedes Produkt im Warenkorb
+		for (Product p : shoppingCart) {								// Prüfe für jedes Produkt im Warenkorb
 			if (p instanceof Good) {									// ob das Produkt eine Ware ist
-				for (Good g : goods) {									// Wenn ja, �berpr�fe f�r jede Ware im Warenlager
+				for (Good g : goods) {									// Wenn ja, überprüfe für jede Ware im Warenlager
 					if (g.getName().equals(p.getName())) {				// ob dessen Name gleich dem Name des Produkts ist (z.B. Wodka = Wodka)
 						g.setAmount(g.getAmount()-p.getAmount());		// Wenn ja, setze die Menge auf die Differenz aus alter Menge und gekaufter Menge
 					}
@@ -111,7 +112,7 @@ public class GasStation {
 
 	}
 
-	// writeCurrentData speichert die �nderbaren Daten
+	// writeCurrentData speichert die ï¿½nderbaren Daten
 	public static void writeCurrentData() {
 
 	}
@@ -124,7 +125,7 @@ public class GasStation {
 
 	}
 
-	// Test f�r Linus
+	// Test fï¿½r Linus
 	public static void display() {
 		for (Purchase g : purchases) {
 			g.display();
@@ -132,7 +133,7 @@ public class GasStation {
 
 	}
 
-	public static void finishedreceipt() { // Zum abschlie�en einer Reception
+	public static void finishedreceipt() { // Zum abschlieï¿½en einer Reception
 		double sum;
 		sum = 0;
 		for (Product p : GasStation.getShoppingCart()) {
@@ -152,7 +153,7 @@ public class GasStation {
 		GasStation.gasStationName = gasStationName;
 	}
 
-	// Methode die ObservableList von Mitarbeitern zur�ckgibt
+	// Methode die ObservableList von Mitarbeitern zurï¿½ckgibt
 	public static ObservableList<Employee> getEmployees() {
 
 		return employees;
@@ -240,6 +241,65 @@ public class GasStation {
 		}
 		return activeemployee;
 	}
+
+	public static boolean setCurrentEmployee(int number) {
+		for (Employee e : employees) {
+			if (e.getEmployeeNumber() == number) {
+				e.setActive(true);
+				return true;
+			}else continue;
+			
+		}
+		return false;
+	}	
+
+//Methode überprüft ob eine vorhandene Mitarbeiternummer eingegeben wird beim Login
+public static boolean existingEmployee(int number) {
+	boolean value = false;
+	for (Employee e : employees) {
+		if (e.getEmployeeNumber() == number) {
+			value = true;
+			break;
+		} else {
+			value = false;
+		}
+}
+	return value;
+}
+
+//Gibt die aktuelle Ampeldarstellung in Abhängigkeit des Füllstands an
+public static Image getTrafficLight(int fueltype) {
+	
+	Image image = null;
+	  double value = GasStation.getFuelTanks().get(fueltype).getFuelLevel()/GasStation.getFuelTanks().get(fueltype).getCapacity();
+		
+	if(value > 0.5) {
+		image = new Image("/resource/traffic light/traffic_light_green.PNG");		
+	} else if(value > 0.25) {
+		image = new Image("/resource/traffic light/traffic_light_yellow.PNG");		
+	} else if(value >= 0.0) {
+		image = new Image("/resource/traffic light/traffic_light_red.PNG");		
+	}
+	return image;
+}
+
+
+//Gibt die aktuelle Ampeldarstellung in Abhängigkeit des Füllstands von Super an
+//public static Image getSuperTrafficLight() {
+//	
+//	Image image = null;
+//	  double value = GasStation.getFuelTanks().get(1).getFuelLevel()/GasStation.getFuelTanks().get(1).getCapacity();
+//		
+//	if(value > 0.5) {
+//		image = new Image("/resource/traffic light/traffic_light_green.PNG");		
+//	} else if(value > 0.25) {
+//		image = new Image("/resource/traffic light/traffic_light_yellow.PNG");		
+//	} else if(value >= 0.0) {
+//		image = new Image("/resource/traffic light/traffic_light_red.PNG");		
+//	}
+//	return image;
+//}
+
 
 }
 
