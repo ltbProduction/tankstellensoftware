@@ -1,3 +1,3 @@
-Nummer;Kraftstoffart;Füllstand;Kapazität;Einkaufspreis;Verkaufspreis
-1;DIESEL;4000.0;1000.0;0.82;1.33
-2;SUPER;0.0;1000.0;1.04;1.55
+Nummer;Kraftstoffart;FÃ¼llstand;KapazitÃ¤t;Einkaufspreis;Verkaufspreis
+1;DIESEL;3000.0;10000.0;0.82;1.33
+2;SUPER;1000.0;10000.0;1.04;1.55

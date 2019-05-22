@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 import utilities.FileSetter;
 import utilities.helpmethod;
@@ -186,8 +187,65 @@ public class GasStation {
 		return activeemployee;
 	}
 	
+	public static boolean setCurrentEmployee(int number) {
+		for (Employee e : employees) {
+			if (e.getEmployeeNumber() == number) {
+				e.setActive(true);
+				return true;
+			}else continue;
+			
+		}
+		return false;
+	}	
+
+//Methode überprüft ob eine vorhandene Mitarbeiternummer eingegeben wird beim Login
+public static boolean existingEmployee(int number) {
+	boolean value = false;
+	for (Employee e : employees) {
+		if (e.getEmployeeNumber() == number) {
+			value = true;
+			break;
+		} else {
+			value = false;
+		}
+}
+	return value;
+}
+
+//Gibt die aktuelle Ampeldarstellung in Abhängigkeit des Füllstands an
+public static Image getTrafficLight(int fueltype) {
 	
-	
+	Image image = null;
+	  double value = GasStation.getFuelTanks().get(fueltype).getFuelLevel()/GasStation.getFuelTanks().get(fueltype).getCapacity();
+		
+	if(value > 0.5) {
+		image = new Image("/resource/traffic light/traffic_light_green.PNG");		
+	} else if(value > 0.25) {
+		image = new Image("/resource/traffic light/traffic_light_yellow.PNG");		
+	} else if(value >= 0.0) {
+		image = new Image("/resource/traffic light/traffic_light_red.PNG");		
+	}
+	return image;
+}
+
+
+//Gibt die aktuelle Ampeldarstellung in Abhängigkeit des Füllstands von Super an
+//public static Image getSuperTrafficLight() {
+//	
+//	Image image = null;
+//	  double value = GasStation.getFuelTanks().get(1).getFuelLevel()/GasStation.getFuelTanks().get(1).getCapacity();
+//		
+//	if(value > 0.5) {
+//		image = new Image("/resource/traffic light/traffic_light_green.PNG");		
+//	} else if(value > 0.25) {
+//		image = new Image("/resource/traffic light/traffic_light_yellow.PNG");		
+//	} else if(value >= 0.0) {
+//		image = new Image("/resource/traffic light/traffic_light_red.PNG");		
+//	}
+//	return image;
+//}
+
+
 }
 	
 	

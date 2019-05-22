@@ -20,7 +20,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_Main">
    <children>
-      <TabPane fx:id="TabPane_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="TabPane_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" visible="false">
   <tabs>
     <Tab fx:id="t_start" closable="false" text="Start">
       <content>
@@ -78,6 +78,14 @@
                               <Image url="@../resource/traffic%20light/traffic_light_green.png" />
                            </image>
                         </ImageView>
+                        <Label fx:id="l_activeemployeename" layoutX="408.0" layoutY="15.0" prefHeight="21.0" prefWidth="184.0" text="Mitarbeitername">
+                           <effect>
+                              <Blend />
+                           </effect>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -119,7 +127,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="tv_fueltanks" layoutX="15.0" layoutY="65.0" prefHeight="180.0" prefWidth="571.0">
+                  <TableView fx:id="tv_fueltanks" layoutX="15.0" layoutY="65.0" prefHeight="90.0" prefWidth="571.0">
                     <columns>
                       <TableColumn fx:id="tc_fueltanks_tanknumber" prefWidth="28.0" text="Nr." />
                       <TableColumn fx:id="tc_fueltanks_fueltype" prefWidth="97.0" text="Kraftstoffart" />
@@ -244,16 +252,17 @@
             <Button fx:id="b_tocheckout" layoutX="230.0" layoutY="275.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="140.0" text="Zur Kasse" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="AP_LogIn" prefHeight="297.0" prefWidth="600.0" visible="false">
+      <AnchorPane fx:id="AP_LogIn" prefHeight="297.0" prefWidth="600.0">
          <children>
             <Label layoutX="162.0" layoutY="192.0" text="Mitarbeiternummer" />
-            <TextField fx:id="tf_employeenumber" layoutX="275.0" layoutY="188.0" />
+            <TextField fx:id="tf_employeenumber" layoutX="275.0" layoutY="188.0" prefHeight="25.0" prefWidth="68.0" />
             <Button fx:id="b_login" layoutX="275.0" layoutY="231.0" mnemonicParsing="false" onAction="#OnLogInClick" prefHeight="25.0" prefWidth="149.0" text="Einloggen" />
             <Label layoutX="162.0" layoutY="142.0" text="Login">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
+            <Label fx:id="l_wrongemployeenumber" layoutX="354.0" layoutY="192.0" prefHeight="17.0" prefWidth="214.0" />
          </children>
       </AnchorPane>
    </children>

@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -254,6 +255,12 @@ public class Controller_Main implements Initializable {
 
     @FXML
     private Button b_login;
+    
+    @FXML
+    private Label l_wrongemployeenumber;
+    
+    @FXML 
+    private Label l_activeemployeename;
            
     @Override
 	public void initialize(URL url, ResourceBundle rb) { 	
@@ -271,10 +278,7 @@ public class Controller_Main implements Initializable {
     	  tc_fueltanks_purchaseprice.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("purchasePrice"));
     	  tc_fueltanks_saleprice.setCellValueFactory(new PropertyValueFactory<FuelTank, Double>("salePrice"));
     	  tv_fueltanks.setItems(GasStation.getFuelTanks());
-    	  
-		
-    	  
-    	  
+  	  
 
 //    	    @FXML
 //    	    private TableColumn<FuelTank, FuelType> tc_fueltanks_fueltype;
@@ -324,9 +328,28 @@ public class Controller_Main implements Initializable {
     @FXML
     void OnLogInClick(ActionEvent event) {
     	
-    	AP_LogIn.setVisible(false);
+    
+    	int employeeNumber = Integer.valueOf(tf_employeenumber.getText());
+    	
+	if(GasStation.existingEmployee(employeeNumber) == true) {
+		AP_LogIn.setVisible(false);
     	TabPane_main.setVisible(true);
-
+    	System.out.println("Erfolgreicher Login");
+    	
+    	//Mitarbeiter auf aktiv setzen
+    	GasStation.setCurrentEmployee(employeeNumber);
+    	
+    	//aktive Mitarbeitername ausgeben 
+    	l_activeemployeename.setText(GasStation.activeEmployee().getEmployeeName());
+    	
+	}else {
+		l_wrongemployeenumber.setText("ungültige Mitarbeiternummer");
+		System.out.println("Ungültige Mitarbeiternummer");
+	}
+	
+	//Aktualisiert Ampeldarstellung des Kraftstofflevels
+	imageview_diesel.setImage(GasStation.getTrafficLight(0));
+	imageview_super.setImage(GasStation.getTrafficLight(1));
     }
 
     @FXML
