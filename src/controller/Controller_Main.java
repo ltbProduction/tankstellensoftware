@@ -258,6 +258,9 @@ public class Controller_Main implements Initializable {
     
     @FXML
     private Label l_wrongemployeenumber;
+    
+    @FXML 
+    private Label l_activeemployeename;
            
     @Override
 	public void initialize(URL url, ResourceBundle rb) { 	
@@ -325,6 +328,7 @@ public class Controller_Main implements Initializable {
     @FXML
     void OnLogInClick(ActionEvent event) {
     	
+    
     	int employeeNumber = Integer.valueOf(tf_employeenumber.getText());
     	
 	if(GasStation.existingEmployee(employeeNumber) == true) {
@@ -334,6 +338,9 @@ public class Controller_Main implements Initializable {
     	
     	//Mitarbeiter auf aktiv setzen
     	GasStation.setCurrentEmployee(employeeNumber);
+    	
+    	//aktive Mitarbeitername ausgeben 
+    	l_activeemployeename.setText(GasStation.activeEmployee().getEmployeeName());
     	
 	}else {
 		l_wrongemployeenumber.setText("ungültige Mitarbeiternummer");

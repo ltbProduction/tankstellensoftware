@@ -78,6 +78,14 @@
                               <Image url="@../resource/traffic%20light/traffic_light_green.png" />
                            </image>
                         </ImageView>
+                        <Label fx:id="l_activeemployeename" layoutX="408.0" layoutY="15.0" prefHeight="21.0" prefWidth="184.0" text="Mitarbeitername">
+                           <effect>
+                              <Blend />
+                           </effect>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
                </children></AnchorPane>
       </content>
     </Tab>
