@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import models.Employee;
-import models.FuelTank;
+import models.Fuel;
 import models.GasStation;
 import models.Good;
 import models.Product;
@@ -18,7 +18,7 @@ import models.Sale;
 public class FileSetter {
      private static String pathdata = "src/resource/textfiles/Data/";
      private static String receiptsdata = "src/resource/textfiles/receipt/";
-     private static String firstlinegoods = "Nummer;Name;Lagereinheit;Menge;Verkaufspreis";
+     private static String firstlinegoods = "Nummer;Name;Lagereinheit;Menge;Einkaufspreis;Verkaufspreis";
      private static String firstlinehistory = "Nummer;Datum;Preis";
      private static String firstlineemployee = "Nummer;Name;Datum";
      private static String firstlinefuels = "Nummer;Kraftstoffart;Füllstand;Kapazität;Einkaufspreis;Verkaufspreis";
@@ -53,9 +53,9 @@ public class FileSetter {
   			bw.write(firstlinefuels); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
   			//Muss noch ge#ndert werden
-  			for (FuelTank f : GasStation.getFuelTanks()) {
+  			for (Fuel f : GasStation.getFuels()) {
 				bw.write(f.displaytextfile()); //Ausgabe der Produkte
-				if (GasStation.getFuelTanks().indexOf(f) < GasStation.getFuelTanks().size()-1) {
+				if (GasStation.getFuels().indexOf(f) < GasStation.getFuels().size()-1) {
 					bw.newLine();
 				} else continue;
 				

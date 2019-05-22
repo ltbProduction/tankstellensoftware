@@ -4,28 +4,36 @@ public abstract class Product {
 
 	protected int number;
 	protected String name;
-//	private Producttyp producttyp;
+	protected double amount;
 	protected String unit;
-	protected double price;
+	protected double purchasePrice;
+	protected double salePrice;
+	protected double totalPurchasePrice;
+	protected double totalSalePrice; 
 	
-	protected double amount; 
 	
 	
 	// Methoden
 	
-	public Product(int number, String name, String unit, double price, double amount) {
+	public Product(int number, String name, String unit, double amount, double purchasePrice, double salePrice) {
 		this.number = number;
 		this.name = name;
-		this.unit = unit;
-		this.price = price;
 		this.amount = amount;
+		this.unit = unit;
+		this.purchasePrice = purchasePrice;
+		this.salePrice = salePrice;
+		totalPurchasePrice = amount*purchasePrice;
+		totalSalePrice = amount*salePrice;
+		
 	}
 	
 	public abstract void createorder(int amount);
 	public abstract void displayorder();
 	public abstract void createdelivery(int amount);
 	
-	
+	public void displayProduct() {
+		System.out.println("Product: " + number + ", " + name + ", " + unit  + ", " + salePrice  + ", " + amount);
+	}
 	
 	public abstract int getNumber();
 	
@@ -44,14 +52,38 @@ public abstract class Product {
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-	public double getPrice() {
-		return price;
+	public double getSalePrice() {
+		return salePrice;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+	public void setSalePrice(double price) {
+		this.salePrice = price;
 	}
 	
 	
+	public double getPurchasePrice() {
+		return purchasePrice;
+	}
+
+	public void setPurchasePrice(double purchasePrice) {
+		this.purchasePrice = purchasePrice;
+	}
+
+	public double getTotalPurchasePrice() {
+		return totalPurchasePrice;
+	}
+
+	public void setTotalPurchasePrice(double totalPurchasePrice) {
+		this.totalPurchasePrice = totalPurchasePrice;
+	}
+
+	public double getTotalSalePrice() {
+		return totalSalePrice;
+	}
+
+	public void setTotalSalePrice(double totalSalePrice) {
+		this.totalSalePrice = totalSalePrice;
+	}
+
 	public double getAmount() {
 		return amount;
 	}
@@ -60,7 +92,7 @@ public abstract class Product {
 	}
 	public String displayreceipt() {
 		String text;
-		text = name + " - " + String.valueOf(amount) + " "+ unit + " - "+ String.valueOf(price) + " EUR/"+unit+" - "+ String.valueOf(amount*price) +" EUR"; 
+		text = name + " - " + String.valueOf(amount) + " "+ unit + " - "+ String.valueOf(salePrice) + " EUR/"+unit+" - "+ String.valueOf(amount*salePrice) +" EUR"; 
 		return text;
 	}
 	

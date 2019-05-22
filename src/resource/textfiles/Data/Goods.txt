@@ -1,6 +1,6 @@
-Nummer;Name;Lagereinheit;Menge;Verkaufspreis
-421;Wodka Jelzin;Flasche;460.0;2.99
-871;Filip Maurice;Packung;1300.0;2.77
-358;Jupiter Schokoriegel;Stück;1900.0;0.19
-992;Sitting Bull;Dose;700.0;1.29
-101;TK-Pizza Deluxe;Stück;340.0;0.89
+Nummer;Name;Lagereinheit;Menge;Einkaufspreis;Verkaufspreis
+421;Wodka Jelzin;Flasche;460.0;1.19;2.99
+871;Filip Maurice;Packung;1300.0;2.49;2.77
+358;Jupiter Schokoriegel;Stück;1900.0;0.09;0.19
+992;Sitting Bull;Dose;700.0;0.99;1.29
+101;TK-Pizza Deluxe;Stück;340.0;0.69;0.89

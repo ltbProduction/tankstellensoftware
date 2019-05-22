@@ -1,5 +1,8 @@
 package userInterface;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 import javafx.application.Application;
 //import javafx.event.EventHandler;
 //import javafx.event.ActionEvent;
@@ -8,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 //import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import models.GasStation;
 import utilities.FileTransfer;
 
 public class StartProgram extends Application {
@@ -17,7 +21,10 @@ public class StartProgram extends Application {
 	}
 
 	@Override
-	public void init() {
+	public void init() throws ParseException, IOException {
+		FileTransfer.start();
+//		GasStation.getFuels().get(0).dis
+//		GasStation.getFuels().get(0).displayProduct();
 	}
 
 	@Override
@@ -29,8 +36,8 @@ public class StartProgram extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		//GasStation gasstation = new GasStation("Tankstelle Klösterle");
-		FileTransfer.start();
-
+		
+		
 			
 	}
 

@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import models.Employee;
-import models.FuelTank;
-import models.FuelType;
+import models.Fuel;
 import models.GasStation;
 import models.Good;
 import models.Purchase;
@@ -34,9 +32,7 @@ public class FileScanner {
 	//Mitarbeiter auslesen
  		public static void readEmployee() {
 			
-			
-		 
-		     File file = new File(fileNameEmployee);
+			File file = new File(fileNameEmployee);
 
 		     //Arraylist leeren
 		     
@@ -129,7 +125,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				GasStation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4])));
+				GasStation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4]), Double.parseDouble(output[5])));
 					
 					
 		}
@@ -153,7 +149,7 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				GasStation.getFuelTanks().add(new FuelTank(Integer.parseInt(output[0]), FuelType.valueOf(output[1]), Double.parseDouble(output[2]), Double.parseDouble(output[3]), Double.parseDouble(output[4]), Double.parseDouble(output[5])));
+				GasStation.getFuels().add(new Fuel(Integer.parseInt(output[0]), output[1], Double.parseDouble(output[2]), Double.parseDouble(output[3]), Double.parseDouble(output[4]), Double.parseDouble(output[5])));
 									
 		}
 			} catch (IOException | NumberFormatException  e) {
@@ -241,7 +237,7 @@ public class FileScanner {
 	     } // Methode beendet
 	   
 		
-		public static void readDeliveryFuelTanks() throws IOException {
+		public static void readDeliveryFuels() throws IOException {
 		
 	 
 
@@ -287,11 +283,11 @@ public class FileScanner {
 				pricesuper = Double.parseDouble(output[1]);//super Preis intialisiert
 				
 				//Menge für die Objekte anpassen
-				GasStation.getFuelTanks().get(0).setFuelLevel((amountdiesel+GasStation.getFuelTanks().get(0).getFuelLevel())); //Die Menge des Dieseltanks auffüllen
-				GasStation.getFuelTanks().get(1).setFuelLevel((amountsuper+GasStation.getFuelTanks().get(1).getFuelLevel())); //Die Menge des Supertanks auffüllen
+				GasStation.getFuels().get(0).setAmount((amountdiesel+GasStation.getFuels().get(0).getAmount())); //Die Menge des Dieseltanks auffüllen
+				GasStation.getFuels().get(1).setAmount((amountsuper+GasStation.getFuels().get(1).getAmount())); //Die Menge des Supertanks auffüllen
 				
-				GasStation.getFuelTanks().get(0).setPurchasePrice(pricediesel);
-				GasStation.getFuelTanks().get(1).setPurchasePrice(pricesuper);
+				GasStation.getFuels().get(0).setPurchasePrice(pricediesel);
+				GasStation.getFuels().get(1).setPurchasePrice(pricesuper);
 
 				
 				sum = pricesuper*amountsuper+pricediesel*amountdiesel; //Summe errechnen

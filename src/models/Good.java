@@ -2,12 +2,11 @@ package models;
 
 public class Good extends Product {
 
-	//Atribute
 	
-
 	//Konstruktor
-	public Good(int number, String name, String unit, double amount, double price) {
-		super(number, name, unit, price, amount);
+	public Good(int number, String name, String unit, double amount, double purchasePrice, double salePrice) {
+		super(number, name, unit, amount, purchasePrice, salePrice);
+
 	
 	}
 
@@ -16,12 +15,7 @@ public class Good extends Product {
 	
 	//Zum testen ob die Objekte erzeugt wurden
 	public void displayproduct() {
-		System.out.println(number);
-		System.out.println(name);
-		System.out.println(unit);
-		System.out.println(amount);
-		System.out.println(price);
-		System.out.println();
+		System.out.println("Good: " + number + ", " + name + ", " + unit  + ", " + amount  + ", " + purchasePrice  + ", " + salePrice);
 	}
 	
 	
@@ -65,7 +59,7 @@ public class Good extends Product {
 	
 	//Die korrekte Ausgabe für die Textdatei wird erzeugt
 	public String displaytextfile() {
-		String text = String.valueOf(number)+";"+name+";" +unit+";"+String.valueOf(amount)+";"+String.valueOf(price);
+		String text = String.valueOf(number)+";"+name+";" +unit+";"+String.valueOf(amount)+";"+String.valueOf(purchasePrice)+";"+String.valueOf(salePrice);
 		return text;
 	}
 

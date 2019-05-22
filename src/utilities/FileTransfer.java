@@ -40,7 +40,7 @@ public class FileTransfer {
 	public static void scandeliveries() throws ParseException, IOException {
 
 		FileScanner.readDeliveryGoods();
-		FileScanner.readDeliveryFuelTanks();
+		FileScanner.readDeliveryFuels();
 
 		
 		
@@ -54,7 +54,7 @@ public class FileTransfer {
 		FileSetter.writeemployee();
 		}
 		
-		if(GasStation.getFuelTanks().size()>1) {
+		if(GasStation.getFuels().size()>1) {
 		FileSetter.writefuels();
 		}
 		
