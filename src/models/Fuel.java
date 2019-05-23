@@ -8,10 +8,10 @@ public class Fuel extends Product{
 	private double capacity;
 	
 //Konstruktor
-	public Fuel(int number, String name, double amount, double capacity, double purchasePrice, double salePrice) {
+	public Fuel(int number, String name, double amount, double purchasePrice, double salePrice) {
 		
 		super(number, name, "Liter", amount, purchasePrice, salePrice);
-		this.capacity = capacity;
+		
 		
 		
 	}

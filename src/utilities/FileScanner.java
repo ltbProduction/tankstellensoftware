@@ -149,8 +149,10 @@ public class FileScanner {
 				while ((line = br.readLine()) != null) {
 			
 				String[] output = line.split(";");
-				GasStation.getFuels().add(new Fuel(Integer.parseInt(output[0]), output[1], Double.parseDouble(output[2]), Double.parseDouble(output[3]), Double.parseDouble(output[4]), Double.parseDouble(output[5])));
-									
+				Fuel f = new Fuel(Integer.parseInt(output[0]), output[1], Double.parseDouble(output[2]), Double.parseDouble(output[4]), Double.parseDouble(output[5]));
+				f.setCapacity(Double.parseDouble(output[3]));
+				GasStation.getFuels().add(f);
+								
 		}
 			} catch (IOException | NumberFormatException  e) {
 				e.printStackTrace();

@@ -55,7 +55,7 @@ public class GasStation {
 		
 		
 		// Neues Tank-Produkt erstellen
-		Fuel f = new Fuel(fuels.get(i).getNumber(), name, amount, amount, fuels.get(i).getPurchasePrice(), fuels.get(i).getSalePrice());
+		Fuel f = new Fuel(fuels.get(i).getNumber(), name, amount, fuels.get(i).getPurchasePrice(), fuels.get(i).getSalePrice());
 
 		// Dem Warenkorb hinzufügen
 		shoppingCart.add(f);
@@ -271,7 +271,7 @@ public static boolean existingEmployee(int number) {
 public static Image getTrafficLight(int fueltype) {
 	
 	Image image = null;
-	  double value = GasStation.getFuelTanks().get(fueltype).getFuelLevel()/GasStation.getFuelTanks().get(fueltype).getCapacity();
+	  double value = GasStation.getFuels().get(fueltype).getAmount()/GasStation.getFuels().get(fueltype).getCapacity();
 		
 	if(value > 0.5) {
 		image = new Image("/resource/traffic light/traffic_light_green.PNG");		
