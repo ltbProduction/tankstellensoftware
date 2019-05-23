@@ -1,5 +1,7 @@
 package models;
 
+import java.text.DecimalFormat;
+
 public abstract class Product {
 
 	protected int number;
@@ -31,9 +33,11 @@ public abstract class Product {
 	public abstract void displayorder();
 	public abstract void createdelivery(int amount);
 	
-	public void displayProduct() {
-		System.out.println("Product: " + number + ", " + name + ", " + unit  + ", " + salePrice  + ", " + amount);
-	}
+//	public void displayProduct() {
+//	    //Das passende Format für die Ausgabe
+//	    DecimalFormat df = new DecimalFormat("#.00");
+//		System.out.println("Product: " + number + ", " + name + ", " + unit  + ", " + df.format(salePrice)  + ", " + df.format(amount));
+//	}
 	
 	public abstract int getNumber();
 	

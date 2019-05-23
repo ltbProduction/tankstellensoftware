@@ -26,7 +26,7 @@ public class FileScanner {
 	private static String fileNameFuelTanks = datafile + "FuelTanks.txt";
     private static String fileNameDeliveryGoods = "src/resource/textfiles/deliveries/WarenLieferung.txt";
     private static String fileNameDeliveryFuels = "src/resource/textfiles/deliveries/KraftstoffLieferung.txt";
-    private static String filenamedeliverhistory = "src/resource/textfiles/historydeliveries/Liederschein";
+    private static String filenamedeliverhistory = "src/resource/textfiles/historydeliveries/Lieferschein";
 
     
 	//Mitarbeiter auslesen

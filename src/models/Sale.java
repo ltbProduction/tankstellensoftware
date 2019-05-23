@@ -1,5 +1,6 @@
 package models;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -40,8 +41,10 @@ public class Sale {
 	}
 	
 	public String displaytextfile() {
+	//Das passende Format für die Ausgabe
+	DecimalFormat df = new DecimalFormat("#,00");
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
-	String text = String.valueOf(saleNumber)+";"+saleDate.format(formatter)+";"+String.valueOf(salePrice);
+	String text = String.valueOf(saleNumber)+";"+saleDate.format(formatter)+";"+df.format(salePrice);
 	return text;
 	}
 	

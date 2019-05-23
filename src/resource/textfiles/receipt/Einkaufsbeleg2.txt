@@ -4,6 +4,5 @@ Belegnummer: 2
 Datum:23.05.2019
 Mitarbeiter: Linus Brugger
 
-Super - 50.0 Liter - 1.55 EUR/Liter - 77.5 EUR
-
-Gesamtbetrag: 77.5 EUR
+Diesel - 100.34 Liter - 1.33 EUR/Liter - 133.4522 EUR
+Gesamtbetrag: 133,45 EUR

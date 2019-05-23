@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -22,7 +23,9 @@ public class FileSetter {
      private static String firstlinehistory = "Nummer;Datum;Preis";
      private static String firstlineemployee = "Nummer;Name;Datum";
      private static String firstlinefuels = "Nummer;Kraftstoffart;FÃ¼llstand;KapazitÃ¤t;Einkaufspreis;Verkaufspreis";
-   
+     
+     //Das passende Format für die Ausgabe
+     DecimalFormat df = new DecimalFormat("#.00");
      
      //Die Text datei der Mitarbeiter wird geschrieben
      public static void writeemployee() {
@@ -127,7 +130,8 @@ public class FileSetter {
   	File file = new File(receiptsdata + "Einkaufsbeleg" + String.valueOf(numberofreceipt) + ".txt");
   	LocalDate today = LocalDate.now();
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
-	
+    //Das passende Format für die Ausgabe
+    DecimalFormat df = new DecimalFormat("#.00");
 
   	
   	try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
@@ -147,8 +151,8 @@ public class FileSetter {
 			bw.write(p.displayreceipt()); //Ausgabe der Produkte
 			bw.newLine();
 		}
-			bw.newLine();
-			bw.write("Gesamtbetrag: "+completesum +" EUR");
+
+			bw.write("Gesamtbetrag: "+df.format(completesum) +" EUR");
 		} catch (IOException e) {
 			e.printStackTrace();
  }
