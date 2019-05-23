@@ -270,9 +270,10 @@ public static boolean existingEmployee(int number) {
 //Gibt die aktuelle Ampeldarstellung in Abhängigkeit des Füllstands an
 public static Image getTrafficLight(int fueltype) {
 	
+	
 	Image image = null;
 	  double value = GasStation.getFuels().get(fueltype).getAmount()/GasStation.getFuels().get(fueltype).getCapacity();
-		
+	System.out.println(value);	
 	if(value > 0.5) {
 		image = new Image("/resource/traffic light/traffic_light_green.PNG");		
 	} else if(value > 0.25) {
