@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 	import javafx.scene.control.Label;
 	import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.GasStation;
 
 	public class Controller_PayProcessDialog {
 
@@ -34,7 +35,7 @@ import javafx.stage.Stage;
 	    @FXML
 	    void onContinue(ActionEvent event) {
 	    	
-	    	
+	    	GasStation.finishedreceipt();
 	    	//schlieﬂt das Fenster
 	    	Stage stage = (Stage)
 	    	    	b_continue.getScene().getWindow();

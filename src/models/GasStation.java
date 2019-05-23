@@ -11,7 +11,7 @@ import utilities.helpmethod;
 
 public class GasStation {
 
-	private static String gasStationName; // Name der Tankstelle
+	private static String gasStationName = "Tankstelle Klösterle"; // Name der Tankstelle
 	private static ObservableList<Employee> employees = FXCollections.observableArrayList(); // Liste mit allen
 																								// Mitarbeitern
 	private static ObservableList<Product> storage = FXCollections.observableArrayList(); // Liste mit allen Produkte

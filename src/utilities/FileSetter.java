@@ -123,7 +123,7 @@ public class FileSetter {
      }
      }	
   	public static void createreceipt(double completesum) {
-  	int numberofreceipt = GasStation.getSales().get(GasStation.getSales().size()-1).getSaleNumber() +1;
+  	int numberofreceipt = helpmethod.newsalesnumber();
   	File file = new File(receiptsdata + "Einkaufsbeleg" + String.valueOf(numberofreceipt) + ".txt");
   	LocalDate today = LocalDate.now();
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
