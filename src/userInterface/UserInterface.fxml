@@ -40,10 +40,10 @@
                   <Button fx:id="b_addgoods" layoutX="15.0" layoutY="129.0" mnemonicParsing="false" onAction="#OnAddGoodsClick" prefHeight="37.0" prefWidth="177.0" text="Waren hinzufügen" />
                   <TableView fx:id="tv_shoppingcart" layoutX="15.0" layoutY="230.0" prefHeight="127.0" prefWidth="294.0">
                     <columns>
-                      <TableColumn fx:id="tc_shoppingcart_nr" prefWidth="26.79998779296875" text="Nr." />
-                      <TableColumn fx:id="tc_shoppingcart_name" prefWidth="141.20001220703125" text="Bezeichnung" />
-                        <TableColumn fx:id="tc_shoppingcart_amount" prefWidth="49.0" text="Menge" />
-                        <TableColumn fx:id="tc_shoppingcart_price" prefWidth="77.0" text="Einzelpreis" />
+                      <TableColumn fx:id="tc_shoppingcart_name" prefWidth="99.0" text="Bezeichnung" />
+                        <TableColumn fx:id="tc_shoppingcart_amount" prefWidth="57.0" text="Menge" />
+                        <TableColumn fx:id="tc_shoppingcart_unitprice" prefWidth="68.0" text="Stückpreis" />
+                              <TableColumn fx:id="tc_shoppingcart_total" prefWidth="69.0" text="Gesamt" />
                     </columns>
                   </TableView>
                   <ButtonBar layoutX="463.0" layoutY="234.0" />
@@ -110,14 +110,14 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <TableView layoutX="15.0" layoutY="65.0" prefHeight="185.0" prefWidth="570.0">
+                        <TableView fx:id="tv_goodsstorage" layoutX="15.0" layoutY="65.0" prefHeight="185.0" prefWidth="570.0">
                           <columns>
                             <TableColumn fx:id="tc_goodsstorage_nr" prefWidth="55.0" text="Nr." />
-                            <TableColumn fx:id="tc_goodsstorage_name" prefWidth="199.0" text="Bezeichnung" />
-                              <TableColumn fx:id="tc_goodsstorage_storageunit" minWidth="0.0" prefWidth="96.0" text="Lagereinheit" />
-                              <TableColumn fx:id="tc_goodsstorage_amount" prefWidth="58.0" text="Menge" />
-                              <TableColumn fx:id="tc_goodsstorage_saleprice" prefWidth="86.0" text="Verkaufspreis" />
-                              <TableColumn fx:id="tc_goodsstorage_currency" prefWidth="75.0" text="Währung" />
+                            <TableColumn fx:id="tc_goodsstorage_name" prefWidth="215.0" text="Bezeichnung" />
+                              <TableColumn fx:id="tc_goodsstorage_storageunit" minWidth="0.0" prefWidth="84.0" text="Lagereinheit" />
+                              <TableColumn fx:id="tc_goodsstorage_amount" prefWidth="59.0" text="Menge" />
+                              <TableColumn fx:id="tc_goodsstorage_purchaseprice" prefWidth="78.0" text="Preis (EK)" />
+                              <TableColumn fx:id="tc_goodsstorage_saleprice" prefWidth="79.0" text="Preis (VK)" />
                           </columns>
                         </TableView>
                </children></AnchorPane>
@@ -179,18 +179,18 @@
                            </font>
                         </Label>
                         <Label layoutX="323.0" layoutY="274.0" text="bis" />
-                        <TableView layoutX="15.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
+                        <TableView fx:id="tv_purchases" layoutX="15.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
                           <columns>
-                            <TableColumn fx:id="ttc_purchases_number" prefWidth="52.0" text="Nr." />
-                            <TableColumn fx:id="ttc_purchases_date" prefWidth="128.0" text="Datum" />
-                              <TableColumn fx:id="ttc_purchases_price" text="Betrag" />
+                            <TableColumn fx:id="tc_purchases_number" prefWidth="52.0" text="Nr." />
+                            <TableColumn fx:id="tc_purchases_date" prefWidth="128.0" text="Datum" />
+                              <TableColumn fx:id="tc_purchases_price" text="Betrag" />
                           </columns>
                         </TableView>
-                        <TableView layoutX="309.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
+                        <TableView fx:id="tv_sales" layoutX="309.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
                            <columns>
-                              <TableColumn fx:id="ttc_sales_number" prefWidth="52.0" text="Nr." />
-                              <TableColumn fx:id="ttc_sales_date" prefWidth="128.0" text="Datum" />
-                              <TableColumn fx:id="ttc_sales_price" text="Betrag" />
+                              <TableColumn fx:id="tc_sales_number" prefWidth="52.0" text="Nr." />
+                              <TableColumn fx:id="tc_sales_date" prefWidth="128.0" text="Datum" />
+                              <TableColumn fx:id="tc_sales_price" text="Betrag" />
                            </columns>
                         </TableView>
                         <DatePicker fx:id="dp_balancestartdate" layoutX="156.0" layoutY="269.0" prefHeight="25.0" prefWidth="149.0" />
