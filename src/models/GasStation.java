@@ -125,13 +125,7 @@ public class GasStation {
 
 	}
 
-	// Test fï¿½r Linus
-	public static void display() {
-		for (Purchase g : purchases) {
-			g.display();
-		}
 
-	}
 
 	public static void finishedreceipt() { // Zum abschlieï¿½en einer Reception
 		double sum;
@@ -140,6 +134,7 @@ public class GasStation {
 			sum += p.amount * p.salePrice;
 		}
 		// Methode welche den Beleg ausdruckt
+		sum = Math.round(100.0*sum)/100.0;
 		FileSetter.createreceipt(sum);
 		shoppingCart.clear();
 		sales.add(new Sale(helpmethod.newsalesnumber(), LocalDate.now(), sum));
@@ -300,57 +295,4 @@ public static Image getTrafficLight(int fueltype) {
 //	}
 //	return image;
 //}
-
-
 }
-
-// alt:
-//private String name;
-//private int numberofcustomers;
-//private ArrayList<Goods> goods = new ArrayList<>();
-//private ArrayList<Fuel> fuel = new ArrayList<>();
-//
-//
-//
-////Methoden 
-//public GasStation(String name) {
-//	this.name = name;
-//}
-//
-//public void start() {
-//	//Die Daten sollen ausgelesen werden.
-//		// Die Bestandsdaten sollen ausgelegt werden
-//		// Die Kaufbelege sollen ausgelegt werden
-//		
-//
-//	
-//	
-//	
-//}
-//
-//public void readData() {
-//	
-//}
-//
-//
-//
-//public void creategood(int price, int inventory, ClassofGoods cod) {
-//	//Die Objekte sollen angelegt werden
-//	//goods.add(new Goods(price, duration, cog))
-//}
-//
-//public void createfuel() {
-//	//Die Objekte sollen angelegt werden
-//	//fuel.add(new Fuel(price, duration, fuel));
-//}
-//
-//
-//public void checkdeliveries() {
-//	
-//}
-//
-//
-//public void writeData() {
-//	
-//}
-//}
