@@ -293,7 +293,7 @@ public class FileScanner {
 
 				
 				sum = pricesuper*amountsuper+pricediesel*amountdiesel; //Summe errechnen
-				
+				sum = Math.round(100.0*sum)/100.0;
 				GasStation.getPurchases().add(new Purchase(newnumber, dateofdelivery, sum)); //Neuer Einkauf anlegen
 
 				
@@ -305,7 +305,7 @@ public class FileScanner {
 	         if(file.renameTo 
 	 	            (new File(filenamedeliverhistory + String.valueOf(newnumber)+".txt" ))) 
 	 	         { 
-	 	             // if file copied successfully then delete the original file 
+	 	             // Wenn die Tatei kopiert wurde dann lösch die alte Datei 
 	 	             file.delete(); 
 	 	             System.out.println("File moved successfully"); 
 	 	         } 
@@ -320,56 +320,7 @@ public class FileScanner {
 	     } // Methode beendet
 	
 	
-		//Die Methode welche den letzten Einkauf angibt
 
-	
-		
-		
-//		
-//		//Methoden welche die Datei in den anderen Ordner verschiebt
-//		
-//		private static void safefilesinhistory(String oldfile, int number) throws IOException {
-//		
-//		String staticfile = "resource/textfiles/historydeliveries/lastdeliver.txt";
-//		String newfile = "resource/textfiles/historydeliveries/Lieferung" + String.valueOf(number) + ".txt";
-//		System.out.println(newfile);	 
-//		File file1 = new File(classLoader.getResource(oldfile).getFile()); //Die alte Datei in dem delivr Ordner
-//		File file2 = new File(classLoader.getResource(staticfile).getFile()); //Die neue Datei
-//		String path = file2.getAbsolutePath()+String.valueOf(number);
-//		File file3 = new File(path);
-//		
-//		
-//		file3.createNewFile(); //Neue Datei erzeugen
-//		
-//		copyFile(file1, file2);
-//		
-//		
-//		
-//			
-//		}
-//		
-//		
-//		//Die Methode welche schlussendlich die Datei kopiert.
-//		public static void copyFile(File in, File out) throws IOException {
-//	        FileChannel inChannel = null;
-//	        FileChannel outChannel = null;
-//	        try {
-//	            inChannel = new FileInputStream(in).getChannel();
-//	            outChannel = new FileOutputStream(out).getChannel();
-//	            inChannel.transferTo(0, inChannel.size(), outChannel);
-//	        } catch (IOException e) {
-//	            throw e;
-//	        } finally {
-//	            try {
-//	                if (inChannel != null)
-//	                    inChannel.close();
-//	                if (outChannel != null)
-//	                    outChannel.close();
-//	            } catch (IOException e) {}
-//	        }
-//	    }
-//	 
-//		
 }
 
 

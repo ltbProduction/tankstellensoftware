@@ -50,21 +50,25 @@ public class FileTransfer {
 	public static void writetextfiles() {
 
 
-		if(GasStation.getEmployees().size()>1) {
+		if(GasStation.getEmployees().size()!=0) {
 		FileSetter.writeemployee();
 		}
 		
-		if(GasStation.getFuels().size()>1) {
+		if(GasStation.getFuels().size()!=0) {
 		FileSetter.writefuels();
 		}
 		
-		if(GasStation.getGoods().size()>1) {
+		if(GasStation.getGoods().size()!=0) {
 		FileSetter.writeGoods();
 		}
-
+		
+		if(GasStation.getPurchases().size()!=0) {
 		FileSetter.writeHistorypurchases();
+		}
+		
+		if(GasStation.getSales().size()!=0) {
 		FileSetter.writeHistorysales();
-
+		}
 	}
 	
 	
