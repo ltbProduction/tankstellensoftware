@@ -67,6 +67,12 @@ public class FileTransfer {
 
 	}
 	
+	public static void refresh() {
+		writetextfiles();
+		readData();
+		
+	}
+	
 	
 	
 

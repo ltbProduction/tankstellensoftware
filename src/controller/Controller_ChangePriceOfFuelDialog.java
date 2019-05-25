@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.GasStation;
+import utilities.FileTransfer;
 
 public class Controller_ChangePriceOfFuelDialog implements Initializable {
 	
@@ -27,6 +29,44 @@ public class Controller_ChangePriceOfFuelDialog implements Initializable {
 
 	    @FXML
 	    void confirmPrice(ActionEvent event) {
+	    	
+	    	double newPrice = 0;
+	    	try{newPrice = Double.valueOf(tf_newprice.getText());
+    	}catch(NumberFormatException e) {
+	        	System.out.println("Das ist keine gültige Zahl");
+	    	}
+	    	
+	    	GasStation.changePriceOfFuel(cb_nameoffueltype.getValue(), newPrice);
+	    	
+	    	
+	    	
+//	    	GasStation.getFuels().get(0).setSalePrice(3.20);
+//	    	FileTransfer.refresh();
+	    	
+	    	
+	    	
+	    	
+//	    	int value = 0;
+//	    	
+//	    	System.out.println(cb_nameoffueltype.getValue());
+//	    	
+//	    	try{ System.out.println(Double.valueOf(tf_newprice.getText()));
+//	    	}catch(NumberFormatException e) {
+//	        	System.out.println("Das ist keine gültige Zahl");
+//	    	}
+//	    	
+//	    	System.out.println(GasStation.getFuels().get(0).getAmount());
+//	    	System.out.println(GasStation.getFuels().get(0).getSalePrice());
+//	    	System.out.println(GasStation.getFuels().get(0).getName());
+//	    	
+//	    	if(cb_nameoffueltype.getValue().equals("Diesel")) {
+//	    		value = 0;
+//	    	}else if(cb_nameoffueltype.getValue().equals("Super")) {
+//	    		value = 1;
+//	    	}
+//	    	
+	    	//GasStation.changePriceOfFuel(cb_nameoffueltype.getValue(), Double.valueOf(tf_newprice.getText()));
+	    	
 	    	
 	    	
 	    	//schließt das Fenster

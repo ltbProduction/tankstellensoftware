@@ -357,8 +357,13 @@ public class Controller_Main implements Initializable {
 	@FXML
     void OnLogInClick(ActionEvent event) {
     	
-    
-    	int employeeNumber = Integer.valueOf(tf_employeenumber.getText());
+		int employeeNumber = 0;
+		
+    try {
+    	employeeNumber = Integer.valueOf(tf_employeenumber.getText());
+    }catch(NumberFormatException e) {
+    	System.out.println("Das ist kein Integer");
+    }
     	
 	if(GasStation.existingEmployee(employeeNumber) == true) {
 		AP_LogIn.setVisible(false);
@@ -374,6 +379,14 @@ public class Controller_Main implements Initializable {
 	}else {
 		l_wrongemployeenumber.setText("ungÃ¼ltige Mitarbeiternummer");
 		System.out.println("UngÃ¼ltige Mitarbeiternummer");
+		
+		//PopUp für ungültige Mitarbeiternummer
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Fehler");
+		alert.setHeaderText("ungültige Mitarbeiternummer");
+		alert.setContentText(null);
+		alert.showAndWait();
+		
 	}
 	
 	//Aktualisiert Ampeldarstellung des Kraftstofflevels

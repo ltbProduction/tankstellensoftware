@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 import utilities.FileSetter;
+import utilities.FileTransfer;
 import utilities.helpmethod;
 
 public class GasStation {
@@ -272,8 +273,7 @@ public static Image getTrafficLight(int fueltype) {
 	
 	
 	Image image = null;
-	  double value = GasStation.getFuels().get(fueltype).getAmount()/GasStation.getFuels().get(fueltype).getCapacity();
-	System.out.println(value);	
+	  double value = fuels.get(fueltype).getAmount()/GasStation.getFuels().get(fueltype).getCapacity();	
 	if(value > 0.5) {
 		image = new Image("/resource/traffic light/traffic_light_green.PNG");		
 	} else if(value > 0.25) {
@@ -282,6 +282,32 @@ public static Image getTrafficLight(int fueltype) {
 		image = new Image("/resource/traffic light/traffic_light_red.PNG");		
 	}
 	return image;
+}
+
+
+public static void changePriceOfFuel(String fueltype, double newPrice) {
+	
+//	if(fueltype.equals("Diesel")) {
+//		fuels.get(0).setSalePrice(newPrice);	
+//	}else if(fueltype.equals("Super")) {
+//		fuels.get(1).setSalePrice(newPrice);
+//	}
+	
+	System.out.println(newPrice + " - 1");
+	for (Fuel f : GasStation.getFuels()) {
+		System.out.println(f.getName());
+		if(fueltype.equals(f.getName())) {
+			f.setSalePrice(newPrice);
+			System.out.println(newPrice + " - 2");
+		}continue;
+	}
+	FileTransfer.refresh();
+}
+
+public static void changePriceOfGood(String goodtype, double newPrice) {
+	
+}
+
 }
 
 
@@ -302,7 +328,7 @@ public static Image getTrafficLight(int fueltype) {
 //}
 
 
-}
+
 
 // alt:
 //private String name;
