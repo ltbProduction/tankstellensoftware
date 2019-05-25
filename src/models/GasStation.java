@@ -1,5 +1,6 @@
 package models;
 
+import java.io.File;
 import java.time.LocalDate;
 
 import javafx.collections.FXCollections;
@@ -127,7 +128,7 @@ public class GasStation {
 
 
 
-	public static void finishedreceipt() { // Zum abschlieï¿½en einer Reception
+	public static void finishedreceipt(File file) { // Zum abschlieï¿½en einer Reception
 		double sum;
 		sum = 0;
 		for (Product p : GasStation.getShoppingCart()) {
@@ -135,7 +136,7 @@ public class GasStation {
 		}
 		// Methode welche den Beleg ausdruckt
 		sum = Math.round(100.0*sum)/100.0;
-		FileSetter.createreceipt(sum);
+		FileSetter.createreceipt(sum, file);
 		shoppingCart.clear();
 		sales.add(new Sale(helpmethod.newsalesnumber(), LocalDate.now(), sum));
 	}
