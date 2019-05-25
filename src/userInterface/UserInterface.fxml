@@ -262,7 +262,7 @@
             <TextField fx:id="tf_goodsnumber" layoutX="291.0" layoutY="125.0" prefHeight="25.0" prefWidth="75.0" />
             <Label layoutX="230.0" layoutY="167.0" text="Menge" />
             <TextField fx:id="tf_goodsamount" layoutX="291.0" layoutY="163.0" prefHeight="25.0" prefWidth="75.0" />
-            <Button fx:id="b_addtoshoppingcart" layoutX="290.0" layoutY="200.0" mnemonicParsing="false" onAction="#onAddToShoppingCartClick" text="Hinzufügen" />
+            <Button fx:id="b_addtoshoppingcart" layoutX="290.0" layoutY="200.0" mnemonicParsing="false" onAction="#onAddGoodToShoppingCartClick" text="Hinzufügen" />
             <Button fx:id="b_tocheckout" layoutX="230.0" layoutY="275.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="140.0" text="Zur Kasse" />
          </children>
       </AnchorPane>

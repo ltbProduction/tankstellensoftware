@@ -108,7 +108,7 @@ public class GasStation {
 		int i = 0;
 
 		// Überprüfe für jede Ware, ob Sie der eingegebenen Nummer entspricht
-		// Wenn ja, setze i = dem Index der Ware
+		// Wenn ja, setze i gleich dem Index der Ware
 		for (Good g : GasStation.getGoods()) {
 			if (g.getNumber() == goodnumber) {
 				i = goods.indexOf(g);
