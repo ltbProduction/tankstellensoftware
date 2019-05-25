@@ -257,6 +257,9 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	private Button b_tocheckout;
+	
+	@FXML
+	private Button b_tocheckout2;
 
 	@FXML
 	private AnchorPane AP_LogIn;
@@ -624,6 +627,7 @@ public class Controller_Main implements Initializable {
 	@FXML
 	void onToCheckoutClick(ActionEvent event) {
 
+		AP_addFuel.setVisible(false);
 		AP_addGoods.setVisible(false);
 		TabPane_main.setVisible(true);
 
