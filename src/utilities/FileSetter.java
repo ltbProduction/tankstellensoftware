@@ -122,9 +122,8 @@ public class FileSetter {
   			e.printStackTrace();
      }
      }	
-  	public static void createreceipt(double completesum) {
+  	public static void createreceipt(double completesum, File file) {
   	int numberofreceipt = helpmethod.newsalesnumber();
-  	File file = new File(receiptsdata + "Einkaufsbeleg" + String.valueOf(numberofreceipt) + ".txt");
   	LocalDate today = LocalDate.now();
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 	

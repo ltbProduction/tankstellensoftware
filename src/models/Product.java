@@ -24,6 +24,7 @@ public abstract class Product {
 		this.salePrice = salePrice;
 		totalPurchasePrice = Math.round(100.0*(amount*purchasePrice))/100.0;
 		totalSalePrice = Math.round(100.0*(amount*salePrice))/100.0;
+
 		
 	}
 	
