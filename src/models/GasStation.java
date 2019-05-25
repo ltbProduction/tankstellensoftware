@@ -53,11 +53,11 @@ public class GasStation {
 
 		boolean value = false;
 
-		// ÃœberprÃ¼fe, ob es einen Kraftstofftank der angegebenen Kraftstoffart gibt,
-		// der genÃ¼gend Kraftstoff beinhaltet. Es wird ein Puffer von 100 Litern
-		// eingebaut. Sobald ein Tank mit genÃ¼gend Kraftstoff gefunden wird, wird die
-		// RÃ¼ckgabe-Variable auf true gesetzt.
-		// AuÃŸerdem wird der Index des gefundenen Kraftstofftanks gespeichert.
+		// Überprüfe, ob es einen Kraftstofftank der angegebenen Kraftstoffart gibt,
+		// der genügend Kraftstoff beinhaltet. Es wird ein Puffer von 100 Litern
+		// eingebaut. Sobald ein Tank mit genügend Kraftstoff gefunden wird, wird die
+		// Rückgabe-Variable auf true gesetzt.
+		// Außerdem wird der Index des gefundenen Kraftstofftanks gespeichert.
 		int i = 0;
 		for (Fuel f : fuels) {
 			if (f.getName().equals(name)) {
@@ -68,19 +68,19 @@ public class GasStation {
 			}
 		}
 
-		// Wenn kein Tank mit ausreichendem FÃ¼llstand gefunden wurde, wird die Methode
-		// abgebrochen und eine Fehlermeldung zurÃ¼ckgegeben.
+		// Wenn kein Tank mit ausreichendem Füllstand gefunden wurde, wird die Methode
+		// abgebrochen und eine Fehlermeldung zurückgegeben.
 		if (value == false) {
 			return value;
 
-			// Ansonsten wird die Methode weitergefÃ¼hrt
+			// Ansonsten wird die Methode weitergeführt
 		} else {
 
-			// Die gewÃ¼nschte Menge wird vom Kraftstofftank abgezogen.
+			// Die gewünschte Menge wird vom Kraftstofftank abgezogen.
 			// Es wird ein neues Kraftstoff-Produkt mit den Werten des Kraftstofftanks und
-			// der gewÃ¼nschten Menge instanziiert. AnschlieÃŸend wird es dem Warenkorb
-			// hinzugefÃ¼gt. Da die Klasse Fuel von Product erbt, kann das neue Produkt in
-			// die shoppingCart-Liste der Klasse Product hinzugefÃ¼gt werden.
+			// der gewünschten Menge instanziiert. Anschließend wird es dem Warenkorb
+			// hinzugefügt. Da die Klasse Fuel von Product erbt, kann das neue Produkt in
+			// die shoppingCart-Liste der Klasse Product hinzugefügt werden.
 			fuels.get(i).setAmount(fuels.get(i).getAmount() - amount);
 			fuels.get(i).displayFuel();
 
@@ -103,8 +103,9 @@ public class GasStation {
 
 	public static boolean addGoodToShoppingCart(int goodnumber, double amount) {
 
-		boolean enoughAmount = true;
-		boolean rightNumber = false;
+		// Attribute initialisieren
+		boolean value = true;
+		boolean numberCheck = false;
 		int i = 0;
 
 		// Überprüfe für jede Ware, ob Sie der eingegebenen Nummer entspricht
@@ -112,14 +113,14 @@ public class GasStation {
 		for (Good g : GasStation.getGoods()) {
 			if (g.getNumber() == goodnumber) {
 				i = goods.indexOf(g);
-				rightNumber = true;
+				numberCheck = true;
 			}
 
 		}
 
 		// Wenn die eingegebene Nummer nicht gefunden werden konnte, gebe eine
-		// Fehlermeldung aus
-		if (rightNumber == false) {
+		// Fehlermeldung aus. 
+		if (numberCheck == false) {
 
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warennumer falsch");
@@ -131,7 +132,7 @@ public class GasStation {
 		// oder kleiner/gleich Null ist, gebe den Rückgabewert false zurück
 		} else if (amount > (goods.get(i)).getAmount() || amount<=0) {
 			
-			return enoughAmount = false;
+			return value = false;
 		
 			// Ansonsten wird die Methode weitergeführt
 			} else {
@@ -155,7 +156,7 @@ public class GasStation {
 
 			}
 			
-		return enoughAmount;
+		return value;
 
 		}
 		
