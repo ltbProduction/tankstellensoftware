@@ -69,11 +69,11 @@ public class Controller_Main implements Initializable {
 	@FXML
 	private TableColumn<Product, Double> tc_shoppingcart_amount;
 
-    @FXML
-    private TableColumn<Product, Double> tc_shoppingcart_unitprice;
+	@FXML
+	private TableColumn<Product, Double> tc_shoppingcart_unitprice;
 
-    @FXML
-    private TableColumn<Product, Double> tc_shoppingcart_total;
+	@FXML
+	private TableColumn<Product, Double> tc_shoppingcart_total;
 
 	@FXML
 	private Label l_totalprice;
@@ -110,9 +110,9 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	private TextField tf_ordergoodamount;
-	
-    @FXML
-    private TableView<Good> tv_goodsstorage;
+
+	@FXML
+	private TableView<Good> tv_goodsstorage;
 
 	@FXML
 	private TableColumn<Good, Integer> tc_goodsstorage_nr;
@@ -126,11 +126,11 @@ public class Controller_Main implements Initializable {
 	@FXML
 	private TableColumn<Good, Double> tc_goodsstorage_amount;
 
-    @FXML
-    private TableColumn<Good, Double> tc_goodsstorage_purchaseprice;
+	@FXML
+	private TableColumn<Good, Double> tc_goodsstorage_purchaseprice;
 
-    @FXML
-    private TableColumn<Good, Double> tc_goodsstorage_saleprice;
+	@FXML
+	private TableColumn<Good, Double> tc_goodsstorage_saleprice;
 
 	@FXML
 	private Tab t_fuel;
@@ -179,9 +179,9 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	private Label l_balanceresult;
-	
-    @FXML
-    private TableView<Purchase> tv_purchases;
+
+	@FXML
+	private TableView<Purchase> tv_purchases;
 
 	@FXML
 	private TableColumn<Purchase, Integer> tc_purchases_number;
@@ -191,10 +191,9 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	private TableColumn<Purchase, Double> tc_purchases_price;
-	
-    @FXML
-    private TableView<Sale> tv_sales;
-	
+
+	@FXML
+	private TableView<Sale> tv_sales;
 
 	@FXML
 	private TableColumn<Sale, Integer> tc_sales_number;
@@ -259,7 +258,6 @@ public class Controller_Main implements Initializable {
 	@FXML
 	private Button b_tocheckout;
 
-
 	@FXML
 	private AnchorPane AP_LogIn;
 
@@ -268,23 +266,40 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	private Button b_login;
-  
-      @FXML
-    private Label l_wrongemployeenumber;
-    
-    @FXML 
-    private Label l_activeemployeename;
+
+	@FXML
+	private Label l_wrongemployeenumber;
+
+	@FXML
+	private Label l_activeemployeename;
+
+	@FXML
+	private AnchorPane AP_addFuel;
+
+	@FXML
+	private ComboBox<String> cb_fueltype;
+
+	@FXML
+	private TextField tf_amountoffuel;
+
+	@FXML
+	private Button b_addfuel;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
 		// Spalten einstellen
+
+		cb_fueltype.getItems().removeAll(cb_fueltype.getItems()); // lösche vorhandene Werte aus Dropdown-Menü
+		cb_fueltype.getItems().addAll("Super", "Diesel"); // Füge Werte der Enum-Kraftstoffarten ein
+		cb_fueltype.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
+
 		tc_shoppingcart_name.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
 		tc_shoppingcart_amount.setCellValueFactory(new PropertyValueFactory<Product, Double>("amount"));
 		tc_shoppingcart_unitprice.setCellValueFactory(new PropertyValueFactory<Product, Double>("salePrice"));
 		tc_shoppingcart_total.setCellValueFactory(new PropertyValueFactory<Product, Double>("totalSalePrice"));
 		tv_shoppingcart.setItems(GasStation.getShoppingCart());
-		
+
 		tc_goodsstorage_nr.setCellValueFactory(new PropertyValueFactory<Good, Integer>("number"));
 		tc_goodsstorage_name.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
 		tc_goodsstorage_storageunit.setCellValueFactory(new PropertyValueFactory<Good, String>("unit"));
@@ -292,31 +307,29 @@ public class Controller_Main implements Initializable {
 		tc_goodsstorage_purchaseprice.setCellValueFactory(new PropertyValueFactory<Good, Double>("purchasePrice"));
 		tc_goodsstorage_saleprice.setCellValueFactory(new PropertyValueFactory<Good, Double>("salePrice"));
 		tv_goodsstorage.setItems(GasStation.getGoods());
-		
-		
-		
+
 		tc_purchases_number.setCellValueFactory(new PropertyValueFactory<Purchase, Integer>("purchaseNumber"));
 		tc_purchases_date.setCellValueFactory(new PropertyValueFactory<Purchase, LocalDate>("purchaseDate"));
 		tc_purchases_price.setCellValueFactory(new PropertyValueFactory<Purchase, Double>("purchasePrice"));
 		tv_purchases.setItems(GasStation.getPurchases());
-		
+
 		tc_sales_number.setCellValueFactory(new PropertyValueFactory<Sale, Integer>("saleNumber"));
 		tc_sales_date.setCellValueFactory(new PropertyValueFactory<Sale, LocalDate>("saleDate"));
 		tc_sales_price.setCellValueFactory(new PropertyValueFactory<Sale, Double>("salePrice"));
 		tv_sales.setItems(GasStation.getSales());
-		
+
 		tc_employees_number.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("employeeNumber"));
 		tc_employees_name.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeName"));
 		tc_employees_dateofemployment
 				.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("dateOfEmployment"));
 		tv_employees.setItems(GasStation.getEmployees());
-		
+
 		tc_goodsstorage2_nr.setCellValueFactory(new PropertyValueFactory<Good, Integer>("number"));
 		tc_goodsstorage2_name.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
 		tv_goodsstorage2.setItems(GasStation.getGoods());
 
 		tc_goodsshoppingcart_name.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
-		tc_goodsshoppingcart_price.setCellValueFactory(new PropertyValueFactory<Good, Double>("price"));
+		tc_goodsshoppingcart_price.setCellValueFactory(new PropertyValueFactory<Good, Double>("totalSalePrice"));
 		tv_goodsshoppingcart.setItems(GasStation.getShoppingCartGoods());
 
 		tc_fueltanks_tanknumber.setCellValueFactory(new PropertyValueFactory<Fuel, Integer>("number"));
@@ -327,8 +340,7 @@ public class Controller_Main implements Initializable {
 		tc_fueltanks_saleprice.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("salePrice"));
 		tv_fueltanks.setItems(GasStation.getFuels());
 
-
-
+		l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
 
 //    	    @FXML
 //    	    private TableColumn<FuelTank, FuelType> tc_fueltanks_fueltype;
@@ -346,9 +358,21 @@ public class Controller_Main implements Initializable {
 
 	}
 
+//			@FXML	    
+//				void refreshTables() {
+//				((TabPane) t_fuel).getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+//				    @Override
+//				    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
+//				        // do something...
+//				    }
+//				}); 
+//			}
+
 	@FXML
 	void OnAddGoodsClick(ActionEvent event) {
-
+		// Tabellen aktualisieren
+		tv_goodsstorage2.setItems(GasStation.getGoods());
+		tv_goodsshoppingcart.setItems(GasStation.getShoppingCartGoods());
 		TabPane_main.setVisible(false);
 		AP_addGoods.setVisible(true);
 
@@ -377,25 +401,102 @@ public class Controller_Main implements Initializable {
     	l_activeemployeename.setText(GasStation.activeEmployee().getEmployeeName());
     	
 	}else {
-		l_wrongemployeenumber.setText("ungültige Mitarbeiternummer");
-		System.out.println("Ungültige Mitarbeiternummer");
+		l_wrongemployeenumber.setText("ungÃ¼ltige Mitarbeiternummer");
+		System.out.println("UngÃ¼ltige Mitarbeiternummer");
 		
-		//PopUp f�r ung�ltige Mitarbeiternummer
+		//PopUp für ungültige Mitarbeiternummer
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Fehler");
-		alert.setHeaderText("ung�ltige Mitarbeiternummer");
+		alert.setHeaderText("ungültige Mitarbeiternummer");
 		alert.setContentText(null);
 		alert.showAndWait();
-		
-	}
-	
-	//Aktualisiert Ampeldarstellung des Kraftstofflevels
-	imageview_diesel.setImage(GasStation.getTrafficLight(0));
-	imageview_super.setImage(GasStation.getTrafficLight(1));
-    }
 
 	@FXML
+	void addFuelToShoppingCart(ActionEvent event) {
+
+		// Variablen für Methodenaufruf
+		String chosenFuelType;
+		Double amountOfFuel;
+
+		// setze Parameterwerte
+
+		
+		chosenFuelType = cb_fueltype.getValue();
+		amountOfFuel = Double.valueOf(tf_amountoffuel.getText());
+
+		// Wenn die Methode addFuelToShoppingCart "true" zurückgibt, wurde der
+		// Kraftstoff erfolgreich dem Warenkorb hinzugefügt. Das Zapfsäulen-Fenster wird
+		// dann geschlossen.
+		if (GasStation.addFuelToShoppingCart(chosenFuelType, amountOfFuel)) {
+			
+			AP_addFuel.setVisible(false);
+			TabPane_main.setVisible(true);
+
+			l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
+			
+			
+			
+			
+			// Wenn die Methode "false" zurückgibt, ist nicht mehr genügend Kraftstoff
+			// vorhanden. Der Index des Kraftstofftanks wird ermittelt. Der Nutzer wird
+			// anschließend über den Füllstand des Tanks informiert.
+		} else {
+
+			int i = Fuel.getIndex(chosenFuelType);
+
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Kauf nicht möglich");
+			alert.setHeaderText("Kauf nicht möglich");
+			alert.setContentText("Es sind noch " + GasStation.getFuels().get(i).getAmount() + " Liter "
+					+ GasStation.getFuels().get(i).getName() + " verfügbar.");
+			alert.showAndWait();
+
+		}
+
+	}
+
+	@FXML
+	void chooseFuelType(ActionEvent event) {
+
+	}
+
+	@FXML
+	void setAmountOfFuel(ActionEvent event) {
+
+	}
+	
+
+
+	// Methode die aufgerufen wird, wenn der Button "Hinzufügen" im "Waren
+	// hinzufügen"-Fenster geklickt wird
+	@FXML
 	void onAddToShoppingCartClick(ActionEvent event) {
+
+		// setze Parameterwerte
+
+		int goodsNumber = Integer.valueOf(tf_goodsnumber.getText());
+		double goodsAmount = Double.valueOf(tf_goodsamount.getText());
+
+		// Wenn die Methode addFuelToShoppingCart "true" zurückgibt, wurde der
+		// Kraftstoff erfolgreich dem Warenkorb hinzugefügt. Das Label
+		// Gesamtbetrag wird dann auf den Gesamtpreis der ShoppingCart-Liste gesetzt
+		if (GasStation.addGoodToShoppingCart(goodsNumber, goodsAmount)) {
+
+			l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
+			// Wenn die Methode "false" zurückgibt, ist nicht mehr genügend Kraftstoff
+			// vorhanden. Der Index des Kraftstofftanks wird ermittelt. Der Nutzer wird
+			// anschließend über den Füllstand des Tanks informiert.
+		} else {
+
+			int i = Good.getIndex(goodsNumber);
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Kauf nicht möglich");
+			alert.setHeaderText("Kauf nicht möglich");
+			alert.setContentText("Von der Ware " + GasStation.getGoods().get(i).getName() + " sind noch "
+					+ (int) GasStation.getGoods().get(i).getAmount() + " Stück verfügbar.");
+			alert.showAndWait();
+
+		}
 
 	}
 
@@ -413,16 +514,14 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 
-
 	void onChangeFuelPriceClick(ActionEvent event) throws IOException {
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/ChangePriceOfFuelDialog.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root1));
-		stage.setTitle("Treibstoffpreis ändern");
+		stage.setTitle("Treibstoffpreis Ã¤ndern");
 		stage.show();
-
 
 	}
 
@@ -433,7 +532,7 @@ public class Controller_Main implements Initializable {
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root1));
-		stage.setTitle("Warenpreis ändern");
+		stage.setTitle("Warenpreis Ã¤ndern");
 		stage.show();
 	}
 
@@ -451,12 +550,17 @@ public class Controller_Main implements Initializable {
 	@FXML
 	void onGasPumpClick(ActionEvent event) throws IOException {
 
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/GasPumpDialog.fxml"));
-		Parent root1 = (Parent) fxmlLoader.load();
-		Stage stage = new Stage();
-		stage.setScene(new Scene(root1));
-		stage.setTitle("Zapfsï¿½ule");
-		stage.show();
+//		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/GasPumpDialog.fxml"));
+//		Parent root1 = (Parent) fxmlLoader.load();
+//		Stage stage = new Stage();
+//		stage.setScene(new Scene(root1));
+//		stage.setTitle("ZapfsÃ¯Â¿Â½ule");
+//		stage.show();
+
+		// Tabellen aktualisieren
+		
+		TabPane_main.setVisible(false);
+		AP_addFuel.setVisible(true);
 
 	}
 
@@ -500,6 +604,19 @@ public class Controller_Main implements Initializable {
 	void onShowBalanceClick(ActionEvent event) {
 
 	}
+
+//	void setTotalPrice() {
+//		
+//		// Hole den Gesamtbetrag des Warenkorbs
+//		double totalPrice = GasStation.getTotalPrice();
+//		
+//		// Runde auf zwei Nachkommastellen
+//		totalPrice = Math.round(100.0*totalPrice)/100.0;
+//		
+//		// Setze das Label für den Gesamtbetrag
+//		l_totalprice.setText(String.valueOf(totalPrice));
+//
+//	}
 
 	@FXML
 	void onToCheckoutClick(ActionEvent event) {

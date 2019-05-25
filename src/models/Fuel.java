@@ -16,22 +16,7 @@ public class Fuel extends Product{
 		
 	}
 
-	public static boolean enoughFuelCheck(String chosenFuelName, double amountOfFuel) {
-		
-		boolean value = false;
-		
-		for (Fuel f : GasStation.getFuels()) {
-			if (f.getName().equals(chosenFuelName)) {
-				if (amountOfFuel < (f.getAmount()-100)) {
-					value = true;
-					break;
-				} else continue;
-			}
-		}
-		
-		return value;
-		
-	}
+	
 	
 	public void displayFuel() {
 		System.out.println("Fuel: " + getNumber() + ", " + name + ", " + amount + ", " + capacity + ", " + purchasePrice + ", " + salePrice);
@@ -57,6 +42,21 @@ public class Fuel extends Product{
 	}
 
 
+	// Methode, die den Listen-Index eines Kraftstofftanks mit angegebener Kraftstoffart zurückgibt.
+	public static int getIndex(String fueltype) {
+
+		int i = 0;
+
+		for (Fuel f : GasStation.getFuels()) {
+			if (f.getName().equals(fueltype)) {
+				i = GasStation.getFuels().indexOf(f);
+			} else
+				continue;
+		}
+
+		return i;
+
+	}
 
 	@Override
 	public void createorder(int amount) {
