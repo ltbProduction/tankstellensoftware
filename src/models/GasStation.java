@@ -287,28 +287,26 @@ public static Image getTrafficLight(int fueltype) {
 
 public static void changePriceOfFuel(String fueltype, double newPrice) {
 	
-//	if(fueltype.equals("Diesel")) {
-//		fuels.get(0).setSalePrice(newPrice);	
-//	}else if(fueltype.equals("Super")) {
-//		fuels.get(1).setSalePrice(newPrice);
-//	}
-	
-	System.out.println(newPrice + " - 1");
 	for (Fuel f : GasStation.getFuels()) {
-		System.out.println(f.getName());
 		if(fueltype.equals(f.getName())) {
 			f.setSalePrice(newPrice);
-			System.out.println(newPrice + " - 2");
 		}continue;
 	}
 	FileTransfer.refresh();
 }
 
-public static void changePriceOfGood(String goodtype, double newPrice) {
+public static void changePriceOfGood(String product, double newPrice) {
+
+	for (Good g : GasStation.getGoods()) {
+		if(product.equals(g.getName())) {
+			g.setSalePrice(newPrice);
+		}continue;
+	}
+	FileTransfer.refresh();
+}
 	
 }
 
-}
 
 
 //Gibt die aktuelle Ampeldarstellung in Abhängigkeit des Füllstands von Super an

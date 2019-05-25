@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.GasStation;
 
 public class Controller_ChangePriceOfGoodsDialog implements Initializable{
 
@@ -24,6 +25,15 @@ public class Controller_ChangePriceOfGoodsDialog implements Initializable{
 
     @FXML
     void confirmPrice(ActionEvent event) {
+    	
+    	double newPrice = 0;
+    	try{newPrice = Double.valueOf(tf_newprice.getText());
+	}catch(NumberFormatException e) {
+        	System.out.println("Das ist keine gültige Zahl");
+    	}
+    	
+    	GasStation.changePriceOfGood(cb_nameofproduct.getValue(), newPrice);
+    	
     	
     	//schließt das Fenster
     	Stage stage = (Stage)
