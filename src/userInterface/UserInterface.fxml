@@ -100,17 +100,17 @@
                   </Label>
                   <Label layoutX="77.0" layoutY="270.0" text="Warennr." />
                   <Label layoutX="152.0" layoutY="270.0" text="Menge" />
-                  <Button fx:id="b_ordergoods" layoutX="152.0" layoutY="330.0" mnemonicParsing="false" onAction="#onOrderGoodsClick" prefHeight="25.0" prefWidth="59.0" text="OK" />
+                  <Button fx:id="b_ordergoods" layoutX="152.0" layoutY="330.0" mnemonicParsing="false" onAction="#onOrderGoodsClick" prefHeight="25.0" prefWidth="78.0" text="Abschicken" />
                   <Button fx:id="b_checkindelivery" layoutX="437.0" layoutY="276.0" mnemonicParsing="false" onAction="#onCheckInDeliveryClick" prefHeight="37.0" prefWidth="149.0" text="Lieferung einbuchen" />
                   <Button fx:id="b_changegoodsprice" layoutX="437.0" layoutY="319.0" mnemonicParsing="false" onAction="#onChangeGoodsPriceClick" prefHeight="37.0" prefWidth="149.0" text="Preise ändern" />
                   <TextField fx:id="tf_ordergoodnumber" layoutX="77.0" layoutY="291.0" prefHeight="25.0" prefWidth="59.0" />
-                  <TextField fx:id="tf_ordergoodamount" layoutX="152.0" layoutY="291.0" prefHeight="25.0" prefWidth="59.0" />
+                  <TextField fx:id="tf_ordergoodamount" layoutX="152.0" layoutY="291.0" prefHeight="25.0" prefWidth="78.0" />
                         <Label layoutX="15.0" layoutY="25.0" text="Warenbestand">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tv_goodsstorage" layoutX="15.0" layoutY="65.0" prefHeight="185.0" prefWidth="570.0">
+                        <TableView fx:id="tv_goodsstorage" layoutX="15.0" layoutY="65.0" prefHeight="169.0" prefWidth="570.0">
                           <columns>
                             <TableColumn fx:id="tc_goodsstorage_nr" prefWidth="55.0" text="Nr." />
                             <TableColumn fx:id="tc_goodsstorage_name" prefWidth="215.0" text="Bezeichnung" />
@@ -118,6 +118,13 @@
                               <TableColumn fx:id="tc_goodsstorage_amount" prefWidth="59.0" text="Menge" />
                               <TableColumn fx:id="tc_goodsstorage_purchaseprice" prefWidth="78.0" text="Preis (EK)" />
                               <TableColumn fx:id="tc_goodsstorage_saleprice" prefWidth="79.0" text="Preis (VK)" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="b_addgoodorder" layoutX="58.0" layoutY="330.0" mnemonicParsing="false" onAction="#onAddGoodOrderClick" text="Hinzufügen" />
+                        <TableView fx:id="tv_ordersofgoods" layoutX="242.0" layoutY="242.0" prefHeight="117.0" prefWidth="178.0">
+                          <columns>
+                            <TableColumn fx:id="tc_ordergoodname" prefWidth="108.0" text="Bezeichnung" />
+                            <TableColumn fx:id="tc_ordergoodamount" prefWidth="69.0" text="Menge" />
                           </columns>
                         </TableView>
                </children></AnchorPane>
@@ -139,9 +146,9 @@
                   </TableView>
                   <Label layoutX="76.0" layoutY="272.0" text="Kraftstoffart" />
                   <Label layoutX="201.0" layoutY="273.0" text="Menge" />
-                  <ComboBox fx:id="cb_orderfueltype" layoutX="76.0" layoutY="294.0" prefHeight="25.0" prefWidth="116.0" />
-                  <TextField fx:id="tf_orderfuelamount" layoutX="201.0" layoutY="295.0" prefHeight="25.0" prefWidth="59.0" />
-                  <Button fx:id="b_orderfuel" layoutX="201.0" layoutY="328.0" mnemonicParsing="false" onAction="#onOrderFuelClick" prefHeight="25.0" prefWidth="59.0" text="OK" />
+                  <ComboBox fx:id="cb_orderfueltype" layoutX="76.0" layoutY="294.0" prefHeight="25.0" prefWidth="98.0" />
+                  <TextField fx:id="tf_orderfuelamount" layoutX="185.0" layoutY="294.0" prefHeight="25.0" prefWidth="68.0" />
+                  <Button fx:id="b_orderfuel" layoutX="169.0" layoutY="328.0" mnemonicParsing="false" onAction="#onOrderFuelClick" prefHeight="25.0" prefWidth="85.0" text="Abschicken" />
                         <Label layoutX="15.0" layoutY="25.0" text="Kraftstofftanks">
                            <font>
                               <Font name="System Bold" size="16.0" />
@@ -154,6 +161,13 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
+                        <Button fx:id="b_addfuelorder" layoutX="77.0" layoutY="328.0" mnemonicParsing="false" onAction="#onAddFuelOrderClick" prefHeight="25.0" prefWidth="85.0" text="Hinzufügen" />
+                        <TableView fx:id="tv_ordersoffuel" layoutX="270.0" layoutY="244.0" prefHeight="111.0" prefWidth="149.0">
+                          <columns>
+                            <TableColumn fx:id="tc_orderfueltype" prefWidth="83.0" text="Kraftstoffart" />
+                            <TableColumn fx:id="tc_orderfuelamount" prefWidth="67.0" text="Menge" />
+                          </columns>
+                        </TableView>
                </children>
                   </AnchorPane>
          </content>
