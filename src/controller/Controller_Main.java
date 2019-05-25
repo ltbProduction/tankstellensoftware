@@ -374,31 +374,7 @@ public class Controller_Main implements Initializable {
 
 		l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
 
-//    	    @FXML
-//    	    private TableColumn<FuelTank, FuelType> tc_fueltanks_fueltype;
-//
-//    	    @FXML
-//    	    private TableColumn<FuelTank, Double> tc_fueltanks_capacity;
-//
-//    	    @FXML
-//    	    private TableColumn<FuelTank, Double> tc_fueltanks_fuellevel;
-//
-//    	    @FXML
-//    	    private TableColumn<FuelTank, Double> tc_fueltanks_saleprice;
-//    	  
-		// Dummy Daten laden
-
 	}
-
-//			@FXML	    
-//				void refreshTables() {
-//				((TabPane) t_fuel).getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-//				    @Override
-//				    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
-//				        // do something...
-//				    }
-//				}); 
-//			}
 
 	@FXML
 	void OnAddGoodsClick(ActionEvent event) {
@@ -431,6 +407,10 @@ public class Controller_Main implements Initializable {
 
 			// aktive Mitarbeitername ausgeben
 			l_activeemployeename.setText(GasStation.activeEmployee().getEmployeeName());
+
+			// Ampel aktualisieren
+			imageview_diesel.setImage(GasStation.getTrafficLight(0));
+			imageview_super.setImage(GasStation.getTrafficLight(1));
 
 		} else {
 			l_wrongemployeenumber.setText("ungÃ¼ltige Mitarbeiternummer");
@@ -469,6 +449,10 @@ public class Controller_Main implements Initializable {
 
 			l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
 
+			// Ampel aktualisieren
+			imageview_diesel.setImage(GasStation.getTrafficLight(0));
+			imageview_super.setImage(GasStation.getTrafficLight(1));
+
 			// Wenn die Methode "false" zurückgibt, ist nicht mehr genügend Kraftstoff
 			// vorhanden. Der Index des Kraftstofftanks wird ermittelt. Der Nutzer wird
 			// anschließend über den Füllstand des Tanks informiert.
@@ -487,43 +471,44 @@ public class Controller_Main implements Initializable {
 
 	}
 
-	@FXML
-	void chooseFuelType(ActionEvent event) {
-
-	}
-
-	@FXML
-	void setAmountOfFuel(ActionEvent event) {
-
-	}
-
 	// Methode die aufgerufen wird, wenn der Button "Hinzufügen" im "Waren
 	// hinzufügen"-Fenster geklickt wird
 	@FXML
 	void onAddToShoppingCartClick(ActionEvent event) {
 
 		// setze Parameterwerte
+		int goodNumber = 0;
+		double goodAmount = 0;
+		
+		try {
+			goodNumber = Integer.valueOf(tf_goodsnumber.getText());
+		} catch (NumberFormatException e) {
+			System.out.println("Das ist keine Ganzzahl");
+		}
+		
+		try {
+			goodAmount = Double.valueOf(tf_goodsamount.getText());
+		} catch (NumberFormatException e) {
+			System.out.println("Das ist keine Dezimalzahl");
+		}
 
-		int goodsNumber = Integer.valueOf(tf_goodsnumber.getText());
-		double goodsAmount = Double.valueOf(tf_goodsamount.getText());
-
-		// Wenn die Methode addFuelToShoppingCart "true" zurückgibt, wurde der
-		// Kraftstoff erfolgreich dem Warenkorb hinzugefügt. Das Label
+		// Wenn die Methode addFuelToShoppingCart "true" zur�kgibt, wurde der
+		// Kraftstoff erfolgreich dem Warenkorb hinzugef�gt. Das Label
 		// Gesamtbetrag wird dann auf den Gesamtpreis der ShoppingCart-Liste gesetzt
-		if (GasStation.addGoodToShoppingCart(goodsNumber, goodsAmount)) {
+		if (GasStation.addGoodToShoppingCart(goodNumber, goodAmount)) {
 
 			l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
-			// Wenn die Methode "false" zurückgibt, ist nicht mehr genügend Kraftstoff
-			// vorhanden. Der Index des Kraftstofftanks wird ermittelt. Der Nutzer wird
-			// anschließend über den Füllstand des Tanks informiert.
+			// Wenn die Methode "false" zurückgibt, ist nicht mehr genügend Bestand
+			// vorhanden. Der Index der Ware wird ermittelt. Der Nutzer wird
+			// anschließend über den Bestand der Ware informiert.
 		} else {
 
-			int i = Good.getIndex(goodsNumber);
+			int i = Good.getIndex(goodNumber);
 			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Kauf nicht möglich");
-			alert.setHeaderText("Kauf nicht möglich");
+			alert.setTitle("Kauf nicht m�glich");
+			alert.setHeaderText("Kauf nicht m�glich");
 			alert.setContentText("Von der Ware " + GasStation.getGoods().get(i).getName() + " sind noch "
-					+ (int) GasStation.getGoods().get(i).getAmount() + " Stück verfügbar.");
+					+ (int) GasStation.getGoods().get(i).getAmount() + " St�ck verf�gbar.");
 			alert.showAndWait();
 
 		}
@@ -532,6 +517,9 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	void onBarClick(ActionEvent event) throws IOException {
+
+		// Gesamtbetrag-Label auf Null setzen
+		l_totalprice.setText("0.00");
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/PayProcessDialog.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
@@ -543,7 +531,6 @@ public class Controller_Main implements Initializable {
 	}
 
 	@FXML
-
 	void onChangeFuelPriceClick(ActionEvent event) throws IOException {
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/ChangePriceOfFuelDialog.fxml"));
@@ -609,6 +596,10 @@ public class Controller_Main implements Initializable {
 	@FXML
 	void onOrderFuelClick(ActionEvent event) {
 
+		// Ampel aktualisieren
+		imageview_diesel.setImage(GasStation.getTrafficLight(0));
+		imageview_super.setImage(GasStation.getTrafficLight(1));
+
 		// if Bestellung erfolgreich
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Bestellung");
@@ -634,19 +625,6 @@ public class Controller_Main implements Initializable {
 	void onShowBalanceClick(ActionEvent event) {
 
 	}
-
-//	void setTotalPrice() {
-//		
-//		// Hole den Gesamtbetrag des Warenkorbs
-//		double totalPrice = GasStation.getTotalPrice();
-//		
-//		// Runde auf zwei Nachkommastellen
-//		totalPrice = Math.round(100.0*totalPrice)/100.0;
-//		
-//		// Setze das Label für den Gesamtbetrag
-//		l_totalprice.setText(String.valueOf(totalPrice));
-//
-//	}
 
 	@FXML
 	void onToCheckoutClick(ActionEvent event) {

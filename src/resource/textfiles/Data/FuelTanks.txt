@@ -1,3 +1,3 @@
 Nummer;Kraftstoffart;Füllstand;Kapazität;Einkaufspreis;Verkaufspreis
-1;Diesel;4629.0;10000.0;0.82;1.33
-2;Super;4800.0;10000.0;1.04;1.7
+1;Diesel;574.0;10000.0;0.82;1.33
+2;Super;109.0;10000.0;1.04;1.7
