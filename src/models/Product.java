@@ -22,8 +22,8 @@ public abstract class Product {
 		this.unit = unit;
 		this.purchasePrice = purchasePrice;
 		this.salePrice = salePrice;
-		totalPurchasePrice = amount*purchasePrice;
-		totalSalePrice = amount*salePrice;
+		totalPurchasePrice = Math.round(100.0*(amount*purchasePrice))/100.0;
+		totalSalePrice = Math.round(100.0*(amount*salePrice))/100.0;
 		
 	}
 	
