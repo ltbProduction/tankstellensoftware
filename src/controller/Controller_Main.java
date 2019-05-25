@@ -157,7 +157,7 @@ public class Controller_Main implements Initializable {
 	private TableColumn<Fuel, Double> tc_fueltanks_saleprice;
 
 	@FXML
-	private ComboBox<?> cb_orderfueltype;
+	private ComboBox<String> cb_orderfueltype;
 
 	@FXML
 	private TextField tf_orderfuelamount;
@@ -311,7 +311,6 @@ public class Controller_Main implements Initializable {
 	
 	
 
-	
 
 	
 	
@@ -322,6 +321,10 @@ public class Controller_Main implements Initializable {
 
 		// Spalten einstellen
 
+		cb_orderfueltype.getItems().removeAll(cb_orderfueltype.getItems()); // lösche vorhandene Werte aus Dropdown-Menü
+		cb_orderfueltype.getItems().addAll("Super", "Diesel"); // Füge Werte der Enum-Kraftstoffarten ein
+		cb_orderfueltype.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
+		
 		cb_fueltype.getItems().removeAll(cb_fueltype.getItems()); // lösche vorhandene Werte aus Dropdown-Menü
 		cb_fueltype.getItems().addAll("Super", "Diesel"); // Füge Werte der Enum-Kraftstoffarten ein
 		cb_fueltype.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
