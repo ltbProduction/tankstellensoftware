@@ -71,11 +71,11 @@ public class FileTransfer {
 		}
 	}
 	
-	public static void refresh() {
-		writetextfiles();
-		readData();
-		
-	}
+//	public static void refresh() {
+//		writetextfiles();
+//		readData();
+//		
+//	}
 	
 	
 	
