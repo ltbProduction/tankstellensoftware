@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 import utilities.FileSetter;
-import utilities.FileTransfer;
 import utilities.helpmethod;
 
 public class GasStation {
@@ -322,37 +321,6 @@ public class GasStation {
 		}
 		return false;
 	}	
-
-//Methode überprüft ob eine vorhandene Mitarbeiternummer eingegeben wird beim Login
-public static boolean existingEmployee(int number) {
-	boolean value = false;
-	for (Employee e : employees) {
-		if (e.getEmployeeNumber() == number) {
-			value = true;
-			break;
-		} else {
-			value = false;
-		}
-}
-	return value;
-}
-
-//Gibt die aktuelle Ampeldarstellung in Abhängigkeit des Füllstands an
-public static Image getTrafficLight(int fueltype) {
-	
-	
-	Image image = null;
-	  double value = fuels.get(fueltype).getAmount()/GasStation.getFuels().get(fueltype).getCapacity();	
-	if(value > 0.5) {
-		image = new Image("/resource/traffic light/traffic_light_green.PNG");		
-	} else if(value > 0.25) {
-		image = new Image("/resource/traffic light/traffic_light_yellow.PNG");		
-	} else if(value >= 0.0) {
-		image = new Image("/resource/traffic light/traffic_light_red.PNG");		
-	}
-	return image;
-}
-
 	
 
 
@@ -395,7 +363,8 @@ public static void changePriceOfFuel(String fueltype, double newPrice) {
 			f.setSalePrice(newPrice);
 		}continue;
 	}
-	FileTransfer.refresh();
+	// Aktualisieren der Liste Fuels (Workaround, da Tabellenspalten sich nicht autom. aktualisieren)
+	FXCollections.copy(fuels, fuels);
 }
 
 public static void changePriceOfGood(String product, double newPrice) {
@@ -405,7 +374,9 @@ public static void changePriceOfGood(String product, double newPrice) {
 			g.setSalePrice(newPrice);
 		}continue;
 	}
-	FileTransfer.refresh();
+	// Aktualisieren der Liste Fuels (Workaround, da Tabellenspalten sich nicht autom. aktualisieren)
+	FXCollections.copy(goods, goods);
+	
 }
 	
 }

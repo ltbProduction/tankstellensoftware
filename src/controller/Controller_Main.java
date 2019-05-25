@@ -379,37 +379,40 @@ public class Controller_Main implements Initializable {
 	}
 
 	@FXML
-    void OnLogInClick(ActionEvent event) {
-    	
+	void OnLogInClick(ActionEvent event) {
+
 		int employeeNumber = 0;
-		
-    try {
-    	employeeNumber = Integer.valueOf(tf_employeenumber.getText());
-    }catch(NumberFormatException e) {
-    	System.out.println("Das ist kein Integer");
-    }
-    	
-	if(GasStation.existingEmployee(employeeNumber) == true) {
-		AP_LogIn.setVisible(false);
-    	TabPane_main.setVisible(true);
-    	System.out.println("Erfolgreicher Login");
-    	
-    	//Mitarbeiter auf aktiv setzen
-    	GasStation.setCurrentEmployee(employeeNumber);
-    	
-    	//aktive Mitarbeitername ausgeben 
-    	l_activeemployeename.setText(GasStation.activeEmployee().getEmployeeName());
-    	
-	}else {
-		l_wrongemployeenumber.setText("ungÃ¼ltige Mitarbeiternummer");
-		System.out.println("UngÃ¼ltige Mitarbeiternummer");
-		
-		//PopUp für ungültige Mitarbeiternummer
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Fehler");
-		alert.setHeaderText("ungültige Mitarbeiternummer");
-		alert.setContentText(null);
-		alert.showAndWait();
+
+		try {
+			employeeNumber = Integer.valueOf(tf_employeenumber.getText());
+		} catch (NumberFormatException e) {
+			System.out.println("Das ist kein Integer");
+		}
+
+		if (GasStation.existingEmployee(employeeNumber) == true) {
+			AP_LogIn.setVisible(false);
+			TabPane_main.setVisible(true);
+			System.out.println("Erfolgreicher Login");
+
+			// Mitarbeiter auf aktiv setzen
+			GasStation.setCurrentEmployee(employeeNumber);
+
+			// aktive Mitarbeitername ausgeben
+			l_activeemployeename.setText(GasStation.activeEmployee().getEmployeeName());
+
+		} else {
+			l_wrongemployeenumber.setText("ungÃ¼ltige Mitarbeiternummer");
+			System.out.println("UngÃ¼ltige Mitarbeiternummer");
+
+			// PopUp für ungültige Mitarbeiternummer
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Fehler");
+			alert.setHeaderText("ungültige Mitarbeiternummer");
+			alert.setContentText(null);
+			alert.showAndWait();
+
+		}
+	}
 
 	@FXML
 	void addFuelToShoppingCart(ActionEvent event) {
@@ -420,23 +423,20 @@ public class Controller_Main implements Initializable {
 
 		// setze Parameterwerte
 
-		
 		chosenFuelType = cb_fueltype.getValue();
 		amountOfFuel = Double.valueOf(tf_amountoffuel.getText());
 
 		// Wenn die Methode addFuelToShoppingCart "true" zurückgibt, wurde der
-		// Kraftstoff erfolgreich dem Warenkorb hinzugefügt. Das Zapfsäulen-Fenster wird
+		// Kraftstoff erfolgreich dem Warenkorb hinzugefügt. Das Zapfsäulen-Fenster
+		// wird
 		// dann geschlossen.
 		if (GasStation.addFuelToShoppingCart(chosenFuelType, amountOfFuel)) {
-			
+
 			AP_addFuel.setVisible(false);
 			TabPane_main.setVisible(true);
 
 			l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
-			
-			
-			
-			
+
 			// Wenn die Methode "false" zurückgibt, ist nicht mehr genügend Kraftstoff
 			// vorhanden. Der Index des Kraftstofftanks wird ermittelt. Der Nutzer wird
 			// anschließend über den Füllstand des Tanks informiert.
@@ -464,8 +464,6 @@ public class Controller_Main implements Initializable {
 	void setAmountOfFuel(ActionEvent event) {
 
 	}
-	
-
 
 	// Methode die aufgerufen wird, wenn der Button "Hinzufügen" im "Waren
 	// hinzufügen"-Fenster geklickt wird
@@ -558,7 +556,7 @@ public class Controller_Main implements Initializable {
 //		stage.show();
 
 		// Tabellen aktualisieren
-		
+
 		TabPane_main.setVisible(false);
 		AP_addFuel.setVisible(true);
 
