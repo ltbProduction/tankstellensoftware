@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 import utilities.FileSetter;
+import utilities.FileTransfer;
 import utilities.helpmethod;
 
 public class GasStation {
@@ -320,7 +321,40 @@ public class GasStation {
 
 		}
 		return false;
+	}	
+
+//Methode überprüft ob eine vorhandene Mitarbeiternummer eingegeben wird beim Login
+public static boolean existingEmployee(int number) {
+	boolean value = false;
+	for (Employee e : employees) {
+		if (e.getEmployeeNumber() == number) {
+			value = true;
+			break;
+		} else {
+			value = false;
+		}
+}
+	return value;
+}
+
+//Gibt die aktuelle Ampeldarstellung in Abhängigkeit des Füllstands an
+public static Image getTrafficLight(int fueltype) {
+	
+	
+	Image image = null;
+	  double value = fuels.get(fueltype).getAmount()/GasStation.getFuels().get(fueltype).getCapacity();	
+	if(value > 0.5) {
+		image = new Image("/resource/traffic light/traffic_light_green.PNG");		
+	} else if(value > 0.25) {
+		image = new Image("/resource/traffic light/traffic_light_yellow.PNG");		
+	} else if(value >= 0.0) {
+		image = new Image("/resource/traffic light/traffic_light_red.PNG");		
 	}
+	return image;
+}
+
+	
+
 
 //Methode Ã¼berprÃ¼ft ob eine vorhandene Mitarbeiternummer eingegeben wird beim Login
 	public static boolean existingEmployee(int number) {
@@ -353,72 +387,29 @@ public class GasStation {
 		return image;
 	}
 
-//Gibt die aktuelle Ampeldarstellung in AbhÃ¤ngigkeit des FÃ¼llstands von Super an
-//public static Image getSuperTrafficLight() {
-//	
-//	Image image = null;
-//	  double value = GasStation.getFuelTanks().get(1).getFuelLevel()/GasStation.getFuelTanks().get(1).getCapacity();
-//		
-//	if(value > 0.5) {
-//		image = new Image("/resource/traffic light/traffic_light_green.PNG");		
-//	} else if(value > 0.25) {
-//		image = new Image("/resource/traffic light/traffic_light_yellow.PNG");		
-//	} else if(value >= 0.0) {
-//		image = new Image("/resource/traffic light/traffic_light_red.PNG");		
-//	}
-//	return image;
-//}
 
+public static void changePriceOfFuel(String fueltype, double newPrice) {
+	
+	for (Fuel f : GasStation.getFuels()) {
+		if(fueltype.equals(f.getName())) {
+			f.setSalePrice(newPrice);
+		}continue;
+	}
+	FileTransfer.refresh();
 }
 
-// alt:
-//private String name;
-//private int numberofcustomers;
-//private ArrayList<Goods> goods = new ArrayList<>();
-//private ArrayList<Fuel> fuel = new ArrayList<>();
-//
-//
-//
-////Methoden 
-//public GasStation(String name) {
-//	this.name = name;
-//}
-//
-//public void start() {
-//	//Die Daten sollen ausgelesen werden.
-//		// Die Bestandsdaten sollen ausgelegt werden
-//		// Die Kaufbelege sollen ausgelegt werden
-//		
-//
-//	
-//	
-//	
-//}
-//
-//public void readData() {
-//	
-//}
-//
-//
-//
-//public void creategood(int price, int inventory, ClassofGoods cod) {
-//	//Die Objekte sollen angelegt werden
-//	//goods.add(new Goods(price, duration, cog))
-//}
-//
-//public void createfuel() {
-//	//Die Objekte sollen angelegt werden
-//	//fuel.add(new Fuel(price, duration, fuel));
-//}
-//
-//
-//public void checkdeliveries() {
-//	
-//}
-//
-//
-//public void writeData() {
-//	
-//}
-//}
+public static void changePriceOfGood(String product, double newPrice) {
+
+	for (Good g : GasStation.getGoods()) {
+		if(product.equals(g.getName())) {
+			g.setSalePrice(newPrice);
+		}continue;
+	}
+	FileTransfer.refresh();
+}
+	
+}
+
+
+
 

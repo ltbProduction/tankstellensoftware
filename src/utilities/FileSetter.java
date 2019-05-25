@@ -39,6 +39,8 @@ public class FileSetter {
 				
 				
 			}
+			GasStation.getEmployees().clear(); //ArrayList löschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+
   		} catch (IOException e) {
   			e.printStackTrace();
      }
@@ -60,11 +62,13 @@ public class FileSetter {
 					bw.newLine();									// Springe in die nÃ¤chste Zeile
 				} else continue;									// Sonst fÃ¼hre fort
 
-				
 			}
+			GasStation.getFuels().clear(); //ArrayList löschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+
   		} catch (IOException e) {
   			e.printStackTrace();
      }
+  		
      }
      
      //Die Text datei der Waren wird geschrieben
@@ -81,6 +85,8 @@ public class FileSetter {
 				} else continue;								// Sonst fÃ¼hre fort
 				
 			}
+			GasStation.getGoods().clear(); //ArrayList löschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+	
   		} catch (IOException e) {
   			e.printStackTrace();
      }
@@ -99,6 +105,8 @@ public class FileSetter {
 					bw.newLine();									// Springe in die nÃ¤chste Zeile
 				} else continue;									// Sonst fÃ¼hre fort
 			}
+			GasStation.getPurchases().clear(); //ArrayList löschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+
   		} catch (IOException e) {
   			e.printStackTrace();
      }
@@ -118,6 +126,8 @@ public class FileSetter {
 					bw.newLine();									// Springe in die nÃ¤chste Zeile
 				} else continue;									// Sonst fÃ¼hre fort
 			}
+			GasStation.getSales().clear(); //ArrayList löschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+
   		} catch (IOException e) {
   			e.printStackTrace();
      }
