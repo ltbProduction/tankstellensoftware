@@ -284,6 +284,38 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	private Button b_addfuel;
+	
+	@FXML
+	private Button b_addgoodorder;
+	
+	@FXML
+	private TableView<Good> tv_ordersofgoods;
+	
+	@FXML
+	private TableColumn<Good, String> tc_ordergoodname;
+	
+	@FXML
+	private TableColumn<Good, Double> tc_ordergoodamount;
+	
+	@FXML
+	private Button b_addfuelorder;
+	
+	@FXML
+	private TableView<Fuel> tv_ordersoffuel;
+	
+	@FXML
+	private TableColumn<Fuel, String> tc_orderfueltype;
+	
+	@FXML
+	private TableColumn<Fuel, Double> tc_orderfuelamount;
+	
+	
+
+	
+
+	
+	
+	
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -633,6 +665,16 @@ public class Controller_Main implements Initializable {
 	@FXML
 	void onOrderFuelClickStartScreen(ActionEvent event) {
 		TabPane_main.getSelectionModel().select(t_fuel);
+	}
+	
+	@FXML
+	void onAddGoodOrderClick(ActionEvent event) {
+		
+	}
+	
+	@FXML
+	void onAddFuelOrderClick(ActionEvent event) {
+		
 	}
 
 }
