@@ -1,5 +1,5 @@
 Nummer;Name;Lagereinheit;Menge;Einkaufspreis;Verkaufspreis
-421;Wodka Jelzin;Flasche;541.0;1.19;2.99
+421;Wodka Jelzin;Flasche;539.0;1.19;2.99
 871;Filip Maurice;Packung;1298.0;2.49;2.77
 358;Jupiter Schokoriegel;Stück;1849.0;0.09;0.19
 992;Sitting Bull;Dose;663.0;0.99;1.29
