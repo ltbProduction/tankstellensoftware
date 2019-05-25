@@ -114,11 +114,8 @@ public class FileScanner {
 		 
 		     File file = new File(fileNameGoods);
 		     //Arraylist leeren
-		     
-			
-			
 
-			try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
+		     try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
 				String line;
 				br.readLine();
 		
