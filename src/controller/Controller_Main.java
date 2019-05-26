@@ -1,10 +1,12 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +27,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import models.Employee;
 import models.Fuel;
 import models.GasStation;
@@ -33,9 +38,13 @@ import models.Good;
 import models.Product;
 import models.Purchase;
 import models.Sale;
+import utilities.FileSetter;
 
 public class Controller_Main implements Initializable {
 
+	private File file;
+	private FileChooser fileChooser;
+	
 	@FXML
 	private TabPane TabPane_main;
 
@@ -373,7 +382,21 @@ public class Controller_Main implements Initializable {
 		tv_fueltanks.setItems(GasStation.getFuels());
 
 		l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
-
+		
+		tc_ordergoodamount.setCellValueFactory(new PropertyValueFactory<Good, Double>("amount"));
+		tc_ordergoodname.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
+		tv_ordersofgoods.setItems(GasStation.getOrderGood());
+		
+		fileChooser = new FileChooser();
+		fileChooser.getExtensionFilters().add(
+		new ExtensionFilter("Textdateien", "*.txt"));
+		
+		
+		
+		
+		
+		
+		
 //    	    @FXML
 //    	    private TableColumn<FuelTank, FuelType> tc_fueltanks_fueltype;
 //
@@ -608,7 +631,10 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	void onOrderFuelClick(ActionEvent event) {
-
+    	Window window = b_ordergoods.getScene().getWindow();
+		file = fileChooser.showSaveDialog(window);
+		
+		
 		// if Bestellung erfolgreich
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Bestellung");
@@ -620,7 +646,11 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	void onOrderGoodsClick(ActionEvent event) {
-
+    	Window window = b_ordergoods.getScene().getWindow();
+		file = fileChooser.showSaveDialog(window);
+		FileSetter.writeGoodsOrder(file);
+		FXCollections.copy(GasStation.getOrderGood(), GasStation.getOrderGood());
+		
 		// if Bestellung erfolgreich
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Bestellung");
@@ -669,12 +699,21 @@ public class Controller_Main implements Initializable {
 	
 	@FXML
 	void onAddGoodOrderClick(ActionEvent event) {
+	int number = Integer.parseInt(tf_ordergoodnumber.getText());
+	double amount = Double.parseDouble(tf_ordergoodamount.getText());
+	if(GasStation.existingGood(number)) {
+		GasStation.addGoodOrder(number, amount);
+	}
+	tf_ordergoodnumber.setText("");
+	tf_ordergoodamount.setText("");
 		
 	}
 	
 	@FXML
 	void onAddFuelOrderClick(ActionEvent event) {
-		
+	String fueltype = cb_fueltype.getTypeSelector();
+	double amount = Double.parseDouble(tf_orderfuelamount.getText());
+		GasStation.addFuelOrder(fueltype, amount);
 	}
 
 }

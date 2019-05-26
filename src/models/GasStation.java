@@ -29,6 +29,12 @@ public class GasStation {
 	private static ObservableList<Sale> sales = FXCollections.observableArrayList();
 	// Liste mit allen Einkäufen
 	private static ObservableList<Purchase> purchases = FXCollections.observableArrayList();
+	//Liste mit allen Bestellten Waren
+	private static ObservableList<Good> orderGood = FXCollections.observableArrayList();
+	//Liste mit allen Bestellten Kraftstofftanks
+	private static ObservableList<Fuel> orderFuel = FXCollections.observableArrayList();
+	
+	
 	private static LocalDate startBalanceDate; // Startdatum Bilanz
 	private static LocalDate endBalanceDate; // Enddatum Bilanz
 
@@ -296,6 +302,23 @@ public class GasStation {
 		GasStation.endBalanceDate = endBalanceDate;
 	}
 
+	
+	public static ObservableList<Good> getOrderGood() {
+		return orderGood;
+	}
+
+	public static void setOrderGood(ObservableList<Good> orderGood) {
+		GasStation.orderGood = orderGood;
+	}
+
+	public static ObservableList<Fuel> getOrderFuel() {
+		return orderFuel;
+	}
+
+	public static void setOrderFuel(ObservableList<Fuel> orderFuel) {
+		GasStation.orderFuel = orderFuel;
+	}
+
 	public static Employee activeEmployee() {
 		Employee activeemployee;
 		activeemployee = null;
@@ -337,6 +360,21 @@ public class GasStation {
 		}
 		return value;
 	}
+	
+	
+	public static boolean existingGood(int number) {
+		boolean value = false;
+		for (Good g : goods) {
+			if (g.getNumber() == number) {
+				value = true;
+				break;
+			} else {
+				value = false;
+			}
+		}
+		return value;
+	}
+	
 
 //Gibt die aktuelle Ampeldarstellung in AbhÃ¤ngigkeit des FÃ¼llstands an
 	public static Image getTrafficLight(int fueltype) {
@@ -378,7 +416,27 @@ public static void changePriceOfGood(String product, double newPrice) {
 	FXCollections.copy(goods, goods);
 	
 }
+
+public static void addGoodOrder(int number, double amount) {
+	for (Good g : goods) {
+		if (g.getNumber() == number) {
+			Good o = g;
+			o.setAmount(amount);
+			orderGood.add(o);
+		}
+		FXCollections.copy(orderGood, orderGood);
 	
+	
+}
+	
+}
+
+public static void addFuelOrder(String fueltype, double amount) {
+	
+	
+}
+
+
 }
 
 

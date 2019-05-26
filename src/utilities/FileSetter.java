@@ -164,12 +164,67 @@ public class FileSetter {
   	
   	
     }
+  	
+  	public static void writeGoodsOrder(File file) {
+  	  	LocalDate today = LocalDate.now();
+  		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+  		
+  		
+  		
+  		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
+			bw.write("BESTELLDATUM = "+ today.format(formatter)); //Die erste Zeile wird geschrieben
+			bw.newLine(); 
+			bw.write("Warennummer;Bestellmege");
+			bw.newLine();
+		
+			for (Good g : GasStation.getOrderGood()) {
+			bw.write(String.valueOf(g.getNumber())+";"+String.valueOf(g.getAmount())); //Ausgabe der Produkte
+			bw.newLine();
+		}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+    }
+  		GasStation.getOrderGood().clear();
+  		
+  	}
+
+
+  	
+  	public static void writeFuelOrder(File file) {
+  	  	LocalDate today = LocalDate.now();
+  		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+  		double amountdiesel = 0;
+  		double amountsuper = 0;
+  		
+		for (Fuel f : GasStation.getOrderFuel()) {
+			if (f.getName().equals(GasStation.getFuels().get(0))) {
+				amountdiesel += f.getAmount();
+			} else if (f.getName().equals(GasStation.getFuels().get(1))) {
+				amountsuper += f.getAmount();
+			} else continue;
+		}
+
+  		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
+			bw.write("BESTELLDATUM = "+ today.format(formatter)); //Die erste Zeile wird geschrieben
+			bw.newLine(); 
+			bw.write("DIESEL = "+String.valueOf(amountdiesel) );
+			bw.newLine();
+			bw.write("Super = " + String.valueOf(amountsuper));
+				
+		
+
+		} catch (IOException e) {
+			e.printStackTrace();
+    }
+  	}
      
-     
-     
-     
-     
+  	
 }
+     
+     
+     
+
      
 
 
