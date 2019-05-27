@@ -1,9 +1,17 @@
 package utilities;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.LocalDate;
 
+import javax.print.attribute.standard.OutputDeviceAssigned;
+
+import javafx.collections.FXCollections;
 import models.GasStation;
+import models.Sale;
 
 
 
@@ -18,7 +26,7 @@ public class FileTransfer {
 	
 	public static void start() throws ParseException, IOException  {
 	readData();
-	scandeliveries();
+
 	}
 	
 	
@@ -37,13 +45,33 @@ public class FileTransfer {
 		FileScanner.readEmployee();
 	}
 	
-	public static void scandeliveries() throws ParseException, IOException {
-
-		FileScanner.readDeliveryGoods();
-		FileScanner.readDeliveryFuels();
-
+	public static int scandeliveries(File file) throws ParseException, IOException {
+		String line = null;
+		int success = 1;
+		String[] output = null;
+		//Kontrolle um was für eine Lieferung es sich handelt
+		try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
+			br.readLine();
+			line = br.readLine();
+			output = line.split("=");
+			 
+			
+		} catch (IOException | NumberFormatException  e) {
+			e.printStackTrace();
+		}
 		
+		if(line.equals("Warennummer;Bezeichnung;Lagereinheit;Menge;Einkaufspreis")) {
+			success = FileScanner.readDeliveryGoods(file);
+			System.out.println("TEST");
+		} else if (output[0].equals("DIESEL")) {
+			success = FileScanner.readDeliveryFuels(file);
+		} else;
+		System.out.println(success);
+
+		FXCollections.copy(GasStation.getGoods(), GasStation.getGoods());
+		FXCollections.copy(GasStation.getFuels(), GasStation.getFuels());
 		
+		return success;
 		
 	}
 	

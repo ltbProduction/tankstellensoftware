@@ -60,7 +60,6 @@ public class Fuel extends Product{
 
 	@Override
 	public void createorder(int amount) {
-		// TODO Auto-generated method stub
 		
 	}
 

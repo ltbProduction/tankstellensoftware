@@ -432,7 +432,15 @@ public static void addGoodOrder(int number, double amount) {
 }
 
 public static void addFuelOrder(String fueltype, double amount) {
+	for (Fuel f : fuels) {
+	 if(f.getName().equals(fueltype)) {
+		 Fuel o = f;
+		 o.setAmount(amount);
+		 orderFuel.add(o);
 	
+	 }
+	 FXCollections.copy(orderFuel, orderFuel);
+	}
 	
 }
 

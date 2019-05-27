@@ -198,9 +198,9 @@ public class FileSetter {
   		double amountsuper = 0;
   		
 		for (Fuel f : GasStation.getOrderFuel()) {
-			if (f.getName().equals(GasStation.getFuels().get(0))) {
+			if (f.getName().equals("Diesel")) {
 				amountdiesel += f.getAmount();
-			} else if (f.getName().equals(GasStation.getFuels().get(1))) {
+			} else if (f.getName().equals("Super")) {
 				amountsuper += f.getAmount();
 			} else continue;
 		}
@@ -210,8 +210,8 @@ public class FileSetter {
 			bw.newLine(); 
 			bw.write("DIESEL = "+String.valueOf(amountdiesel) );
 			bw.newLine();
-			bw.write("Super = " + String.valueOf(amountsuper));
-				
+			bw.write("SUPER = " + String.valueOf(amountsuper));
+			GasStation.getOrderFuel().clear();	
 		
 
 		} catch (IOException e) {
