@@ -507,7 +507,7 @@ public class Controller_Main implements Initializable {
 	// Methode die aufgerufen wird, wenn der Button "Hinzufügen" im "Waren
 	// hinzufügen"-Fenster geklickt wird
 	@FXML
-	void onAddToShoppingCartClick(ActionEvent event) {
+	void onAddGoodToShoppingCartClick(ActionEvent event) {
 
 		// setze Parameterwerte
 		int goodNumber = 0;
