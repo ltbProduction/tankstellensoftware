@@ -24,9 +24,6 @@ public class FileScanner {
 	private static String fileNameSalesHistory = datafile + "Historysales.txt";
 	private static String fileNameGoods = datafile + "Goods.txt";
 	private static String fileNameFuelTanks = datafile + "FuelTanks.txt";
-    private static String fileNameDeliveryGoods = "src/resource/textfiles/deliveries/WarenLieferung.txt";
-    private static String fileNameDeliveryFuels = "src/resource/textfiles/deliveries/KraftstoffLieferung.txt";
-    private static String filenamedeliverhistory = "src/resource/textfiles/historydeliveries/Liederschein";
 
     
 	//Mitarbeiter auslesen
@@ -159,22 +156,21 @@ public class FileScanner {
 		
 //Das auslesen der neuen Lieferungen
 		
-		public static void readDeliveryGoods() throws ParseException, IOException   {
+		public static int readDeliveryGoods(File file) throws ParseException, IOException   {
 	     
-
-	     File file = new File(fileNameDeliveryGoods);
-
+			//1 heißt erfolgreich
+			//2 heißt kapazitätsgrenze übertroffen
+			//3 heißt Fehler in der Datei
 	
-	     //Schauen ob die File existiert
-	     if (file.exists()) {
-	    	 
-	    	 
-	    	 
+
+			
+		 
+	    	 int success;
 	    	 //Datei auslesen
 	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
 	    	 int newnumber = helpmethod.newdeliveriesnumber();
-	    	 
+	 
 	   
 	    	 
 	    	 try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
@@ -209,42 +205,44 @@ public class FileScanner {
 					}
 				
 				GasStation.getPurchases().add(new Purchase(newnumber, dateofdelivery, sum));
-				} catch (IOException  e) {
+				success = 1;
+	    	 } catch (IOException  e) {
 					e.printStackTrace();
-					
+					success = 3;
 				
 				}
+	     return success;
 	    	 //Methode welche die Textdatei dann verschiebt in den deliveries history ordner
 	    	
-	          
-	         // renaming the file and moving it to a new location 
-	         if(file.renameTo 
-	            (new File(filenamedeliverhistory + String.valueOf(newnumber)+".txt" ))) 
-	         { 
-	             // if file copied successfully then delete the original file 
-	             file.delete(); 
-	             System.out.println("File moved successfully"); 
-	         } 
-	         else
-	         { 
-	             System.out.println("Failed to move the file"); 
-	         } 
-	    	 
-			}	 
+//	          
+//	         // renaming the file and moving it to a new location 
+//	         if(file.renameTo 
+//	            (new File(filenamedeliverhistory + String.valueOf(newnumber)+".txt" ))) 
+//	         { 
+//	             // if file copied successfully then delete the original file 
+//	             file.delete(); 
+//	             System.out.println("File moved successfully"); 
+//	         } 
+//	         else
+//	         { 
+//	             System.out.println("Failed to move the file"); 
+//	         } 
+//	    	 
+//			}	 
 	     //Es exitiert nicht dann lassen wir es halt
 	    	
 	     } // Methode beendet
 	   
 		
-		public static void readDeliveryFuels() throws IOException {
+		public static int readDeliveryFuels(File file) throws IOException {
 		
 	 
+			//1 heißt erfolgreich
+			//2 heißt kapazitätsgrenze übertroffen
+			//3 heißt Fehler in der Datei
 
-	     File file = new File(fileNameDeliveryFuels);
-
-	     //Schauen ob die File existiert
-	     if (file.exists()) {
-	    
+			int success = 0;
+			
 	    	 LocalDate dateofdelivery;// Das Lieferdatum
 	    	 double sum = 0;//Die Endsumme
 	    	 int newnumber = helpmethod.newdeliveriesnumber(); //Die Lieferungsnummer
@@ -253,10 +251,11 @@ public class FileScanner {
 	    	 
 	    	 try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
 				//Variable zum auslesen
-	    		 
-	    		 double  amountdiesel;
-		    	 double pricediesel;
-		    	 double amountsuper;
+	    		 double oldamountdiesel = GasStation.getFuels().get(0).getAmount();
+	    		 double oldamountsuper = GasStation.getFuels().get(1).getAmount();
+	    		 double addamountdiesel; //Die hinzugefügte Menge an Diesel
+		    	 double pricediesel; // 
+		    	 double addamountsuper; //Die hinzugefügte Menge an Super
 		    	 double pricesuper;
 	    		 
 	    		 
@@ -267,7 +266,7 @@ public class FileScanner {
 				
 				line = br.readLine(); //Die Diesel Zeile
 				output = line.split("=");
-				amountdiesel = Double.parseDouble(output[1]);//Diesel Menge intialisiert
+				addamountdiesel = Double.parseDouble(output[1]);//Diesel Menge intialisiert
 				
 				line = br.readLine(); //Die Dieselpreis Zeile
 				output = line.split("=");
@@ -275,46 +274,45 @@ public class FileScanner {
 				
 				line = br.readLine(); //Die super Zeile
 				output = line.split("=");
-				amountsuper = Double.parseDouble(output[1]);//super Menge intialisiert
+				addamountsuper = Double.parseDouble(output[1]);//super Menge intialisiert
 				
 				line = br.readLine(); //Die superpreis Zeile
 				output = line.split("=");
 				pricesuper = Double.parseDouble(output[1]);//super Preis intialisiert
 				
 				//Menge für die Objekte anpassen
-				GasStation.getFuels().get(0).setAmount((amountdiesel+GasStation.getFuels().get(0).getAmount())); //Die Menge des Dieseltanks auffüllen
-				GasStation.getFuels().get(1).setAmount((amountsuper+GasStation.getFuels().get(1).getAmount())); //Die Menge des Supertanks auffüllen
+				if(oldamountdiesel+addamountdiesel<=GasStation.getFuels().get(0).getCapacity()) {
+				GasStation.getFuels().get(0).setAmount((addamountdiesel+oldamountdiesel)); //Die Menge des Dieseltanks auffüllen
+				}else {
+					//Die Kapazitätsgrenze wurde überschritten
+					GasStation.getFuels().get(0).setAmount(GasStation.getFuels().get(0).getCapacity());
+					success = 2;
+				}
 				
+				if(oldamountsuper+addamountsuper<=GasStation.getFuels().get(1).getCapacity()) {
+					GasStation.getFuels().get(1).setAmount((addamountsuper+oldamountsuper)); //Die Menge des Dieseltanks auffüllen
+					}else {
+						//Die Kapazitätsgrenze wurde überschritten
+						GasStation.getFuels().get(1).setAmount(GasStation.getFuels().get(1).getCapacity());
+						success = 2;
+				}				
 				GasStation.getFuels().get(0).setPurchasePrice(pricediesel);
 				GasStation.getFuels().get(1).setPurchasePrice(pricesuper);
 
 				
-				sum = pricesuper*amountsuper+pricediesel*amountdiesel; //Summe errechnen
+				sum = pricesuper*addamountsuper+pricediesel*addamountdiesel; //Summe errechnen
 				sum = Math.round(100.0*sum)/100.0;
 				GasStation.getPurchases().add(new Purchase(newnumber, dateofdelivery, sum)); //Neuer Einkauf anlegen
-
-				
+				if (success == 0) {
+				success = 1;}
 				} catch (IOException  e) {
 					e.printStackTrace();
-					
+					success= 3;
 				
 				}
-	         if(file.renameTo 
-	 	            (new File(filenamedeliverhistory + String.valueOf(newnumber)+".txt" ))) 
-	 	         { 
-	 	             // Wenn die Tatei kopiert wurde dann lösch die alte Datei 
-	 	             file.delete(); 
-	 	             System.out.println("File moved successfully"); 
-	 	         } 
-	 	         else
-	 	         { 
-	 	             System.out.println("Failed to move the file"); 
-	 	         } 
-	    	 
+	    	 return success;
 			}	 
-	     //Es exitiert nicht dann lassen wir es halt
-	    	
-	     } // Methode beendet
+	
 	
 	
 
