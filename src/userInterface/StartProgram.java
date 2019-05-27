@@ -36,7 +36,6 @@ public class StartProgram extends Application {
 		primaryStage.show();
 		//GasStation gasstation = new GasStation("Tankstelle Klösterle");
 		
-	
 	}
 
 	@Override

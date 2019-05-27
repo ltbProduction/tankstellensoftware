@@ -17,7 +17,6 @@ import models.Sale;
 
 public class FileSetter {
      private static String pathdata = "src/resource/textfiles/Data/";
-     private static String receiptsdata = "src/resource/textfiles/receipt/";
      private static String firstlinegoods = "Nummer;Name;Lagereinheit;Menge;Einkaufspreis;Verkaufspreis";
      private static String firstlinehistory = "Nummer;Datum;Preis";
      private static String firstlineemployee = "Nummer;Name;Datum";
@@ -145,7 +144,7 @@ public class FileSetter {
 			bw.newLine();
 			bw.write("Belegnummer: "+String.valueOf(numberofreceipt));
 			bw.newLine();
-			bw.write("Datum:" + today.format(formatter));
+			bw.write("Datum: " + today.format(formatter));
 			bw.newLine();
 			bw.write("Mitarbeiter: "+GasStation.activeEmployee().getEmployeeName());
 			bw.newLine();

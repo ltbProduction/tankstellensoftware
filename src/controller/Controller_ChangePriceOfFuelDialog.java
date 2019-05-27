@@ -11,7 +11,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.GasStation;
-import utilities.FileTransfer;
 
 public class Controller_ChangePriceOfFuelDialog implements Initializable {
 	

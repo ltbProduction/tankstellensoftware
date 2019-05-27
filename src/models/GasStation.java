@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 import utilities.FileSetter;
@@ -12,12 +14,12 @@ import utilities.helpmethod;
 
 public class GasStation {
 
-	private static String gasStationName = "Tankstelle Klösterle"; // Name der Tankstelle
+	private static String gasStationName = "Tankstelle KlÃ¶sterle"; // Name der Tankstelle
 	// Liste mit allen Mitarbeitern
 	private static ObservableList<Employee> employees = FXCollections.observableArrayList();
 	// Liste mit allen Produkten
 	private static ObservableList<Product> storage = FXCollections.observableArrayList();
-	// Liste mit Waren im Warenkorb für "Waren hinzufügen"-Fenster
+	// Liste mit Waren im Warenkorb fÃ¼r "Waren hinzufÃ¼gen"-Fenster
 	private static ObservableList<Good> shoppingCartGoods = FXCollections.observableArrayList();
 	// Liste mit Produkten (Waren + Kraftstoff) im Warenkorb
 	private static ObservableList<Product> shoppingCart = FXCollections.observableArrayList();
@@ -25,9 +27,9 @@ public class GasStation {
 	private static ObservableList<Fuel> fuels = FXCollections.observableArrayList();
 	// Liste mit allen Waren
 	private static ObservableList<Good> goods = FXCollections.observableArrayList();
-	// Liste mit allen Verkäufen
+	// Liste mit allen VerkÃ¤ufen
 	private static ObservableList<Sale> sales = FXCollections.observableArrayList();
-	// Liste mit allen Einkäufen
+	// Liste mit allen EinkÃ¤ufen
 	private static ObservableList<Purchase> purchases = FXCollections.observableArrayList();
 	//Liste mit allen Bestellten Waren
 	private static ObservableList<Good> orderGood = FXCollections.observableArrayList();
@@ -85,22 +87,20 @@ public class GasStation {
 			// der gewünschten Menge instanziiert. Anschließend wird es dem Warenkorb
 			// hinzugefügt. Da die Klasse Fuel von Product erbt, kann das neue Produkt in
 			// die shoppingCart-Liste der Klasse Product hinzugefügt werden.
-			fuels.get(i).setAmount(fuels.get(i).getAmount()-amount);
+			fuels.get(i).setAmount(fuels.get(i).getAmount() - amount);
 			fuels.get(i).displayFuel();
-			
-			
+
 			Fuel f = new Fuel(fuels.get(i).getNumber(), name, amount, fuels.get(i).getPurchasePrice(),
 					fuels.get(i).getSalePrice());
 
 			shoppingCart.add(f);
-			
-			// Aktualisieren der Liste Fuels (Workaround, da Tabellenspalten sich nicht autom. aktualisieren)
+
+			// Aktualisieren der Liste Fuels (Workaround, da Tabellenspalten sich nicht
+			// autom. aktualisieren)
 			FXCollections.copy(fuels, fuels);
 
-						
-
-			// Es wird zurückgegeben, dass der Kraftstoff erfolgreich dem Warenkorb
-			// hinzugefügt wurde.
+			// Es wird zurÃ¼ckgegeben, dass der Kraftstoff erfolgreich dem Warenkorb
+			// hinzugefÃ¼gt wurde.
 			return value;
 
 		}
@@ -109,67 +109,78 @@ public class GasStation {
 
 	public static boolean addGoodToShoppingCart(int goodnumber, double amount) {
 
-		boolean value = false;
-
-		// Überprüfe, ob es eine Ware mit der angegebenen Warennummer gibt, die in
-		// ausreichender Menge vorhanden ist. Sobald eine Ware gefunden wird, wird die
-		// Rückgabe-Variable auf true gesetzt. Außerdem wird der Index der gefundenen
-		// Ware gespeichert.
+		// Attribute initialisieren
+		boolean value = true;
+		boolean numberCheck = false;
 		int i = 0;
-		for (Good g : goods) {
+
+		// Überprüfe für jede Ware, ob Sie der eingegebenen Nummer entspricht
+		// Wenn ja, setze i gleich dem Index der Ware
+		for (Good g : GasStation.getGoods()) {
 			if (g.getNumber() == goodnumber) {
 				i = goods.indexOf(g);
-				if (amount < (g.getAmount())) {
-					value = true;
-				}
+				numberCheck = true;
 			}
 
 		}
 
-		// Wenn keine Ware mit ausreichendem Bestand gefunden wurde, wird die Methode
-		// abgebrochen und eine Fehlermeldung zurückgegeben.
-		if (value == false) {
-			return value;
+		// Wenn die eingegebene Nummer nicht gefunden werden konnte, gebe eine
+		// Fehlermeldung aus. 
+		if (numberCheck == false) {
 
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warennumer falsch");
+			alert.setHeaderText("Die eingegebene Warennummer ist falsch.");
+			alert.setContentText("Bitte vergleichen Sie die eingegebene Warennummer mit dem Bestand.");
+			alert.showAndWait();
+
+		// Wenn die gewünschte Menge größer ist als die Gesamtmenge der Ware 
+		// oder kleiner/gleich Null ist, gebe den Rückgabewert false zurück
+		} else if (amount > (goods.get(i)).getAmount() || amount<=0) {
+			
+			return value = false;
+		
 			// Ansonsten wird die Methode weitergeführt
-		} else {
+			} else {
 
-			// Die gewünschte Menge wird vom Warenbestand abgezogen.
-			// Es wird ein neues Waren-Produkt mit den Werten der Ware und
-			// der gewünschten Menge instanziiert. Anschließend wird es dem Warenkorb
-			// hinzugefügt. Da die Klasse Good von Product erbt, kann das neue Produkt in
-			// die shoppingCart-Liste der Klasse Product hinzugefügt werden.
-			goods.get(i).setAmount(goods.get(i).getAmount()-amount);
+				// Die gewünschte Menge wird vom Warenbestand abgezogen.
+				// Es wird ein neues Waren-Produkt mit den Werten der Ware und
+				// der gewünschten Menge instanziiert. Anschließend wird es dem Warenkorb
+				// hinzugefügt.
+				goods.get(i).setAmount(goods.get(i).getAmount() - amount);
+
+				Good g = new Good(goodnumber, goods.get(i).getName(), goods.get(i).getUnit(), amount,
+						goods.get(i).getPurchasePrice(), goods.get(i).getSalePrice());
+
+				shoppingCartGoods.add(g); // Hinzufügen zur Liste zur Anzeige der gewählten Waren im "Waren
+											// hinzufügen"-Fenster
+				shoppingCart.add(g); // Hinzufügen zur Liste des gesamten Warenkorbs
+
+				// Aktualisieren der Liste Goods (Workaround, da Tabellenspalten sich nicht
+				// autom. aktualisieren)
+				FXCollections.copy(goods, goods);
+
+			}
 			
-			Good g = new Good(goodnumber, goods.get(i).getName(), goods.get(i).getUnit(), amount,
-					goods.get(i).getPurchasePrice(), goods.get(i).getSalePrice());
-
-			shoppingCartGoods.add(g); // Liste zur Anzeige der gewählten Waren im "Waren hinzufügen"-Fenster
-			shoppingCart.add(g);
-			
-			// Aktualisieren der Liste Fuels (Workaround, da Tabellenspalten sich nicht autom. aktualisieren)
-			FXCollections.copy(fuels, fuels);
-
-		}
-
-		// Es wird zurückgegeben, dass der Kraftstoff erfolgreich dem Warenkorb
-		// hinzugefügt wurde.
 		return value;
 
-	}
+		}
+		
+		
+
+		
+
 	
+
 	public static double getTotalPrice() {
 		double totalPrice = 0;
 		for (Product p : shoppingCart) {
 			totalPrice += p.getTotalSalePrice();
 		}
-		
-		totalPrice = Math.round(100.0*totalPrice)/100.0;
+
+		totalPrice = Math.round(100.0 * totalPrice) / 100.0;
 		return totalPrice;
 	}
-	
-
-
 
 	public static ObservableList<Good> getShoppingCartGoods() {
 		return shoppingCartGoods;
@@ -191,7 +202,7 @@ public class GasStation {
 
 	}
 
-	// writeCurrentData speichert die Ã¯Â¿Â½nderbaren Daten
+	// writeCurrentData speichert die ÃƒÂ¯Ã‚Â¿Ã‚Â½nderbaren Daten
 	public static void writeCurrentData() {
 
 	}
@@ -204,16 +215,14 @@ public class GasStation {
 
 	}
 
-
-
-	public static void finishedreceipt(File file) { // Zum abschlieÃ¯Â¿Â½en einer Reception
+	public static void finishedreceipt(File file) { // Zum abschliessen einer Reception
 		double sum;
 		sum = 0;
 		for (Product p : GasStation.getShoppingCart()) {
 			sum += p.amount * p.salePrice;
 		}
 		// Methode welche den Beleg ausdruckt
-		sum = Math.round(100.0*sum)/100.0;
+		sum = Math.round(100.0 * sum) / 100.0;
 		FileSetter.createreceipt(sum, file);
 		shoppingCart.clear();
 		sales.add(new Sale(helpmethod.newsalesnumber(), LocalDate.now(), sum));
@@ -227,7 +236,7 @@ public class GasStation {
 		GasStation.gasStationName = gasStationName;
 	}
 
-	// Methode die ObservableList von Mitarbeitern zurÃ¯Â¿Â½ckgibt
+	// Methode die ObservableList von Mitarbeitern zurÃƒÂ¯Ã‚Â¿Ã‚Â½ckgibt
 	public static ObservableList<Employee> getEmployees() {
 
 		return employees;
@@ -343,11 +352,9 @@ public class GasStation {
 
 		}
 		return false;
-	}	
-	
+	}
 
-
-//Methode Ã¼berprÃ¼ft ob eine vorhandene Mitarbeiternummer eingegeben wird beim Login
+//Methode ÃƒÂ¼berprÃƒÂ¼ft ob eine vorhandene Mitarbeiternummer eingegeben wird beim Login
 	public static boolean existingEmployee(int number) {
 		boolean value = false;
 		for (Employee e : employees) {
@@ -376,7 +383,7 @@ public class GasStation {
 	}
 	
 
-//Gibt die aktuelle Ampeldarstellung in AbhÃ¤ngigkeit des FÃ¼llstands an
+//Gibt die aktuelle Ampeldarstellung in AbhÃƒÂ¤ngigkeit des FÃƒÂ¼llstands an
 	public static Image getTrafficLight(int fueltype) {
 
 		Image image = null;
@@ -393,25 +400,19 @@ public class GasStation {
 		return image;
 	}
 
+	public static void changePriceOfFuel(String fueltype, double newPrice) {
 
-public static void changePriceOfFuel(String fueltype, double newPrice) {
-	
-	for (Fuel f : GasStation.getFuels()) {
-		if(fueltype.equals(f.getName())) {
-			f.setSalePrice(newPrice);
-		}continue;
+		for (Fuel f : GasStation.getFuels()) {
+			if (fueltype.equals(f.getName())) {
+				f.setSalePrice(newPrice);
+			}
+			continue;
+		}
+		// Aktualisieren der Liste Fuels (Workaround, da Tabellenspalten sich nicht
+		// autom. aktualisieren)
+		FXCollections.copy(fuels, fuels);
 	}
-	// Aktualisieren der Liste Fuels (Workaround, da Tabellenspalten sich nicht autom. aktualisieren)
-	FXCollections.copy(fuels, fuels);
-}
 
-public static void changePriceOfGood(String product, double newPrice) {
-
-	for (Good g : GasStation.getGoods()) {
-		if(product.equals(g.getName())) {
-			g.setSalePrice(newPrice);
-		}continue;
-	}
 	// Aktualisieren der Liste Fuels (Workaround, da Tabellenspalten sich nicht autom. aktualisieren)
 	FXCollections.copy(goods, goods);
 	
@@ -447,6 +448,19 @@ public static void addFuelOrder(String fueltype, double amount) {
 
 }
 
+	public static void changePriceOfGood(String product, double newPrice) {
 
 
+		for (Good g : GasStation.getGoods()) {
+			if (product.equals(g.getName())) {
+				g.setSalePrice(newPrice);
+			}
+			continue;
+		}
+		// Aktualisieren der Liste Fuels (Workaround, da Tabellenspalten sich nicht
+		// autom. aktualisieren)
+		FXCollections.copy(goods, goods);
 
+	}
+
+}
