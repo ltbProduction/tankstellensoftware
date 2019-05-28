@@ -486,13 +486,14 @@ public static void addFuelOrder(String fueltype, double amount) {
 	}
 	
 	public static void changeBalanceTable (LocalDate startDate, LocalDate endDate) {
-		Date ds = Date.from(startDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-		Date df = Date.from(endDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-		//Die Verkäufe
+		LocalDate ds = startDate.minusDays(1);
+		LocalDate df = endDate.plusDays(1);
+		
+
 		balanceSales.clear();
 		for (Sale s : sales) {
-			Date sd = Date.from(s.getSaleDate().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-			if (sd.after(ds) && sd.before(df)) {
+			LocalDate sd = s.getSaleDate();
+			if (sd.isAfter(ds) && sd.isBefore(df)) {
 				balanceSales.add(s);
 			} else {
 				continue;
@@ -502,8 +503,8 @@ public static void addFuelOrder(String fueltype, double amount) {
 		//Die Einkäufe
 		balancePurchases.clear();
 		for (Purchase p : purchases) {
-			Date pd = Date.from(p.getPurchaseDate().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-			if (pd.after(ds) && pd.before(df)) {
+			LocalDate pd = p.getPurchaseDate();
+			if (pd.isAfter(ds) && pd.isBefore(df)) {
 				balancePurchases.add(p);
 			} else {
 				continue;
@@ -514,6 +515,25 @@ public static void addFuelOrder(String fueltype, double amount) {
 	
 		
 		
+	}
+
+	public static double createFullSales() {
+		double sum = 0;
+		for (Sale s : balanceSales) {
+			sum += s.getSalePrice();
+		}
+		sum = Math.round(sum*100.0)/100.0;
+		return sum;
+	}
+
+	public static double createFullPurchases() {
+		double sum = 0;
+		for (Purchase p : balancePurchases) {
+			sum += p.getPurchasePrice();
+		}
+		sum = Math.round(sum*100.0)/100.0;
+
+		return sum;
 	}
 
 }

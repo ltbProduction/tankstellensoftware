@@ -451,7 +451,13 @@ public class Controller_Main implements Initializable {
 			alert.showAndWait();
 
 		}
+		
+		//Die History erzeugen
 		GasStation.createHistory();
+		double sales = GasStation.createFullSales();
+		double purchases = GasStation.createFullPurchases();
+		l_balanceresult.setText("Einnahmen: "+String.valueOf(sales)+" € Ausgabe: " + String.valueOf(purchases)+ " € Betriebsergebnis: "+ String.valueOf(sales-purchases) + " €");
+
 	}
 
 	@FXML
@@ -710,10 +716,23 @@ public class Controller_Main implements Initializable {
 	@FXML
 	void onShowBalanceClick(ActionEvent event) {
 	try {
-		GasStation.changeBalanceTable(dp_balancestartdate.getValue(), LocalDate.now());
+		LocalDate start = dp_balancestartdate.getValue();
+		LocalDate end = dp_balanceenddate.getValue();
+		
+		GasStation.changeBalanceTable(start,end);
 	} catch (Exception e) {
-		GasStation.createHistory();
-	}	
+	
+	// PopUp für Fehler in der Eingabe
+	Alert alert = new Alert(AlertType.INFORMATION);
+	alert.setTitle("Fehler");
+	alert.setHeaderText("Start und/oder Enddatum fehlen");
+	alert.setContentText(null);
+	alert.showAndWait();	
+	GasStation.createHistory();
+	}
+	double sales = GasStation.createFullSales();
+	double purchases = GasStation.createFullPurchases();
+	l_balanceresult.setText("Einnahmen: "+String.valueOf(sales)+" € Ausgabe: " + String.valueOf(purchases)+ " € Betriebsergebnis: "+ String.valueOf(sales-purchases) + " €");
 
 	}
 
