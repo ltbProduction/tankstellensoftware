@@ -498,6 +498,7 @@ public static void addFuelOrder(String fueltype, double amount) {
 				continue;
 			}
 		}
+		FXCollections.copy(balanceSales, balanceSales);
 		//Die Einkäufe
 		balancePurchases.clear();
 		for (Purchase p : purchases) {
@@ -509,6 +510,7 @@ public static void addFuelOrder(String fueltype, double amount) {
 				}
 			
 		}
+		FXCollections.copy(balancePurchases, balancePurchases);
 	
 		
 		

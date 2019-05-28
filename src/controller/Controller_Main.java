@@ -709,8 +709,12 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	void onShowBalanceClick(ActionEvent event) {
-		
-	GasStation.changeBalanceTable(dp_balancestartdate.getValue(), LocalDate.now());
+	try {
+		GasStation.changeBalanceTable(dp_balancestartdate.getValue(), LocalDate.now());
+	} catch (Exception e) {
+		GasStation.createHistory();
+	}	
+
 	}
 
 	@FXML
