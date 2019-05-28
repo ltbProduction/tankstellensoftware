@@ -183,9 +183,6 @@ public class Controller_Main implements Initializable {
 	private Tab t_history;
 
 	@FXML
-	private AnchorPane dp_balanceenddate;
-
-	@FXML
 	private Button b_showbalance;
 
 	@FXML
@@ -217,6 +214,9 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	private DatePicker dp_balancestartdate;
+	
+	@FXML
+	private DatePicker dp_balanceenddate;
 
 	@FXML
 	private Tab t_employees;
