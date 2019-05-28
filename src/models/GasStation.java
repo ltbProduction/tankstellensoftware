@@ -413,10 +413,7 @@ public class GasStation {
 		FXCollections.copy(fuels, fuels);
 	}
 
-	// Aktualisieren der Liste Fuels (Workaround, da Tabellenspalten sich nicht autom. aktualisieren)
-	FXCollections.copy(goods, goods);
-	
-}
+
 
 public static void addGoodOrder(int number, double amount) {
 	for (Good g : goods) {
@@ -446,10 +443,9 @@ public static void addFuelOrder(String fueltype, double amount) {
 }
 
 
-}
+
 
 	public static void changePriceOfGood(String product, double newPrice) {
-
 
 		for (Good g : GasStation.getGoods()) {
 			if (product.equals(g.getName())) {

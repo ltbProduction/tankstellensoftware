@@ -5,13 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.time.LocalDate;
-
-import javax.print.attribute.standard.OutputDeviceAssigned;
 
 import javafx.collections.FXCollections;
 import models.GasStation;
-import models.Sale;
 
 
 
@@ -47,7 +43,7 @@ public class FileTransfer {
 	
 	public static int scandeliveries(File file) throws ParseException, IOException {
 		String line = null;
-		int success = 1;
+		int success = 0;
 		String[] output = null;
 		//Kontrolle um was für eine Lieferung es sich handelt
 		try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
@@ -65,7 +61,7 @@ public class FileTransfer {
 			System.out.println("TEST");
 		} else if (output[0].equals("DIESEL")) {
 			success = FileScanner.readDeliveryFuels(file);
-		} else;
+		} else success = 3;
 		System.out.println(success);
 
 		FXCollections.copy(GasStation.getGoods(), GasStation.getGoods());

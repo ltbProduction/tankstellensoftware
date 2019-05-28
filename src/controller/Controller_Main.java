@@ -46,7 +46,7 @@ public class Controller_Main implements Initializable {
 
 	private File file;
 	private FileChooser fileChooser;
-	
+
 	@FXML
 	private TabPane TabPane_main;
 
@@ -268,7 +268,7 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	private Button b_tocheckout;
-	
+
 	@FXML
 	private Button b_tocheckout2;
 
@@ -298,47 +298,41 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	private Button b_addfuel;
-	
+
 	@FXML
 	private Button b_addgoodorder;
-	
+
 	@FXML
 	private TableView<Good> tv_ordersofgoods;
-	
+
 	@FXML
 	private TableColumn<Good, String> tc_ordergoodname;
-	
+
 	@FXML
 	private TableColumn<Good, Double> tc_ordergoodamount;
-	
+
 	@FXML
 	private Button b_addfuelorder;
-	
+
 	@FXML
 	private TableView<Fuel> tv_ordersoffuel;
-	
+
 	@FXML
 	private TableColumn<Fuel, String> tc_orderfueltype;
-	
+
 	@FXML
 	private TableColumn<Fuel, Double> tc_orderfuelamount;
-	
-	
-
-
-	
-	
-	
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
 		// Spalten einstellen
 
-		cb_orderfueltype.getItems().removeAll(cb_orderfueltype.getItems()); // lÃ¶sche vorhandene Werte aus Dropdown-MenÃ¼
+		cb_orderfueltype.getItems().removeAll(cb_orderfueltype.getItems()); // lÃ¶sche vorhandene Werte aus
+																			// Dropdown-MenÃ¼
 		cb_orderfueltype.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
 		cb_orderfueltype.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
-		
+
 		cb_fueltype.getItems().removeAll(cb_fueltype.getItems()); // lÃ¶sche vorhandene Werte aus Dropdown-MenÃ¼
 		cb_fueltype.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
 		cb_fueltype.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
@@ -390,20 +384,20 @@ public class Controller_Main implements Initializable {
 		tv_fueltanks.setItems(GasStation.getFuels());
 
 		l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
-		
+
 		tc_ordergoodamount.setCellValueFactory(new PropertyValueFactory<Good, Double>("amount"));
 		tc_ordergoodname.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
 		tv_ordersofgoods.setItems(GasStation.getOrderGood());
-		
+
 		tc_orderfuelamount.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("amount"));
 		tc_orderfueltype.setCellValueFactory(new PropertyValueFactory<Fuel, String>("name"));
 		tv_ordersoffuel.setItems(GasStation.getOrderFuel());
-		
+
 		fileChooser = new FileChooser();
-		fileChooser.getExtensionFilters().add(
-		new ExtensionFilter("Textdateien", "*.txt"));
-		
-		cb_orderfueltype.getItems().removeAll(cb_orderfueltype.getItems()); // lÃ¶sche vorhandene Werte aus Dropdown-MenÃ¼
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("Textdateien", "*.txt"));
+
+		cb_orderfueltype.getItems().removeAll(cb_orderfueltype.getItems()); // lÃ¶sche vorhandene Werte aus
+																			// Dropdown-MenÃ¼
 		cb_orderfueltype.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
 		cb_orderfueltype.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
 
@@ -424,7 +418,6 @@ public class Controller_Main implements Initializable {
 
 		int employeeNumber = 0;
 
-		
 		try {
 			employeeNumber = Integer.valueOf(tf_employeenumber.getText());
 		} catch (NumberFormatException e) {
@@ -473,7 +466,7 @@ public class Controller_Main implements Initializable {
 		try {
 			// setze den Wert von amountOfFuel auf den Wert aus tf_amountoffuel
 			amountOfFuel = Double.valueOf(tf_amountoffuel.getText());
-			
+
 			// setze chosenFuelType auf den ausgewählten Wert der ComboBox
 			chosenFuelType = cb_fueltype.getValue();
 
@@ -486,7 +479,7 @@ public class Controller_Main implements Initializable {
 				alert.showAndWait();
 
 			}
-			
+
 			// Sonst führe weiter aus:
 			// Wenn die Methode addFuelToShoppingCart "true" zurückgibt, wurde der
 			// Kraftstoff erfolgreich dem Warenkorb hinzugefügt. Das Zapfsäulen-Fenster
@@ -615,22 +608,27 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	void onCheckInDeliveryClick(ActionEvent event) throws ParseException, IOException {
-		
+
 		Window window = b_checkindelivery.getScene().getWindow();
 		file = fileChooser.showOpenDialog(window);
-				
+
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Bestellung");
 		int success = FileTransfer.scandeliveries(file);
-		if(success == 1) { //1 heißt alles hat funktioniert
+		if (success == 1) { // 1 heißt alles hat funktioniert
 			alert.setHeaderText("Die Lieferung wurde eingebucht!");
-		} else if (success == 2){
-			alert.setHeaderText("Es konnte nicht alles eingebucht werden -> Kapazität des Tankes wurde überschritten");
+		} else if (success == 2) {
+			alert.setHeaderText(
+					"Es konnte nicht alles eingebucht werden -> Kapazität des Tankes wurde überschritten");
 		} else {
-			alert.setHeaderText("Die wurde nicht eingebucht, Fehler in der Textdatei");
+			alert.setHeaderText("Die Lieferung wurde nicht eingebucht, Fehler in der Textdatei. Bitte melden Sie sich beim Help-Desk.");
 		}
 		alert.setContentText(null);
 		alert.showAndWait();
+
+		// Ampel aktualisieren
+		imageview_diesel.setImage(GasStation.getTrafficLight(0));
+		imageview_super.setImage(GasStation.getTrafficLight(1));
 
 	}
 
@@ -665,26 +663,26 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	void onOrderFuelClick(ActionEvent event) {
-		
-    	Alert alert = new Alert(AlertType.INFORMATION);
-    	alert.setTitle("Bestellung");
-    	if(GasStation.getOrderFuel().size()!=0) {
-		Window window = b_ordergoods.getScene().getWindow();
-		file = fileChooser.showSaveDialog(window);
-		FileSetter.writeFuelOrder(file);
-		FXCollections.copy(GasStation.getOrderFuel(), GasStation.getOrderFuel());
 
-		alert.setHeaderText("Bestellung war erfolgreich!");
-		alert.setContentText(null);
-		alert.showAndWait();
-    	} else {
-    		// Es ist keine Bestellung im Warenkorb
-    	alert.setHeaderText("Es ist keine Bestellung im Warenkorb");
-    	alert.setContentText(null);
-    	alert.showAndWait();	
-    	}
-    //Ampel aktualisieren
-    imageview_diesel.setImage(GasStation.getTrafficLight(0));
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Bestellung");
+		if (GasStation.getOrderFuel().size() != 0) {
+			Window window = b_ordergoods.getScene().getWindow();
+			file = fileChooser.showSaveDialog(window);
+			FileSetter.writeFuelOrder(file);
+			FXCollections.copy(GasStation.getOrderFuel(), GasStation.getOrderFuel());
+
+			alert.setHeaderText("Bestellung war erfolgreich!");
+			alert.setContentText(null);
+			alert.showAndWait();
+		} else {
+			// Es ist keine Bestellung im Warenkorb
+			alert.setHeaderText("Es ist keine Bestellung im Warenkorb");
+			alert.setContentText(null);
+			alert.showAndWait();
+		}
+		// Ampel aktualisieren
+		imageview_diesel.setImage(GasStation.getTrafficLight(0));
 		imageview_super.setImage(GasStation.getTrafficLight(1));
 	}
 
@@ -692,21 +690,19 @@ public class Controller_Main implements Initializable {
 	void onOrderGoodsClick(ActionEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Bestellung");
-    	if(GasStation.getOrderGood().size() != 0) {
-    		Window window = b_ordergoods.getScene().getWindow();
-    		file = fileChooser.showSaveDialog(window);
-    		FileSetter.writeGoodsOrder(file);
-    		FXCollections.copy(GasStation.getOrderGood(), GasStation.getOrderGood());
-    		alert.setHeaderText("Bestellung war erfolgreich!");
-    		alert.setContentText(null);
-    		alert.showAndWait();
-    	} else {
-    		alert.setHeaderText("Es gibt keine Bestellung im Warenkorb");
-    		alert.setContentText(null);
-    		alert.showAndWait();
-    	}
-		
-
+		if (GasStation.getOrderGood().size() != 0) {
+			Window window = b_ordergoods.getScene().getWindow();
+			file = fileChooser.showSaveDialog(window);
+			FileSetter.writeGoodsOrder(file);
+			FXCollections.copy(GasStation.getOrderGood(), GasStation.getOrderGood());
+			alert.setHeaderText("Bestellung war erfolgreich!");
+			alert.setContentText(null);
+			alert.showAndWait();
+		} else {
+			alert.setHeaderText("Es gibt keine Bestellung im Warenkorb");
+			alert.setContentText(null);
+			alert.showAndWait();
+		}
 
 	}
 
@@ -734,33 +730,33 @@ public class Controller_Main implements Initializable {
 	void onOrderFuelClickStartScreen(ActionEvent event) {
 		TabPane_main.getSelectionModel().select(t_fuel);
 	}
-	
+
 	@FXML
 	void onAddGoodOrderClick(ActionEvent event) {
-	int number = Integer.parseInt(tf_ordergoodnumber.getText());
-	double amount = Double.parseDouble(tf_ordergoodamount.getText());
-	if(GasStation.existingGood(number)) {
-		GasStation.addGoodOrder(number, amount);
-	} else if (number == 666){
-	//Hier kommt das Easteregg rein
-		
-	} else {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Fehler");
-		alert.setHeaderText("Die Warennummer existiert nicht");
-		alert.setContentText(null);
-		alert.showAndWait();
+		int number = Integer.parseInt(tf_ordergoodnumber.getText());
+		double amount = Double.parseDouble(tf_ordergoodamount.getText());
+		if (GasStation.existingGood(number)) {
+			GasStation.addGoodOrder(number, amount);
+		} else if (number == 666) {
+			// Hier kommt das Easteregg rein
+
+		} else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Fehler");
+			alert.setHeaderText("Die Warennummer existiert nicht");
+			alert.setContentText(null);
+			alert.showAndWait();
+		}
+		tf_ordergoodnumber.setText("");
+		tf_ordergoodamount.setText("");
+
 	}
-	tf_ordergoodnumber.setText("");
-	tf_ordergoodamount.setText("");
-		
-	}
-	
+
 	@FXML
 	void onAddFuelOrderClick(ActionEvent event) {
 		System.out.println(cb_orderfueltype.getValue());
-	GasStation.addFuelOrder(cb_orderfueltype.getValue(), Double.parseDouble(tf_orderfuelamount.getText()));
-		
+		GasStation.addFuelOrder(cb_orderfueltype.getValue(), Double.parseDouble(tf_orderfuelamount.getText()));
+
 	}
 
 }

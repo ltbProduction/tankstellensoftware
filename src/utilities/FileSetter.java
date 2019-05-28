@@ -171,7 +171,7 @@ public class FileSetter {
   		
   		
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
-			bw.write("BESTELLDATUM = "+ today.format(formatter)); //Die erste Zeile wird geschrieben
+			bw.write("Bestelldatum = "+ today.format(formatter)); //Die erste Zeile wird geschrieben
 			bw.newLine(); 
 			bw.write("Warennummer;Bestellmege");
 			bw.newLine();
@@ -189,7 +189,6 @@ public class FileSetter {
   	}
 
 
-  	
   	public static void writeFuelOrder(File file) {
   	  	LocalDate today = LocalDate.now();
   		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
