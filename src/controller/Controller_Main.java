@@ -327,7 +327,7 @@ public class Controller_Main implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 
 		// Spalten einstellen
-
+		
 		cb_orderfueltype.getItems().removeAll(cb_orderfueltype.getItems()); // lÃ¶sche vorhandene Werte aus
 																			// Dropdown-MenÃ¼
 		cb_orderfueltype.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
@@ -354,12 +354,12 @@ public class Controller_Main implements Initializable {
 		tc_purchases_number.setCellValueFactory(new PropertyValueFactory<Purchase, Integer>("purchaseNumber"));
 		tc_purchases_date.setCellValueFactory(new PropertyValueFactory<Purchase, LocalDate>("purchaseDate"));
 		tc_purchases_price.setCellValueFactory(new PropertyValueFactory<Purchase, Double>("purchasePrice"));
-		tv_purchases.setItems(GasStation.getPurchases());
+		tv_purchases.setItems(GasStation.getBalancePurchases());
 
 		tc_sales_number.setCellValueFactory(new PropertyValueFactory<Sale, Integer>("saleNumber"));
 		tc_sales_date.setCellValueFactory(new PropertyValueFactory<Sale, LocalDate>("saleDate"));
 		tc_sales_price.setCellValueFactory(new PropertyValueFactory<Sale, Double>("salePrice"));
-		tv_sales.setItems(GasStation.getSales());
+		tv_sales.setItems(GasStation.getBalanceSales());
 
 		tc_employees_number.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("employeeNumber"));
 		tc_employees_name.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeName"));
@@ -451,6 +451,7 @@ public class Controller_Main implements Initializable {
 			alert.showAndWait();
 
 		}
+		GasStation.createHistory();
 	}
 
 	@FXML
@@ -708,7 +709,8 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	void onShowBalanceClick(ActionEvent event) {
-
+		
+	GasStation.changeBalanceTable(dp_balancestartdate.getValue(), LocalDate.now());
 	}
 
 	@FXML
