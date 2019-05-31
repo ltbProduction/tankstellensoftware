@@ -183,9 +183,6 @@ public class Controller_Main implements Initializable {
 	private Tab t_history;
 
 	@FXML
-	private AnchorPane dp_balanceenddate;
-
-	@FXML
 	private Button b_showbalance;
 
 	@FXML
@@ -217,6 +214,9 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	private DatePicker dp_balancestartdate;
+	
+	@FXML
+	private DatePicker dp_balanceenddate;
 
 	@FXML
 	private Tab t_employees;
@@ -327,7 +327,7 @@ public class Controller_Main implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 
 		// Spalten einstellen
-
+		
 		cb_orderfueltype.getItems().removeAll(cb_orderfueltype.getItems()); // lÃƒÂ¶sche vorhandene Werte aus
 																			// Dropdown-MenÃƒÂ¼
 		cb_orderfueltype.getItems().addAll("Super", "Diesel"); // FÃƒÂ¼ge Werte der Enum-Kraftstoffarten ein
@@ -354,12 +354,12 @@ public class Controller_Main implements Initializable {
 		tc_purchases_number.setCellValueFactory(new PropertyValueFactory<Purchase, Integer>("purchaseNumber"));
 		tc_purchases_date.setCellValueFactory(new PropertyValueFactory<Purchase, LocalDate>("purchaseDate"));
 		tc_purchases_price.setCellValueFactory(new PropertyValueFactory<Purchase, Double>("purchasePrice"));
-		tv_purchases.setItems(GasStation.getPurchases());
+		tv_purchases.setItems(GasStation.getBalancePurchases());
 
 		tc_sales_number.setCellValueFactory(new PropertyValueFactory<Sale, Integer>("saleNumber"));
 		tc_sales_date.setCellValueFactory(new PropertyValueFactory<Sale, LocalDate>("saleDate"));
 		tc_sales_price.setCellValueFactory(new PropertyValueFactory<Sale, Double>("salePrice"));
-		tv_sales.setItems(GasStation.getSales());
+		tv_sales.setItems(GasStation.getBalanceSales());
 
 		tc_employees_number.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("employeeNumber"));
 		tc_employees_name.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeName"));
@@ -451,6 +451,13 @@ public class Controller_Main implements Initializable {
 			alert.showAndWait();
 
 		}
+		
+		//Die History erzeugen
+		GasStation.createHistory();
+		double sales = GasStation.createFullSales();
+		double purchases = GasStation.createFullPurchases();
+		l_balanceresult.setText("Einnahmen: "+String.valueOf(sales)+" € Ausgabe: " + String.valueOf(purchases)+ " € Betriebsergebnis: "+ String.valueOf(sales-purchases) + " €");
+
 	}
 
 	@FXML
@@ -708,6 +715,24 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	void onShowBalanceClick(ActionEvent event) {
+	try {
+		LocalDate start = dp_balancestartdate.getValue();
+		LocalDate end = dp_balanceenddate.getValue();
+		
+		GasStation.changeBalanceTable(start,end);
+	} catch (Exception e) {
+	
+	// PopUp für Fehler in der Eingabe
+	Alert alert = new Alert(AlertType.INFORMATION);
+	alert.setTitle("Fehler");
+	alert.setHeaderText("Start und/oder Enddatum fehlen");
+	alert.setContentText(null);
+	alert.showAndWait();	
+	GasStation.createHistory();
+	}
+	double sales = GasStation.createFullSales();
+	double purchases = GasStation.createFullPurchases();
+	l_balanceresult.setText("Einnahmen: "+String.valueOf(sales)+" € Ausgabe: " + String.valueOf(purchases)+ " € Betriebsergebnis: "+ String.valueOf(sales-purchases) + " €");
 
 	}
 

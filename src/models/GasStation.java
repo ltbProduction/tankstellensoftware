@@ -2,13 +2,13 @@ package models;
 
 import java.io.File;
 import java.time.LocalDate;
-
+import java.time.ZoneId;
+import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
-import sun.util.calendar.LocalGregorianCalendar.Date;
 import utilities.FileSetter;
 import utilities.helpmethod;
 
@@ -27,18 +27,21 @@ public class GasStation {
 	private static ObservableList<Fuel> fuels = FXCollections.observableArrayList();
 	// Liste mit allen Waren
 	private static ObservableList<Good> goods = FXCollections.observableArrayList();
-	// Liste mit allen VerkÃ¤ufen
+	//Liste mit allen Verk�ufen f�r die Bilanz
+	private static ObservableList<Sale> balanceSales = FXCollections.observableArrayList();	
+	// Liste mit allen VerkÃ¤ufen	
 	private static ObservableList<Sale> sales = FXCollections.observableArrayList();
+	//Liste mit allen Eink�ufen f�r die Bilanz
+	private static ObservableList<Purchase> balancePurchases = FXCollections.observableArrayList();	
 	// Liste mit allen EinkÃ¤ufen
 	private static ObservableList<Purchase> purchases = FXCollections.observableArrayList();
+
 	//Liste mit allen Bestellten Waren
 	private static ObservableList<Good> orderGood = FXCollections.observableArrayList();
 	//Liste mit allen Bestellten Kraftstofftanks
 	private static ObservableList<Fuel> orderFuel = FXCollections.observableArrayList();
-	
-	
-	private static LocalDate startBalanceDate; // Startdatum Bilanz
-	private static LocalDate endBalanceDate; // Enddatum Bilanz
+//	private static LocalDate startBalanceDate; // Startdatum Bilanz
+//	private static Date endBalanceDate; // Enddatum Bilanz
 
 	public GasStation() {
 
@@ -202,19 +205,7 @@ public class GasStation {
 
 	}
 
-	// writeCurrentData speichert die ÃƒÂ¯Ã‚Â¿Ã‚Â½nderbaren Daten
-	public static void writeCurrentData() {
-
-	}
-
-	public static void createHistory() {
-
-	}
-
-	public static void calculateBalance(Date startBalanceDate, Date endBalaceDate) {
-
-	}
-
+	
 	public static void finishedreceipt(File file) { // Zum abschliessen einer Reception
 		double sum;
 		sum = 0;
@@ -295,21 +286,21 @@ public class GasStation {
 		GasStation.purchases = purchases;
 	}
 
-	public static LocalDate getStartBalanceDate() {
-		return startBalanceDate;
-	}
-
-	public static void setStartBalanceDate(LocalDate startBalanceDate) {
-		GasStation.startBalanceDate = startBalanceDate;
-	}
-
-	public static LocalDate getEndBalanceDate() {
-		return endBalanceDate;
-	}
-
-	public static void setEndBalanceDate(LocalDate endBalanceDate) {
-		GasStation.endBalanceDate = endBalanceDate;
-	}
+//	public static LocalDate getStartBalanceDate() {
+//		return startBalanceDate;
+//	}
+//
+//	public static void setStartBalanceDate(LocalDate startBalanceDate) {
+//		GasStation.startBalanceDate = startBalanceDate;
+//	}
+//
+//	public static LocalDate getEndBalanceDate() {
+//		return endBalanceDate;
+//	}
+//
+//	public static void setEndBalanceDate(LocalDate endBalanceDate) {
+//		GasStation.endBalanceDate = endBalanceDate;
+//	}
 
 	
 	public static ObservableList<Good> getOrderGood() {
@@ -327,6 +318,26 @@ public class GasStation {
 	public static void setOrderFuel(ObservableList<Fuel> orderFuel) {
 		GasStation.orderFuel = orderFuel;
 	}
+	
+	public static ObservableList<Sale> getBalanceSales() {
+		return balanceSales;
+	}
+
+	public static void setBalanceSales(ObservableList<Sale> balanceSales) {
+		GasStation.balanceSales = balanceSales;
+	}
+
+	public static ObservableList<Purchase> getBalancePurchases() {
+		return balancePurchases;
+	}
+
+	public static void setBalancePurchases(ObservableList<Purchase> balancePurchases) {
+		GasStation.balancePurchases = balancePurchases;
+	}
+
+
+
+
 
 	public static Employee activeEmployee() {
 		Employee activeemployee;
@@ -459,4 +470,72 @@ public static void addFuelOrder(String fueltype, double amount) {
 
 	}
 
+	public static void createHistory() {
+		
+		
+		//Verk�ufe
+		balanceSales.clear();
+		for (Sale s : sales) {
+			balanceSales.add(s);
+			}
+		
+		balancePurchases.clear();
+		for (Purchase p : purchases) {
+		balancePurchases.add(p);
+		}
+	}
+	
+	public static void changeBalanceTable (LocalDate startDate, LocalDate endDate) {
+		LocalDate ds = startDate.minusDays(1);
+		LocalDate df = endDate.plusDays(1);
+		
+
+		balanceSales.clear();
+		for (Sale s : sales) {
+			LocalDate sd = s.getSaleDate();
+			if (sd.isAfter(ds) && sd.isBefore(df)) {
+				balanceSales.add(s);
+			} else {
+				continue;
+			}
+		}
+		FXCollections.copy(balanceSales, balanceSales);
+		//Die Eink�ufe
+		balancePurchases.clear();
+		for (Purchase p : purchases) {
+			LocalDate pd = p.getPurchaseDate();
+			if (pd.isAfter(ds) && pd.isBefore(df)) {
+				balancePurchases.add(p);
+			} else {
+				continue;
+				}
+			
+		}
+		FXCollections.copy(balancePurchases, balancePurchases);
+	
+		
+		
+	}
+
+	public static double createFullSales() {
+		double sum = 0;
+		for (Sale s : balanceSales) {
+			sum += s.getSalePrice();
+		}
+		sum = Math.round(sum*100.0)/100.0;
+		return sum;
+	}
+
+	public static double createFullPurchases() {
+		double sum = 0;
+		for (Purchase p : balancePurchases) {
+			sum += p.getPurchasePrice();
+		}
+		sum = Math.round(sum*100.0)/100.0;
+
+		return sum;
+	}
+
 }
+	
+
