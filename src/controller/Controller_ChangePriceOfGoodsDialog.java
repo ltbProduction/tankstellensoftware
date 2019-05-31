@@ -12,52 +12,51 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.GasStation;
 
-public class Controller_ChangePriceOfGoodsDialog implements Initializable{
+public class Controller_ChangePriceOfGoodsDialog implements Initializable {
 
-    @FXML
-    private Button b_confirmprice;
+	@FXML
+	private Button b_confirmprice;
 
-    @FXML
-    private ComboBox<String> cb_nameofproduct;
+	@FXML
+	private ComboBox<String> cb_nameofproduct;
 
-    @FXML
-    private TextField tf_newprice;
+	@FXML
+	private TextField tf_newprice;
 
-    @FXML
-    void confirmPrice(ActionEvent event) {
-    	
-    	double newPrice = 0;
-    	try{newPrice = Double.valueOf(tf_newprice.getText());
-	}catch(NumberFormatException e) {
-        	System.out.println("Das ist keine gültige Zahl");
-    	}
-    	
-    	GasStation.changePriceOfGood(cb_nameofproduct.getValue(), newPrice);
-    	
-    	
-    	//schließt das Fenster
-    	Stage stage = (Stage)
-    	    	b_confirmprice.getScene().getWindow();
-    	    	stage.close();
+	@FXML
+	void confirmPrice(ActionEvent event) {
 
-    }
+		double newPrice = 0;
+		try {
+			newPrice = Double.valueOf(tf_newprice.getText());
+		} catch (NumberFormatException e) {
+			System.out.println("Das ist keine gültige Zahl");
+		}
 
-    @FXML
-    void nameOfProduct(ActionEvent event) {
+		GasStation.changePriceOfGood(cb_nameofproduct.getValue(), newPrice);
 
-    }
+		// schließt das Fenster
+		Stage stage = (Stage) b_confirmprice.getScene().getWindow();
+		stage.close();
 
-    @FXML
-    void newPrice(ActionEvent event) {
+	}
 
-    }
-    
-    @Override
+	@FXML
+	void nameOfProduct(ActionEvent event) {
+
+	}
+
+	@FXML
+	void newPrice(ActionEvent event) {
+
+	}
+
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-    	cb_nameofproduct.getItems().removeAll(cb_nameofproduct.getItems());
-    	cb_nameofproduct.getItems().addAll("Wodka Jelzin", "Filip Maurice", "Jupiter Schokoriegel", "Sitting Bull", "TK-Pizza Deluxe");
-    	cb_nameofproduct.getSelectionModel().select("Wodka Jelzin");
-    }
+		cb_nameofproduct.getItems().removeAll(cb_nameofproduct.getItems());
+		cb_nameofproduct.getItems().addAll("Wodka Jelzin", "Filip Maurice", "Jupiter Schokoriegel", "Sitting Bull",
+				"TK-Pizza Deluxe");
+		cb_nameofproduct.getSelectionModel().select("Wodka Jelzin");
+	}
 
 }
-

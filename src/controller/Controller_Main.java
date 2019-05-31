@@ -524,7 +524,7 @@ public class Controller_Main implements Initializable {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Falsche Eingabe");
 			alert.setHeaderText("Falsche Eingabe");
-			alert.setContentText("Bitte geben Sie eine Dezimalzahl ein.");
+			alert.setContentText("Bitte geben Sie eine ganze Zahl ein.");
 			alert.showAndWait();
 
 		}
@@ -678,7 +678,7 @@ public class Controller_Main implements Initializable {
 			file = fileChooser.showSaveDialog(window);
 			FileSetter.writeFuelOrder(file);
 			FXCollections.copy(GasStation.getOrderFuel(), GasStation.getOrderFuel());
-
+			
 			alert.setHeaderText("Bestellung war erfolgreich!");
 			alert.setContentText(null);
 			alert.showAndWait();
@@ -757,23 +757,43 @@ public class Controller_Main implements Initializable {
 	}
 
 	@FXML
-	void onAddGoodOrderClick(ActionEvent event) {
-		int number = Integer.parseInt(tf_ordergoodnumber.getText());
-		double amount = Double.parseDouble(tf_ordergoodamount.getText());
-		if (GasStation.existingGood(number)) {
-			GasStation.addGoodOrder(number, amount);
-		} else if (number == 666) {
-			// Hier kommt das Easteregg rein
+	void onAddGoodOrderClick(ActionEvent event) throws IOException {
+		
+			int number = 0;
+			double amount = 0;
+			
+			try {
+			number = Integer.parseInt(tf_ordergoodnumber.getText());
+			amount = Double.parseDouble(tf_ordergoodamount.getText());
+			} catch (NumberFormatException e) {
+				System.out.println("Falsche Eingabe");
+			}
+			
+			if (GasStation.existingGood(number)) {
+				GasStation.addGoodOrder(number, amount);
+			} else if (number == 666) {
+				
+				// Easter-Egg
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/EasterEggDialog.fxml"));
+				Parent root1 = (Parent) fxmlLoader.load();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root1));
+				stage.setTitle("Der Teufel ist da");
+				stage.show();
 
-		} else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Fehler");
-			alert.setHeaderText("Die Warennummer existiert nicht");
-			alert.setContentText(null);
-			alert.showAndWait();
-		}
-		tf_ordergoodnumber.setText("");
-		tf_ordergoodamount.setText("");
+			} else {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Fehler");
+				alert.setHeaderText("Die Warennummer existiert nicht");
+				alert.setContentText(null);
+				alert.showAndWait();
+			}
+			
+			tf_ordergoodnumber.setText("");
+			tf_ordergoodamount.setText("");
+			
+		
+		
 
 	}
 

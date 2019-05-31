@@ -2,8 +2,7 @@ package models;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -433,8 +432,8 @@ public static void addGoodOrder(int number, double amount) {
 			o.setAmount(amount);
 			orderGood.add(o);
 		}
-		FXCollections.copy(orderGood, orderGood);
-	
+		// aktualisiert die Liste
+		FXCollections.copy(orderGood, orderGood);	
 	
 }
 	
@@ -448,6 +447,7 @@ public static void addFuelOrder(String fueltype, double amount) {
 		 orderFuel.add(o);
 	
 	 }
+	 // aktualisiert die Liste
 	 FXCollections.copy(orderFuel, orderFuel);
 	}
 	
