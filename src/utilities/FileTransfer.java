@@ -58,11 +58,9 @@ public class FileTransfer {
 		
 		if(line.equals("Warennummer;Bezeichnung;Lagereinheit;Menge;Einkaufspreis")) {
 			success = FileScanner.readDeliveryGoods(file);
-			System.out.println("TEST");
 		} else if (output[0].equals("DIESEL")) {
 			success = FileScanner.readDeliveryFuels(file);
 		} else success = 3;
-		System.out.println(success);
 
 		FXCollections.copy(GasStation.getGoods(), GasStation.getGoods());
 		FXCollections.copy(GasStation.getFuels(), GasStation.getFuels());
