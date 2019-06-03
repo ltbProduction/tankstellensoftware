@@ -12,31 +12,31 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.GasStation;
 
-public class Controller_ChangePriceOfGoodsDialog implements Initializable {
+public class ControllerChangePriceOfGoodsDialog implements Initializable {
 
 	@FXML
-	private Button b_confirmprice;
+	private Button btnConfirmPrice;
 
 	@FXML
-	private ComboBox<String> cb_nameofproduct;
+	private ComboBox<String> cbNameOfProduct;
 
 	@FXML
-	private TextField tf_newprice;
+	private TextField tfNewPrice;
 
 	@FXML
 	void confirmPrice(ActionEvent event) {
 
 		double newPrice = 0;
 		try {
-			newPrice = Double.valueOf(tf_newprice.getText());
+			newPrice = Double.valueOf(tfNewPrice.getText());
 		} catch (NumberFormatException e) {
 			System.out.println("Das ist keine gültige Zahl");
 		}
 
-		GasStation.changePriceOfGood(cb_nameofproduct.getValue(), newPrice);
+		GasStation.changePriceOfGood(cbNameOfProduct.getValue(), newPrice);
 
 		// schließt das Fenster
-		Stage stage = (Stage) b_confirmprice.getScene().getWindow();
+		Stage stage = (Stage) btnConfirmPrice.getScene().getWindow();
 		stage.close();
 
 	}
@@ -53,10 +53,10 @@ public class Controller_ChangePriceOfGoodsDialog implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		cb_nameofproduct.getItems().removeAll(cb_nameofproduct.getItems());
-		cb_nameofproduct.getItems().addAll("Wodka Jelzin", "Filip Maurice", "Jupiter Schokoriegel", "Sitting Bull",
+		cbNameOfProduct.getItems().removeAll(cbNameOfProduct.getItems());
+		cbNameOfProduct.getItems().addAll("Wodka Jelzin", "Filip Maurice", "Jupiter Schokoriegel", "Sitting Bull",
 				"TK-Pizza Deluxe");
-		cb_nameofproduct.getSelectionModel().select("Wodka Jelzin");
+		cbNameOfProduct.getSelectionModel().select("Wodka Jelzin");
 	}
 
 }

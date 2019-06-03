@@ -42,374 +42,374 @@ import models.Sale;
 import utilities.FileSetter;
 import utilities.FileTransfer;
 
-public class Controller_Main implements Initializable {
+public class ControllerMain implements Initializable {
 
 	private File file;
 	private FileChooser fileChooser;
 
 	@FXML
-	private TabPane TabPane_main;
+	private TabPane tpMain;
 
 	@FXML
-	private Tab t_start;
+	private Tab tStart;
 
 	@FXML
-	private Button b_gaspump1;
+	private Button btnGasPump1;
 
 	@FXML
-	private Button b_gaspump2;
+	private Button btnGasPump2;
 
 	@FXML
-	private Button b_gaspump5;
+	private Button btnGasPump5;
 
 	@FXML
-	private Button b_gaspump3;
+	private Button btnGasPump3;
 
 	@FXML
-	private Button b_gaspump4;
+	private Button btnGasPump4;
 
 	@FXML
-	private Button b_addgoods;
+	private Button btnAddGoods;
 
 	@FXML
-	private TableView<Product> tv_shoppingcart;
+	private TableView<Product> tvShoppingCart;
 
 	@FXML
-	private TableColumn<Product, String> tc_shoppingcart_name;
+	private TableColumn<Product, String> tcShoppingCartName;
 
 	@FXML
-	private TableColumn<Product, Double> tc_shoppingcart_amount;
+	private TableColumn<Product, Double> tcShoppingCartAmount;
 
 	@FXML
-	private TableColumn<Product, Double> tc_shoppingcart_unitprice;
+	private TableColumn<Product, Double> tcShoppingCartUnitPrice;
 
 	@FXML
-	private TableColumn<Product, Double> tc_shoppingcart_total;
+	private TableColumn<Product, Double> tcShoppingCartTotal;
 
 	@FXML
-	private Label l_totalprice;
+	private Label lblTotalPrice;
 
 	@FXML
-	private Button b_bar;
+	private Button btnCash;
 
 	@FXML
-	private Button b_checkindelivery;
+	private Button btnCheckInDelivery;
 
 	@FXML
-	private Button b_gotogoods;
+	private Button btnGoToGoods;
 
 	@FXML
-	private Button b_gotofuel;
+	private Button btnGoToFuel;
 
 	@FXML
-	private ImageView imageview_super;
+	private ImageView ivSuper;
 
 	@FXML
-	private ImageView imageview_diesel;
+	private ImageView ivDiesel;
 
 	@FXML
-	private Tab t_goods;
+	private Tab tGoods;
 
 	@FXML
-	private Button b_ordergoods;
+	private Button btnOrderGoods;
 
 	@FXML
-	private Button b_changegoodsprice;
+	private Button btnChangeGoodsPrice;
 
 	@FXML
-	private TextField tf_ordergoodnumber;
+	private TextField tfOrderGoodNumber;
 
 	@FXML
-	private TextField tf_ordergoodamount;
+	private TextField tfOrderGoodAmount;
 
 	@FXML
-	private TableView<Good> tv_goodsstorage;
+	private TableView<Good> tvGoodsStorage;
 
 	@FXML
-	private TableColumn<Good, Integer> tc_goodsstorage_nr;
+	private TableColumn<Good, Integer> tcGoodsStorageNr;
 
 	@FXML
-	private TableColumn<Good, String> tc_goodsstorage_name;
+	private TableColumn<Good, String> tcGoodsStorageName;
 
 	@FXML
-	private TableColumn<Good, String> tc_goodsstorage_storageunit;
+	private TableColumn<Good, String> tcGoodsStorageStorageUnit;
 
 	@FXML
-	private TableColumn<Good, Double> tc_goodsstorage_amount;
+	private TableColumn<Good, Double> tcGoodsStorageAmount;
 
 	@FXML
-	private TableColumn<Good, Double> tc_goodsstorage_purchaseprice;
+	private TableColumn<Good, Double> tcGoodsStoragePurchasePrice;
 
 	@FXML
-	private TableColumn<Good, Double> tc_goodsstorage_saleprice;
+	private TableColumn<Good, Double> tcGoodsStorageSalePrice;
 
 	@FXML
-	private Tab t_fuel;
+	private Tab tFuel;
 
 	@FXML
-	private TableView<Fuel> tv_fueltanks;
+	private TableView<Fuel> tvFuelTanks;
 
 	@FXML
-	private TableColumn<Fuel, Integer> tc_fueltanks_tanknumber;
+	private TableColumn<Fuel, Integer> tcFuelTanksTankNumber;
 
 	@FXML
-	private TableColumn<Fuel, String> tc_fueltanks_fueltype;
+	private TableColumn<Fuel, String> tcFuelTanksFuelType;
 
 	@FXML
-	private TableColumn<Fuel, Double> tc_fueltanks_capacity;
+	private TableColumn<Fuel, Double> tcFuelTanksCapacity;
 
 	@FXML
-	private TableColumn<Fuel, Double> tc_fueltanks_fuellevel;
+	private TableColumn<Fuel, Double> tcFuelTanksFuelLevel;
 
 	@FXML
-	private TableColumn<Fuel, Double> tc_fueltanks_purchaseprice;
+	private TableColumn<Fuel, Double> tcFuelTanksPurchasePrice;
 
 	@FXML
-	private TableColumn<Fuel, Double> tc_fueltanks_saleprice;
+	private TableColumn<Fuel, Double> tcFuelTanksSalePrice;
 
 	@FXML
-	private ComboBox<String> cb_orderfueltype;
+	private ComboBox<String> cbOrderFuelType;
 
 	@FXML
-	private TextField tf_orderfuelamount;
+	private TextField tfOrderFuelAmount;
 
 	@FXML
-	private Button b_orderfuel;
+	private Button btnOrderFuel;
 
 	@FXML
-	private Button b_changefuelprice;
+	private Button btnChangeFuelPrice;
 
 	@FXML
-	private Tab t_history;
+	private Tab tHistory;
 
 	@FXML
-	private Button b_showbalance;
+	private Button btnShowBalance;
 
 	@FXML
-	private Label l_balanceresult;
+	private Label lblBalanceResult;
 
 	@FXML
-	private TableView<Purchase> tv_purchases;
+	private TableView<Purchase> tvPurchase;
 
 	@FXML
-	private TableColumn<Purchase, Integer> tc_purchases_number;
+	private TableColumn<Purchase, Integer> tcPurchasesNumber;
 
 	@FXML
-	private TableColumn<Purchase, LocalDate> tc_purchases_date;
+	private TableColumn<Purchase, LocalDate> tcPurchasesDate;
 
 	@FXML
-	private TableColumn<Purchase, Double> tc_purchases_price;
+	private TableColumn<Purchase, Double> tcPurchasesPrice;
 
 	@FXML
-	private TableView<Sale> tv_sales;
+	private TableView<Sale> tvSales;
 
 	@FXML
-	private TableColumn<Sale, Integer> tc_sales_number;
+	private TableColumn<Sale, Integer> tcSalesNumber;
 
 	@FXML
-	private TableColumn<Sale, LocalDate> tc_sales_date;
+	private TableColumn<Sale, LocalDate> tcSalesDate;
 
 	@FXML
-	private TableColumn<Sale, Double> tc_sales_price;
+	private TableColumn<Sale, Double> tcSalesPrice;
 
 	@FXML
-	private DatePicker dp_balancestartdate;
+	private DatePicker dpBalanceStartDate;
 	
 	@FXML
-	private DatePicker dp_balanceenddate;
+	private DatePicker dpBalanceEndDate;
 
 	@FXML
-	private Tab t_employees;
+	private Tab tEmployees;
 
 	@FXML
-	private Button b_newemployee;
+	private Button btnNewEmployee;
 
 	@FXML
-	private TableView<Employee> tv_employees;
+	private TableView<Employee> tvEmployees;
 
 	@FXML
-	private TableColumn<Employee, Integer> tc_employees_number;
+	private TableColumn<Employee, Integer> tcEmployeesNumber;
 
 	@FXML
-	private TableColumn<Employee, String> tc_employees_name;
+	private TableColumn<Employee, String> tcEmployeesName;
 
 	@FXML
-	private TableColumn<Employee, LocalDate> tc_employees_dateofemployment;
+	private TableColumn<Employee, LocalDate> tcEmployeesDateOfEmployent;
 
 	@FXML
-	private AnchorPane AP_addGoods;
+	private AnchorPane apAddGoods;
 
 	@FXML
-	private TableView<Good> tv_goodsstorage2;
+	private TableView<Good> tvGoodsStorage2;
 
 	@FXML
-	private TableColumn<Good, Integer> tc_goodsstorage2_nr;
+	private TableColumn<Good, Integer> tcGoodsStorage2Nr;
 
 	@FXML
-	private TableColumn<Good, String> tc_goodsstorage2_name;
+	private TableColumn<Good, String> tcGoodsStorage2Name;
 
 	@FXML
-	private TableView<Good> tv_goodsshoppingcart;
+	private TableView<Good> tvGoodsShoppingCart;
 
 	@FXML
-	private TableColumn<Good, String> tc_goodsshoppingcart_name;
+	private TableColumn<Good, String> tcGoodsShoppingCartName;
 
 	@FXML
-	private TableColumn<Good, Double> tc_goodsshoppingcart_price;
+	private TableColumn<Good, Double> tcGoodsShoppingCartPrice;
 
 	@FXML
-	private TextField tf_goodsnumber;
+	private TextField tfGoodsNumber;
 
 	@FXML
-	private TextField tf_goodsamount;
+	private TextField tfGoodsAmount;
 
 	@FXML
-	private Button b_addtoshoppingcart;
+	private Button btnAddToShoppingCart;
 
 	@FXML
-	private Button b_tocheckout;
+	private Button btnToCheckout;
 
 	@FXML
-	private Button b_tocheckout2;
+	private Button btnToCheckout2;
 
 	@FXML
-	private AnchorPane AP_LogIn;
+	private AnchorPane apLogin;
 
 	@FXML
-	private TextField tf_employeenumber;
+	private TextField tfEmployeeNumber;
 
 	@FXML
-	private Button b_login;
+	private Button btnLogin;
 
 	@FXML
-	private Label l_wrongemployeenumber;
+	private Label lblWrongEmployeeNumber;
 
 	@FXML
-	private Label l_activeemployeename;
+	private Label lblActiveEmployeeName;
 
 	@FXML
-	private AnchorPane AP_addFuel;
+	private AnchorPane apAddFuel;
 
 	@FXML
-	private ComboBox<String> cb_fueltype;
+	private ComboBox<String> cbFuelType;
 
 	@FXML
-	private TextField tf_amountoffuel;
+	private TextField tfAmountOfFuel;
 
 	@FXML
-	private Button b_addfuel;
+	private Button btnAddFuel;
 
 	@FXML
-	private Button b_addgoodorder;
+	private Button btnAddGoodOrder;
 
 	@FXML
-	private TableView<Good> tv_ordersofgoods;
+	private TableView<Good> tvOrdersOfGoods;
 
 	@FXML
-	private TableColumn<Good, String> tc_ordergoodname;
+	private TableColumn<Good, String> tcOrderGoodName;
 
 	@FXML
-	private TableColumn<Good, Double> tc_ordergoodamount;
+	private TableColumn<Good, Double> tcOrderGoodAmount;
 
 	@FXML
-	private Button b_addfuelorder;
+	private Button btnAddFuelOrder;
 
 	@FXML
-	private TableView<Fuel> tv_ordersoffuel;
+	private TableView<Fuel> tvOrdersOfFuel;
 
 	@FXML
-	private TableColumn<Fuel, String> tc_orderfueltype;
+	private TableColumn<Fuel, String> tcOrderFuelType;
 
 	@FXML
-	private TableColumn<Fuel, Double> tc_orderfuelamount;
+	private TableColumn<Fuel, Double> tcOrderFuelAmount;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
 		// Spalten einstellen
 		
-		cb_orderfueltype.getItems().removeAll(cb_orderfueltype.getItems()); // lÃ¶sche vorhandene Werte aus
+		cbOrderFuelType.getItems().removeAll(cbOrderFuelType.getItems()); // lÃ¶sche vorhandene Werte aus
 																			// Dropdown-MenÃ¼
-		cb_orderfueltype.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
-		cb_orderfueltype.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
+		cbOrderFuelType.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
+		cbOrderFuelType.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
 
-		cb_fueltype.getItems().removeAll(cb_fueltype.getItems()); // lÃ¶sche vorhandene Werte aus Dropdown-MenÃ¼
-		cb_fueltype.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
-		cb_fueltype.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
+		cbFuelType.getItems().removeAll(cbFuelType.getItems()); // lÃ¶sche vorhandene Werte aus Dropdown-MenÃ¼
+		cbFuelType.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
+		cbFuelType.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
 
-		tc_shoppingcart_name.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
-		tc_shoppingcart_amount.setCellValueFactory(new PropertyValueFactory<Product, Double>("amount"));
-		tc_shoppingcart_unitprice.setCellValueFactory(new PropertyValueFactory<Product, Double>("salePrice"));
-		tc_shoppingcart_total.setCellValueFactory(new PropertyValueFactory<Product, Double>("totalSalePrice"));
-		tv_shoppingcart.setItems(GasStation.getShoppingCart());
+		tcShoppingCartName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
+		tcShoppingCartAmount.setCellValueFactory(new PropertyValueFactory<Product, Double>("amount"));
+		tcShoppingCartUnitPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("salePrice"));
+		tcShoppingCartTotal.setCellValueFactory(new PropertyValueFactory<Product, Double>("totalSalePrice"));
+		tvShoppingCart.setItems(GasStation.getShoppingCart());
 
-		tc_goodsstorage_nr.setCellValueFactory(new PropertyValueFactory<Good, Integer>("number"));
-		tc_goodsstorage_name.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
-		tc_goodsstorage_storageunit.setCellValueFactory(new PropertyValueFactory<Good, String>("unit"));
-		tc_goodsstorage_amount.setCellValueFactory(new PropertyValueFactory<Good, Double>("amount"));
-		tc_goodsstorage_purchaseprice.setCellValueFactory(new PropertyValueFactory<Good, Double>("purchasePrice"));
-		tc_goodsstorage_saleprice.setCellValueFactory(new PropertyValueFactory<Good, Double>("salePrice"));
-		tv_goodsstorage.setItems(GasStation.getGoods());
+		tcGoodsStorageNr.setCellValueFactory(new PropertyValueFactory<Good, Integer>("number"));
+		tcGoodsStorageName.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
+		tcGoodsStorageStorageUnit.setCellValueFactory(new PropertyValueFactory<Good, String>("unit"));
+		tcGoodsStorageAmount.setCellValueFactory(new PropertyValueFactory<Good, Double>("amount"));
+		tcGoodsStoragePurchasePrice.setCellValueFactory(new PropertyValueFactory<Good, Double>("purchasePrice"));
+		tcGoodsStorageSalePrice.setCellValueFactory(new PropertyValueFactory<Good, Double>("salePrice"));
+		tvGoodsStorage.setItems(GasStation.getGoods());
 
-		tc_purchases_number.setCellValueFactory(new PropertyValueFactory<Purchase, Integer>("purchaseNumber"));
-		tc_purchases_date.setCellValueFactory(new PropertyValueFactory<Purchase, LocalDate>("purchaseDate"));
-		tc_purchases_price.setCellValueFactory(new PropertyValueFactory<Purchase, Double>("purchasePrice"));
-		tv_purchases.setItems(GasStation.getBalancePurchases());
+		tcPurchasesNumber.setCellValueFactory(new PropertyValueFactory<Purchase, Integer>("purchaseNumber"));
+		tcPurchasesDate.setCellValueFactory(new PropertyValueFactory<Purchase, LocalDate>("purchaseDate"));
+		tcPurchasesPrice.setCellValueFactory(new PropertyValueFactory<Purchase, Double>("purchasePrice"));
+		tvPurchase.setItems(GasStation.getBalancePurchases());
 
-		tc_sales_number.setCellValueFactory(new PropertyValueFactory<Sale, Integer>("saleNumber"));
-		tc_sales_date.setCellValueFactory(new PropertyValueFactory<Sale, LocalDate>("saleDate"));
-		tc_sales_price.setCellValueFactory(new PropertyValueFactory<Sale, Double>("salePrice"));
-		tv_sales.setItems(GasStation.getBalanceSales());
+		tcSalesNumber.setCellValueFactory(new PropertyValueFactory<Sale, Integer>("saleNumber"));
+		tcSalesDate.setCellValueFactory(new PropertyValueFactory<Sale, LocalDate>("saleDate"));
+		tcSalesPrice.setCellValueFactory(new PropertyValueFactory<Sale, Double>("salePrice"));
+		tvSales.setItems(GasStation.getBalanceSales());
 
-		tc_employees_number.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("employeeNumber"));
-		tc_employees_name.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeName"));
-		tc_employees_dateofemployment
+		tcEmployeesNumber.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("employeeNumber"));
+		tcEmployeesName.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeName"));
+		tcEmployeesDateOfEmployent
 				.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("dateOfEmployment"));
-		tv_employees.setItems(GasStation.getEmployees());
+		tvEmployees.setItems(GasStation.getEmployees());
 
-		tc_goodsstorage2_nr.setCellValueFactory(new PropertyValueFactory<Good, Integer>("number"));
-		tc_goodsstorage2_name.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
-		tv_goodsstorage2.setItems(GasStation.getGoods());
+		tcGoodsStorage2Nr.setCellValueFactory(new PropertyValueFactory<Good, Integer>("number"));
+		tcGoodsStorage2Name.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
+		tvGoodsStorage2.setItems(GasStation.getGoods());
 
-		tc_goodsshoppingcart_name.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
-		tc_goodsshoppingcart_price.setCellValueFactory(new PropertyValueFactory<Good, Double>("totalSalePrice"));
-		tv_goodsshoppingcart.setItems(GasStation.getShoppingCartGoods());
+		tcGoodsShoppingCartName.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
+		tcGoodsShoppingCartPrice.setCellValueFactory(new PropertyValueFactory<Good, Double>("totalSalePrice"));
+		tvGoodsShoppingCart.setItems(GasStation.getShoppingCartGoods());
 
-		tc_fueltanks_tanknumber.setCellValueFactory(new PropertyValueFactory<Fuel, Integer>("number"));
-		tc_fueltanks_fueltype.setCellValueFactory(new PropertyValueFactory<Fuel, String>("name"));
-		tc_fueltanks_capacity.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("capacity"));
-		tc_fueltanks_fuellevel.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("amount"));
-		tc_fueltanks_purchaseprice.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("purchasePrice"));
-		tc_fueltanks_saleprice.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("salePrice"));
-		tv_fueltanks.setItems(GasStation.getFuels());
+		tcFuelTanksTankNumber.setCellValueFactory(new PropertyValueFactory<Fuel, Integer>("number"));
+		tcFuelTanksFuelType.setCellValueFactory(new PropertyValueFactory<Fuel, String>("name"));
+		tcFuelTanksCapacity.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("capacity"));
+		tcFuelTanksFuelLevel.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("amount"));
+		tcFuelTanksPurchasePrice.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("purchasePrice"));
+		tcFuelTanksSalePrice.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("salePrice"));
+		tvFuelTanks.setItems(GasStation.getFuels());
 
-		l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
+		lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()));
 
-		tc_ordergoodamount.setCellValueFactory(new PropertyValueFactory<Good, Double>("amount"));
-		tc_ordergoodname.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
-		tv_ordersofgoods.setItems(GasStation.getOrderGood());
+		tcOrderGoodAmount.setCellValueFactory(new PropertyValueFactory<Good, Double>("amount"));
+		tcOrderGoodName.setCellValueFactory(new PropertyValueFactory<Good, String>("name"));
+		tvOrdersOfGoods.setItems(GasStation.getOrderGood());
 
-		tc_orderfuelamount.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("amount"));
-		tc_orderfueltype.setCellValueFactory(new PropertyValueFactory<Fuel, String>("name"));
-		tv_ordersoffuel.setItems(GasStation.getOrderFuel());
+		tcOrderFuelAmount.setCellValueFactory(new PropertyValueFactory<Fuel, Double>("amount"));
+		tcOrderFuelType.setCellValueFactory(new PropertyValueFactory<Fuel, String>("name"));
+		tvOrdersOfFuel.setItems(GasStation.getOrderFuel());
 
 		fileChooser = new FileChooser();
 		fileChooser.getExtensionFilters().add(new ExtensionFilter("Textdateien", "*.txt"));
 
-		cb_orderfueltype.getItems().removeAll(cb_orderfueltype.getItems()); // lÃ¶sche vorhandene Werte aus
+		cbOrderFuelType.getItems().removeAll(cbOrderFuelType.getItems()); // lÃ¶sche vorhandene Werte aus
 																			// Dropdown-MenÃ¼
-		cb_orderfueltype.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
-		cb_orderfueltype.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
+		cbOrderFuelType.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
+		cbOrderFuelType.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
 
 	}
 
 	@FXML
 	void OnAddGoodsClick(ActionEvent event) {
 		// Tabellen aktualisieren
-		tv_goodsstorage2.setItems(GasStation.getGoods());
-		tv_goodsshoppingcart.setItems(GasStation.getShoppingCartGoods());
-		TabPane_main.setVisible(false);
-		AP_addGoods.setVisible(true);
+		tvGoodsStorage2.setItems(GasStation.getGoods());
+		tvGoodsShoppingCart.setItems(GasStation.getShoppingCartGoods());
+		tpMain.setVisible(false);
+		apAddGoods.setVisible(true);
 
 	}
 
@@ -419,28 +419,28 @@ public class Controller_Main implements Initializable {
 		int employeeNumber = 0;
 
 		try {
-			employeeNumber = Integer.valueOf(tf_employeenumber.getText());
+			employeeNumber = Integer.valueOf(tfEmployeeNumber.getText());
 		} catch (NumberFormatException e) {
 			System.out.println("Das ist kein Integer");
 		}
 
 		if (GasStation.existingEmployee(employeeNumber) == true) {
-			AP_LogIn.setVisible(false);
-			TabPane_main.setVisible(true);
+			apLogin.setVisible(false);
+			tpMain.setVisible(true);
 			System.out.println("Erfolgreicher Login");
 
 			// Mitarbeiter auf aktiv setzen
 			GasStation.setCurrentEmployee(employeeNumber);
 
 			// aktive Mitarbeitername ausgeben
-			l_activeemployeename.setText(GasStation.activeEmployee().getEmployeeName());
+			lblActiveEmployeeName.setText(GasStation.activeEmployee().getEmployeeName());
 
 			// Ampel aktualisieren
-			imageview_diesel.setImage(GasStation.getTrafficLight(0));
-			imageview_super.setImage(GasStation.getTrafficLight(1));
+			ivDiesel.setImage(GasStation.getTrafficLight(0));
+			ivSuper.setImage(GasStation.getTrafficLight(1));
 
 		} else {
-			l_wrongemployeenumber.setText("ungültige Mitarbeiternummer");
+			lblWrongEmployeeNumber.setText("ungültige Mitarbeiternummer");
 			System.out.println("Ungültige Mitarbeiternummer");
 
 			// PopUp für ungültige Mitarbeiternummer
@@ -456,7 +456,7 @@ public class Controller_Main implements Initializable {
 		GasStation.createHistory();
 		double sales = GasStation.createFullSales();
 		double purchases = GasStation.createFullPurchases();
-		l_balanceresult.setText("Einnahmen: "+String.valueOf(sales)+" � Ausgabe: " + String.valueOf(purchases)+ " � Betriebsergebnis: "+ String.valueOf(sales-purchases) + " �");
+		lblBalanceResult.setText("Einnahmen: "+String.valueOf(sales)+" � Ausgabe: " + String.valueOf(purchases)+ " � Betriebsergebnis: "+ String.valueOf(sales-purchases) + " �");
 
 	}
 
@@ -471,11 +471,11 @@ public class Controller_Main implements Initializable {
 		// Zaahl ist
 
 		try {
-			// setze den Wert von amountOfFuel auf den Wert aus tf_amountoffuel
-			amountOfFuel = Double.valueOf(tf_amountoffuel.getText());
+			// setze den Wert von amountOfFuel auf den Wert aus tfAmountOfFuel
+			amountOfFuel = Double.valueOf(tfAmountOfFuel.getText());
 
 			// setze chosenFuelType auf den ausgewählten Wert der ComboBox
-			chosenFuelType = cb_fueltype.getValue();
+			chosenFuelType = cbFuelType.getValue();
 
 			// Wenn der Wert kleiner/gleich Null ist, gebe ein Alert aus
 			if (amountOfFuel <= 0) {
@@ -494,14 +494,14 @@ public class Controller_Main implements Initializable {
 			// neuen Wert gesetzt.
 			else if (GasStation.addFuelToShoppingCart(chosenFuelType, amountOfFuel)) {
 
-				AP_addFuel.setVisible(false);
-				TabPane_main.setVisible(true);
+				apAddFuel.setVisible(false);
+				tpMain.setVisible(true);
 
-				l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
+				lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()));
 
 				// Ampel aktualisieren
-				imageview_diesel.setImage(GasStation.getTrafficLight(0));
-				imageview_super.setImage(GasStation.getTrafficLight(1));
+				ivDiesel.setImage(GasStation.getTrafficLight(0));
+				ivSuper.setImage(GasStation.getTrafficLight(1));
 
 				// Wenn die Methode "false" zurückgibt, ist nicht mehr genügend Kraftstoff
 				// vorhanden. Der Index des Kraftstofftanks wird ermittelt. Der Nutzer wird
@@ -541,13 +541,13 @@ public class Controller_Main implements Initializable {
 		double goodAmount = 0;
 
 		try {
-			goodNumber = Integer.valueOf(tf_goodsnumber.getText());
+			goodNumber = Integer.valueOf(tfGoodsNumber.getText());
 		} catch (NumberFormatException e) {
 			System.out.println("Das ist keine Ganzzahl");
 		}
 
 		try {
-			goodAmount = Double.valueOf(tf_goodsamount.getText());
+			goodAmount = Double.valueOf(tfGoodsAmount.getText());
 		} catch (NumberFormatException e) {
 			System.out.println("Das ist keine Dezimalzahl");
 		}
@@ -557,7 +557,7 @@ public class Controller_Main implements Initializable {
 		// Gesamtbetrag wird dann auf den Gesamtpreis der ShoppingCart-Liste gesetzt
 		if (GasStation.addGoodToShoppingCart(goodNumber, goodAmount)) {
 
-			l_totalprice.setText(String.valueOf(GasStation.getTotalPrice()));
+			lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()));
 			// Wenn die Methode "false" zurÃ¼ckgibt, ist nicht mehr genÃ¼gend Bestand
 			// vorhanden. Der Index der Ware wird ermittelt. Der Nutzer wird
 			// anschlieÃend Ã¼ber den Bestand der Ware informiert.
@@ -579,7 +579,7 @@ public class Controller_Main implements Initializable {
 	void onBarClick(ActionEvent event) throws IOException {
 
 		// Gesamtbetrag-Label auf Null setzen
-		l_totalprice.setText("0.00");
+		lblTotalPrice.setText("0.00");
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/PayProcessDialog.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
@@ -616,7 +616,7 @@ public class Controller_Main implements Initializable {
 	@FXML
 	void onCheckInDeliveryClick(ActionEvent event) throws ParseException, IOException {
 
-		Window window = b_checkindelivery.getScene().getWindow();
+		Window window = btnCheckInDelivery.getScene().getWindow();
 		file = fileChooser.showOpenDialog(window);
 
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -634,8 +634,8 @@ public class Controller_Main implements Initializable {
 		alert.showAndWait();
 
 		// Ampel aktualisieren
-		imageview_diesel.setImage(GasStation.getTrafficLight(0));
-		imageview_super.setImage(GasStation.getTrafficLight(1));
+		ivDiesel.setImage(GasStation.getTrafficLight(0));
+		ivSuper.setImage(GasStation.getTrafficLight(1));
 
 	}
 
@@ -651,8 +651,8 @@ public class Controller_Main implements Initializable {
 
 		// Tabellen aktualisieren
 
-		TabPane_main.setVisible(false);
-		AP_addFuel.setVisible(true);
+		tpMain.setVisible(false);
+		apAddFuel.setVisible(true);
 
 	}
 
@@ -674,7 +674,7 @@ public class Controller_Main implements Initializable {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Bestellung");
 		if (GasStation.getOrderFuel().size() != 0) {
-			Window window = b_ordergoods.getScene().getWindow();
+			Window window = btnOrderGoods.getScene().getWindow();
 			file = fileChooser.showSaveDialog(window);
 			FileSetter.writeFuelOrder(file);
 			FXCollections.copy(GasStation.getOrderFuel(), GasStation.getOrderFuel());
@@ -689,8 +689,8 @@ public class Controller_Main implements Initializable {
 			alert.showAndWait();
 		}
 		// Ampel aktualisieren
-		imageview_diesel.setImage(GasStation.getTrafficLight(0));
-		imageview_super.setImage(GasStation.getTrafficLight(1));
+		ivDiesel.setImage(GasStation.getTrafficLight(0));
+		ivSuper.setImage(GasStation.getTrafficLight(1));
 	}
 
 	@FXML
@@ -698,7 +698,7 @@ public class Controller_Main implements Initializable {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Bestellung");
 		if (GasStation.getOrderGood().size() != 0) {
-			Window window = b_ordergoods.getScene().getWindow();
+			Window window = btnOrderGoods.getScene().getWindow();
 			file = fileChooser.showSaveDialog(window);
 			FileSetter.writeGoodsOrder(file);
 			FXCollections.copy(GasStation.getOrderGood(), GasStation.getOrderGood());
@@ -716,8 +716,8 @@ public class Controller_Main implements Initializable {
 	@FXML
 	void onShowBalanceClick(ActionEvent event) {
 	try {
-		LocalDate start = dp_balancestartdate.getValue();
-		LocalDate end = dp_balanceenddate.getValue();
+		LocalDate start = dpBalanceStartDate.getValue();
+		LocalDate end = dpBalanceEndDate.getValue();
 		
 		GasStation.changeBalanceTable(start,end);
 	} catch (Exception e) {
@@ -732,28 +732,28 @@ public class Controller_Main implements Initializable {
 	}
 	double sales = GasStation.createFullSales();
 	double purchases = GasStation.createFullPurchases();
-	l_balanceresult.setText("Einnahmen: "+String.valueOf(sales)+" � Ausgabe: " + String.valueOf(purchases)+ " � Betriebsergebnis: "+ String.valueOf(sales-purchases) + " �");
+	lblBalanceResult.setText("Einnahmen: "+String.valueOf(sales)+" � Ausgabe: " + String.valueOf(purchases)+ " � Betriebsergebnis: "+ String.valueOf(sales-purchases) + " �");
 
 	}
 
 	@FXML
 	void onToCheckoutClick(ActionEvent event) {
 
-		AP_addFuel.setVisible(false);
-		AP_addGoods.setVisible(false);
-		TabPane_main.setVisible(true);
+		apAddFuel.setVisible(false);
+		apAddGoods.setVisible(false);
+		tpMain.setVisible(true);
 
 	}
 
 	@FXML
 	void onOrderGoodsClickStartScreen(ActionEvent event) {
-		TabPane_main.getSelectionModel().select(t_goods);
+		tpMain.getSelectionModel().select(tGoods);
 
 	}
 
 	@FXML
 	void onOrderFuelClickStartScreen(ActionEvent event) {
-		TabPane_main.getSelectionModel().select(t_fuel);
+		tpMain.getSelectionModel().select(tFuel);
 	}
 
 	@FXML
@@ -763,8 +763,8 @@ public class Controller_Main implements Initializable {
 			double amount = 0;
 			
 			try {
-			number = Integer.parseInt(tf_ordergoodnumber.getText());
-			amount = Double.parseDouble(tf_ordergoodamount.getText());
+			number = Integer.parseInt(tfOrderGoodNumber.getText());
+			amount = Double.parseDouble(tfOrderGoodAmount.getText());
 			} catch (NumberFormatException e) {
 				System.out.println("Falsche Eingabe");
 			}
@@ -789,8 +789,8 @@ public class Controller_Main implements Initializable {
 				alert.showAndWait();
 			}
 			
-			tf_ordergoodnumber.setText("");
-			tf_ordergoodamount.setText("");
+			tfOrderGoodNumber.setText("");
+			tfOrderGoodAmount.setText("");
 			
 		
 		
@@ -799,8 +799,8 @@ public class Controller_Main implements Initializable {
 
 	@FXML
 	void onAddFuelOrderClick(ActionEvent event) {
-		System.out.println(cb_orderfueltype.getValue());
-		GasStation.addFuelOrder(cb_orderfueltype.getValue(), Double.parseDouble(tf_orderfuelamount.getText()));
+		System.out.println(cbOrderFuelType.getValue());
+		GasStation.addFuelOrder(cbOrderFuelType.getValue(), Double.parseDouble(tfOrderFuelAmount.getText()));
 
 	}
 
