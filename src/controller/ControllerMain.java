@@ -189,7 +189,7 @@ public class ControllerMain implements Initializable {
 	private Label lblBalanceResult;
 
 	@FXML
-	private TableView<Purchase> tvPurchase;
+	private TableView<Purchase> tvPurchases;
 
 	@FXML
 	private TableColumn<Purchase, Integer> tcPurchasesNumber;
@@ -234,7 +234,7 @@ public class ControllerMain implements Initializable {
 	private TableColumn<Employee, String> tcEmployeesName;
 
 	@FXML
-	private TableColumn<Employee, LocalDate> tcEmployeesDateOfEmployent;
+	private TableColumn<Employee, LocalDate> tcEmployeesDateOfEmployment;
 
 	@FXML
 	private AnchorPane apAddGoods;
@@ -354,7 +354,7 @@ public class ControllerMain implements Initializable {
 		tcPurchasesNumber.setCellValueFactory(new PropertyValueFactory<Purchase, Integer>("purchaseNumber"));
 		tcPurchasesDate.setCellValueFactory(new PropertyValueFactory<Purchase, LocalDate>("purchaseDate"));
 		tcPurchasesPrice.setCellValueFactory(new PropertyValueFactory<Purchase, Double>("purchasePrice"));
-		tvPurchase.setItems(GasStation.getBalancePurchases());
+		tvPurchases.setItems(GasStation.getBalancePurchases());
 
 		tcSalesNumber.setCellValueFactory(new PropertyValueFactory<Sale, Integer>("saleNumber"));
 		tcSalesDate.setCellValueFactory(new PropertyValueFactory<Sale, LocalDate>("saleDate"));
@@ -363,7 +363,7 @@ public class ControllerMain implements Initializable {
 
 		tcEmployeesNumber.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("employeeNumber"));
 		tcEmployeesName.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeName"));
-		tcEmployeesDateOfEmployent
+		tcEmployeesDateOfEmployment
 				.setCellValueFactory(new PropertyValueFactory<Employee, LocalDate>("dateOfEmployment"));
 		tvEmployees.setItems(GasStation.getEmployees());
 
@@ -576,7 +576,7 @@ public class ControllerMain implements Initializable {
 	}
 
 	@FXML
-	void onBarClick(ActionEvent event) throws IOException {
+	void onCashClick(ActionEvent event) throws IOException {
 
 		// Gesamtbetrag-Label auf Null setzen
 		lblTotalPrice.setText("0.00");

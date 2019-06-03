@@ -42,7 +42,7 @@
                     <columns>
                       <TableColumn fx:id="tcShoppingCartName" prefWidth="99.0" text="Bezeichnung" />
                         <TableColumn fx:id="tcShoppingCartAmount" prefWidth="57.0" text="Menge" />
-                        <TableColumn fx:id="tcShoppingcartUnitPrice" prefWidth="68.0" text="Stückpreis" />
+                        <TableColumn fx:id="tcShoppingCartUnitPrice" prefWidth="68.0" text="Stückpreis" />
                               <TableColumn fx:id="tcShoppingCartTotal" prefWidth="69.0" text="Gesamt" />
                     </columns>
                   </TableView>
@@ -110,7 +110,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tvGoodsstorage" layoutX="15.0" layoutY="65.0" prefHeight="169.0" prefWidth="570.0">
+                        <TableView fx:id="tvGoodsStorage" layoutX="15.0" layoutY="65.0" prefHeight="169.0" prefWidth="570.0">
                           <columns>
                             <TableColumn fx:id="tcGoodsStorageNr" prefWidth="55.0" text="Nr." />
                             <TableColumn fx:id="tcGoodsStorageName" prefWidth="215.0" text="Bezeichnung" />
@@ -134,7 +134,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="tvFueltanks" layoutX="15.0" layoutY="65.0" prefHeight="90.0" prefWidth="571.0">
+                  <TableView fx:id="tvFuelTanks" layoutX="15.0" layoutY="65.0" prefHeight="90.0" prefWidth="571.0">
                     <columns>
                       <TableColumn fx:id="tcFuelTanksTankNumber" prefWidth="28.0" text="Nr." />
                       <TableColumn fx:id="tcFuelTanksFuelType" prefWidth="97.0" text="Kraftstoffart" />
@@ -263,10 +263,10 @@
             <Label layoutX="230.0" layoutY="167.0" text="Menge" />
             <TextField fx:id="tfGoodsAmount" layoutX="291.0" layoutY="163.0" prefHeight="25.0" prefWidth="75.0" />
             <Button fx:id="btnAddToShoppingCart" layoutX="290.0" layoutY="200.0" mnemonicParsing="false" onAction="#onAddGoodToShoppingCartClick" text="Hinzufügen" />
-            <Button fx:id="btnToCheckOut" layoutX="230.0" layoutY="275.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="140.0" text="Zur Kasse" />
+            <Button fx:id="btnToCheckout" layoutX="230.0" layoutY="275.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="140.0" text="Zur Kasse" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="apLogIn" prefHeight="297.0" prefWidth="600.0">
+      <AnchorPane fx:id="apLogin" prefHeight="297.0" prefWidth="600.0">
          <children>
             <Label layoutX="162.0" layoutY="192.0" text="Mitarbeiternummer" />
             <TextField fx:id="tfEmployeeNumber" layoutX="275.0" layoutY="188.0" prefHeight="25.0" prefWidth="68.0" />
