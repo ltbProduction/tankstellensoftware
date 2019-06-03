@@ -442,7 +442,7 @@ public static void addGoodOrder(int number, double amount) {
 public static void addFuelOrder(String fueltype, double amount) {
 	for (Fuel f : fuels) {
 	 if(f.getName().equals(fueltype)) {
-		 Fuel o = new Fuel(f.getNumber(), f.getName(), amount, f.getPurchasePrice(), f.getSalePrice());
+		 Fuel o = new Fuel(f.getNumber(), f.getName(), amount, 0, 0);
 		 orderFuel.add(o);
 	
 	 }
