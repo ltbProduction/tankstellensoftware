@@ -6,12 +6,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="227.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_NewEmployeeDialog">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="227.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerNewEmployeeDialog">
    <children>
       <Label layoutX="88.0" layoutY="60.0" text="Name" />
       <Label layoutX="24.0" layoutY="102.0" text="Einstellungsdatum" />
-      <Button fx:id="b_addemployee" layoutX="136.0" layoutY="146.0" mnemonicParsing="false" onAction="#addNewEmployee" prefHeight="25.0" prefWidth="143.0" text="Hinzufügen" />
-      <TextField fx:id="tf_nameofnewemployee" layoutX="136.0" layoutY="56.0" prefHeight="25.0" prefWidth="143.0" />
-      <DatePicker fx:id="dp_dateofemployment" layoutX="136.0" layoutY="98.0" prefHeight="25.0" prefWidth="143.0" />
+      <Button fx:id="btnAddEmployee" layoutX="136.0" layoutY="146.0" mnemonicParsing="false" onAction="#addNewEmployee" prefHeight="25.0" prefWidth="143.0" text="Hinzufügen" />
+      <TextField fx:id="tfNameOfNewEmployee" layoutX="136.0" layoutY="56.0" prefHeight="25.0" prefWidth="143.0" />
+      <DatePicker fx:id="dpDateOfEmployment" layoutX="136.0" layoutY="98.0" prefHeight="25.0" prefWidth="143.0" />
    </children>
 </Pane>
