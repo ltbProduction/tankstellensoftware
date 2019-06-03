@@ -17,7 +17,7 @@ import javafx.stage.Window;
 import javafx.stage.FileChooser.ExtensionFilter;
 import models.GasStation;
 
-public class Controller_PayProcessDialog implements Initializable {
+public class ControllerPayProcessDialog implements Initializable {
 
 	// Test Linus
 	private File file;
@@ -27,19 +27,19 @@ public class Controller_PayProcessDialog implements Initializable {
 	private Pane pane;
 
 	@FXML
-	private Label l_price;
+	private Label lblPrice;
 
 	@FXML
-	private TextField tf_moneyreceived;
+	private TextField tfMoneyReceived;
 
 	@FXML
-	private Button b_confirmmoneyreceived;
+	private Button btnConfirmMoneyReceived;
 
 	@FXML
-	private Label l_money_return;
+	private Label lblMoneyReturn;
 
 	@FXML
-	private Button b_continue;
+	private Button btnContinue;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -49,17 +49,17 @@ public class Controller_PayProcessDialog implements Initializable {
 		fileChooser.getExtensionFilters().add(new ExtensionFilter("Textdateien", "*.txt"));
 
 		// Label auf Gesamtbetrag des Warenkorbs setzen
-		l_price.setText(String.valueOf(GasStation.getTotalPrice()));
+		lblPrice.setText(String.valueOf(GasStation.getTotalPrice()));
 
 	}
 
 	@FXML
 	void onConfirmMoneyReceived(ActionEvent event) {
 
-		double moneyReceived = Double.parseDouble(tf_moneyreceived.getText());
+		double moneyReceived = Double.parseDouble(tfMoneyReceived.getText());
 
 		// Setze Label auf die Differenz von Gegebenem Geld - Gesamtbetrag (gerundet)
-		l_money_return
+		lblMoneyReturn
 				.setText(String.valueOf(Math.round(100.0 * (moneyReceived - GasStation.getTotalPrice())) / 100.0));
 
 	}
@@ -67,12 +67,12 @@ public class Controller_PayProcessDialog implements Initializable {
 	@FXML
 	void onContinue(ActionEvent event) {
 		// Den Filechooser auslösen
-		Window window = b_continue.getScene().getWindow();
+		Window window = btnContinue.getScene().getWindow();
 		file = fileChooser.showSaveDialog(window);
 		GasStation.finishedreceipt(file);
 
 		// schließt das Fenster
-		Stage stage = (Stage) b_continue.getScene().getWindow();
+		Stage stage = (Stage) btnContinue.getScene().getWindow();
 		stage.close();
 
 	}

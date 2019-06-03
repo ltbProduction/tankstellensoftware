@@ -12,35 +12,35 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.GasStation;
 
-public class Controller_ChangePriceOfFuelDialog implements Initializable {
+public class ControllerChangePriceOfFuelDialog implements Initializable {
 	
 
 	//ObservableList<String> fueltype = FXCollections.observableArrayList("Super", "Diesel");
 
 	    @FXML
-	    private Button b_confirmprice;
+	    private Button btnConfirmPrice;
 
 	    @FXML
-	    private ComboBox<String> cb_nameoffueltype;
+	    private ComboBox<String> cbNameOfFuelType;
 
 	    @FXML
-	    private TextField tf_newprice;
+	    private TextField tfNewPrice;
 
 	    @FXML
 	    void confirmPrice(ActionEvent event) {
 	    	
 	    	double newPrice = 0;
-	    	try{newPrice = Double.valueOf(tf_newprice.getText());
+	    	try{newPrice = Double.valueOf(tfNewPrice.getText());
     	}catch(NumberFormatException e) {
 	        	System.out.println("Das ist keine gültige Zahl");
 	    	}
 	    	
-	    	GasStation.changePriceOfFuel(cb_nameoffueltype.getValue(), newPrice);
+	    	GasStation.changePriceOfFuel(cbNameOfFuelType.getValue(), newPrice);
 	    	
 	    	
 	    	//schließt das Fenster
 	    	Stage stage = (Stage)
-	    	    	b_confirmprice.getScene().getWindow();
+	    	    	btnConfirmPrice.getScene().getWindow();
 	    	    	stage.close();
 
 	    }
@@ -57,9 +57,9 @@ public class Controller_ChangePriceOfFuelDialog implements Initializable {
 	    
 	    @Override
 		public void initialize(URL location, ResourceBundle resources) {
-	    	cb_nameoffueltype.getItems().removeAll(cb_nameoffueltype.getItems());
-	    	cb_nameoffueltype.getItems().addAll("Super", "Diesel");
-	    	cb_nameoffueltype.getSelectionModel().select("Super");
+	    	cbNameOfFuelType.getItems().removeAll(cbNameOfFuelType.getItems());
+	    	cbNameOfFuelType.getItems().addAll("Super", "Diesel");
+	    	cbNameOfFuelType.getSelectionModel().select("Super");
 	    }
 
 	}

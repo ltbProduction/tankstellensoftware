@@ -10,16 +10,16 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.GasStation;
 
-public class Controller_NewEmployeeDialog {
+public class ControllerNewEmployeeDialog {
 
     @FXML
-    private Button b_addemployee;
+    private Button btnAddEmployee;
 
     @FXML
-    private TextField tf_nameofnewemployee;
+    private TextField tfNameOfNewEmployee;
 
     @FXML
-    private DatePicker dp_dateofemployment;
+    private DatePicker dpDateOfEmployment;
     
     String nameOfEmployee;
     LocalDate dateOfEmployment;
@@ -28,11 +28,11 @@ public class Controller_NewEmployeeDialog {
     @FXML
     void addNewEmployee(ActionEvent event) throws IOException {
     	
-    	GasStation.addEmployee(tf_nameofnewemployee.getText(), dp_dateofemployment.getValue());
+    	GasStation.addEmployee(tfNameOfNewEmployee.getText(), dpDateOfEmployment.getValue());
     	
     	//schlieﬂt das Fenster
     	Stage stage = (Stage)
-    	    	b_addemployee.getScene().getWindow();
+    	    	btnAddEmployee.getScene().getWindow();
     	    	stage.close();    	    	 	   	
     	    	
     }

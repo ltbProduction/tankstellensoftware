@@ -18,11 +18,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller_Main">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMain">
    <children>
-      <TabPane fx:id="TabPane_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" visible="false">
+      <TabPane fx:id="tpMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" visible="false">
   <tabs>
-    <Tab fx:id="t_start" closable="false" text="Start">
+    <Tab fx:id="tStart" closable="false" text="Start">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -32,23 +32,23 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="b_gaspump1" layoutX="15.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="1" />
-                  <Button fx:id="b_gaspump2" layoutX="50.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="2" />
-                  <Button fx:id="b_gaspump5" layoutX="156.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="5" />
-                  <Button fx:id="b_gaspump3" layoutX="86.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="3" />
-                  <Button fx:id="b_gaspump4" layoutX="121.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="4" />
-                  <Button fx:id="b_addgoods" layoutX="15.0" layoutY="129.0" mnemonicParsing="false" onAction="#OnAddGoodsClick" prefHeight="37.0" prefWidth="177.0" text="Waren hinzufügen" />
-                  <TableView fx:id="tv_shoppingcart" layoutX="15.0" layoutY="230.0" prefHeight="127.0" prefWidth="294.0">
+                  <Button fx:id="btnGasPump1" layoutX="15.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="1" />
+                  <Button fx:id="btnGasPump2" layoutX="50.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="2" />
+                  <Button fx:id="btnGasPump5" layoutX="156.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="5" />
+                  <Button fx:id="btnGasPump3" layoutX="86.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="3" />
+                  <Button fx:id="btnGasPump4" layoutX="121.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="4" />
+                  <Button fx:id="btnAddGoods" layoutX="15.0" layoutY="129.0" mnemonicParsing="false" onAction="#OnAddGoodsClick" prefHeight="37.0" prefWidth="177.0" text="Waren hinzufügen" />
+                  <TableView fx:id="tvShoppingCart" layoutX="15.0" layoutY="230.0" prefHeight="127.0" prefWidth="294.0">
                     <columns>
-                      <TableColumn fx:id="tc_shoppingcart_name" prefWidth="99.0" text="Bezeichnung" />
-                        <TableColumn fx:id="tc_shoppingcart_amount" prefWidth="57.0" text="Menge" />
-                        <TableColumn fx:id="tc_shoppingcart_unitprice" prefWidth="68.0" text="Stückpreis" />
-                              <TableColumn fx:id="tc_shoppingcart_total" prefWidth="69.0" text="Gesamt" />
+                      <TableColumn fx:id="tcShoppingCartName" prefWidth="99.0" text="Bezeichnung" />
+                        <TableColumn fx:id="tcShoppingCartAmount" prefWidth="57.0" text="Menge" />
+                        <TableColumn fx:id="tcShoppingCartUnitPrice" prefWidth="68.0" text="Stückpreis" />
+                              <TableColumn fx:id="tcShoppingCartTotal" prefWidth="69.0" text="Gesamt" />
                     </columns>
                   </TableView>
                   <ButtonBar layoutX="463.0" layoutY="234.0" />
                   <Label layoutX="334.0" layoutY="270.0" text="Gesamtbetrag:" />
-                  <Label fx:id="l_totalprice" layoutX="334.0" layoutY="295.0" text="00,00 EUR">
+                  <Label fx:id="lblTotalPrice" layoutX="334.0" layoutY="295.0" text="00,00 EUR">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -58,27 +58,27 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="b_bar" layoutX="457.0" layoutY="230.0" mnemonicParsing="false" onAction="#onBarClick" prefHeight="127.0" prefWidth="129.0" text="BAR">
+                  <Button fx:id="btnCash" layoutX="457.0" layoutY="230.0" mnemonicParsing="false" onAction="#onCashClick" prefHeight="127.0" prefWidth="129.0" text="BAR">
                      <font>
                         <Font size="38.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b_checkindelivery" layoutX="409.0" layoutY="153.0" mnemonicParsing="false" onAction="#onCheckInDeliveryClick" prefHeight="37.0" prefWidth="177.0" text="Lieferung einbuchen" />
-                  <Button fx:id="b_gotogoods" layoutX="409.0" layoutY="110.0" mnemonicParsing="false" onAction="#onOrderGoodsClickStartScreen" prefHeight="37.0" prefWidth="177.0" text="Waren bestellen" />
-                  <Button fx:id="b_gotofuel" layoutX="409.0" layoutY="67.0" mnemonicParsing="false" onAction="#onOrderFuelClickStartScreen" prefHeight="37.0" prefWidth="177.0" text="Kraftstoff bestellen" />
+                  <Button fx:id="btnCheckInDelivery" layoutX="409.0" layoutY="153.0" mnemonicParsing="false" onAction="#onCheckInDeliveryClick" prefHeight="37.0" prefWidth="177.0" text="Lieferung einbuchen" />
+                  <Button fx:id="btnGoToGoods" layoutX="409.0" layoutY="110.0" mnemonicParsing="false" onAction="#onOrderGoodsClickStartScreen" prefHeight="37.0" prefWidth="177.0" text="Waren bestellen" />
+                  <Button fx:id="btnGoToFuel" layoutX="409.0" layoutY="67.0" mnemonicParsing="false" onAction="#onOrderFuelClickStartScreen" prefHeight="37.0" prefWidth="177.0" text="Kraftstoff bestellen" />
                   <Label layoutX="249.0" layoutY="37.0" text="Super" />
                   <Label layoutX="320.0" layoutY="37.0" text="Diesel" />
-                        <ImageView fx:id="imageview_super" fitHeight="121.0" fitWidth="46.0" layoutX="249.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ivSuper" fitHeight="121.0" fitWidth="46.0" layoutX="249.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resource/traffic%20light/traffic_light_green.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imageview_diesel" fitHeight="121.0" fitWidth="46.0" layoutX="320.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ivDiesel" fitHeight="121.0" fitWidth="46.0" layoutX="320.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resource/traffic%20light/traffic_light_green.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="l_activeemployeename" layoutX="408.0" layoutY="15.0" prefHeight="21.0" prefWidth="184.0" text="Mitarbeitername">
+                        <Label fx:id="lblActiveEmployeeName" layoutX="408.0" layoutY="15.0" prefHeight="21.0" prefWidth="184.0" text="Mitarbeitername">
                            <effect>
                               <Blend />
                            </effect>
@@ -89,7 +89,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab fx:id="t_goods" text="Waren">
+    <Tab fx:id="tGoods" text="Waren">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -100,79 +100,79 @@
                   </Label>
                   <Label layoutX="77.0" layoutY="270.0" text="Warennr." />
                   <Label layoutX="152.0" layoutY="270.0" text="Menge" />
-                  <Button fx:id="b_ordergoods" layoutX="152.0" layoutY="330.0" mnemonicParsing="false" onAction="#onOrderGoodsClick" prefHeight="25.0" prefWidth="78.0" text="Abschicken" />
-                  <Button fx:id="b_checkindelivery" layoutX="437.0" layoutY="276.0" mnemonicParsing="false" onAction="#onCheckInDeliveryClick" prefHeight="37.0" prefWidth="149.0" text="Lieferung einbuchen" />
-                  <Button fx:id="b_changegoodsprice" layoutX="437.0" layoutY="319.0" mnemonicParsing="false" onAction="#onChangeGoodsPriceClick" prefHeight="37.0" prefWidth="149.0" text="Preise ändern" />
-                  <TextField fx:id="tf_ordergoodnumber" layoutX="77.0" layoutY="291.0" prefHeight="25.0" prefWidth="59.0" />
-                  <TextField fx:id="tf_ordergoodamount" layoutX="152.0" layoutY="291.0" prefHeight="25.0" prefWidth="78.0" />
+                  <Button fx:id="btnOrderGoods" layoutX="152.0" layoutY="330.0" mnemonicParsing="false" onAction="#onOrderGoodsClick" prefHeight="25.0" prefWidth="78.0" text="Abschicken" />
+                  <Button fx:id="btnCheckInDelivery" layoutX="437.0" layoutY="276.0" mnemonicParsing="false" onAction="#onCheckInDeliveryClick" prefHeight="37.0" prefWidth="149.0" text="Lieferung einbuchen" />
+                  <Button fx:id="btnChangeGoodsPrice" layoutX="437.0" layoutY="319.0" mnemonicParsing="false" onAction="#onChangeGoodsPriceClick" prefHeight="37.0" prefWidth="149.0" text="Preise ändern" />
+                  <TextField fx:id="tfOrderGoodNumber" layoutX="77.0" layoutY="291.0" prefHeight="25.0" prefWidth="59.0" />
+                  <TextField fx:id="tfOrderGoodAmount" layoutX="152.0" layoutY="291.0" prefHeight="25.0" prefWidth="78.0" />
                         <Label layoutX="15.0" layoutY="25.0" text="Warenbestand">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tv_goodsstorage" layoutX="15.0" layoutY="65.0" prefHeight="169.0" prefWidth="570.0">
+                        <TableView fx:id="tvGoodsStorage" layoutX="15.0" layoutY="65.0" prefHeight="169.0" prefWidth="570.0">
                           <columns>
-                            <TableColumn fx:id="tc_goodsstorage_nr" prefWidth="55.0" text="Nr." />
-                            <TableColumn fx:id="tc_goodsstorage_name" prefWidth="215.0" text="Bezeichnung" />
-                              <TableColumn fx:id="tc_goodsstorage_storageunit" minWidth="0.0" prefWidth="84.0" text="Lagereinheit" />
-                              <TableColumn fx:id="tc_goodsstorage_amount" prefWidth="59.0" text="Menge" />
-                              <TableColumn fx:id="tc_goodsstorage_purchaseprice" prefWidth="78.0" text="Preis (EK)" />
-                              <TableColumn fx:id="tc_goodsstorage_saleprice" prefWidth="79.0" text="Preis (VK)" />
+                            <TableColumn fx:id="tcGoodsStorageNr" prefWidth="55.0" text="Nr." />
+                            <TableColumn fx:id="tcGoodsStorageName" prefWidth="215.0" text="Bezeichnung" />
+                              <TableColumn fx:id="tcGoodsStorageStorageUnit" minWidth="0.0" prefWidth="84.0" text="Lagereinheit" />
+                              <TableColumn fx:id="tcGoodsStorageAmount" prefWidth="59.0" text="Menge" />
+                              <TableColumn fx:id="tcGoodsStoragePurchasePrice" prefWidth="78.0" text="Preis (EK)" />
+                              <TableColumn fx:id="tcGoodsStorageSalePrice" prefWidth="79.0" text="Preis (VK)" />
                           </columns>
                         </TableView>
-                        <Button fx:id="b_addgoodorder" layoutX="58.0" layoutY="330.0" mnemonicParsing="false" onAction="#onAddGoodOrderClick" text="Hinzufügen" />
-                        <TableView fx:id="tv_ordersofgoods" layoutX="242.0" layoutY="242.0" prefHeight="117.0" prefWidth="178.0">
+                        <Button fx:id="btnAddGoodOrder" layoutX="58.0" layoutY="330.0" mnemonicParsing="false" onAction="#onAddGoodOrderClick" text="Hinzufügen" />
+                        <TableView fx:id="tvOrdersOfGoods" layoutX="242.0" layoutY="242.0" prefHeight="117.0" prefWidth="178.0">
                           <columns>
-                            <TableColumn fx:id="tc_ordergoodname" prefWidth="108.0" text="Bezeichnung" />
-                            <TableColumn fx:id="tc_ordergoodamount" prefWidth="69.0" text="Menge" />
+                            <TableColumn fx:id="tcOrderGoodName" prefWidth="108.0" text="Bezeichnung" />
+                            <TableColumn fx:id="tcOrderGoodAmount" prefWidth="69.0" text="Menge" />
                           </columns>
                         </TableView>
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab fx:id="t_fuel" text="Kraftstoff">
+      <Tab fx:id="tFuel" text="Kraftstoff">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="tv_fueltanks" layoutX="15.0" layoutY="65.0" prefHeight="90.0" prefWidth="571.0">
+                  <TableView fx:id="tvFuelTanks" layoutX="15.0" layoutY="65.0" prefHeight="90.0" prefWidth="571.0">
                     <columns>
-                      <TableColumn fx:id="tc_fueltanks_tanknumber" prefWidth="28.0" text="Nr." />
-                      <TableColumn fx:id="tc_fueltanks_fueltype" prefWidth="97.0" text="Kraftstoffart" />
-                        <TableColumn fx:id="tc_fueltanks_capacity" prefWidth="119.0" text="Kapazität in Liter" />
-                        <TableColumn fx:id="tc_fueltanks_fuellevel" minWidth="0.0" prefWidth="86.0" text="Füllstand" />
-                              <TableColumn fx:id="tc_fueltanks_purchaseprice" prefWidth="120.0" text="Preis pro Liter (EK)" />
-                              <TableColumn fx:id="tc_fueltanks_saleprice" prefWidth="120.0" text="Preis pro Liter (VK)" />
+                      <TableColumn fx:id="tcFuelTanksTankNumber" prefWidth="28.0" text="Nr." />
+                      <TableColumn fx:id="tcFuelTanksFuelType" prefWidth="97.0" text="Kraftstoffart" />
+                        <TableColumn fx:id="tcFuelTanksCapacity" prefWidth="119.0" text="Kapazität in Liter" />
+                        <TableColumn fx:id="tcFuelTanksFuelLevel" minWidth="0.0" prefWidth="86.0" text="Füllstand" />
+                              <TableColumn fx:id="tcFuelTanksPurchasePrice" prefWidth="120.0" text="Preis pro Liter (EK)" />
+                              <TableColumn fx:id="tcFuelTanksSalePrice" prefWidth="120.0" text="Preis pro Liter (VK)" />
                     </columns>
                   </TableView>
                   <Label layoutX="76.0" layoutY="272.0" text="Kraftstoffart" />
                   <Label layoutX="201.0" layoutY="273.0" text="Menge" />
-                  <ComboBox fx:id="cb_orderfueltype" layoutX="76.0" layoutY="294.0" prefHeight="25.0" prefWidth="98.0" />
-                  <TextField fx:id="tf_orderfuelamount" layoutX="185.0" layoutY="294.0" prefHeight="25.0" prefWidth="68.0" />
-                  <Button fx:id="b_orderfuel" layoutX="169.0" layoutY="328.0" mnemonicParsing="false" onAction="#onOrderFuelClick" prefHeight="25.0" prefWidth="85.0" text="Abschicken" />
+                  <ComboBox fx:id="cbOrderFuelType" layoutX="76.0" layoutY="294.0" prefHeight="25.0" prefWidth="98.0" />
+                  <TextField fx:id="tfOrderFuelAmount" layoutX="185.0" layoutY="294.0" prefHeight="25.0" prefWidth="68.0" />
+                  <Button fx:id="btnOrderFuel" layoutX="169.0" layoutY="328.0" mnemonicParsing="false" onAction="#onOrderFuelClick" prefHeight="25.0" prefWidth="85.0" text="Abschicken" />
                         <Label layoutX="15.0" layoutY="25.0" text="Kraftstofftanks">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Button fx:id="b_checkindelivery" layoutX="437.0" layoutY="272.0" mnemonicParsing="false" onAction="#onCheckInDeliveryClick" prefHeight="37.0" prefWidth="149.0" text="Lieferung einbuchen" />
-                        <Button fx:id="b_changefuelprice" layoutX="437.0" layoutY="316.0" mnemonicParsing="false" onAction="#onChangeFuelPriceClick" prefHeight="37.0" prefWidth="149.0" text="Preise ändern" />
+                        <Button fx:id="btnCheckInDelivery" layoutX="437.0" layoutY="272.0" mnemonicParsing="false" onAction="#onCheckInDeliveryClick" prefHeight="37.0" prefWidth="149.0" text="Lieferung einbuchen" />
+                        <Button fx:id="btnChangeFuelPrice" layoutX="437.0" layoutY="316.0" mnemonicParsing="false" onAction="#onChangeFuelPriceClick" prefHeight="37.0" prefWidth="149.0" text="Preise ändern" />
                         <Label layoutX="15.0" layoutY="296.0" text="Bestellen">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Button fx:id="b_addfuelorder" layoutX="77.0" layoutY="328.0" mnemonicParsing="false" onAction="#onAddFuelOrderClick" prefHeight="25.0" prefWidth="85.0" text="Hinzufügen" />
-                        <TableView fx:id="tv_ordersoffuel" layoutX="270.0" layoutY="244.0" prefHeight="111.0" prefWidth="149.0">
+                        <Button fx:id="btnAddFuelOrder" layoutX="77.0" layoutY="328.0" mnemonicParsing="false" onAction="#onAddFuelOrderClick" prefHeight="25.0" prefWidth="85.0" text="Hinzufügen" />
+                        <TableView fx:id="tvOrdersOfFuel" layoutX="270.0" layoutY="244.0" prefHeight="111.0" prefWidth="149.0">
                           <columns>
-                            <TableColumn fx:id="tc_orderfueltype" prefWidth="83.0" text="Kraftstoffart" />
-                            <TableColumn fx:id="tc_orderfuelamount" prefWidth="67.0" text="Menge" />
+                            <TableColumn fx:id="tcOrderFuelType" prefWidth="83.0" text="Kraftstoffart" />
+                            <TableColumn fx:id="tcOrderFuelAmount" prefWidth="67.0" text="Menge" />
                           </columns>
                         </TableView>
                </children>
                   </AnchorPane>
          </content>
       </Tab>
-      <Tab fx:id="t_history" text="Historie">
+      <Tab fx:id="tHistory" text="Historie">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -180,8 +180,8 @@
                   <Label layoutX="63.0" layoutY="321.0" text="Bilanzergebnis:" />
                   <Label layoutX="156.0" layoutY="248.0" text="Startdatum" />
                   <Label layoutX="358.0" layoutY="247.0" text="Enddatum" />
-                  <Button fx:id="b_showbalance" layoutX="521.0" layoutY="269.0" mnemonicParsing="false" onAction="#onShowBalanceClick" prefHeight="25.0" prefWidth="49.0" text="OK" />
-                  <Label fx:id="l_balanceresult" layoutX="157.0" layoutY="321.0" text="Bilanzergebnis Ausgabefeld" />
+                  <Button fx:id="btnShowBalance" layoutX="521.0" layoutY="269.0" mnemonicParsing="false" onAction="#onShowBalanceClick" prefHeight="25.0" prefWidth="49.0" text="OK" />
+                  <Label fx:id="lblBalanceResult" layoutX="157.0" layoutY="321.0" text="Bilanzergebnis Ausgabefeld" />
                         <Label layoutX="15.0" layoutY="25.0" text="Einkäufe">
                            <font>
                               <Font name="System Bold" size="16.0" />
@@ -193,40 +193,40 @@
                            </font>
                         </Label>
                         <Label layoutX="323.0" layoutY="274.0" text="bis" />
-                        <TableView fx:id="tv_purchases" layoutX="15.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
+                        <TableView fx:id="tvPurchases" layoutX="15.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
                           <columns>
-                            <TableColumn fx:id="tc_purchases_number" prefWidth="52.0" text="Nr." />
-                            <TableColumn fx:id="tc_purchases_date" prefWidth="128.0" text="Datum" />
-                              <TableColumn fx:id="tc_purchases_price" text="Betrag" />
+                            <TableColumn fx:id="tcPurchasesNumber" prefWidth="52.0" text="Nr." />
+                            <TableColumn fx:id="tcPurchasesDate" prefWidth="128.0" text="Datum" />
+                              <TableColumn fx:id="tcPurchasesPrice" text="Betrag" />
                           </columns>
                         </TableView>
-                        <TableView fx:id="tv_sales" layoutX="309.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
+                        <TableView fx:id="tvSales" layoutX="309.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
                            <columns>
-                              <TableColumn fx:id="tc_sales_number" prefWidth="52.0" text="Nr." />
-                              <TableColumn fx:id="tc_sales_date" prefWidth="128.0" text="Datum" />
-                              <TableColumn fx:id="tc_sales_price" text="Betrag" />
+                              <TableColumn fx:id="tcSalesNumber" prefWidth="52.0" text="Nr." />
+                              <TableColumn fx:id="tcSalesDate" prefWidth="128.0" text="Datum" />
+                              <TableColumn fx:id="tcSalesPrice" text="Betrag" />
                            </columns>
                         </TableView>
-                        <DatePicker fx:id="dp_balancestartdate" layoutX="156.0" layoutY="269.0" prefHeight="25.0" prefWidth="149.0" />
-                        <DatePicker fx:id="dp_balanceenddate" layoutX="351.0" layoutY="269.0" prefHeight="25.0" prefWidth="156.0" />
+                        <DatePicker fx:id="dpBalanceStartDate" layoutX="156.0" layoutY="269.0" prefHeight="25.0" prefWidth="149.0" />
+                        <DatePicker fx:id="dpBalanceEndDate" layoutX="351.0" layoutY="269.0" prefHeight="25.0" prefWidth="156.0" />
                </children></AnchorPane>
          </content>
       </Tab>
-      <Tab fx:id="t_employees" text="Mitarbeiter">
+      <Tab fx:id="tEmployees" text="Mitarbeiter">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="b_newemployee" layoutX="425.0" layoutY="282.0" mnemonicParsing="false" onAction="#onNewEmployeeClick" prefHeight="37.0" prefWidth="161.0" text="Neuer Mitarbeiter" />
+                  <Button fx:id="btnNewEmployee" layoutX="425.0" layoutY="282.0" mnemonicParsing="false" onAction="#onNewEmployeeClick" prefHeight="37.0" prefWidth="161.0" text="Neuer Mitarbeiter" />
                         <Label layoutX="15.0" layoutY="25.0" text="Mitarbeiter">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tv_employees" layoutX="15.0" layoutY="65.0" prefHeight="200.0" prefWidth="571.0">
+                        <TableView fx:id="tvEmployees" layoutX="15.0" layoutY="65.0" prefHeight="200.0" prefWidth="571.0">
                           <columns>
-                            <TableColumn fx:id="tc_employees_number" prefWidth="75.0" text="Nummer" />
-                            <TableColumn fx:id="tc_employees_name" prefWidth="319.0" text="Name" />
-                              <TableColumn fx:id="tc_employees_dateofemployment" minWidth="0.0" prefWidth="176.0" text="Einstellungsdatum" />
+                            <TableColumn fx:id="tcEmployeesNumber" prefWidth="75.0" text="Nummer" />
+                            <TableColumn fx:id="tcEmployeesName" prefWidth="319.0" text="Name" />
+                              <TableColumn fx:id="tcEmployeesDateOfEmployment" minWidth="0.0" prefWidth="176.0" text="Einstellungsdatum" />
                           </columns>
                         </TableView>
                </children></AnchorPane>
@@ -234,14 +234,14 @@
       </Tab>
   </tabs>
 </TabPane>
-      <AnchorPane fx:id="AP_addGoods" prefHeight="200.0" prefWidth="200.0" visible="false">
+      <AnchorPane fx:id="apAddGoods" prefHeight="200.0" prefWidth="200.0" visible="false">
          <children>
             <Label layoutX="15.0" layoutY="71.0" text="Warenbestand" />
             <Label layoutX="386.0" layoutY="71.0" text="Auswahl" />
-            <TableView fx:id="tv_goodsstorage2" layoutX="15.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tvGoodsStorage2" layoutX="15.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn fx:id="tc_goodsstorage2_nr" prefWidth="47.5999755859375" text="Nr." />
-                <TableColumn fx:id="tc_goodsstorage2_name" prefWidth="151.4000244140625" text="Bezeichnung" />
+                <TableColumn fx:id="tcGoodsStorage2Nr" prefWidth="47.5999755859375" text="Nr." />
+                <TableColumn fx:id="tcGoodsStorage2Name" prefWidth="151.4000244140625" text="Bezeichnung" />
               </columns>
             </TableView>
             <Label layoutX="15.0" layoutY="25.0" text="Warenkorb">
@@ -252,34 +252,34 @@
                   <Blend />
                </effect>
             </Label>
-            <TableView fx:id="tv_goodsshoppingcart" layoutX="386.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tvGoodsShoppingCart" layoutX="386.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn fx:id="tc_goodsshoppingcart_name" prefWidth="121.0" text="Bezeichung" />
-                <TableColumn fx:id="tc_goodsshoppingcart_price" prefWidth="78.0" text="Preis in EUR" />
+                <TableColumn fx:id="tcGoodsShoppingCartName" prefWidth="121.0" text="Bezeichung" />
+                <TableColumn fx:id="tcGoodsShoppingCartPrice" prefWidth="78.0" text="Preis in EUR" />
               </columns>
             </TableView>
             <Label layoutX="230.0" layoutY="129.0" text="Warennr." />
-            <TextField fx:id="tf_goodsnumber" layoutX="291.0" layoutY="125.0" prefHeight="25.0" prefWidth="75.0" />
+            <TextField fx:id="tfGoodsNumber" layoutX="291.0" layoutY="125.0" prefHeight="25.0" prefWidth="75.0" />
             <Label layoutX="230.0" layoutY="167.0" text="Menge" />
-            <TextField fx:id="tf_goodsamount" layoutX="291.0" layoutY="163.0" prefHeight="25.0" prefWidth="75.0" />
-            <Button fx:id="b_addtoshoppingcart" layoutX="290.0" layoutY="200.0" mnemonicParsing="false" onAction="#onAddGoodToShoppingCartClick" text="Hinzufügen" />
-            <Button fx:id="b_tocheckout" layoutX="230.0" layoutY="275.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="140.0" text="Zur Kasse" />
+            <TextField fx:id="tfGoodsAmount" layoutX="291.0" layoutY="163.0" prefHeight="25.0" prefWidth="75.0" />
+            <Button fx:id="btnAddToShoppingCart" layoutX="290.0" layoutY="200.0" mnemonicParsing="false" onAction="#onAddGoodToShoppingCartClick" text="Hinzufügen" />
+            <Button fx:id="btnToCheckout" layoutX="230.0" layoutY="275.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="140.0" text="Zur Kasse" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="AP_LogIn" prefHeight="297.0" prefWidth="600.0">
+      <AnchorPane fx:id="apLogin" prefHeight="297.0" prefWidth="600.0">
          <children>
             <Label layoutX="162.0" layoutY="192.0" text="Mitarbeiternummer" />
-            <TextField fx:id="tf_employeenumber" layoutX="275.0" layoutY="188.0" prefHeight="25.0" prefWidth="68.0" />
-            <Button fx:id="b_login" layoutX="275.0" layoutY="231.0" mnemonicParsing="false" onAction="#OnLogInClick" prefHeight="25.0" prefWidth="149.0" text="Einloggen" />
+            <TextField fx:id="tfEmployeeNumber" layoutX="275.0" layoutY="188.0" prefHeight="25.0" prefWidth="68.0" />
+            <Button fx:id="btnLogin" layoutX="275.0" layoutY="231.0" mnemonicParsing="false" onAction="#OnLogInClick" prefHeight="25.0" prefWidth="149.0" text="Einloggen" />
             <Label layoutX="162.0" layoutY="142.0" text="Login">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="l_wrongemployeenumber" layoutX="354.0" layoutY="192.0" prefHeight="17.0" prefWidth="214.0" />
+            <Label fx:id="lblWrongEmployeeNumber" layoutX="354.0" layoutY="192.0" prefHeight="17.0" prefWidth="214.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="AP_addFuel" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+      <AnchorPane fx:id="apAddFuel" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
          <children>
             <Label layoutX="15.0" layoutY="25.0" text="Zapfsäule">
                <font>
@@ -291,11 +291,11 @@
             </Label>
             <Label layoutX="155.0" layoutY="156.0" text="Kraftstoffart" />
             <Label layoutX="181.0" layoutY="196.0" text="Menge" />
-            <ComboBox fx:id="cb_fueltype" layoutX="249.0" layoutY="152.0" prefHeight="25.0" prefWidth="143.0" />
-            <TextField fx:id="tf_amountoffuel" layoutX="249.0" layoutY="192.0" prefHeight="25.0" prefWidth="60.0" />
+            <ComboBox fx:id="cbFuelType" layoutX="249.0" layoutY="152.0" prefHeight="25.0" prefWidth="143.0" />
+            <TextField fx:id="tfAmountOfFuel" layoutX="249.0" layoutY="192.0" prefHeight="25.0" prefWidth="60.0" />
             <Label layoutX="323.0" layoutY="194.0" text="Liter" />
-            <Button fx:id="b_addfuel" layoutX="249.0" layoutY="233.0" mnemonicParsing="false" onAction="#addFuelToShoppingCart" prefHeight="25.0" prefWidth="143.0" text="Hinzufügen" />
-            <Button fx:id="b_tocheckout22" layoutX="415.0" layoutY="341.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="143.0" text="Zur Kasse" />
+            <Button fx:id="btnAddFuel" layoutX="249.0" layoutY="233.0" mnemonicParsing="false" onAction="#addFuelToShoppingCart" prefHeight="25.0" prefWidth="143.0" text="Hinzufügen" />
+            <Button fx:id="btnToCheckOut2" layoutX="415.0" layoutY="341.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="143.0" text="Zur Kasse" />
          </children>
       </AnchorPane>
    </children>
