@@ -577,7 +577,7 @@ public class ControllerMain implements Initializable {
 
 	@FXML
 	void onCashClick(ActionEvent event) throws IOException {
-
+		if(GasStation.getShoppingCart().size() != 0) {
 		// Gesamtbetrag-Label auf Null setzen
 		lblTotalPrice.setText("0.00");
 
@@ -587,7 +587,15 @@ public class ControllerMain implements Initializable {
 		stage.setScene(new Scene(root1));
 		stage.setTitle("Bezahlvorgang");
 		stage.show();
-
+		} else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Fehler");
+			alert.setHeaderText("Der Warenkorb ist leer");
+			alert.setContentText(null);
+			alert.showAndWait();
+		}
+		
+		
 	}
 
 	@FXML
@@ -618,7 +626,7 @@ public class ControllerMain implements Initializable {
 
 		Window window = btnCheckInDelivery.getScene().getWindow();
 		file = fileChooser.showOpenDialog(window);
-
+		if (file!=null) { //Wenn nichts ausgewählt wurde
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Bestellung");
 		int success = FileTransfer.scandeliveries(file);
@@ -636,7 +644,7 @@ public class ControllerMain implements Initializable {
 		// Ampel aktualisieren
 		ivDiesel.setImage(GasStation.getTrafficLight(0));
 		ivSuper.setImage(GasStation.getTrafficLight(1));
-
+		}
 	}
 
 	@FXML
@@ -676,12 +684,15 @@ public class ControllerMain implements Initializable {
 		if (GasStation.getOrderFuel().size() != 0) {
 			Window window = btnOrderGoods.getScene().getWindow();
 			file = fileChooser.showSaveDialog(window);
-			FileSetter.writeFuelOrder(file);
-			FXCollections.copy(GasStation.getOrderFuel(), GasStation.getOrderFuel());
-			
-			alert.setHeaderText("Bestellung war erfolgreich!");
-			alert.setContentText(null);
-			alert.showAndWait();
+			//Abbruch 
+			if(file!=null) {
+				FileSetter.writeFuelOrder(file);
+				FXCollections.copy(GasStation.getOrderFuel(), GasStation.getOrderFuel());
+				
+				alert.setHeaderText("Bestellung war erfolgreich!");
+				alert.setContentText(null);
+				alert.showAndWait();
+			}
 		} else {
 			// Es ist keine Bestellung im Warenkorb
 			alert.setHeaderText("Es ist keine Bestellung im Warenkorb");
@@ -700,11 +711,13 @@ public class ControllerMain implements Initializable {
 		if (GasStation.getOrderGood().size() != 0) {
 			Window window = btnOrderGoods.getScene().getWindow();
 			file = fileChooser.showSaveDialog(window);
-			FileSetter.writeGoodsOrder(file);
-			FXCollections.copy(GasStation.getOrderGood(), GasStation.getOrderGood());
-			alert.setHeaderText("Bestellung war erfolgreich!");
-			alert.setContentText(null);
-			alert.showAndWait();
+			if(file!=null) {
+				FileSetter.writeGoodsOrder(file);
+				FXCollections.copy(GasStation.getOrderGood(), GasStation.getOrderGood());
+				alert.setHeaderText("Bestellung war erfolgreich!");
+				alert.setContentText(null);
+				alert.showAndWait();
+			}
 		} else {
 			alert.setHeaderText("Es gibt keine Bestellung im Warenkorb");
 			alert.setContentText(null);
@@ -723,7 +736,7 @@ public class ControllerMain implements Initializable {
 	} catch (Exception e) {
 	
 	// PopUp für Fehler in der Eingabe
-	Alert alert = new Alert(AlertType.INFORMATION);
+	Alert alert = new Alert(AlertType.ERROR);
 	alert.setTitle("Fehler");
 	alert.setHeaderText("Start und/oder Enddatum fehlen");
 	alert.setContentText(null);
@@ -782,7 +795,7 @@ public class ControllerMain implements Initializable {
 				stage.show();
 
 			} else {
-				Alert alert = new Alert(AlertType.INFORMATION);
+				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Fehler");
 				alert.setHeaderText("Die Warennummer existiert nicht");
 				alert.setContentText(null);

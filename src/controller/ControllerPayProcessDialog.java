@@ -1,21 +1,27 @@
 package controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import javafx.stage.FileChooser.ExtensionFilter;
 import models.GasStation;
+import utilities.Helpmethods;
 
 public class ControllerPayProcessDialog implements Initializable {
 
@@ -66,14 +72,47 @@ public class ControllerPayProcessDialog implements Initializable {
 
 	@FXML
 	void onContinue(ActionEvent event) {
-		// Den Filechooser auslösen
-		Window window = btnContinue.getScene().getWindow();
-		file = fileChooser.showSaveDialog(window);
-		GasStation.finishedreceipt(file);
-
-		// schließt das Fenster
+		//Die neue Verkaufsnummer
+		int salenumber = Helpmethods.newsalesnumber();
+		//Was soll beim schließen passieren
 		Stage stage = (Stage) btnContinue.getScene().getWindow();
-		stage.close();
+
+		//Das DiagonalFeld welches den Speicherort nachfrägt
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Speicherort");
+        alert.setHeaderText("Wo möchten Sie den Beleg Speichern?");
+ 
+        ButtonType saveReceiptAs = new ButtonType("Speicherort auswählen");
+        ButtonType saveReceiptDesktop = new ButtonType("Desktop");
+         alert.getButtonTypes().clear();
+ 
+        alert.getButtonTypes().addAll(saveReceiptAs, saveReceiptDesktop);
+ 
+        
+        Optional<ButtonType> option = alert.showAndWait();
+      
+        if (option.get() == saveReceiptAs) {
+    		// Den Filechooser auslösen
+    		Window window = btnContinue.getScene().getWindow();
+    		file = fileChooser.showSaveDialog(window);
+    		if(file!=null) {
+    		GasStation.finishedreceipt(file, salenumber);
+    		// schließt das Fenster
+    		stage.close();
+    		}
+        } else if (option.get() == saveReceiptDesktop) {
+            String home = System.getProperty("user.home");    	   
+//        	//Auf dem Desktop speichern
+        	String filename = home + "/Desktop/Beleg" + String.valueOf(salenumber) + ".txt"; 
+            File file = new File(filename);
+            GasStation.finishedreceipt(file, salenumber);
+        	// schließt das Fenster
+    		stage.close();
+            }
+     
+
+
+
 
 	}
 

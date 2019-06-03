@@ -9,7 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import utilities.FileSetter;
-import utilities.helpmethod;
+import utilities.Helpmethods;
 
 public class GasStation {
 
@@ -205,7 +205,7 @@ public class GasStation {
 	}
 
 	
-	public static void finishedreceipt(File file) { // Zum abschliessen einer Reception
+	public static void finishedreceipt(File file, int salenumber) { // Zum abschliessen einer Reception
 		double sum;
 		sum = 0;
 		for (Product p : GasStation.getShoppingCart()) {
@@ -215,7 +215,7 @@ public class GasStation {
 		sum = Math.round(100.0 * sum) / 100.0;
 		FileSetter.createreceipt(sum, file);
 		shoppingCart.clear();
-		sales.add(new Sale(helpmethod.newsalesnumber(), LocalDate.now(), sum));
+		sales.add(new Sale(salenumber, LocalDate.now(), sum));
 	}
 
 	public static String getGasStationName() {

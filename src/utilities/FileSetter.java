@@ -132,7 +132,7 @@ public class FileSetter {
      }
      }	
   	public static void createreceipt(double completesum, File file) {
-  	int numberofreceipt = helpmethod.newsalesnumber();
+  	int numberofreceipt = Helpmethods.newsalesnumber();
   	LocalDate today = LocalDate.now();
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 	
