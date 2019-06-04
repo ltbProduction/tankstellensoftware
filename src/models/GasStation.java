@@ -114,7 +114,7 @@ public class GasStation {
 		boolean value = true;
 		boolean numberCheck = false;
 		int i = 0;
-
+		
 		// Überprüfe für jede Ware, ob Sie der eingegebenen Nummer entspricht
 		// Wenn ja, setze i gleich dem Index der Ware
 		for (Good g : GasStation.getGoods()) {
@@ -215,6 +215,7 @@ public class GasStation {
 		FileSetter.createreceipt(sum, file);
 		shoppingCart.clear();
 		sales.add(new Sale(salenumber, LocalDate.now(), sum));
+	
 	}
 
 	public static String getGasStationName() {
@@ -225,7 +226,7 @@ public class GasStation {
 		GasStation.gasStationName = gasStationName;
 	}
 
-	// Methode die ObservableList von Mitarbeitern zurÃƒÂ¯Ã‚Â¿Ã‚Â½ckgibt
+	// Methode die ObservableList von Mitarbeitern zuruckgibt
 	public static ObservableList<Employee> getEmployees() {
 
 		return employees;
