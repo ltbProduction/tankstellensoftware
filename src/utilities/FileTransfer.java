@@ -15,10 +15,7 @@ import models.GasStation;
 
 public class FileTransfer {
 	
-	//Das ist eine ausführende Klasse die später wieder rausgenommen wird. Sie ist nur da weil es noch kein Model gibt
-	
-	
-	
+
 	
 	public static void start() throws ParseException, IOException  {
 	readData();

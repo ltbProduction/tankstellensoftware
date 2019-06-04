@@ -17,13 +17,14 @@ import models.Sale;
 public class FileScanner {
 
 	
-	private static String datafile = "src/resource/textfiles/Data/";
-	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
-	private static String fileNameEmployee = datafile + "Employee.txt";
-	private static String fileNamePurchasesHistory = datafile + "Historypurchases.txt";
-	private static String fileNameSalesHistory = datafile + "Historysales.txt";
-	private static String fileNameGoods = datafile + "Goods.txt";
-	private static String fileNameFuelTanks = datafile + "FuelTanks.txt";
+	
+	private static String datafile = "src/resource/textfiles/Data/"; //Ort wo die Dateien gespeichert werden
+	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu"); //Format wie die Daten in den .txt gespeichert sind
+	private static String fileNameEmployee = datafile + "Employee.txt"; //Name der Txt Datei wo die Mitarbeitern gespeichert werden
+	private static String fileNamePurchasesHistory = datafile + "Historypurchases.txt"; //Name der Txt Datei wo die Einkäufe gespeichert werden
+	private static String fileNameSalesHistory = datafile + "Historysales.txt"; //Name der Txt Datei wo die Verkäufe gespeichert werden
+	private static String fileNameGoods = datafile + "Goods.txt"; ////Name der Txt Datei wo die aktuellen Warenbestände gespeichert werden
+	private static String fileNameFuelTanks = datafile + "FuelTanks.txt"; //Name der Txt Datei wo die akteullen Tanks gespeichert werden
 
     
 	//Mitarbeiter auslesen
@@ -47,7 +48,7 @@ public class FileScanner {
 				e.printStackTrace();
 			}
 		}
-		
+	//Einkäufe auslesen
 		public static void readPurchasesHistory() {
 		
 		
@@ -76,61 +77,61 @@ public class FileScanner {
 		}
 
 
-		//Alle Kassenzettel werden ausgelesen und als Objekte erzeugt
-		public static void readSalesHistory() {
-			
-				 
-
-		     File file = new File(fileNameSalesHistory);
-
-		    
-		     
-			
-			
-
-			try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
-				String line;
-				br.readLine();
+		//Die Verkäufe werden ausgelesen
+	public static void readSalesHistory() {
 		
-				while ((line = br.readLine()) != null) {
-			
-				String[] output = line.split(";");
-				GasStation.getSales().add(new Sale(Integer.parseInt(output[0]),  LocalDate.parse(output[1], formatter), Double.parseDouble(output[2])));
-					
-					
-		}
-			} catch (IOException | NumberFormatException  e) {
-				e.printStackTrace();
-			}
-			
-		}
+			 
 
+	     File file = new File(fileNameSalesHistory);
 
-		//Waren werden ausgelesen und Objekte Goods erzeugt
-		public static void readGoods() {
-		 
-		     File file = new File(fileNameGoods);
-		     //Arraylist leeren
-
-		     try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
-				String line;
-				br.readLine();
+	    
+	     
 		
-				while ((line = br.readLine()) != null) {
-			
-				String[] output = line.split(";");
-				GasStation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4]), Double.parseDouble(output[5])));
-					
-					
-		}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		//Waren wurden ausgelesen und Objekt erzeugt 
 		
-		//Tanks werden ausgelesen und Objekte erzeugt.
-		public static void readFuelTanks() {
+
+		try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
+			String line;
+			br.readLine();
+	
+			while ((line = br.readLine()) != null) {
+		
+			String[] output = line.split(";");
+			GasStation.getSales().add(new Sale(Integer.parseInt(output[0]),  LocalDate.parse(output[1], formatter), Double.parseDouble(output[2])));
+				
+				
+	}
+		} catch (IOException | NumberFormatException  e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+
+	//Waren werden ausgelesen und Objekte Goods erzeugt
+	public static void readGoods() {
+	 
+	     File file = new File(fileNameGoods);
+	     //Arraylist leeren
+
+	     try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
+			String line;
+			br.readLine();
+	
+			while ((line = br.readLine()) != null) {
+		
+			String[] output = line.split(";");
+			GasStation.getGoods().add(new Good(Integer.parseInt(output[0]), output[1], output[2], Double.parseDouble(output[3]), Double.parseDouble(output[4]), Double.parseDouble(output[5])));
+				
+				
+	}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+		
+		
+	//Tanks werden ausgelesen und Objekte erzeugt.
+	public static void readFuelTanks() {
 
 		     File file = new File(fileNameFuelTanks);
 
@@ -154,7 +155,7 @@ public class FileScanner {
 		}
 		
 		
-//Das auslesen der neuen Lieferungen
+	//Das auslesen der neuen Lieferungen
 		
 		public static int readDeliveryGoods(File file) throws ParseException, IOException   {
 	     
