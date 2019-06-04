@@ -173,7 +173,7 @@ public class FileSetter {
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
 			bw.write("Bestelldatum = "+ today.format(formatter)); //Die erste Zeile wird geschrieben
 			bw.newLine(); 
-			bw.write("Warennummer;Bestellmege");
+			bw.write("Warennummer;Bestellmenge");
 			bw.newLine();
 		
 			for (Good g : GasStation.getOrderGood()) {

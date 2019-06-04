@@ -730,16 +730,24 @@ public class ControllerMain implements Initializable {
 
 	@FXML
 	void onShowBalanceClick(ActionEvent event) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Fehler");		
+	
 	try {
 		LocalDate start = dpBalanceStartDate.getValue();
 		LocalDate end = dpBalanceEndDate.getValue();
-		
-		GasStation.changeBalanceTable(start,end);
+		//Wenn Startdatum vor Enddatum ist
+		if(start.isBefore(end)) {
+		GasStation.changeBalanceTable(start,end);}
+		else {
+			alert.setHeaderText("Das Startdatum ist nach dem Enddatum. Das ist nicht möglich.");
+			alert.setContentText(null);
+			alert.showAndWait();	
+		}
 	} catch (Exception e) {
 	
 	// PopUp für Fehler in der Eingabe
-	Alert alert = new Alert(AlertType.ERROR);
-	alert.setTitle("Fehler");
+
 	alert.setHeaderText("Start und/oder Enddatum fehlen");
 	alert.setContentText(null);
 	alert.showAndWait();	
