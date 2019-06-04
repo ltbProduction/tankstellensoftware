@@ -18,21 +18,6 @@ public class Good extends Product {
 				+ salePrice);
 	}
 
-	@Override
-	public void createorder(int amount) {
-
-	}
-
-	@Override
-	public void createdelivery(int amount) {
-
-	}
-
-	@Override
-	public void displayorder() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public int getNumber() {

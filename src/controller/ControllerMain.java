@@ -363,13 +363,13 @@ public class ControllerMain implements Initializable {
 
 		// Spalten einstellen
 
-		cbOrderFuelType.getItems().removeAll(cbOrderFuelType.getItems()); // lÃ¶sche vorhandene Werte aus //
-																			// Dropdown-MenÃ¼
-		cbOrderFuelType.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
+		cbOrderFuelType.getItems().removeAll(cbOrderFuelType.getItems()); // lÃƒÂ¶sche vorhandene Werte aus //
+																			// Dropdown-MenÃƒÂ¼
+		cbOrderFuelType.getItems().addAll("Super", "Diesel"); // FÃƒÂ¼ge Werte der Enum-Kraftstoffarten ein
 		cbOrderFuelType.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
 
-		cbFuelType.getItems().removeAll(cbFuelType.getItems()); // lÃ¶sche vorhandene Werte aus Dropdown-MenÃ¼
-		cbFuelType.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
+		cbFuelType.getItems().removeAll(cbFuelType.getItems()); // lÃƒÂ¶sche vorhandene Werte aus Dropdown-MenÃƒÂ¼
+		cbFuelType.getItems().addAll("Super", "Diesel"); // FÃƒÂ¼ge Werte der Enum-Kraftstoffarten ein
 		cbFuelType.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
 
 		tcShoppingCartName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
@@ -429,9 +429,9 @@ public class ControllerMain implements Initializable {
 		fileChooser = new FileChooser();
 		fileChooser.getExtensionFilters().add(new ExtensionFilter("Textdateien", "*.txt"));
 
-		cbOrderFuelType.getItems().removeAll(cbOrderFuelType.getItems()); // lÃ¶sche vorhandene Werte aus
-																			// Dropdown-MenÃ¼
-		cbOrderFuelType.getItems().addAll("Super", "Diesel"); // FÃ¼ge Werte der Enum-Kraftstoffarten ein
+		cbOrderFuelType.getItems().removeAll(cbOrderFuelType.getItems()); // lÃƒÂ¶sche vorhandene Werte aus
+																			// Dropdown-MenÃƒÂ¼
+		cbOrderFuelType.getItems().addAll("Super", "Diesel"); // FÃƒÂ¼ge Werte der Enum-Kraftstoffarten ein
 		cbOrderFuelType.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
 
 		lblTotalPrice2.setText(String.valueOf(GasStation.getTotalPrice()));
@@ -476,13 +476,13 @@ public class ControllerMain implements Initializable {
 			ivSuper.setImage(GasStation.getTrafficLight(1));
 
 		} else {
-			lblWrongEmployeeNumber.setText("ungültige Mitarbeiternummer");
-			System.out.println("Ungültige Mitarbeiternummer");
+			lblWrongEmployeeNumber.setText("ungueltige Mitarbeiternummer");
+			System.out.println("Ungueltige Mitarbeiternummer");
 
-			// PopUp für ungültige Mitarbeiternummer
+			// PopUp fÃ¼r ungÃ¼ltige Mitarbeiternummer
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Fehler");
-			alert.setHeaderText("ungültige Mitarbeiternummer");
+			alert.setHeaderText("ungueltige Mitarbeiternummer");
 			alert.setContentText(null);
 			alert.showAndWait();
 
@@ -492,26 +492,26 @@ public class ControllerMain implements Initializable {
 		GasStation.createHistory();
 		double sales = GasStation.createFullSales();
 		double purchases = GasStation.createFullPurchases();
-		lblBalanceResult.setText("Einnahmen: " + String.valueOf(sales) + " � Ausgabe: " + String.valueOf(purchases)
-				+ " � Betriebsergebnis: " + String.valueOf(sales - purchases) + " �");
+		lblBalanceResult.setText("Einnahmen: " + String.valueOf(sales) + " € Ausgabe: " + String.valueOf(purchases)
+				+ " € Betriebsergebnis: " + String.valueOf(sales - purchases) + " €");
 
 	}
 
 	@FXML
 	void addFuelToShoppingCart(ActionEvent event) {
 
-		// Variablen für Methodenaufruf
+		// Variablen fÃ¼r Methodenaufruf
 		String chosenFuelType;
 		Double amountOfFuel = 0.0;
 
-		// Try-Anweisung wird ausgeführt, wenn Wert von amountOfFuel eine
+		// Try-Anweisung wird ausgefÃ¼hrt, wenn Wert von amountOfFuel eine
 		// Zaahl ist
 
 		try {
 			// setze den Wert von amountOfFuel auf den Wert aus tfAmountOfFuel
 			amountOfFuel = Double.valueOf(tfAmountOfFuel.getText());
 
-			// setze chosenFuelType auf den ausgewählten Wert der ComboBox
+			// setze chosenFuelType auf den ausgewÃ¤hlten Wert der ComboBox
 			chosenFuelType = cbFuelType.getValue();
 
 			// Wenn der Wert kleiner/gleich Null ist, gebe ein Alert aus
@@ -562,7 +562,7 @@ public class ControllerMain implements Initializable {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Falsche Eingabe");
 			alert.setHeaderText("Falsche Eingabe");
-			alert.setContentText("Bitte geben Sie eine ganze Zahl ein.");
+			alert.setContentText("Bitte geben Sie einen gültigen Wert ein.");
 			alert.showAndWait();
 
 		}
@@ -600,9 +600,15 @@ public class ControllerMain implements Initializable {
 
 			// Wenn die Methode "false" zurueckgibt, ist nicht mehr genuegend Bestand
 			// vorhanden. Der Index der Ware wird ermittelt. Der Nutzer wird
-			// anschliessend ueber den Bestand der Ware informiert.
-		} else {
 
+			// anschlieÃƒÂŸend ÃƒÂ¼ber den Bestand der Ware informiert.
+		} else if(goodAmount<=0) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Kauf nicht moeglich");
+			alert.setHeaderText("Kauf nicht moeglich");
+			alert.setContentText("Bitte geben Sie eine gültige Menge ein");
+			alert.showAndWait();
+	}else {
 			int i = Good.getIndex(goodNumber);
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Kauf nicht moeglich");
@@ -647,7 +653,7 @@ public class ControllerMain implements Initializable {
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root1));
-		stage.setTitle("Treibstoffpreis ÃÂ¤ndern");
+		stage.setTitle("Treibstoffpreis aendern");
 		stage.show();
 
 	}
@@ -659,7 +665,7 @@ public class ControllerMain implements Initializable {
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root1));
-		stage.setTitle("Warenpreis ÃÂ¤ndern");
+		stage.setTitle("Warenpreis aendern");
 		stage.show();
 	}
 
@@ -668,21 +674,25 @@ public class ControllerMain implements Initializable {
 
 		Window window = btnCheckInDelivery.getScene().getWindow();
 		file = fileChooser.showOpenDialog(window);
-		if (file != null) { // Wenn nichts ausgew�hlt wurde
+
+		if (file != null) { // Wenn nichts ausgewählt wurde
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Bestellung");
 			int success = FileTransfer.scandeliveries(file);
-			if (success == 1) { // 1 heißt alles hat funktioniert
+			if (success == 1) { // 1 heiÃŸt alles hat funktioniert
 				alert.setHeaderText("Die Lieferung wurde eingebucht!");
 			} else if (success == 2) {
 				alert.setHeaderText(
-						"Es konnte nicht alles eingebucht werden -> Kapazität des Tankes wurde überschritten");
+						"Es konnte nicht alles eingebucht werden -> KapazitÃ¤t des Tankes wurde Ã¼berschritten");
 			} else {
 				alert.setHeaderText(
 						"Die Lieferung wurde nicht eingebucht, Fehler in der Textdatei. Bitte melden Sie sich beim Help-Desk.");
 			}
 			alert.setContentText(null);
 			alert.showAndWait();
+      FXCollections.copy(GasStation.getFuels(), GasStation.getFuels());
+		  FXCollections.copy(GasStation.getGoods(), GasStation.getGoods());
+
 
 			// Ampel aktualisieren
 			ivDiesel.setImage(GasStation.getTrafficLight(0));
@@ -697,7 +707,7 @@ public class ControllerMain implements Initializable {
 //		Parent root1 = (Parent) fxmlLoader.load();
 //		Stage stage = new Stage();
 //		stage.setScene(new Scene(root1));
-//		stage.setTitle("ZapfsÃÂ¯ÃÂ¿ÃÂ½ule");
+//		stage.setTitle("ZapfsÃƒÂƒÃ‚Â¯ÃƒÂ‚Ã‚Â¿ÃƒÂ‚Ã‚Â½ule");
 //		stage.show();
 
 		// Tabellen aktualisieren
@@ -771,25 +781,34 @@ public class ControllerMain implements Initializable {
 
 	@FXML
 	void onShowBalanceClick(ActionEvent event) {
-		try {
-			LocalDate start = dpBalanceStartDate.getValue();
-			LocalDate end = dpBalanceEndDate.getValue();
 
-			GasStation.changeBalanceTable(start, end);
-		} catch (Exception e) {
-
-			// PopUp f�r Fehler in der Eingabe
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Fehler");
-			alert.setHeaderText("Start und/oder Enddatum fehlen");
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Fehler");		
+	
+	try {
+		LocalDate start = dpBalanceStartDate.getValue();
+		LocalDate end = dpBalanceEndDate.getValue();
+		//Wenn Startdatum vor Enddatum ist
+		if(start.isBefore(end)) {
+		GasStation.changeBalanceTable(start,end);}
+		else {
+			alert.setHeaderText("Das Startdatum ist nach dem Enddatum. Das ist nicht möglich.");
 			alert.setContentText(null);
-			alert.showAndWait();
-			GasStation.createHistory();
+			alert.showAndWait();	
 		}
-		double sales = GasStation.createFullSales();
-		double purchases = GasStation.createFullPurchases();
-		lblBalanceResult.setText("Einnahmen: " + String.valueOf(sales) + " � Ausgabe: " + String.valueOf(purchases)
-				+ " � Betriebsergebnis: " + String.valueOf(sales - purchases) + " �");
+	} catch (Exception e) {
+	
+	// PopUp für Fehler in der Eingabe
+
+	alert.setHeaderText("Start und/oder Enddatum fehlen");
+	alert.setContentText(null);
+	alert.showAndWait();	
+	GasStation.createHistory();
+	}
+	double sales = GasStation.createFullSales();
+	double purchases = GasStation.createFullPurchases();
+	lblBalanceResult.setText("Einnahmen: "+String.valueOf(sales)+" € Ausgabe: " + String.valueOf(purchases)+ " € Betriebsergebnis: "+ String.valueOf(sales-purchases) + " €");
+
 
 	}
 
@@ -830,45 +849,67 @@ public class ControllerMain implements Initializable {
 		try {
 			number = Integer.parseInt(tfOrderGoodNumber.getText());
 			amount = Double.parseDouble(tfOrderGoodAmount.getText());
-		} catch (NumberFormatException e) {
-			System.out.println("Falsche Eingabe");
-		}
 
-		if (GasStation.existingGood(number)) {
-			GasStation.addGoodOrder(number, amount);
-		} else if (number == 666) {
+			} catch (NumberFormatException e) {
 
-			// Easter-Egg
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/EasterEggDialog.fxml"));
-			Parent root1 = (Parent) fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setScene(new Scene(root1));
-			stage.setTitle("Der Teufel ist da");
-			stage.show();
+			}
+			
+				if (number == 666) {
+				
+				// Easter-Egg
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/EasterEggDialog.fxml"));
+				Parent root1 = (Parent) fxmlLoader.load();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root1));
+				stage.setTitle("Der Teufel ist da");
+				stage.show();
 
-		} else {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Fehler");
-			alert.setHeaderText("Die Warennummer existiert nicht");
-			alert.setContentText(null);
-			alert.showAndWait();
-		}
-
-		tfOrderGoodNumber.setText("");
-		tfOrderGoodAmount.setText("");
-
+			} else if(GasStation.existingGood(number)==false) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Fehler");
+				alert.setHeaderText("Diese Warennummer existiert nicht");
+				alert.setContentText(null);
+				alert.showAndWait();
+			} else if(amount<=0) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Falsche Eingabe");
+				alert.setHeaderText("Falsche Eingabe");
+				alert.setContentText("Bitte geben Sie eine gültige Menge ein.");
+				alert.showAndWait();
+			} else if (GasStation.existingGood(number)) {
+				GasStation.addGoodOrder(number, amount);
+			
+			tfOrderGoodNumber.setText("");
+			tfOrderGoodAmount.setText("");
+			}	
 	}
 
 	@FXML
 	void onAddFuelOrderClick(ActionEvent event) {
-		System.out.println(cbOrderFuelType.getValue());
-		GasStation.addFuelOrder(cbOrderFuelType.getValue(), Double.parseDouble(tfOrderFuelAmount.getText()));
+		
+		double amount = 0;
+		
+		try {
+			amount = Double.parseDouble(tfOrderFuelAmount.getText());
+			} catch (NumberFormatException e) {
 
+
+			}
+		
+		//GasStation.addFuelOrder(cbOrderFuelType.getValue(), amount);
+		
+		if(amount<=0) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Falsche Eingabe");
+			alert.setHeaderText("Falsche Eingabe");
+			alert.setContentText("Bitte geben Sie eine gültige Menge ein.");
+			alert.showAndWait();
+		} else {
+			GasStation.addFuelOrder(cbOrderFuelType.getValue(), amount);
+		}
+		
+		tfOrderFuelAmount.setText("");
 	}
-
-	@FXML
-
-	// R�ckgeld berechnen
 	void onConfirmMoneyReceived(ActionEvent event) {
 
 		double moneyReceived = 0;
@@ -903,15 +944,15 @@ public class ControllerMain implements Initializable {
 
 		// Die neue Verkaufsnummer
 		int salenumber = Helpmethods.newsalesnumber();
-		// Was soll beim schlie�en passieren
+		// Was soll beim schließen passieren
 		// Stage stage = (Stage) btnContinue.getScene().getWindow();
 
-		// Das DiagonalFeld welches den Speicherort nachfr�gt
+		// Das DiagonalFeld welches den Speicherort nachfrägt
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Speicherort");
-		alert.setHeaderText("Wo m�chten Sie den Beleg Speichern?");
+		alert.setHeaderText("Wo möchten Sie den Beleg Speichern?");
 
-		ButtonType saveReceiptAs = new ButtonType("Speicherort ausw�hlen");
+		ButtonType saveReceiptAs = new ButtonType("Speicherort auswählen");
 		ButtonType saveReceiptDesktop = new ButtonType("Desktop");
 		alert.getButtonTypes().clear();
 
@@ -920,14 +961,14 @@ public class ControllerMain implements Initializable {
 		Optional<ButtonType> option = alert.showAndWait();
 
 		if (option.get() == saveReceiptAs) {
-			// Den Filechooser ausl�sen
+			// Den Filechooser auslösen
 			Window window = btnContinue.getScene().getWindow();
 			file = fileChooser.showSaveDialog(window);
 			if (file != null) {
 
 				GasStation.finishedreceipt(file, salenumber);
 
-				// schlie�t das Fenster
+				// schließt das Fenster
 				apPayProcess.setVisible(false);
 				tpMain.setVisible(true);
 			}
@@ -937,7 +978,7 @@ public class ControllerMain implements Initializable {
 			String filename = home + "/Desktop/Beleg" + String.valueOf(salenumber) + ".txt";
 			File file = new File(filename);
 			GasStation.finishedreceipt(file, salenumber);
-			// schlie�t das Fenster
+			// schließt das Fenster
 			apPayProcess.setVisible(false);
 			tpMain.setVisible(true);
 		}
@@ -946,7 +987,5 @@ public class ControllerMain implements Initializable {
 		lblTotalPrice2.setText(String.valueOf(GasStation.getTotalPrice()));
 		lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()));
 		tfMoneyReceived.setText("");
-
-	}
-
+  }
 }

@@ -195,6 +195,7 @@ public class FileScanner {
 								price = Double.parseDouble(output[4]); //Der Einkaufspreis wird gelesen
 								newamount = g.getAmount() + amount; //Die neue Menge für die Objekte
 								g.setAmount(newamount);
+								g.setPurchasePrice(price);
 								sum += amount*price;
 							}
 							else {
@@ -212,27 +213,8 @@ public class FileScanner {
 				
 				}
 	     return success;
-	    	 //Methode welche die Textdatei dann verschiebt in den deliveries history ordner
-	    	
-//	          
-//	         // renaming the file and moving it to a new location 
-//	         if(file.renameTo 
-//	            (new File(filenamedeliverhistory + String.valueOf(newnumber)+".txt" ))) 
-//	         { 
-//	             // if file copied successfully then delete the original file 
-//	             file.delete(); 
-//	             System.out.println("File moved successfully"); 
-//	         } 
-//	         else
-//	         { 
-//	             System.out.println("Failed to move the file"); 
-//	         } 
-//	    	 
-//			}	 
-	     //Es exitiert nicht dann lassen wir es halt
-	    	
-	     } // Methode beendet
-	   
+	 
+	}   
 		
 		public static int readDeliveryFuels(File file) throws IOException {
 		
