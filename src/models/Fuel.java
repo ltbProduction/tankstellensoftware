@@ -58,27 +58,6 @@ public class Fuel extends Product{
 
 	}
 
-	@Override
-	public void createorder(int amount) {
-		
-	}
-
-
-
-	@Override
-	public void displayorder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void createdelivery(int amount) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 
 	@Override

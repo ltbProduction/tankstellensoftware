@@ -1,6 +1,5 @@
 Nummer;Name;Datum
-1001;Lukas Blunck;12.05.2019
-1002;Robin Birkhofer;11.05.2019
-1003;Linus Brugger;13.05.2019
-1004;Daniel Appenmaier;31.05.2019
-1005;Thore Bedey;27.05.2019
+1001;Lukas Blunck;01.01.2019
+1002;Robin Birkhofer;01.01.2019
+1003;Linus Brugger;01.01.2019
+1004;Daniel Appenmaier;01.06.2019

@@ -640,6 +640,8 @@ public class ControllerMain implements Initializable {
 		}
 		alert.setContentText(null);
 		alert.showAndWait();
+		FXCollections.copy(GasStation.getFuels(), GasStation.getFuels());
+		FXCollections.copy(GasStation.getGoods(), GasStation.getGoods());
 
 		// Ampel aktualisieren
 		ivDiesel.setImage(GasStation.getTrafficLight(0));

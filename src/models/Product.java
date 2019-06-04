@@ -8,7 +8,6 @@ public abstract class Product {
 	protected String unit;
 	protected double purchasePrice;
 	protected double salePrice;
-	protected double totalPurchasePrice;
 	protected double totalSalePrice; 
 	
 	
@@ -22,15 +21,11 @@ public abstract class Product {
 		this.unit = unit;
 		this.purchasePrice = purchasePrice;
 		this.salePrice = salePrice;
-		totalPurchasePrice = Math.round(100.0*(amount*purchasePrice))/100.0;
 		totalSalePrice = Math.round(100.0*(amount*salePrice))/100.0;
 
 		
 	}
 	
-	public abstract void createorder(int amount);
-	public abstract void displayorder();
-	public abstract void createdelivery(int amount);
 	
 	public void displayProduct() {
 		System.out.println("Product: " + number + ", " + name + ", " + unit  + ", " + salePrice  + ", " + amount);
@@ -69,13 +64,7 @@ public abstract class Product {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public double getTotalPurchasePrice() {
-		return totalPurchasePrice;
-	}
 
-	public void setTotalPurchasePrice(double totalPurchasePrice) {
-		this.totalPurchasePrice = totalPurchasePrice;
-	}
 
 	public double getTotalSalePrice() {
 		return totalSalePrice;
