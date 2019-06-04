@@ -910,6 +910,8 @@ public class ControllerMain implements Initializable {
 		
 		tfOrderFuelAmount.setText("");
 	}
+	
+	@FXML
 	void onConfirmMoneyReceived(ActionEvent event) {
 
 		double moneyReceived = 0;
