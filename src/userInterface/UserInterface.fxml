@@ -20,6 +20,19 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMain">
    <children>
+      <AnchorPane fx:id="apLogin" prefHeight="297.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="162.0" layoutY="192.0" text="Mitarbeiternummer" />
+            <TextField fx:id="tfEmployeeNumber" layoutX="275.0" layoutY="188.0" prefHeight="25.0" prefWidth="68.0" />
+            <Button fx:id="btnLogin" layoutX="275.0" layoutY="231.0" mnemonicParsing="false" onAction="#OnLogInClick" prefHeight="25.0" prefWidth="149.0" text="Einloggen" />
+            <Label layoutX="162.0" layoutY="142.0" text="Login">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblWrongEmployeeNumber" layoutX="354.0" layoutY="192.0" prefHeight="17.0" prefWidth="214.0" />
+         </children>
+      </AnchorPane>
       <TabPane fx:id="tpMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" visible="false">
   <tabs>
     <Tab fx:id="tStart" closable="false" text="Start">
@@ -263,20 +276,7 @@
             <Label layoutX="230.0" layoutY="167.0" text="Menge" />
             <TextField fx:id="tfGoodsAmount" layoutX="291.0" layoutY="163.0" prefHeight="25.0" prefWidth="75.0" />
             <Button fx:id="btnAddToShoppingCart" layoutX="290.0" layoutY="200.0" mnemonicParsing="false" onAction="#onAddGoodToShoppingCartClick" text="Hinzufügen" />
-            <Button fx:id="btnToCheckout" layoutX="230.0" layoutY="275.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="140.0" text="Zur Kasse" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="apLogin" prefHeight="297.0" prefWidth="600.0">
-         <children>
-            <Label layoutX="162.0" layoutY="192.0" text="Mitarbeiternummer" />
-            <TextField fx:id="tfEmployeeNumber" layoutX="275.0" layoutY="188.0" prefHeight="25.0" prefWidth="68.0" />
-            <Button fx:id="btnLogin" layoutX="275.0" layoutY="231.0" mnemonicParsing="false" onAction="#OnLogInClick" prefHeight="25.0" prefWidth="149.0" text="Einloggen" />
-            <Label layoutX="162.0" layoutY="142.0" text="Login">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblWrongEmployeeNumber" layoutX="354.0" layoutY="192.0" prefHeight="17.0" prefWidth="214.0" />
+            <Button fx:id="btnToCheckout" layoutX="230.0" layoutY="275.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="140.0" text="Zurück" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="apAddFuel" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
@@ -295,7 +295,71 @@
             <TextField fx:id="tfAmountOfFuel" layoutX="249.0" layoutY="192.0" prefHeight="25.0" prefWidth="60.0" />
             <Label layoutX="323.0" layoutY="194.0" text="Liter" />
             <Button fx:id="btnAddFuel" layoutX="249.0" layoutY="233.0" mnemonicParsing="false" onAction="#addFuelToShoppingCart" prefHeight="25.0" prefWidth="143.0" text="Hinzufügen" />
-            <Button fx:id="btnToCheckOut2" layoutX="415.0" layoutY="341.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="143.0" text="Zur Kasse" />
+            <Button fx:id="btnToCheckOut2" layoutX="415.0" layoutY="341.0" mnemonicParsing="false" onAction="#onToCheckoutClick" prefHeight="25.0" prefWidth="143.0" text="Zurück" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="apPayProcess" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <children>
+            <Button fx:id="btnContinue" layoutX="399.0" layoutY="249.0" mnemonicParsing="false" onAction="#onContinue" prefHeight="37.0" prefWidth="132.0" text="Abschliessen">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Label fx:id="lblMoneyReturn" layoutX="399.0" layoutY="165.0" text="00,00">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="486.0" layoutY="165.0" text="€">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="404.0" layoutY="115.0" text="Rückgeld">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnConfirmMoneyReceived" layoutX="234.0" layoutY="249.0" mnemonicParsing="false" onAction="#onConfirmMoneyReceived" prefHeight="37.0" prefWidth="132.0" text="Berechnen">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="tfMoneyReceived" layoutX="234.0" layoutY="170.0" prefHeight="0.0" prefWidth="100.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="160.0" layoutY="165.0" text="€">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotalPrice2" layoutX="69.0" layoutY="165.0" text="00,00">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="69.0" layoutY="115.0" text="Gesamtbetrag">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="236.0" layoutY="115.0" text="Gegeben">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="346.0" layoutY="176.0" text="€">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnBackToStart" layoutX="69.0" layoutY="249.0" mnemonicParsing="false" onAction="#onBackToStartClick" prefHeight="37.0" prefWidth="132.0" text="Zurück">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
