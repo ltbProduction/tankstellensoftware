@@ -440,13 +440,13 @@ public class ControllerMain implements Initializable {
 			ivSuper.setImage(GasStation.getTrafficLight(1));
 
 		} else {
-			lblWrongEmployeeNumber.setText("ungültige Mitarbeiternummer");
-			System.out.println("Ungültige Mitarbeiternummer");
+			lblWrongEmployeeNumber.setText("ungueltige Mitarbeiternummer");
+			System.out.println("Ungueltige Mitarbeiternummer");
 
 			// PopUp für ungültige Mitarbeiternummer
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Fehler");
-			alert.setHeaderText("ungültige Mitarbeiternummer");
+			alert.setHeaderText("ungueltige Mitarbeiternummer");
 			alert.setContentText(null);
 			alert.showAndWait();
 
@@ -511,10 +511,10 @@ public class ControllerMain implements Initializable {
 				int i = Fuel.getIndex(chosenFuelType);
 
 				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("Kauf nicht möglich");
-				alert.setHeaderText("Kauf nicht möglich");
+				alert.setTitle("Kauf nicht moeglich");
+				alert.setHeaderText("Kauf nicht moeglich");
 				alert.setContentText("Es sind noch " + GasStation.getFuels().get(i).getAmount() + " Liter "
-						+ GasStation.getFuels().get(i).getName() + " verfügbar.");
+						+ GasStation.getFuels().get(i).getName() + " verfuegbar.");
 				alert.showAndWait();
 
 			}
@@ -524,7 +524,7 @@ public class ControllerMain implements Initializable {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Falsche Eingabe");
 			alert.setHeaderText("Falsche Eingabe");
-			alert.setContentText("Bitte geben Sie eine ganze Zahl ein.");
+			alert.setContentText("Bitte geben Sie einen g�ltigen Wert ein.");
 			alert.showAndWait();
 
 		}
@@ -561,14 +561,20 @@ public class ControllerMain implements Initializable {
 			// Wenn die Methode "false" zurÃ¼ckgibt, ist nicht mehr genÃ¼gend Bestand
 			// vorhanden. Der Index der Ware wird ermittelt. Der Nutzer wird
 			// anschlieÃend Ã¼ber den Bestand der Ware informiert.
-		} else {
+		} else if(goodAmount<=0) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Kauf nicht moeglich");
+			alert.setHeaderText("Kauf nicht moeglich");
+			alert.setContentText("Bitte geben Sie eine g�ltige Menge ein");
+			alert.showAndWait();
+	}else {
 
 			int i = Good.getIndex(goodNumber);
 			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Kauf nicht möglich");
-			alert.setHeaderText("Kauf nicht möglich");
+			alert.setTitle("Kauf nicht moeglich");
+			alert.setHeaderText("Kauf nicht moeglich");
 			alert.setContentText("Von der Ware " + GasStation.getGoods().get(i).getName() + " sind noch "
-					+ (int) GasStation.getGoods().get(i).getAmount() + " Stück verfügbar.");
+					+ (int) GasStation.getGoods().get(i).getAmount() + " Stueck verfuegbar.");
 			alert.showAndWait();
 
 		}
@@ -605,7 +611,7 @@ public class ControllerMain implements Initializable {
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root1));
-		stage.setTitle("Treibstoffpreis ÃÂ¤ndern");
+		stage.setTitle("Treibstoffpreis aendern");
 		stage.show();
 
 	}
@@ -617,7 +623,7 @@ public class ControllerMain implements Initializable {
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root1));
-		stage.setTitle("Warenpreis ÃÂ¤ndern");
+		stage.setTitle("Warenpreis aendern");
 		stage.show();
 	}
 
@@ -634,7 +640,7 @@ public class ControllerMain implements Initializable {
 			alert.setHeaderText("Die Lieferung wurde eingebucht!");
 		} else if (success == 2) {
 			alert.setHeaderText(
-					"Es konnte nicht alles eingebucht werden -> Kapazität des Tankes wurde überschritten");
+					"Es konnte nicht alles eingebucht werden -> Kapazitaet des Tankes wurde ueberschritten");
 		} else {
 			alert.setHeaderText("Die Lieferung wurde nicht eingebucht, Fehler in der Textdatei. Bitte melden Sie sich beim Help-Desk.");
 		}
@@ -789,12 +795,10 @@ public class ControllerMain implements Initializable {
 			number = Integer.parseInt(tfOrderGoodNumber.getText());
 			amount = Double.parseDouble(tfOrderGoodAmount.getText());
 			} catch (NumberFormatException e) {
-				System.out.println("Falsche Eingabe");
+
 			}
 			
-			if (GasStation.existingGood(number)) {
-				GasStation.addGoodOrder(number, amount);
-			} else if (number == 666) {
+				if (number == 666) {
 				
 				// Easter-Egg
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/EasterEggDialog.fxml"));
@@ -804,27 +808,50 @@ public class ControllerMain implements Initializable {
 				stage.setTitle("Der Teufel ist da");
 				stage.show();
 
-			} else {
+			} else if(GasStation.existingGood(number)==false) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Fehler");
-				alert.setHeaderText("Die Warennummer existiert nicht");
+				alert.setHeaderText("Diese Warennummer existiert nicht");
 				alert.setContentText(null);
 				alert.showAndWait();
-			}
+			} else if(amount<=0) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Falsche Eingabe");
+				alert.setHeaderText("Falsche Eingabe");
+				alert.setContentText("Bitte geben Sie eine g�ltige Menge ein.");
+				alert.showAndWait();
+			} else if (GasStation.existingGood(number)) {
+				GasStation.addGoodOrder(number, amount);
 			
 			tfOrderGoodNumber.setText("");
 			tfOrderGoodAmount.setText("");
-			
-		
-		
-
+			}	
 	}
 
 	@FXML
 	void onAddFuelOrderClick(ActionEvent event) {
-		System.out.println(cbOrderFuelType.getValue());
-		GasStation.addFuelOrder(cbOrderFuelType.getValue(), Double.parseDouble(tfOrderFuelAmount.getText()));
+		
+		double amount = 0;
+		
+		try {
+			amount = Double.parseDouble(tfOrderFuelAmount.getText());
+			} catch (NumberFormatException e) {
 
+			}
+		
+		//GasStation.addFuelOrder(cbOrderFuelType.getValue(), amount);
+		
+		if(amount<=0) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Falsche Eingabe");
+			alert.setHeaderText("Falsche Eingabe");
+			alert.setContentText("Bitte geben Sie eine g�ltige Menge ein.");
+			alert.showAndWait();
+		} else {
+			GasStation.addFuelOrder(cbOrderFuelType.getValue(), amount);
+		}
+		
+		tfOrderFuelAmount.setText("");
 	}
 
 }
