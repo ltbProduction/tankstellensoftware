@@ -14,11 +14,15 @@ import models.Good;
 import models.Purchase;
 import models.Sale;
 
+/**
+ * @author Linus Brugger
+ *
+ */
 public class FileScanner {
 
 	
 	
-	private static String datafile = "src/resource/textfiles/Data/"; //Ort wo die Dateien gespeichert werden
+	private static String datafile = "src/resource/Data/"; //Ort wo die Dateien gespeichert werden
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu"); //Format wie die Daten in den .txt gespeichert sind
 	private static String fileNameEmployee = datafile + "Employee.txt"; //Name der Txt Datei wo die Mitarbeitern gespeichert werden
 	private static String fileNamePurchasesHistory = datafile + "Historypurchases.txt"; //Name der Txt Datei wo die Eink‰ufe gespeichert werden
@@ -158,13 +162,10 @@ public class FileScanner {
 	//Das auslesen der neuen Lieferungen
 		
 		public static int readDeliveryGoods(File file) throws ParseException, IOException   {
-	     
-			//1 heiﬂt erfolgreich
-			//2 heiﬂt kapazit‰tsgrenze ¸bertroffen
-			//3 heiﬂt Fehler in der Datei
-	
-
-			
+		     
+				//1 heiﬂt erfolgreich
+				//2 heiﬂt kapazit‰tsgrenze ¸bertroffen
+				//3 heiﬂt Fehler in der Datei
 		 
 	    	 int success;
 	    	 //Datei auslesen

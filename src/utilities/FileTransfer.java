@@ -10,21 +10,19 @@ import javafx.collections.FXCollections;
 import models.GasStation;
 
 
-
-
-
+/**
+ * @author Linus Brugger
+ *
+ */
 public class FileTransfer {
 	
 
-	
+	//File Transfer starten
 	public static void start() throws ParseException, IOException  {
 	readData();
 
 	}
 	
-	
-	
-	//Hier beginnt die wirkliche Klasse FileTransfer
 	
 	
 	//Daten auslesen
@@ -37,6 +35,11 @@ public class FileTransfer {
 		FileScanner.readPurchasesHistory();
 		FileScanner.readEmployee();
 	}
+	/*Die Methode entscheidet ob es sich bei der Datei file um einen KraftstoffLieferung oder um eine Warenbestellung.
+	außerdem entscheidet es ob die einlieferung erfolgreich war bei folgender Ausgabe der Methode:
+	1 heißt erfolgreich
+	2 heißt kapazitätsgrenze übertroffen
+	3 heißt Fehler in der Datei*/
 	
 	public static int scandeliveries(File file) throws ParseException, IOException {
 		String line = null;
@@ -65,7 +68,10 @@ public class FileTransfer {
 		return success;
 		
 	}
-	
+	/*
+	Hier werden die Textdateien geschrieben. Die Methode wird nur aufgerufen, wenn die größe der ArrayList nicht
+	gleich null ist sonst es wahrscheinlich ein Fehler beim einlesen und die txt Datei würde sich verkleinern.
+	*/
 	public static void writetextfiles() {
 
 
@@ -90,11 +96,7 @@ public class FileTransfer {
 		}
 	}
 	
-//	public static void refresh() {
-//		writetextfiles();
-//		readData();
-//		
-//	}
+
 	
 	
 	

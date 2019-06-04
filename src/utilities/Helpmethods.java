@@ -4,8 +4,16 @@ import models.GasStation;
 import models.Purchase;
 import models.Sale;
 
+/**
+  @author Linus Brugger
+ Die Klasse Helpmethod wird benötigt, wenn die es eine Lieferung eine Nummerzugewiesen werden muss
+ bzw. wenn der Beleg seine Nummer erhalten soll.
+ */
 public class Helpmethods {
-
+	
+	
+	
+	
 	public static int newdeliveriesnumber() {
 		//Number des letzten einkauf auslesen
 		int number;
