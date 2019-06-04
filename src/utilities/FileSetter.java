@@ -15,8 +15,12 @@ import models.Product;
 import models.Purchase;
 import models.Sale;
 
+/**
+ * @author Linus Brugger
+ *
+ */
 public class FileSetter {
-     private static String pathdata = "src/resource/textfiles/Data/";
+     private static String pathdata = "src/resource/Data/";
      private static String firstlinegoods = "Nummer;Name;Lagereinheit;Menge;Einkaufspreis;Verkaufspreis";
      private static String firstlinehistory = "Nummer;Datum;Preis";
      private static String firstlineemployee = "Nummer;Name;Datum";
@@ -55,14 +59,14 @@ public class FileSetter {
   			bw.newLine(); 
   			//Muss noch ge#ndert werden
 
-  			for (Fuel f : GasStation.getFuels()) {							//für jeden Kraftstofftank von Kraftstofftanks
+  			for (Fuel f : GasStation.getFuels()) {							//fuer jeden Kraftstofftank von Kraftstofftanks
 				bw.write(f.displaytextfile()); 								//Schreiben des Tanks
 				if (GasStation.getFuels().indexOf(f) < GasStation.getFuels().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
-					bw.newLine();									// Springe in die nächste Zeile
-				} else continue;									// Sonst führe fort
+					bw.newLine();									// Springe in die naechste Zeile
+				} else continue;									// Sonst faehre fort
 
 			}
-			GasStation.getFuels().clear(); //ArrayList l�schen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+			GasStation.getFuels().clear(); //ArrayList loeschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
 
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -77,14 +81,14 @@ public class FileSetter {
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
   			bw.write(firstlinegoods); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
-  			for (Good g : GasStation.getGoods()) {							//für jede Ware von Waren
+  			for (Good g : GasStation.getGoods()) {							//fuer jede Ware von Waren
 				bw.write(g.displaytextfile()); 							//Schreibe die Waren
 				if (GasStation.getGoods().indexOf(g) < GasStation.getGoods().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
 					bw.newLine();								// Springe in die nächste Zeile
 				} else continue;								// Sonst führe fort
 				
 			}
-			GasStation.getGoods().clear(); //ArrayList l�schen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+			GasStation.getGoods().clear(); //ArrayList loeschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
 	
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -98,13 +102,13 @@ public class FileSetter {
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
   			bw.write(firstlinehistory); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
-  			for (Purchase p : GasStation.getPurchases()) {							//für jeden Einkauf von Einkäufe
+  			for (Purchase p : GasStation.getPurchases()) {							//fuer jeden Einkauf von Einkäufe
 				bw.write(p.displaytextfile()); 								//Schreibe den Einkauf
 				if (GasStation.getPurchases().indexOf(p) < GasStation.getPurchases().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
 					bw.newLine();									// Springe in die nächste Zeile
-				} else continue;									// Sonst führe fort
+				} else continue;									
 			}
-			GasStation.getPurchases().clear(); //ArrayList l�schen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+			GasStation.getPurchases().clear(); //ArrayList loeschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
 
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -123,18 +127,19 @@ public class FileSetter {
 				bw.write(s.displaytextfile()); 								//Schreibe den Verkauf
 				if (GasStation.getSales().indexOf(s) < GasStation.getSales().size()-1) {		//Wenn es nicht das letzte Element der Liste ist
 					bw.newLine();									// Springe in die nächste Zeile
-				} else continue;									// Sonst führe fort
+				} else continue;									
 			}
-			GasStation.getSales().clear(); //ArrayList l�schen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+			GasStation.getSales().clear(); //ArrayList loeschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
 
   		} catch (IOException e) {
   			e.printStackTrace();
      }
      }	
+    //Einen Beleg ausrucken
   	public static void createreceipt(double completesum, File file) {
-  	int numberofreceipt = Helpmethods.newsalesnumber();
-  	LocalDate today = LocalDate.now();
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+  	int numberofreceipt = Helpmethods.newsalesnumber(); //Neue Sales Methode wird geholt
+  	LocalDate today = LocalDate.now(); //heutige Datum
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu"); //richtige Format vom Datum
 	
 
   	
@@ -163,7 +168,7 @@ public class FileSetter {
   	
   	
     }
-  	
+  	//Waren bestellen schreiben
   	public static void writeGoodsOrder(File file) {
   	  	LocalDate today = LocalDate.now();
   		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
@@ -188,7 +193,7 @@ public class FileSetter {
   		
   	}
 
-
+  	//Kraftstoffbestellung erzeugen
   	public static void writeFuelOrder(File file) {
   	  	LocalDate today = LocalDate.now();
   		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");

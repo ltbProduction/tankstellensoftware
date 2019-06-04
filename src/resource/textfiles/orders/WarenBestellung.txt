@@ -1,5 +1,0 @@
-Bestelldatum=05.01.2019
-Warennummer;Bestellmenge
-421;20
-992;100
-101;25
