@@ -10,6 +10,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import utilities.FileSetter;
 
+/**
+ * @author Lukas Blunck, Robin Birkhofer, Linus Brugger
+ *
+ */
 public class GasStation {
 
 	private static String gasStationName = "Tankstelle KlÃ¶sterle"; // Name der Tankstelle

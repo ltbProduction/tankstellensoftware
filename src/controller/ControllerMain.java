@@ -46,6 +46,10 @@ import utilities.FileSetter;
 import utilities.FileTransfer;
 import utilities.Helpmethods;
 
+/**
+ * @author Lukas Blunck, Robin Birkhofer, Linus Brugger
+ *
+ */
 public class ControllerMain implements Initializable {
 
 	private File file;
