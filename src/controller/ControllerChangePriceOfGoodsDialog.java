@@ -14,6 +14,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import models.GasStation;
 
+/**
+ * @author Robin Birkhofer
+ *
+ */
+
 public class ControllerChangePriceOfGoodsDialog implements Initializable {
 
 	@FXML
@@ -25,6 +30,9 @@ public class ControllerChangePriceOfGoodsDialog implements Initializable {
 	@FXML
 	private TextField tfNewPrice;
 
+    //Wird ausgeloest wenn man im PopUp "Warenpreis aendern" auf "Bestaetigen" klickt
+    //Aktualisiert den neuen Preis in der Tabelle 
+    //Bei falschen Eingaben erscheint ein PopUp
 	@FXML
 	void confirmPrice(ActionEvent event) {
 
@@ -32,7 +40,7 @@ public class ControllerChangePriceOfGoodsDialog implements Initializable {
 		try {
 			newPrice = Double.valueOf(tfNewPrice.getText());
 		} catch (NumberFormatException e) {
-			//System.out.println("Das ist keine gültige Zahl");
+
 		}
 
 		if(newPrice<=0) {
