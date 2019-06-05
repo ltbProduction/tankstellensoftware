@@ -25,6 +25,7 @@ public class ControllerNewEmployeeDialog {
     LocalDate dateOfEmployment;
     
 
+    // Neuen Mitarbeiter hinzufuegen
     @FXML
     void addNewEmployee(ActionEvent event) throws IOException {
     	

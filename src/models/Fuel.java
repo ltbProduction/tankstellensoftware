@@ -1,48 +1,41 @@
 package models;
 
-public class Fuel extends Product{
+/**
+ * @author Lukas Blunck, Robin Birkhofer, Linus Brugger
+ *
+ */
 
-	
-//Attribute
-	
+public class Fuel extends Product {
+
+	// Kapazitaet des Kraftstofftanks
 	private double capacity;
-	
-//Konstruktor
+
+	//Konstruktor
 	public Fuel(int number, String name, double amount, double purchasePrice, double salePrice) {
-		
+
 		super(number, name, "Liter", amount, purchasePrice, salePrice);
-		
-		
-		
+
 	}
 
-	
-	
-	public void displayFuel() {
-		System.out.println("Fuel: " + getNumber() + ", " + name + ", " + amount + ", " + capacity + ", " + purchasePrice + ", " + salePrice);
-	}
-	
+	// Rueckgabe der Kapazitaet
 	public double getCapacity() {
 		return capacity;
 	}
 
-
-
-
+	// Einstellen der Kapazitaet
 	public void setCapacity(double capacity) {
 		this.capacity = capacity;
 	}
 
-
-
-
+	// Ausgabe fuer Textdate
 	public String displaytextfile() {
-		String text = String.valueOf(number)+";"+ getName() +";"+String.valueOf(amount)+";"+ String.valueOf(capacity) + ";" + String.valueOf(purchasePrice)+ ";"+String.valueOf(salePrice);
-	return text;
+		String text = String.valueOf(number) + ";" + getName() + ";" + String.valueOf(amount) + ";"
+				+ String.valueOf(capacity) + ";" + String.valueOf(purchasePrice) + ";" + String.valueOf(salePrice);
+		return text;
 	}
 
-
-	// Methode, die den Listen-Index eines Kraftstofftanks mit angegebener Kraftstoffart zurückgibt.
+	// Methode, die den Listen-Index eines Kraftstofftanks mit angegebener
+	// Kraftstoffart zurückgibt.
 	public static int getIndex(String fueltype) {
 
 		int i = 0;
@@ -59,58 +52,4 @@ public class Fuel extends Product{
 	}
 
 
-
-	@Override
-	public int getNumber() {
-		// TODO Auto-generated method stub
-		return number;
-	}
-	
-	
-	
-	
-//	public void createorder(int amount) {
-//	
-//		
-//	}
-//
-//	
-//	public void displayorder() {
-//		
-//		
-//	}
-//
-//	
-//	public void createdelivery(int amount) {
-//	
-//		
-//	}
-//
-//
-//
-//
-//	
-//
-//	public double getAmount() {
-//		return amount;
-//	}
-//
-//
-//
-//
-//
-//
-//	public void setAmount(double amount) {
-//		this.amount = amount;
-//	}
-
-
-
-
-
-	
-	
-
-	}
-
-
+}

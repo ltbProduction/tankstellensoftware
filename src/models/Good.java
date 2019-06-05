@@ -1,32 +1,22 @@
 package models;
 
+/**
+ * @author Lukas Blunck, Robin Birkhofer, Linus Brugger
+ *
+ */
+
 public class Good extends Product {
 
 	// Konstruktor
 	public Good(int number, String name, String unit, double amount, double purchasePrice, double salePrice) {
 		super(number, name, unit, amount, purchasePrice, salePrice);
-
 	}
 
 	
-
-	
-
-	// Zum testen ob die Objekte erzeugt wurden
-	public void displayproduct() {
-		System.out.println("Good: " + number + ", " + name + ", " + unit + ", " + amount + ", " + purchasePrice + ", "
-				+ salePrice);
-	}
-
-
-	@Override
-	public int getNumber() {
-		return number;
-
-	}
-
 	public static int getIndex(int numberOfGood) {
 
+		// Methode, die den Listen-Index einer Ware mit angegebener
+		// Warennummer zurückgibt.
 		int i = 0;
 
 		for (Good g : GasStation.getGoods()) {
@@ -38,10 +28,6 @@ public class Good extends Product {
 
 		return i;
 
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
 	}
 
 	// Die korrekte Ausgabe für die Textdatei wird erzeugt

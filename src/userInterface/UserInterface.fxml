@@ -307,52 +307,30 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Label fx:id="lblMoneyReturn" layoutX="399.0" layoutY="165.0" text="00,00">
+            <Label fx:id="lblMoneyReturn" layoutX="399.0" layoutY="165.0" text="00,00 EUR">
                <font>
-                  <Font size="32.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="486.0" layoutY="165.0" text="€">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </Label>
-            <Label layoutX="404.0" layoutY="115.0" text="Rückgeld">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
+            <Label layoutX="404.0" layoutY="115.0" text="Rückgeld" />
             <Button fx:id="btnConfirmMoneyReceived" layoutX="234.0" layoutY="249.0" mnemonicParsing="false" onAction="#onConfirmMoneyReceived" prefHeight="37.0" prefWidth="132.0" text="Berechnen">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="tfMoneyReceived" layoutX="234.0" layoutY="170.0" prefHeight="0.0" prefWidth="100.0">
+            <TextField fx:id="tfMoneyReceived" layoutX="234.0" layoutY="164.0" prefHeight="0.0" prefWidth="100.0">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="160.0" layoutY="165.0" text="€">
+            <Label fx:id="lblTotalPrice2" layoutX="69.0" layoutY="165.0" text="00,00 EUR">
                <font>
-                  <Font name="System Bold" size="32.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lblTotalPrice2" layoutX="69.0" layoutY="165.0" text="00,00">
-               <font>
-                  <Font name="System Bold" size="32.0" />
-               </font>
-            </Label>
-            <Label layoutX="69.0" layoutY="115.0" text="Gesamtbetrag">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="236.0" layoutY="115.0" text="Gegeben">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="346.0" layoutY="176.0" text="€">
+            <Label layoutX="69.0" layoutY="115.0" text="Gesamtbetrag" />
+            <Label layoutX="236.0" layoutY="115.0" text="Gegeben" />
+            <Label layoutX="345.0" layoutY="170.0" text="EUR">
                <font>
                   <Font size="16.0" />
                </font>
