@@ -170,16 +170,12 @@ public class GasStation {
 	public static ObservableList<Good> getShoppingCartGoods() {
 		return shoppingCartGoods;
 	}
-
-	public static void finishedreceipt(File file, int salenumber) { // Zum abschliessen einer Reception
+	//Diese Methode schließt einen Kauf ab und erstellt den Beleg. Außerdem wird es zu dem Verkauf History hinzugefügt
+	public static void finishedreceipt(File file, int salenumber) { 
 		
-		double sum;
-		sum = 0;
-		for (Product p : GasStation.getShoppingCart()) {
-			sum += p.amount * p.salePrice;
-		}
+		double sum = getTotalPrice();
+	
 		// Methode welche den Beleg ausdruckt
-		sum = Math.round(100.0 * sum) / 100.0;
 		FileSetter.createreceipt(sum, file);
 		shoppingCart.clear();
 		sales.add(new Sale(salenumber, LocalDate.now(), sum));
@@ -396,8 +392,8 @@ public class GasStation {
 	
 	// aendert Bilanz-Tabelle
 	public static void changeBalanceTable(LocalDate startDate, LocalDate endDate) {
-		LocalDate ds = startDate.minusDays(1);
-		LocalDate df = endDate.plusDays(1);
+		LocalDate ds = startDate.minusDays(1); //Startdatum
+		LocalDate df = endDate.plusDays(1); //Enddatum
 
 		balanceSales.clear();
 		for (Sale s : sales) {
@@ -423,7 +419,7 @@ public class GasStation {
 		FXCollections.copy(balancePurchases, balancePurchases);
 
 	}
-	
+	// erzeugt die Summer alle Verkaeufe die bisher getaetigt wurden
 	public static double createFullSales() {
 		double sum = 0;
 		for (Sale s : balanceSales) {
@@ -432,7 +428,7 @@ public class GasStation {
 		sum = Math.round(sum * 100.0) / 100.0;
 		return sum;
 	}
-
+	// erzeugt die Summer alle Einkaeufe die bisher getaetigt wurden
 	public static double createFullPurchases() {
 		double sum = 0;
 		for (Purchase p : balancePurchases) {

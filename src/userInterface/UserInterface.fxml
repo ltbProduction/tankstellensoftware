@@ -196,7 +196,7 @@
                   <Label layoutX="156.0" layoutY="248.0" text="Startdatum" />
                   <Label layoutX="358.0" layoutY="247.0" text="Enddatum" />
                   <Button fx:id="btnShowBalance" layoutX="521.0" layoutY="269.0" mnemonicParsing="false" onAction="#onShowBalanceClick" prefHeight="25.0" prefWidth="49.0" text="OK" />
-                  <Label fx:id="lblBalanceResult" layoutX="157.0" layoutY="321.0" text="Bilanzergebnis Ausgabefeld" />
+                  <Label fx:id="lblBalanceResult" layoutX="157.0" layoutY="300.0" text="Bilanzergebnis Ausgabefeld" />
                         <Label layoutX="15.0" layoutY="25.0" text="Einkäufe">
                            <font>
                               <Font name="System Bold" size="16.0" />
