@@ -504,11 +504,11 @@ public class ControllerMain implements Initializable {
 	@FXML
 	void addFuelToShoppingCart(ActionEvent event) {
 
-		// Variablen fÃ¼r Methodenaufruf
+		// Variablen fuer Methodenaufruf
 		String chosenFuelType;
 		Double amountOfFuel = 0.0;
 
-		// Try-Anweisung wird ausgefÃ¼hrt, wenn Wert von amountOfFuel eine
+		// Try-Anweisung wird ausgefuehrt, wenn Wert von amountOfFuel eine
 		// Zaahl ist
 
 		try {
