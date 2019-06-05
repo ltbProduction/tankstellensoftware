@@ -16,12 +16,12 @@ import utilities.FileSetter;
  */
 public class GasStation {
 
-	private static String gasStationName = "Tankstelle KlÃ¶sterle"; // Name der Tankstelle
+	private static String gasStationName = "Tankstelle Kloesterle"; // Name der Tankstelle
 	// Liste mit allen Mitarbeitern
 	private static ObservableList<Employee> employees = FXCollections.observableArrayList();
 	// Liste mit allen Produkten
 	private static ObservableList<Product> storage = FXCollections.observableArrayList();
-	// Liste mit Waren im Warenkorb fÃ¼r "Waren hinzufÃ¼gen"-Fenster
+	// Liste mit Waren im Warenkorb fuer "Waren hinzufuegen"-Fenster
 	private static ObservableList<Good> shoppingCartGoods = FXCollections.observableArrayList();
 	// Liste mit Produkten (Waren + Kraftstoff) im Warenkorb
 	private static ObservableList<Product> shoppingCart = FXCollections.observableArrayList();
@@ -29,13 +29,13 @@ public class GasStation {
 	private static ObservableList<Fuel> fuels = FXCollections.observableArrayList();
 	// Liste mit allen Waren
 	private static ObservableList<Good> goods = FXCollections.observableArrayList();
-	//Liste mit allen Verk�ufen f�r die Bilanz
+	//Liste mit allen Verkaeufen f�r die Bilanz
 	private static ObservableList<Sale> balanceSales = FXCollections.observableArrayList();	
-	// Liste mit allen VerkÃ¤ufen	
+	// Liste mit allen Verkaeufen	
 	private static ObservableList<Sale> sales = FXCollections.observableArrayList();
-	//Liste mit allen Eink�ufen f�r die Bilanz
+	//Liste mit allen Einkaeufen f�r die Bilanz
 	private static ObservableList<Purchase> balancePurchases = FXCollections.observableArrayList();	
-	// Liste mit allen EinkÃ¤ufen
+	// Liste mit allen Einkaeufen
 	private static ObservableList<Purchase> purchases = FXCollections.observableArrayList();
 
 	//Liste mit allen Bestellten Waren
@@ -64,11 +64,11 @@ public class GasStation {
 
 		boolean value = false;
 
-		// Überprüfe, ob es einen Kraftstofftank der angegebenen Kraftstoffart gibt,
-		// der genügend Kraftstoff beinhaltet. Es wird ein Puffer von 100 Litern
-		// eingebaut. Sobald ein Tank mit genügend Kraftstoff gefunden wird, wird die
-		// Rückgabe-Variable auf true gesetzt.
-		// Außerdem wird der Index des gefundenen Kraftstofftanks gespeichert.
+		// Ueberpruefe, ob es einen Kraftstofftank der angegebenen Kraftstoffart gibt,
+		// der genuegend Kraftstoff beinhaltet. Es wird ein Puffer von 100 Litern
+		// eingebaut. Sobald ein Tank mit genuegend Kraftstoff gefunden wird, wird die
+		// Rueckgabe-Variable auf true gesetzt.
+		// Ausserdem wird der Index des gefundenen Kraftstofftanks gespeichert.
 		int i = 0;
 		for (Fuel f : fuels) {
 			if (f.getName().equals(name)) {
@@ -79,19 +79,19 @@ public class GasStation {
 			}
 		}
 
-		// Wenn kein Tank mit ausreichendem Füllstand gefunden wurde, wird die Methode
-		// abgebrochen und eine Fehlermeldung zurückgegeben.
+		// Wenn kein Tank mit ausreichendem Fuellstand gefunden wurde, wird die Methode
+		// abgebrochen und eine Fehlermeldung zurueckgegeben.
 		if (value == false) {
 			return value;
 
-			// Ansonsten wird die Methode weitergeführt
+			// Ansonsten wird die Methode weitergefuehrt
 		} else {
 
-			// Die gewünschte Menge wird vom Kraftstofftank abgezogen.
+			// Die gewuenschte Menge wird vom Kraftstofftank abgezogen.
 			// Es wird ein neues Kraftstoff-Produkt mit den Werten des Kraftstofftanks und
-			// der gewünschten Menge instanziiert. Anschließend wird es dem Warenkorb
-			// hinzugefügt. Da die Klasse Fuel von Product erbt, kann das neue Produkt in
-			// die shoppingCart-Liste der Klasse Product hinzugefügt werden.
+			// der gewuenschten Menge instanziiert. Anschliessend wird es dem Warenkorb
+			// hinzugefuegt. Da die Klasse Fuel von Product erbt, kann das neue Produkt in
+			// die shoppingCart-Liste der Klasse Product hinzugefuegt werden.
 			fuels.get(i).setAmount(fuels.get(i).getAmount() - amount);
 			fuels.get(i).displayFuel();
 
@@ -104,8 +104,8 @@ public class GasStation {
 			// autom. aktualisieren)
 			FXCollections.copy(fuels, fuels);
 
-			// Es wird zurÃ¼ckgegeben, dass der Kraftstoff erfolgreich dem Warenkorb
-			// hinzugefÃ¼gt wurde.
+			// Es wird zurueckgegeben, dass der Kraftstoff erfolgreich dem Warenkorb
+			// hinzugefuegt wurde.
 			return value;
 
 		}
@@ -119,7 +119,7 @@ public class GasStation {
 		boolean numberCheck = false;
 		int i = 0;
 		
-		// Überprüfe für jede Ware, ob Sie der eingegebenen Nummer entspricht
+		// Ueberpruefe fuer jede Ware, ob Sie der eingegebenen Nummer entspricht
 		// Wenn ja, setze i gleich dem Index der Ware
 		for (Good g : GasStation.getGoods()) {
 			if (g.getNumber() == goodnumber) {
@@ -139,27 +139,27 @@ public class GasStation {
 			alert.setContentText("Bitte vergleichen Sie die eingegebene Warennummer mit dem Bestand.");
 			alert.showAndWait();
 
-		// Wenn die gewünschte Menge größer ist als die Gesamtmenge der Ware 
-		// oder kleiner/gleich Null ist, gebe den Rückgabewert false zurück
+		// Wenn die gewuenschte Menge groesser ist als die Gesamtmenge der Ware 
+		// oder kleiner/gleich Null ist, gebe den Rueckgabewert false zurueck
 		} else if (amount > (goods.get(i)).getAmount() || amount<=0) {
 			
 			return value = false;
 		
-			// Ansonsten wird die Methode weitergeführt
+			// Ansonsten wird die Methode weitergefuehrt
 			} else {
 
-				// Die gewünschte Menge wird vom Warenbestand abgezogen.
+				// Die gewuenschte Menge wird vom Warenbestand abgezogen.
 				// Es wird ein neues Waren-Produkt mit den Werten der Ware und
-				// der gewünschten Menge instanziiert. Anschließend wird es dem Warenkorb
-				// hinzugefügt.
+				// der gewuenschten Menge instanziiert. Anschliessend wird es dem Warenkorb
+				// hinzugefuegt.
 				goods.get(i).setAmount(goods.get(i).getAmount() - amount);
 
 				Good g = new Good(goodnumber, goods.get(i).getName(), goods.get(i).getUnit(), amount,
 						goods.get(i).getPurchasePrice(), goods.get(i).getSalePrice());
 
-				shoppingCartGoods.add(g); // Hinzufügen zur Liste zur Anzeige der gewählten Waren im "Waren
-											// hinzufügen"-Fenster
-				shoppingCart.add(g); // Hinzufügen zur Liste des gesamten Warenkorbs
+				shoppingCartGoods.add(g); // Hinzufuegen zur Liste zur Anzeige der gewaehlten Waren im "Waren
+											// hinzufuegen"-Fenster
+				shoppingCart.add(g); // Hinzufuegen zur Liste des gesamten Warenkorbs
 
 				// Aktualisieren der Liste Goods (Workaround, da Tabellenspalten sich nicht
 				// autom. aktualisieren)
@@ -368,7 +368,7 @@ public class GasStation {
 		return false;
 	}
 
-//Methode ÃƒÂ¼berprÃƒÂ¼ft ob eine vorhandene Mitarbeiternummer eingegeben wird beim Login
+//Methode Ueberprueft ob eine vorhandene Mitarbeiternummer eingegeben wird beim Login
 	public static boolean existingEmployee(int number) {
 		boolean value = false;
 		for (Employee e : employees) {
@@ -397,7 +397,7 @@ public class GasStation {
 	}
 	
 
-//Gibt die aktuelle Ampeldarstellung in AbhÃƒÂ¤ngigkeit des FÃƒÂ¼llstands an
+//Gibt die aktuelle Ampeldarstellung in Abhaengigkeit des Fuellstands an
 	public static Image getTrafficLight(int fueltype) {
 
 		Image image = null;
@@ -476,7 +476,7 @@ public static void addFuelOrder(String fueltype, double amount) {
 	public static void createHistory() {
 		
 		
-		//Verk�ufe
+		//Verkaeufe
 		balanceSales.clear();
 		for (Sale s : sales) {
 			balanceSales.add(s);
@@ -503,7 +503,7 @@ public static void addFuelOrder(String fueltype, double amount) {
 			}
 		}
 		FXCollections.copy(balanceSales, balanceSales);
-		//Die Eink�ufe
+		//Die Einkaeufe
 		balancePurchases.clear();
 		for (Purchase p : purchases) {
 			LocalDate pd = p.getPurchaseDate();

@@ -17,14 +17,16 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+
 <!-- @author Lukas Blunck, Robin Birkhofer  -->
+
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMain">
    <children>
       <AnchorPane fx:id="apLogin" prefHeight="297.0" prefWidth="600.0">
          <children>
             <Label layoutX="162.0" layoutY="192.0" text="Mitarbeiternummer" />
             <TextField fx:id="tfEmployeeNumber" layoutX="275.0" layoutY="188.0" prefHeight="25.0" prefWidth="68.0" />
-            <Button fx:id="btnLogin" layoutX="275.0" layoutY="231.0" mnemonicParsing="false" onAction="#OnLogInClick" prefHeight="25.0" prefWidth="149.0" text="Einloggen" />
+            <Button fx:id="btnLogin" layoutX="275.0" layoutY="231.0" mnemonicParsing="false" onAction="#onLogInClick" prefHeight="25.0" prefWidth="149.0" text="Einloggen" />
             <Label layoutX="162.0" layoutY="142.0" text="Login">
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -50,7 +52,7 @@
                   <Button fx:id="btnGasPump5" layoutX="156.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="5" />
                   <Button fx:id="btnGasPump3" layoutX="86.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="3" />
                   <Button fx:id="btnGasPump4" layoutX="121.0" layoutY="73.0" mnemonicParsing="false" onAction="#onGasPumpClick" prefHeight="38.0" prefWidth="35.0" text="4" />
-                  <Button fx:id="btnAddGoods" layoutX="15.0" layoutY="129.0" mnemonicParsing="false" onAction="#OnAddGoodsClick" prefHeight="37.0" prefWidth="177.0" text="Waren hinzufügen" />
+                  <Button fx:id="btnAddGoods" layoutX="15.0" layoutY="129.0" mnemonicParsing="false" onAction="#onAddGoodsClick" prefHeight="37.0" prefWidth="177.0" text="Waren hinzufügen" />
                   <TableView fx:id="tvShoppingCart" layoutX="15.0" layoutY="230.0" prefHeight="127.0" prefWidth="294.0">
                     <columns>
                       <TableColumn fx:id="tcShoppingCartName" prefWidth="99.0" text="Bezeichnung" />
@@ -125,12 +127,12 @@
                         </Label>
                         <TableView fx:id="tvGoodsStorage" layoutX="15.0" layoutY="65.0" prefHeight="169.0" prefWidth="570.0">
                           <columns>
-                            <TableColumn fx:id="tcGoodsStorageNr" prefWidth="55.0" text="Nr." />
-                            <TableColumn fx:id="tcGoodsStorageName" prefWidth="215.0" text="Bezeichnung" />
-                              <TableColumn fx:id="tcGoodsStorageStorageUnit" minWidth="0.0" prefWidth="84.0" text="Lagereinheit" />
-                              <TableColumn fx:id="tcGoodsStorageAmount" prefWidth="59.0" text="Menge" />
-                              <TableColumn fx:id="tcGoodsStoragePurchasePrice" prefWidth="78.0" text="Preis (EK)" />
-                              <TableColumn fx:id="tcGoodsStorageSalePrice" prefWidth="79.0" text="Preis (VK)" />
+                            <TableColumn fx:id="tcGoodsStorageNr" prefWidth="48.0" text="Nr." />
+                            <TableColumn fx:id="tcGoodsStorageName" prefWidth="170.0" text="Bezeichnung" />
+                              <TableColumn fx:id="tcGoodsStorageStorageUnit" minWidth="0.0" prefWidth="91.0" text="Lagereinheit" />
+                              <TableColumn fx:id="tcGoodsStorageAmount" prefWidth="58.0" text="Menge" />
+                              <TableColumn fx:id="tcGoodsStoragePurchasePrice" prefWidth="98.0" text="Preis (EK) in EUR" />
+                              <TableColumn fx:id="tcGoodsStorageSalePrice" prefWidth="105.0" text="Preis (VK) in EUR" />
                           </columns>
                         </TableView>
                         <Button fx:id="btnAddGoodOrder" layoutX="58.0" layoutY="330.0" mnemonicParsing="false" onAction="#onAddGoodOrderClick" text="Hinzufügen" />
@@ -150,11 +152,11 @@
                   <TableView fx:id="tvFuelTanks" layoutX="15.0" layoutY="65.0" prefHeight="90.0" prefWidth="571.0">
                     <columns>
                       <TableColumn fx:id="tcFuelTanksTankNumber" prefWidth="28.0" text="Nr." />
-                      <TableColumn fx:id="tcFuelTanksFuelType" prefWidth="97.0" text="Kraftstoffart" />
-                        <TableColumn fx:id="tcFuelTanksCapacity" prefWidth="119.0" text="Kapazität in Liter" />
-                        <TableColumn fx:id="tcFuelTanksFuelLevel" minWidth="0.0" prefWidth="86.0" text="Füllstand" />
-                              <TableColumn fx:id="tcFuelTanksPurchasePrice" prefWidth="120.0" text="Preis pro Liter (EK)" />
-                              <TableColumn fx:id="tcFuelTanksSalePrice" prefWidth="120.0" text="Preis pro Liter (VK)" />
+                      <TableColumn fx:id="tcFuelTanksFuelType" prefWidth="83.0" text="Kraftstoffart" />
+                        <TableColumn fx:id="tcFuelTanksCapacity" prefWidth="92.0" text="Kapazität in L" />
+                        <TableColumn fx:id="tcFuelTanksFuelLevel" minWidth="0.0" prefWidth="94.0" text="Füllstand in L" />
+                              <TableColumn fx:id="tcFuelTanksPurchasePrice" prefWidth="137.0" text="Preis pro L (EK) in EUR" />
+                              <TableColumn fx:id="tcFuelTanksSalePrice" prefWidth="136.0" text="Preis pro L (VK) in EUR" />
                     </columns>
                   </TableView>
                   <Label layoutX="76.0" layoutY="272.0" text="Kraftstoffart" />
@@ -209,15 +211,15 @@
                         <TableView fx:id="tvPurchases" layoutX="15.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
                           <columns>
                             <TableColumn fx:id="tcPurchasesNumber" prefWidth="52.0" text="Nr." />
-                            <TableColumn fx:id="tcPurchasesDate" prefWidth="128.0" text="Datum" />
-                              <TableColumn fx:id="tcPurchasesPrice" text="Betrag" />
+                            <TableColumn fx:id="tcPurchasesDate" prefWidth="117.0" text="Datum" />
+                              <TableColumn fx:id="tcPurchasesPrice" prefWidth="91.0" text="Betrag in EUR" />
                           </columns>
                         </TableView>
                         <TableView fx:id="tvSales" layoutX="309.0" layoutY="65.0" prefHeight="111.0" prefWidth="261.0">
                            <columns>
                               <TableColumn fx:id="tcSalesNumber" prefWidth="52.0" text="Nr." />
-                              <TableColumn fx:id="tcSalesDate" prefWidth="128.0" text="Datum" />
-                              <TableColumn fx:id="tcSalesPrice" text="Betrag" />
+                              <TableColumn fx:id="tcSalesDate" prefWidth="111.0" text="Datum" />
+                              <TableColumn fx:id="tcSalesPrice" prefWidth="97.0" text="Betrag in EUR" />
                            </columns>
                         </TableView>
                         <DatePicker fx:id="dpBalanceStartDate" layoutX="156.0" layoutY="269.0" prefHeight="25.0" prefWidth="149.0" />

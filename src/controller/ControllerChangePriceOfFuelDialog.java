@@ -14,10 +14,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import models.GasStation;
 
-public class ControllerChangePriceOfFuelDialog implements Initializable {
-	
+/**
+ * @author Robin Birkhofer
+ *
+ */
 
-	//ObservableList<String> fueltype = FXCollections.observableArrayList("Super", "Diesel");
+public class ControllerChangePriceOfFuelDialog implements Initializable {
 
 	    @FXML
 	    private Button btnConfirmPrice;
@@ -28,13 +30,16 @@ public class ControllerChangePriceOfFuelDialog implements Initializable {
 	    @FXML
 	    private TextField tfNewPrice;
 
+	    //Wird ausgeloest wenn man im PopUp "Treibstoffpreis aendern" auf "Bestaetigen" klickt
+	    //Aktualisiert den neuen Preis in der Tabelle 
+	    //Bei falschen Eingaben erscheint ein PopUp
 	    @FXML
 	    void confirmPrice(ActionEvent event) {
 	    	
 	    	double newPrice = 0;
 	    	try{newPrice = Double.valueOf(tfNewPrice.getText());
     	}catch(NumberFormatException e) {
-	        	//System.out.println("Das ist keine gültige Zahl");
+
 	    	}
 	    	
 	    	if(newPrice<=0) {
