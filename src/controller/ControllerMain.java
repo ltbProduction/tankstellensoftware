@@ -334,9 +334,6 @@ public class ControllerMain implements Initializable {
 	@FXML
 	private TableColumn<Fuel, Double> tcOrderFuelAmount;
 
-//	private File file;
-//	private FileChooser fileChooser;
-
 	@FXML
 	private Pane pane;
 
@@ -438,13 +435,14 @@ public class ControllerMain implements Initializable {
 		cbOrderFuelType.getItems().addAll("Super", "Diesel"); // Fuege Werte der Enum-Kraftstoffarten ein
 		cbOrderFuelType.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
 
-		lblTotalPrice2.setText(String.valueOf(GasStation.getTotalPrice()));
-		lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()));
+		lblTotalPrice2.setText(String.valueOf(GasStation.getTotalPrice()) + " EUR");
+		lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()) + " EUR");
 
 	}
 
-	//Durch das Aufrufen dieser Methode gelangt man auf das Fenster Warenkorb, hier kann der Anwender die gewuenschten Waren hinzufuegen
-	//Wird ausgeloest wenn man im Tab "Start" auf "Waren hinzufuegen" klickt
+	// Durch das Aufrufen dieser Methode gelangt man auf das Fenster Warenkorb, hier
+	// kann der Anwender die gewuenschten Waren hinzufuegen
+	// Wird ausgeloest wenn man im Tab "Start" auf "Waren hinzufuegen" klickt
 	@FXML
 	void onAddGoodsClick(ActionEvent event) {
 		// Tabellen aktualisieren
@@ -455,10 +453,12 @@ public class ControllerMain implements Initializable {
 
 	}
 
-	//Durch betaetigen des Buttons "einloggen" wird diese Methode ausgeloest
-	//Hier wird ueberprueft ob eine korrekte bzw. vorhandene Mitarbeiternummer eingegeben wird
-	//Bei korrekter Eingabe gelangt man auf den Startbildschirm
-	//Ausserdem wird die Historie und die Ampel feur die Anzeige des Fuellstands aktualisiert
+	// Durch betaetigen des Buttons "einloggen" wird diese Methode ausgeloest
+	// Hier wird ueberprueft ob eine korrekte bzw. vorhandene Mitarbeiternummer
+	// eingegeben wird
+	// Bei korrekter Eingabe gelangt man auf den Startbildschirm
+	// Ausserdem wird die Historie und die Ampel feur die Anzeige des Fuellstands
+	// aktualisiert
 	@FXML
 	void onLogInClick(ActionEvent event) {
 
@@ -467,7 +467,7 @@ public class ControllerMain implements Initializable {
 		try {
 			employeeNumber = Integer.valueOf(tfEmployeeNumber.getText());
 		} catch (NumberFormatException e) {
-			
+
 		}
 
 		if (GasStation.existingEmployee(employeeNumber) == true) {
@@ -505,8 +505,11 @@ public class ControllerMain implements Initializable {
 
 	}
 
-	//Durch Aufrufen dieser Methode wird der ausgewaehlte Kraftstoff inklusive Menge dem Warenkorb hinzugefuegt und bei fehlerhaften Eingaben PopUps ausgegeben
-	//Wird ausgeloest wenn man im Fenster "Zapfsaeule" auf den Button "hinzufuegen" klickt
+	// Durch Aufrufen dieser Methode wird der ausgewaehlte Kraftstoff inklusive
+	// Menge dem Warenkorb hinzugefuegt und bei fehlerhaften Eingaben PopUps
+	// ausgegeben
+	// Wird ausgeloest wenn man im Fenster "Zapfsaeule" auf den Button "hinzufuegen"
+	// klickt
 	@FXML
 	void addFuelToShoppingCart(ActionEvent event) {
 
@@ -544,8 +547,8 @@ public class ControllerMain implements Initializable {
 				apAddFuel.setVisible(false);
 				tpMain.setVisible(true);
 
-				lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()));
-				lblTotalPrice2.setText(String.valueOf(GasStation.getTotalPrice()));
+				lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()) + " EUR");
+				lblTotalPrice2.setText(String.valueOf(GasStation.getTotalPrice()) + " EUR");
 
 				// Ampel aktualisieren
 				ivDiesel.setImage(GasStation.getTrafficLight(0));
@@ -575,12 +578,13 @@ public class ControllerMain implements Initializable {
 			alert.showAndWait();
 
 		}
-		
+
 		tfAmountOfFuel.setText("");
 
 	}
 
-	// Methode die aufgerufen wird, wenn der Button "hinzufuegen" im "Waren hinzufuegen"-Fenster geklickt wird
+	// Methode die aufgerufen wird, wenn der Button "hinzufuegen" im "Waren
+	// hinzufuegen"-Fenster geklickt wird
 	@FXML
 	void onAddGoodToShoppingCartClick(ActionEvent event) {
 
@@ -590,53 +594,56 @@ public class ControllerMain implements Initializable {
 
 		try {
 			goodNumber = Integer.valueOf(tfGoodsNumber.getText());
-		} catch (NumberFormatException e) {
-			
-		}
-
-		try {
 			goodAmount = Double.valueOf(tfGoodsAmount.getText());
+
+			if (GasStation.existingGood(goodNumber) == false) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Fehler");
+				alert.setHeaderText("Diese Warennummer existiert nicht");
+				alert.setContentText(null);
+				alert.showAndWait();
+			} else if (goodAmount <= 0) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Falsche Eingabe");
+				alert.setHeaderText("Falsche Eingabe");
+				alert.setContentText("Bitte geben Sie eine gueltige Menge ein.");
+				alert.showAndWait();
+			} else if (GasStation.existingGood(goodNumber)) {
+
+				// Wenn die Methode addFuelToShoppingCart "true" zurueckgibt, wurde der
+				// Kraftstoff erfolgreich dem Warenkorb hinzugefuegt. Das Label
+				// Gesamtbetrag wird dann auf den Gesamtpreis der ShoppingCart-Liste gesetzt
+				if (GasStation.addGoodToShoppingCart(goodNumber, goodAmount)) {
+
+					lblTotalPrice2.setText(String.valueOf(GasStation.getTotalPrice()) + " EUR");
+					lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()) + " EUR");
+
+				// Wenn die Methode "false" zurueckgibt, ist nicht mehr genuegend Bestand
+				// vorhanden. Der Index der Ware wird ermittelt. Der Nutzer wird
+				// anschliessend ueber den Bestand der Ware informiert.
+				} else {
+					int i = Good.getIndex(goodNumber);
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.setTitle("Kauf nicht moeglich");
+					alert.setHeaderText("Kauf nicht moeglich");
+					alert.setContentText("Von der Ware " + GasStation.getGoods().get(i).getName() + " sind noch "
+							+ (int) GasStation.getGoods().get(i).getAmount() + " Stueck verfuegbar.");
+					alert.showAndWait();
+
+				}
+
+				tfGoodsNumber.setText("");
+				tfGoodsAmount.setText("");
+
+			}
+
 		} catch (NumberFormatException e) {
-			
-		}
-
-		// Wenn die Methode addFuelToShoppingCart "true" zurueckgibt, wurde der
-		// Kraftstoff erfolgreich dem Warenkorb hinzugefuegt. Das Label
-		// Gesamtbetrag wird dann auf den Gesamtpreis der ShoppingCart-Liste gesetzt
-		if (GasStation.addGoodToShoppingCart(goodNumber, goodAmount)) {
-
-			lblTotalPrice2.setText(String.valueOf(GasStation.getTotalPrice()));
-			lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()));
-
-			// Wenn die Methode "false" zurueckgibt, ist nicht mehr genuegend Bestand
-			// vorhanden. Der Index der Ware wird ermittelt. Der Nutzer wird
-
-			// anschliessend ueber den Bestand der Ware informiert.
-		} else if(goodAmount<=0) {
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Kauf nicht moeglich");
-			alert.setHeaderText("Kauf nicht moeglich");
-			alert.setContentText("Bitte geben Sie eine gueltige Menge ein");
-			alert.showAndWait();
-	}else {
-			int i = Good.getIndex(goodNumber);
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Kauf nicht moeglich");
-			alert.setHeaderText("Kauf nicht moeglich");
-			alert.setContentText("Von der Ware " + GasStation.getGoods().get(i).getName() + " sind noch "
-					+ (int) GasStation.getGoods().get(i).getAmount() + " Stueck verfuegbar.");
-			alert.showAndWait();
 
 		}
-		
-		tfGoodsNumber.setText("");
-		tfGoodsAmount.setText("");
-		
-
 	}
 
-	//Wird ausgeloest wenn man im Tab "Start" auf "BAR" klickt
-	//Durch diese Methode gelangt man zum Bezahlvorgang
+	// Wird ausgeloest wenn man im Tab "Start" auf "BAR" klickt
+	// Durch diese Methode gelangt man zum Bezahlvorgang
 	@FXML
 	void onCashClick(ActionEvent event) throws IOException {
 
@@ -662,8 +669,9 @@ public class ControllerMain implements Initializable {
 
 	}
 
-	//Wird ausgeloest wenn man im Tab "Kraftstoff" auf den Button "Preise aendern" klickt
-	//Ruft das Fenster ChangePriceOfFuelDialog" auf
+	// Wird ausgeloest wenn man im Tab "Kraftstoff" auf den Button "Preise aendern"
+	// klickt
+	// Ruft das Fenster ChangePriceOfFuelDialog" auf
 	@FXML
 	void onChangeFuelPriceClick(ActionEvent event) throws IOException {
 
@@ -676,8 +684,9 @@ public class ControllerMain implements Initializable {
 
 	}
 
-	//Wird ausgeloest wenn man im Tab "Waren" auf den Button "Preise aendern" klickt
-	//Ruft das Fenster ChangePriceOfGoodsDialog" auf
+	// Wird ausgeloest wenn man im Tab "Waren" auf den Button "Preise aendern"
+	// klickt
+	// Ruft das Fenster ChangePriceOfGoodsDialog" auf
 	@FXML
 	void onChangeGoodsPriceClick(ActionEvent event) throws IOException {
 
@@ -710,9 +719,8 @@ public class ControllerMain implements Initializable {
 			}
 			alert.setContentText(null);
 			alert.showAndWait();
-      FXCollections.copy(GasStation.getFuels(), GasStation.getFuels());
-		  FXCollections.copy(GasStation.getGoods(), GasStation.getGoods());
-
+			FXCollections.copy(GasStation.getFuels(), GasStation.getFuels());
+			FXCollections.copy(GasStation.getGoods(), GasStation.getGoods());
 
 			// Ampel aktualisieren
 			ivDiesel.setImage(GasStation.getTrafficLight(0));
@@ -720,8 +728,9 @@ public class ControllerMain implements Initializable {
 		}
 	}
 
-	//Wird ausgeloest wenn man im Tab "Start" auf einen der Buttons der Zapfsaeulen klickt
-	//Hierdurch gelangt man zum Fenster um Kraftstoff dem Warenkorb hinzuzufuegen
+	// Wird ausgeloest wenn man im Tab "Start" auf einen der Buttons der Zapfsaeulen
+	// klickt
+	// Hierdurch gelangt man zum Fenster um Kraftstoff dem Warenkorb hinzuzufuegen
 	@FXML
 	void onGasPumpClick(ActionEvent event) throws IOException {
 
@@ -739,8 +748,9 @@ public class ControllerMain implements Initializable {
 
 	}
 
-	//Methode wird ausgeloest wenn man im Tab "Mitarbeiter" auf "neuer Mitarbeiter" klickt
-	//ruft das Fenster "NewEmployeeDialog" auf
+	// Methode wird ausgeloest wenn man im Tab "Mitarbeiter" auf "neuer Mitarbeiter"
+	// klickt
+	// ruft das Fenster "NewEmployeeDialog" auf
 	@FXML
 	void onNewEmployeeClick(ActionEvent event) throws IOException {
 
@@ -753,8 +763,9 @@ public class ControllerMain implements Initializable {
 
 	}
 
-	//Methode wird ausgeloest wenn man im Tab "Kraftstoff" auf den Button "abschicken" klickt
-	//Durch das Aufrufen wird eine neue Kraftstoffbestellung erstellt
+	// Methode wird ausgeloest wenn man im Tab "Kraftstoff" auf den Button
+	// "abschicken" klickt
+	// Durch das Aufrufen wird eine neue Kraftstoffbestellung erstellt
 	@FXML
 	void onOrderFuelClick(ActionEvent event) {
 
@@ -783,8 +794,9 @@ public class ControllerMain implements Initializable {
 		ivSuper.setImage(GasStation.getTrafficLight(1));
 	}
 
-	//Methode wird ausgeloest wenn man im Tab "Waren" auf den Button "abschicken" klickt
-	//Durch das Aufrufen wird eine neue Warenbestellung erstellt
+	// Methode wird ausgeloest wenn man im Tab "Waren" auf den Button "abschicken"
+	// klickt
+	// Durch das Aufrufen wird eine neue Warenbestellung erstellt
 	@FXML
 	void onOrderGoodsClick(ActionEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -807,43 +819,44 @@ public class ControllerMain implements Initializable {
 
 	}
 
-	//Methode wird aufgerufen wenn man im Tab "Historie" auf den Button "OK" klickt
-	//Gibt in Abhaengigkeit des Start- und Enddatums die Bilanz aus
-	//Bei fehlerhaften Eingaben kommen PopUps
+	// Methode wird aufgerufen wenn man im Tab "Historie" auf den Button "OK" klickt
+	// Gibt in Abhaengigkeit des Start- und Enddatums die Bilanz aus
+	// Bei fehlerhaften Eingaben kommen PopUps
 	@FXML
 	void onShowBalanceClick(ActionEvent event) {
 
 		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Fehler");		
-	
-	try {
-		LocalDate start = dpBalanceStartDate.getValue();
-		LocalDate end = dpBalanceEndDate.getValue();
-		//Wenn Startdatum vor Enddatum ist
-		if(start.isBefore(end)) {
-		GasStation.changeBalanceTable(start,end);}
-		else {
-			alert.setHeaderText("Das Startdatum ist nach dem Enddatum. Das ist nicht möglich.");
+		alert.setTitle("Fehler");
+
+		try {
+			LocalDate start = dpBalanceStartDate.getValue();
+			LocalDate end = dpBalanceEndDate.getValue();
+			// Wenn Startdatum vor Enddatum ist
+			if (start.isBefore(end)) {
+				GasStation.changeBalanceTable(start, end);
+			} else {
+				alert.setHeaderText("Das Startdatum ist nach dem Enddatum. Das ist nicht moeglich.");
+				alert.setContentText(null);
+				alert.showAndWait();
+			}
+		} catch (Exception e) {
+
+			// PopUp fuer Fehler in der Eingabe
+
+			alert.setHeaderText("Start und/oder Enddatum fehlen");
 			alert.setContentText(null);
-			alert.showAndWait();	
+			alert.showAndWait();
+			GasStation.createHistory();
 		}
-	} catch (Exception e) {
-	
-	// PopUp fuer Fehler in der Eingabe
-
-	alert.setHeaderText("Start und/oder Enddatum fehlen");
-	alert.setContentText(null);
-	alert.showAndWait();	
-	GasStation.createHistory();
-	}
-	double sales = GasStation.createFullSales();
-	double purchases = GasStation.createFullPurchases();
-	lblBalanceResult.setText("Einnahmen: "+String.valueOf(sales)+" € Ausgabe: " + String.valueOf(purchases)+ " € Betriebsergebnis: "+ String.valueOf(sales-purchases) + " €");
-
+		double sales = GasStation.createFullSales();
+		double purchases = GasStation.createFullPurchases();
+		lblBalanceResult.setText("Einnahmen: " + String.valueOf(sales) + " € Ausgabe: " + String.valueOf(purchases)
+				+ " € Betriebsergebnis: " + String.valueOf(sales - purchases) + " €");
 
 	}
 
-	//Durch das Aufrufen dieser Methode gelangt man wieder zurueck zum Startbildschirm
+	// Durch das Aufrufen dieser Methode gelangt man wieder zurueck zum
+	// Startbildschirm
 	@FXML
 	void onToCheckoutClick(ActionEvent event) {
 
@@ -853,7 +866,8 @@ public class ControllerMain implements Initializable {
 
 	}
 
-	//Durch das Aufrufen dieser Methode gelangt man wieder zurueck zum Startbildschirm
+	// Durch das Aufrufen dieser Methode gelangt man wieder zurueck zum
+	// Startbildschirm
 	@FXML
 	void onBackToStartClick(ActionEvent event) {
 
@@ -873,10 +887,10 @@ public class ControllerMain implements Initializable {
 		tpMain.getSelectionModel().select(tFuel);
 	}
 
-	//Wird ausgeloest wenn man im Tab "Waren" auf den Button "hinzufuegen" klickt
-	//Fuegt je nach Eingabe die Waren die man bestellen moechte der Tabelle hinzu
-	//Bei falschen Angaben kommen PopUps
-	//Bei Eingabe der Nummer 666 wird das EasterEgg ausgeloest
+	// Wird ausgeloest wenn man im Tab "Waren" auf den Button "hinzufuegen" klickt
+	// Fuegt je nach Eingabe die Waren die man bestellen moechte der Tabelle hinzu
+	// Bei falschen Angaben kommen PopUps
+	// Bei Eingabe der Nummer 666 wird das EasterEgg ausgeloest
 	@FXML
 	void onAddGoodOrderClick(ActionEvent event) throws IOException {
 
@@ -887,58 +901,59 @@ public class ControllerMain implements Initializable {
 			number = Integer.parseInt(tfOrderGoodNumber.getText());
 			amount = Double.parseDouble(tfOrderGoodAmount.getText());
 
-			} catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 
-			}
-			
-				if (number == 666) {
-				
-				// Easter-Egg
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/EasterEggDialog.fxml"));
-				Parent root1 = (Parent) fxmlLoader.load();
-				Stage stage = new Stage();
-				stage.setScene(new Scene(root1));
-				stage.setTitle("Der Teufel ist da");
-				stage.show();
+		}
 
-			} else if(GasStation.existingGood(number)==false) {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Fehler");
-				alert.setHeaderText("Diese Warennummer existiert nicht");
-				alert.setContentText(null);
-				alert.showAndWait();
-			} else if(amount<=0) {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Falsche Eingabe");
-				alert.setHeaderText("Falsche Eingabe");
-				alert.setContentText("Bitte geben Sie eine gültige Menge ein.");
-				alert.showAndWait();
-			} else if (GasStation.existingGood(number)) {
-				GasStation.addGoodOrder(number, amount);
-			
+		if (number == 666) {
+
+			// Easter-Egg
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/EasterEggDialog.fxml"));
+			Parent root1 = (Parent) fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root1));
+			stage.setTitle("Der Teufel ist da");
+			stage.show();
+
+		} else if (GasStation.existingGood(number) == false) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Fehler");
+			alert.setHeaderText("Diese Warennummer existiert nicht");
+			alert.setContentText(null);
+			alert.showAndWait();
+		} else if (amount <= 0) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Falsche Eingabe");
+			alert.setHeaderText("Falsche Eingabe");
+			alert.setContentText("Bitte geben Sie eine gültige Menge ein.");
+			alert.showAndWait();
+		} else if (GasStation.existingGood(number)) {
+			GasStation.addGoodOrder(number, amount);
+
 			tfOrderGoodNumber.setText("");
 			tfOrderGoodAmount.setText("");
-			}	
+		}
 	}
 
-	//Wird ausgeloest wenn man im Tab "Kraftstoff" auf den Button "hinzufuegen" klickt
-	//Fuegt je nach Eingabe den Kraftstoff den man bestellen moechte der Tabelle hinzu
-	//Bei falschen Angaben kommen PopUps
+	// Wird ausgeloest wenn man im Tab "Kraftstoff" auf den Button "hinzufuegen"
+	// klickt
+	// Fuegt je nach Eingabe den Kraftstoff den man bestellen moechte der Tabelle
+	// hinzu
+	// Bei falschen Angaben kommen PopUps
 	@FXML
 	void onAddFuelOrderClick(ActionEvent event) {
-		
+
 		double amount = 0;
-		
+
 		try {
 			amount = Double.parseDouble(tfOrderFuelAmount.getText());
-			} catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 
+		}
 
-			}
-		
-		//GasStation.addFuelOrder(cbOrderFuelType.getValue(), amount);
-		
-		if(amount<=0) {
+		// GasStation.addFuelOrder(cbOrderFuelType.getValue(), amount);
+
+		if (amount <= 0) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Falsche Eingabe");
 			alert.setHeaderText("Falsche Eingabe");
@@ -947,13 +962,14 @@ public class ControllerMain implements Initializable {
 		} else {
 			GasStation.addFuelOrder(cbOrderFuelType.getValue(), amount);
 		}
-		
+
 		tfOrderFuelAmount.setText("");
 	}
-	
-	//Wird ausgeloest wenn man beim Abschliessen des Bezahlvorgangs auf "Berechnen" klickt
-	//Hierdurch wird das Rueckgeld angezeigt in Abhaengigkeit des gegebenen Geldes
-	//Bei falschen Eingaben kommen PopUps
+
+	// Wird ausgeloest wenn man beim Abschliessen des Bezahlvorgangs auf "Berechnen"
+	// klickt
+	// Hierdurch wird das Rueckgeld angezeigt in Abhaengigkeit des gegebenen Geldes
+	// Bei falschen Eingaben kommen PopUps
 	@FXML
 	void onConfirmMoneyReceived(ActionEvent event) {
 
@@ -965,7 +981,7 @@ public class ControllerMain implements Initializable {
 			// Setze Label auf die Differenz von gegebenem Geld - Gesamtbetrag (gerundet)
 			if (moneyReceived > 0) {
 				lblMoneyReturn.setText(
-						String.valueOf(Math.round(100.0 * (moneyReceived - GasStation.getTotalPrice())) / 100.0));
+						String.valueOf(Math.round(100.0 * (moneyReceived - GasStation.getTotalPrice())) / 100.0) + " EUR");
 			} else {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Fehler");
@@ -984,9 +1000,10 @@ public class ControllerMain implements Initializable {
 
 	}
 
-	//Wird ausgeloest wenn man beim Abschliessen des Bezahlvorgangs auf "Berechnen" klickt
-	//Schlie�t den Bezahlvorgang komplett ab
-	//Anwender kann dann auswaehlen wo er den Verkaufsbeleg speichern moechte
+	// Wird ausgeloest wenn man beim Abschliessen des Bezahlvorgangs auf "Berechnen"
+	// klickt
+	// Schlie�t den Bezahlvorgang komplett ab
+	// Anwender kann dann auswaehlen wo er den Verkaufsbeleg speichern moechte
 	@FXML
 	void onContinue(ActionEvent event) {
 
@@ -1022,7 +1039,7 @@ public class ControllerMain implements Initializable {
 			}
 		} else if (option.get() == saveReceiptDesktop) {
 			String home = System.getProperty("user.home");
-//        	//Auf dem Desktop speichern
+			//Auf dem Desktop speichern
 			String filename = home + "/Desktop/Beleg" + String.valueOf(salenumber) + ".txt";
 			File file = new File(filename);
 			GasStation.finishedreceipt(file, salenumber);
@@ -1032,8 +1049,8 @@ public class ControllerMain implements Initializable {
 		}
 
 		// Gesamtbetrag-Label aktualisieren, Text-Feld leeren
-		lblTotalPrice2.setText(String.valueOf(GasStation.getTotalPrice()));
-		lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()));
+		lblTotalPrice2.setText(String.valueOf(GasStation.getTotalPrice()) + " EUR");
+		lblTotalPrice.setText(String.valueOf(GasStation.getTotalPrice()) + " EUR");
 		tfMoneyReceived.setText("");
-  }
+	}
 }
