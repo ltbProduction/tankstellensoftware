@@ -598,6 +598,9 @@ public class ControllerMain implements Initializable {
 		try {
 			goodNumber = Integer.valueOf(tfGoodsNumber.getText());
 			goodAmount = Double.valueOf(tfGoodsAmount.getText());
+			} catch (NumberFormatException e) {
+
+			}
 
 			if (GasStation.existingGood(goodNumber) == false) {
 				Alert alert = new Alert(AlertType.ERROR);
@@ -640,9 +643,6 @@ public class ControllerMain implements Initializable {
 
 			}
 
-		} catch (NumberFormatException e) {
-
-		}
 	}
 
 /*	 Wird ausgeloest wenn man im Tab "Start" auf "BAR" klickt
@@ -916,7 +916,7 @@ public class ControllerMain implements Initializable {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Falsche Eingabe");
 			alert.setHeaderText("Falsche Eingabe");
-			alert.setContentText("Bitte geben Sie eine gültige Menge ein.");
+			alert.setContentText("Bitte geben Sie eine gueltige Menge ein.");
 			alert.showAndWait();
 		} else if (GasStation.existingGood(number)) {
 			GasStation.addGoodOrder(number, amount);
@@ -948,7 +948,7 @@ public class ControllerMain implements Initializable {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Falsche Eingabe");
 			alert.setHeaderText("Falsche Eingabe");
-			alert.setContentText("Bitte geben Sie eine gültige Menge ein.");
+			alert.setContentText("Bitte geben Sie eine gueltige Menge ein.");
 			alert.showAndWait();
 		} else {
 			GasStation.addFuelOrder(cbOrderFuelType.getValue(), amount);

@@ -419,7 +419,7 @@ public class GasStation {
 		FXCollections.copy(balancePurchases, balancePurchases);
 
 	}
-	// erzeugt die Summer alle Verkaeufe die bisher getaetigt wurden
+	// erzeugt die Summe aller Verkaeufe die bisher getaetigt wurden
 	public static double createFullSales() {
 		double sum = 0;
 		for (Sale s : balanceSales) {
@@ -428,7 +428,7 @@ public class GasStation {
 		sum = Math.round(sum * 100.0) / 100.0;
 		return sum;
 	}
-	// erzeugt die Summer alle Einkaeufe die bisher getaetigt wurden
+	// erzeugt die Summe aller Einkaeufe die bisher getaetigt wurden
 	public static double createFullPurchases() {
 		double sum = 0;
 		for (Purchase p : balancePurchases) {

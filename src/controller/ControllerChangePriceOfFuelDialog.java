@@ -70,6 +70,7 @@ public class ControllerChangePriceOfFuelDialog implements Initializable {
 
 	    }
 	    
+	    //Initialisierung der ComboBox
 	    @Override
 		public void initialize(URL location, ResourceBundle resources) {
 	    	cbNameOfFuelType.getItems().removeAll(cbNameOfFuelType.getItems());

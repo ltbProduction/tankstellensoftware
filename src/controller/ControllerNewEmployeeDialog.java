@@ -10,6 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.GasStation;
 
+/**
+ * @author Lukas Blunck
+ *
+ */
+
 public class ControllerNewEmployeeDialog {
 
     @FXML

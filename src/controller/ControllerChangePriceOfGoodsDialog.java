@@ -68,6 +68,7 @@ public class ControllerChangePriceOfGoodsDialog implements Initializable {
 
 	}
 
+    //Initialisierung der ComboBox
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		cbNameOfProduct.getItems().removeAll(cbNameOfProduct.getItems());
