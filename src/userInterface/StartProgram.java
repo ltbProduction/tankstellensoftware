@@ -13,6 +13,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utilities.FileTransfer;
 
+/**
+ * @author Lukas Blunck, Robin Birkhofer, Linus Brugger
+ *
+ */
+
 public class StartProgram extends Application {
 
 	public static void main(String[] args) {
@@ -22,8 +27,6 @@ public class StartProgram extends Application {
 	@Override
 	public void init() throws ParseException, IOException {
 		FileTransfer.start();
-//		GasStation.getFuels().get(0).dis
-//		GasStation.getFuels().get(0).displayProduct();
 	}
 
 	@Override
@@ -34,7 +37,6 @@ public class StartProgram extends Application {
 		primaryStage.setTitle("Tankstellensoftware");
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		//GasStation gasstation = new GasStation("Tankstelle Klösterle");
 		
 	}
 
@@ -42,14 +44,5 @@ public class StartProgram extends Application {
 	public void stop() {
 		FileTransfer.writetextfiles();
 	}
-
-//	@Override
-//	public void handle(ActionEvent event) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-
-	
-	
 	
 }
