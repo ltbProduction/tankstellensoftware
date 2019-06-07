@@ -14,6 +14,6 @@
       <Label layoutX="193.0" layoutY="75.0" text="Neuer Preis" />
       <Button fx:id="btnConfirmPrice" layoutX="174.0" layoutY="151.0" mnemonicParsing="false" onAction="#confirmPrice" prefHeight="25.0" prefWidth="96.0" text="Bestätigen" />
       <ComboBox fx:id="cbNameOfProduct" layoutX="13.0" layoutY="102.0" prefHeight="25.0" prefWidth="130.0" />
-      <TextField fx:id="tfNewPrice" layoutX="175.0" layoutY="102.0" onAction="#newPrice" prefHeight="25.0" prefWidth="96.0" />
+      <TextField fx:id="tfNewPrice" layoutX="175.0" layoutY="102.0" prefHeight="25.0" prefWidth="96.0" />
    </children>
 </Pane>

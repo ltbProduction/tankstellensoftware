@@ -15,7 +15,7 @@ import utilities.FileSetter;
 public class GasStation {
 
 	// Name der Tankstelle
-	private static String gasStationName = "Tankstelle Kloesterle"; // Name der Tankstelle
+	private static String gasStationName = "GasoLinus Birkhofer Blunck GmbH"; // Name der Tankstelle
 	// Liste mit allen Mitarbeitern
 	private static ObservableList<Employee> employees = FXCollections.observableArrayList();
 	// Liste mit Waren im Warenkorb fuer "Waren hinzufuegen"-Fenster

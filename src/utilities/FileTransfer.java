@@ -38,7 +38,7 @@ public class FileTransfer {
 	/*Die Methode entscheidet ob es sich bei der Datei file um einen KraftstoffLieferung oder um eine Warenbestellung.
 	außerdem entscheidet es ob die einlieferung erfolgreich war bei folgender Ausgabe der Methode:
 	1 heißt erfolgreich
-	2 heißt kapazitätsgrenze übertroffen
+	2 heißt Kapazitaetsgrenze übertroffen
 	3 heißt Fehler in der Datei*/
 	
 	public static int scandeliveries(File file) throws ParseException, IOException {
@@ -69,7 +69,7 @@ public class FileTransfer {
 		
 	}
 	/*
-	Hier werden die Textdateien geschrieben. Die Methode wird nur aufgerufen, wenn die größe der ArrayList nicht
+	Hier werden die Textdateien geschrieben. Die Methode wird nur aufgerufen, wenn die Groeße der ArrayList nicht
 	gleich null ist sonst es wahrscheinlich ein Fehler beim einlesen und die txt Datei würde sich verkleinern.
 	*/
 	public static void writetextfiles() {

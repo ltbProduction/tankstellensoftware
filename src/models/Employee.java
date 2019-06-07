@@ -60,6 +60,4 @@ public class Employee {
 		return text;
 	}
 	
-	
-	
 }

@@ -58,15 +58,6 @@ public class ControllerChangePriceOfGoodsDialog implements Initializable {
 
 	}
 
-	@FXML
-	void nameOfProduct(ActionEvent event) {
-
-	}
-
-	@FXML
-	void newPrice(ActionEvent event) {
-
-	}
 
     //Initialisierung der ComboBox
 	@Override

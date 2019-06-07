@@ -24,7 +24,7 @@ public class FileSetter {
      private static String firstlinegoods = "Nummer;Name;Lagereinheit;Menge;Einkaufspreis;Verkaufspreis";
      private static String firstlinehistory = "Nummer;Datum;Preis";
      private static String firstlineemployee = "Nummer;Name;Datum";
-     private static String firstlinefuels = "Nummer;Kraftstoffart;Füllstand;Kapazität;Einkaufspreis;Verkaufspreis";
+     private static String firstlinefuels = "Nummer;Kraftstoffart;Fuellstand;Kapazitaet;Einkaufspreis;Verkaufspreis";
    
      
      //Die Text datei der Mitarbeiter wird geschrieben
@@ -34,15 +34,15 @@ public class FileSetter {
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
   			bw.write(firstlineemployee); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
-  			for (Employee e : GasStation.getEmployees()) {							//für jeden Mitarbeiter von Employyes
+  			for (Employee e : GasStation.getEmployees()) {							//fuer jeden Mitarbeiter von Employyes
 				bw.write(e.displaytextfile()); 								//Schreiben des Mitarbeiters			
 				if (GasStation.getEmployees().indexOf(e) < GasStation.getEmployees().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
-					bw.newLine();									// Springe in die nächste Zeile
-				} else continue;									// Sonst führe fort
+					bw.newLine();									// Springe in die naechste Zeile
+				} else continue;									// Sonst fahre fort
 				
 				
 			}
-			GasStation.getEmployees().clear(); //ArrayList l�schen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+			GasStation.getEmployees().clear(); //ArrayList loeschen damit Objekte beim erneuten einlesen nicht doppelt vorkommen
 
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -50,23 +50,23 @@ public class FileSetter {
      }
      
      
-     //Die Text datei der Kraftstoffe wird geschrieben
+     //Die Text Datei der Kraftstoffe wird geschrieben
      public static void writefuels() {
     	 File file = new File(pathdata+ "FuelTanks.txt"); //Die neue File wird erzeugt
 
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
   			bw.write(firstlinefuels); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
-  			//Muss noch ge#ndert werden
+  			//Muss noch geaendert werden
 
   			for (Fuel f : GasStation.getFuels()) {							//fuer jeden Kraftstofftank von Kraftstofftanks
 				bw.write(f.displaytextfile()); 								//Schreiben des Tanks
 				if (GasStation.getFuels().indexOf(f) < GasStation.getFuels().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
 					bw.newLine();									// Springe in die naechste Zeile
-				} else continue;									// Sonst faehre fort
+				} else continue;									// Sonst fahre fort
 
 			}
-			GasStation.getFuels().clear(); //ArrayList loeschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+			GasStation.getFuels().clear(); //ArrayList loeschen damit objekte beim erneuten Einlesen nicht doppelt vorkommen
 
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -74,7 +74,7 @@ public class FileSetter {
   		
      }
      
-     //Die Text datei der Waren wird geschrieben
+     //Die Text Datei der Waren wird geschrieben
      public static void writeGoods() {
     	 File file = new File(pathdata+ "Goods.txt"); //Die neue File wird erzeugt
 
@@ -84,11 +84,11 @@ public class FileSetter {
   			for (Good g : GasStation.getGoods()) {							//fuer jede Ware von Waren
 				bw.write(g.displaytextfile()); 							//Schreibe die Waren
 				if (GasStation.getGoods().indexOf(g) < GasStation.getGoods().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
-					bw.newLine();								// Springe in die nächste Zeile
-				} else continue;								// Sonst führe fort
+					bw.newLine();								// Springe in die naechste Zeile
+				} else continue;								// Sonst fuehre fort
 				
 			}
-			GasStation.getGoods().clear(); //ArrayList loeschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+			GasStation.getGoods().clear(); //ArrayList loeschen damit Objekte beim erneuten Einlesen nicht doppelt vorkommen
 	
   		} catch (IOException e) {
   			e.printStackTrace();
@@ -102,10 +102,10 @@ public class FileSetter {
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
   			bw.write(firstlinehistory); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
-  			for (Purchase p : GasStation.getPurchases()) {							//fuer jeden Einkauf von Einkäufe
+  			for (Purchase p : GasStation.getPurchases()) {							//fuer jeden Einkauf von Einkaeufe
 				bw.write(p.displaytextfile()); 								//Schreibe den Einkauf
 				if (GasStation.getPurchases().indexOf(p) < GasStation.getPurchases().size()-1) {	// Wenn es nicht das letzte Element der Liste ist
-					bw.newLine();									// Springe in die nächste Zeile
+					bw.newLine();									// Springe in die naechste Zeile
 				} else continue;									
 			}
 			GasStation.getPurchases().clear(); //ArrayList loeschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
@@ -116,20 +116,20 @@ public class FileSetter {
      }
      
      
-     //Die Text datei der Waren wird geschrieben
+     //Die Text Datei der Waren wird geschrieben
      public static void writeHistorysales() {
     	 File file = new File(pathdata+ "Historysales.txt"); //Die neue File wird erzeugt
 
   		try (FileWriter fw = new FileWriter(file); BufferedWriter bw = new BufferedWriter(fw)) { 
   			bw.write(firstlinehistory); //Die erste Zeile wird geschrieben
   			bw.newLine(); 
-  			for (Sale s : GasStation.getSales()) {								//für jeden Verkauf von Verkäufe
+  			for (Sale s : GasStation.getSales()) {								//fuer jeden Verkauf von Verkäufe
 				bw.write(s.displaytextfile()); 								//Schreibe den Verkauf
 				if (GasStation.getSales().indexOf(s) < GasStation.getSales().size()-1) {		//Wenn es nicht das letzte Element der Liste ist
-					bw.newLine();									// Springe in die nächste Zeile
+					bw.newLine();									// Springe in die naechste Zeile
 				} else continue;									
 			}
-			GasStation.getSales().clear(); //ArrayList loeschen damit objekte beim erneuten einlesen nicht doppelt vorkommen
+			GasStation.getSales().clear(); //ArrayList loeschen damit Objekte beim erneuten einlesen nicht doppelt vorkommen
 
   		} catch (IOException e) {
   			e.printStackTrace();

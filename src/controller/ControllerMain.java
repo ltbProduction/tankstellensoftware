@@ -28,6 +28,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -363,9 +364,7 @@ public class ControllerMain implements Initializable {
 		fileChooser.getExtensionFilters().add(new ExtensionFilter("Textdateien", "*.txt"));
 
 		// Spalten einstellen
-
-		cbOrderFuelType.getItems().removeAll(cbOrderFuelType.getItems()); // loesche vorhandene Werte aus //
-																			// Dropdown-Menue
+		cbOrderFuelType.getItems().removeAll(cbOrderFuelType.getItems()); // loesche vorhandene Werte aus Dropdown-Menue
 		cbOrderFuelType.getItems().addAll("Super", "Diesel"); // Fuege Werte der Enum-Kraftstoffarten ein
 		cbOrderFuelType.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
 
@@ -430,8 +429,7 @@ public class ControllerMain implements Initializable {
 		fileChooser = new FileChooser();
 		fileChooser.getExtensionFilters().add(new ExtensionFilter("Textdateien", "*.txt"));
 
-		cbOrderFuelType.getItems().removeAll(cbOrderFuelType.getItems()); // loesche vorhandene Werte aus
-																			// Dropdown-Menue
+		cbOrderFuelType.getItems().removeAll(cbOrderFuelType.getItems()); // loesche vorhandene Werte aus Dropdown-Menue
 		cbOrderFuelType.getItems().addAll("Super", "Diesel"); // Fuege Werte der Enum-Kraftstoffarten ein
 		cbOrderFuelType.getSelectionModel().select(0); // stelle ersten Wert als Standard ein
 
@@ -652,8 +650,6 @@ public class ControllerMain implements Initializable {
 
 		if (GasStation.getShoppingCart().size() != 0) {
 
-
-
 			tpMain.setVisible(false);
 			apPayProcess.setVisible(true);
 
@@ -676,6 +672,7 @@ public class ControllerMain implements Initializable {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/userInterface/ChangePriceOfFuelDialog.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
+		stage.getIcons().add(new Image("resource/logo/gas-station-logo.jpg"));
 		stage.setScene(new Scene(root1));
 		stage.setTitle("Treibstoffpreis aendern");
 		stage.show();
@@ -692,6 +689,7 @@ public class ControllerMain implements Initializable {
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root1));
+		stage.getIcons().add(new Image("resource/logo/gas-station-logo.jpg"));
 		stage.setTitle("Warenpreis aendern");
 		stage.show();
 	}
@@ -749,6 +747,7 @@ public class ControllerMain implements Initializable {
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root1));
+		stage.getIcons().add(new Image("resource/logo/gas-station-logo.jpg"));
 		stage.setTitle("Neuer Mitarbeiter");
 		stage.show();
 
@@ -903,6 +902,7 @@ public class ControllerMain implements Initializable {
 			Parent root1 = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root1));
+			stage.getIcons().add(new Image("resource/logo/gas-station-logo.jpg"));
 			stage.setTitle("Der Teufel ist da");
 			stage.show();
 
@@ -997,11 +997,12 @@ public class ControllerMain implements Initializable {
 	 Anwender kann dann auswaehlen wo er den Verkaufsbeleg speichern moechte*/
 	@FXML
 	void onContinue(ActionEvent event) {
+		
+		// Rückgeld Label auf 0 setzen
+		lblMoneyReturn.setText("00,00 EUR");
 
 		// Die neue Verkaufsnummer
 		int salenumber = Helpmethods.newsalesnumber();
-		// Was soll beim schliessen passieren
-		// Stage stage = (Stage) btnContinue.getScene().getWindow();
 
 		// Das DiagonalFeld welches den Speicherort nachfraegt
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -1011,7 +1012,6 @@ public class ControllerMain implements Initializable {
 		ButtonType saveReceiptAs = new ButtonType("Speicherort auswaehlen");
 		ButtonType saveReceiptDesktop = new ButtonType("Desktop");
 		alert.getButtonTypes().clear();
-
 		alert.getButtonTypes().addAll(saveReceiptAs, saveReceiptDesktop);
 
 		Optional<ButtonType> option = alert.showAndWait();
